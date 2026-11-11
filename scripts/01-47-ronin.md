@@ -10,7 +10,7 @@
 
 **Title options**
 1. The 47 Samurai Who Waited 2 Years for Revenge
-2. They Avenged Their Master. Then They All Had to Die.
+2. They Avenged Their Master. Then They Paid the Price.
 3. The Most Loyal Samurai in History (The 47 Ronin)
 
 **Thumbnail text:** "WAITED 2 YEARS" (samurai in black armor, snow, angry face)
@@ -26,11 +26,11 @@
 > 6:00 The night raid
 > 7:30 The walk to Sengaku-ji
 > 8:30 The verdict
-> 9:30 Heroes or murderers?
+> 9:30 Heroes or outlaws?
 
 **Tags:** 47 ronin, samurai, japanese history, bushido, edo period, chushingura, oishi kuranosuke, history animated, samurai history, japan
 
-**Pinned comment:** Were the 47 Ronin heroes, or murderers who broke the law? Tell me below.
+**Pinned comment:** Were the 47 Ronin heroes, or outlaws who broke the law? Tell me below.
 
 ---
 
@@ -48,7 +48,7 @@ Snow covers the city. Outside the mansion of a powerful old official, forty-seve
 
 None of them is a soldier anymore. They have no lord, no salary and no home.
 
-They have been waiting for almost two years. Tonight, they are going to kill one man.
+They have been waiting for almost two years. Tonight, they have come for one man.
 
 And when it's over, every one of them knows exactly what happens next.
 
@@ -94,7 +94,7 @@ That might not sound like the worst crime ever. But drawing a sword inside the S
 
 [SCENE: "Samurai bowing" preset, closed eyes, palace interior.]
 
-The punishment was immediate. That same day, Asano was ordered to commit seppuku, ritual suicide by cutting open the stomach.
+The punishment was immediate. That same day, Asano was ordered to commit seppuku, the ritual death expected of a disgraced samurai.
 
 Kira, meanwhile, was not punished at all.
 
@@ -146,7 +146,7 @@ Snow lay on the ground. The ronin split into two groups. Ōishi led one through 
 
 They had ladders, hammers and swords. Archers took positions on the roofs to stop anyone from running for help. They even called out to the neighbors that this was a matter of revenge, not robbery, so nobody would interfere.
 
-Kira's guards fought back. In the chaos, around sixteen of his men were killed. Not a single ronin died.
+Kira's guards fought back. In the chaos, around sixteen of his men fell. Not a single ronin was lost.
 
 [SCENE: Surprised face, Kira hiding.]
 
@@ -156,9 +156,9 @@ They searched the mansion for hours. Finally, they found an old man hiding in a 
 
 It was Kira.
 
-The ronin offered him the chance to die like a samurai, by his own hand. Kira said nothing.
+The ronin offered him the chance to end it with honor, the way a samurai would. Kira said nothing.
 
-So Ōishi killed him, and the ronin took his head.
+So Ōishi struck him down, and the revenge was done.
 
 ### 7:30 – The walk to Sengaku-ji
 
@@ -168,7 +168,7 @@ Now the ronin did something remarkable. They didn't run, and they didn't hide.
 
 In the morning light, they walked across Edo, several miles, to Sengaku-ji, the temple where their lord was buried. Crowds came out to watch them pass.
 
-At the temple, they washed Kira's head in a well and placed it in front of Asano's grave.
+At the temple, they knelt at Asano's grave and offered proof that Kira was gone.
 
 Their master's revenge was complete.
 
@@ -180,7 +180,7 @@ Then they turned themselves in to the authorities.
 
 This put the Shogun's government in a very awkward position.
 
-On one hand, the ronin had broken the law. They had planned a murder and carried out a private war in the capital.
+On one hand, the ronin had broken the law. They had plotted an attack and carried out a private war in the capital.
 
 On the other hand, they had done exactly what the samurai code taught: total loyalty to their lord, even beyond death. Many people across Edo called them heroes.
 
@@ -190,7 +190,7 @@ In March 1703, forty-six of them did just that.
 
 And the forty-seventh? A man named Terasaka Kichiemon had left the group after the raid. Some say Ōishi sent him away to carry the news home. He was pardoned, and he lived to the age of eighty-three.
 
-### 9:30 – Heroes or murderers?
+### 9:30 – Heroes or outlaws?
 
 [SCENE: Palace interior or plain. Slow pan. Ending music.]
 
@@ -200,7 +200,7 @@ Within a few decades, their story became Japan's most famous play, Chūshingura,
 
 But here's the question people have been arguing about for three hundred years.
 
-Were the forty-seven ronin heroes, men who gave everything for loyalty? Or were they killers who chose revenge over the law?
+Were the forty-seven ronin heroes, men who gave everything for loyalty? Or were they lawbreakers who put revenge above the law?
 
 Let me know what you think in the comments.
 

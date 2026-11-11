@@ -81,8 +81,8 @@
         }
       ],
       "on_screen_text": null,
-      "narration": "None of them is a soldier anymore. They have no lord, no salary and no home. They have been waiting for almost two years. Tonight, they are going to kill one man. And when it's over, every one of them knows exactly what happens next.",
-      "word_count": 45
+      "narration": "None of them is a soldier anymore. They have no lord, no salary and no home. They have been waiting for almost two years. Tonight, they have come for one man. And when it's over, every one of them knows exactly what happens next.",
+      "word_count": 44
     },
     {
       "id": "shot-04",
@@ -339,8 +339,8 @@
         }
       ],
       "on_screen_text": "Seppuku",
-      "narration": "The punishment was immediate. That same day, Asano was ordered to commit seppuku, ritual suicide by cutting open the stomach. Kira, meanwhile, was not punished at all.",
-      "word_count": 27
+      "narration": "The punishment was immediate. That same day, Asano was ordered to commit seppuku, the ritual death expected of a disgraced samurai. Kira, meanwhile, was not punished at all.",
+      "word_count": 28
     },
     {
       "id": "shot-16",
@@ -724,7 +724,7 @@
         }
       ],
       "on_screen_text": null,
-      "narration": "Kira's guards fought back. In the chaos, around sixteen of his men were killed. Not a single ronin died.",
+      "narration": "Kira's guards fought back. In the chaos, around sixteen of his men fell. Not a single ronin was lost.",
       "word_count": 19
     },
     {
@@ -769,7 +769,7 @@
       "id": "shot-33",
       "section": "The night raid",
       "start": 409,
-      "duration": 12,
+      "duration": 13,
       "image": "images/shot-33.png",
       "background": "palace",
       "camera": "static",
@@ -786,13 +786,13 @@
         }
       ],
       "on_screen_text": null,
-      "narration": "The ronin offered him the chance to die like a samurai, by his own hand. Kira said nothing. So Ōishi killed him, and the ronin took his head.",
-      "word_count": 28
+      "narration": "The ronin offered him the chance to end it with honor, the way a samurai would. Kira said nothing. So Ōishi struck him down, and the revenge was done.",
+      "word_count": 29
     },
     {
       "id": "shot-34",
       "section": "The walk to Sengaku-ji",
-      "start": 421,
+      "start": 422,
       "duration": 17,
       "image": "images/shot-34.png",
       "background": "village",
@@ -831,8 +831,8 @@
     {
       "id": "shot-35",
       "section": "The walk to Sengaku-ji",
-      "start": 438,
-      "duration": 10,
+      "start": 439,
+      "duration": 9,
       "image": "images/shot-35.png",
       "background": "village",
       "camera": "static",
@@ -854,8 +854,8 @@
         }
       ],
       "on_screen_text": null,
-      "narration": "At the temple, they washed Kira's head in a well and placed it in front of Asano's grave. Their master's revenge was complete.",
-      "word_count": 23
+      "narration": "At the temple, they knelt at Asano's grave and offered proof that Kira was gone. Their master's revenge was complete.",
+      "word_count": 20
     },
     {
       "id": "shot-36",
@@ -902,7 +902,7 @@
         }
       ],
       "on_screen_text": null,
-      "narration": "This put the Shogun's government in a very awkward position. On one hand, the ronin had broken the law. They had planned a murder and carried out a private war in the capital.",
+      "narration": "This put the Shogun's government in a very awkward position. On one hand, the ronin had broken the law. They had plotted an attack and carried out a private war in the capital.",
       "word_count": 33
     },
     {
@@ -1013,7 +1013,7 @@
     },
     {
       "id": "shot-42",
-      "section": "Heroes or murderers?",
+      "section": "Heroes or outlaws?",
       "start": 513,
       "duration": 12,
       "image": "images/shot-42.png",
@@ -1032,7 +1032,7 @@
     },
     {
       "id": "shot-43",
-      "section": "Heroes or murderers?",
+      "section": "Heroes or outlaws?",
       "start": 525,
       "duration": 12,
       "image": "images/shot-43.png",
@@ -1056,7 +1056,7 @@
     },
     {
       "id": "shot-44",
-      "section": "Heroes or murderers?",
+      "section": "Heroes or outlaws?",
       "start": 537,
       "duration": 15,
       "image": "images/shot-44.png",
@@ -1069,13 +1069,13 @@
           "pose": "stand"
         }
       ],
-      "on_screen_text": "Heroes or murderers?",
-      "narration": "But here's the question people have been arguing about for three hundred years. Were the forty-seven ronin heroes, men who gave everything for loyalty? Or were they killers who chose revenge over the law?",
+      "on_screen_text": "Heroes or outlaws?",
+      "narration": "But here's the question people have been arguing about for three hundred years. Were the forty-seven ronin heroes, men who gave everything for loyalty? Or were they lawbreakers who put revenge above the law?",
       "word_count": 34
     },
     {
       "id": "shot-45",
-      "section": "Heroes or murderers?",
+      "section": "Heroes or outlaws?",
       "start": 552,
       "duration": 23,
       "image": "images/shot-45.png",

@@ -31,7 +31,7 @@ module.exports = {
       narration: "Outside the mansion of a powerful old official, forty-seven men stand in the dark. They wear black. They carry swords, spears and bows." },
     { section: "Hook", background: "snow", tint: night, camera: "slow zoom in",
       characters: [ch("Ronin", C.ronin, 250, { scale: 1.1, face: "angry", ground: 365 })],
-      narration: "None of them is a soldier anymore. They have no lord, no salary and no home. They have been waiting for almost two years. Tonight, they are going to kill one man. And when it's over, every one of them knows exactly what happens next." },
+      narration: "None of them is a soldier anymore. They have no lord, no salary and no home. They have been waiting for almost two years. Tonight, they have come for one man. And when it's over, every one of them knows exactly what happens next." },
 
     // 0:30 Samurai without wars
     { section: "Samurai without wars", background: "village", camera: "track left", text: "1701: 100 years of peace",
@@ -73,7 +73,7 @@ module.exports = {
     // 3:00 Masters become ronin
     { section: "Masters become ronin", background: "palace", tint: dark, camera: "slow zoom in", text: "Seppuku",
       characters: [ch("Asano", C.asano, 200, { flip: true, pose: "bow", face: "closed", prop: "none" }), ch("Kira", C.kira, 380, { scale: 0.55 })],
-      narration: "The punishment was immediate. That same day, Asano was ordered to commit seppuku, ritual suicide by cutting open the stomach. Kira, meanwhile, was not punished at all." },
+      narration: "The punishment was immediate. That same day, Asano was ordered to commit seppuku, the ritual death expected of a disgraced samurai. Kira, meanwhile, was not punished at all." },
     { section: "Masters become ronin", background: "ruins", camera: "slow pan left",
       characters: [ch("Samurai", C.ronin, 130, { face: "gentle" }), ch("Samurai", C.ronin, 220, { face: "closed" }), ch("Samurai", C.roninSpear, 310, { face: "surprised" })],
       narration: "Then things got worse. Asano's family lost their domain. His castle at Akō was taken. And more than three hundred samurai who served him suddenly had no master." },
@@ -122,7 +122,7 @@ module.exports = {
       narration: "They had ladders, hammers and swords. Archers took positions on the roofs to stop anyone from running for help. They even called out to the neighbors that this was a matter of revenge, not robbery, so nobody would interfere." },
     { section: "The night raid", background: "snow", tint: night, camera: "shake",
       characters: [ch("Ronin", C.ronin, 170, { flip: true, face: "angry", prop: "sword", pose: "walk" }), ch("Guard", C.guard, 320, { pose: "walk" })],
-      narration: "Kira's guards fought back. In the chaos, around sixteen of his men were killed. Not a single ronin died." },
+      narration: "Kira's guards fought back. In the chaos, around sixteen of his men fell. Not a single ronin was lost." },
     { section: "The night raid", background: "palace", tint: dark, camera: "slow zoom in",
       characters: [ch("Ronin", C.ronin, 240, { face: "surprised" })],
       narration: "But when they reached Kira's bedroom, it was empty. The bed was still warm." },
@@ -131,7 +131,7 @@ module.exports = {
       narration: "They searched the mansion for hours. Finally, they found an old man hiding in a storage shed for charcoal. He had a scar on his forehead, the one Asano had given him. It was Kira." },
     { section: "The night raid", background: "palace", tint: dark, camera: "static",
       characters: [ch("Ōishi", { ...C.ronin, hair: "short", face: "angry" }, 180, { flip: true }), ch("Kira", C.kira, 330, { face: "closed", prop: "none" })],
-      narration: "The ronin offered him the chance to die like a samurai, by his own hand. Kira said nothing. So Ōishi killed him, and the ronin took his head." },
+      narration: "The ronin offered him the chance to end it with honor, the way a samurai would. Kira said nothing. So Ōishi struck him down, and the revenge was done." },
 
     // 7:30 The walk to Sengaku-ji
     { section: "The walk to Sengaku-ji", background: "village", tint: dawn, camera: "track left", text: "To Sengaku-ji",
@@ -139,7 +139,7 @@ module.exports = {
       narration: "Now the ronin did something remarkable. They didn't run, and they didn't hide. In the morning light, they walked across Edo, several miles, to Sengaku-ji, the temple where their lord was buried. Crowds came out to watch them pass." },
     { section: "The walk to Sengaku-ji", background: "village", camera: "static",
       characters: [ch("Ronin", C.ronin, 150, { pose: "bow", face: "closed" }), ch("Ōishi", { ...C.ronin, hair: "short" }, 250, { pose: "bow", face: "closed" }), ch("Ronin", C.ronin, 350, { pose: "bow", face: "closed" })],
-      narration: "At the temple, they washed Kira's head in a well and placed it in front of Asano's grave. Their master's revenge was complete." },
+      narration: "At the temple, they knelt at Asano's grave and offered proof that Kira was gone. Their master's revenge was complete." },
     { section: "The walk to Sengaku-ji", background: "palace", camera: "static",
       characters: [ch("Ōishi", { ...C.ronin, hair: "short" }, 180, { flip: true, pose: "bow", face: "closed", prop: "none" }), ch("Official", C.official, 340, { face: "surprised" })],
       narration: "Then they turned themselves in to the authorities." },
@@ -147,7 +147,7 @@ module.exports = {
     // 8:30 The verdict
     { section: "The verdict", background: "palace", camera: "static",
       characters: [ch("Official", C.official, 170, { flip: true, face: "angry" }), ch("Official", C.official, 320, { face: "neutral", color: "#5b6b3a" })],
-      narration: "This put the Shogun's government in a very awkward position. On one hand, the ronin had broken the law. They had planned a murder and carried out a private war in the capital." },
+      narration: "This put the Shogun's government in a very awkward position. On one hand, the ronin had broken the law. They had plotted an attack and carried out a private war in the capital." },
     { section: "The verdict", background: "village", camera: "slow pan right",
       characters: [ch("Townsman", C.townsman, 150, { face: "gentle" }), ch("Townsman", { ...C.townsman, hat: "nonla", face: "smug" }, 250), ch("Townswoman", mk({ hair: "long", outfit: "robe", color: "#c2a77a", face: "gentle", prop: "fan" }), 350)],
       narration: "On the other hand, they had done exactly what the samurai code taught: total loyalty to their lord, even beyond death. Many people across Edo called them heroes." },
@@ -161,17 +161,17 @@ module.exports = {
       characters: [ch("Terasaka", C.oishi, 260, { pose: "walk", face: "gentle", color: "#5b6b3a", hair: "topknot" })],
       narration: "And the forty-seventh? A man named Terasaka Kichiemon had left the group after the raid. Some say Ōishi sent him away to carry the news home. He was pardoned, and he lived to the age of eighty-three." },
 
-    // 9:30 Heroes or murderers?
-    { section: "Heroes or murderers?", background: "village", camera: "slow pan right", text: "Sengaku-ji, Tokyo",
+    // 9:30 Heroes or outlaws?
+    { section: "Heroes or outlaws?", background: "village", camera: "slow pan right", text: "Sengaku-ji, Tokyo",
       characters: [ch("Visitor", mk({ outfit: "suit", color: "#2f4f7f", face: "gentle" }), 260, { pose: "bow", face: "closed" })],
       narration: "The forty-six were buried next to their lord at Sengaku-ji. You can still visit their graves in Tokyo today. Every December, people come to burn incense for them." },
-    { section: "Heroes or murderers?", background: "palace", camera: "static", text: "Chūshingura",
+    { section: "Heroes or outlaws?", background: "palace", camera: "static", text: "Chūshingura",
       characters: [ch("Actor as Ōishi", { ...C.ronin, hair: "short" }, 170, { flip: true, face: "angry", prop: "sword" }), ch("Actor as Kira", C.kira, 330, { face: "surprised" })],
       narration: "Within a few decades, their story became Japan's most famous play, Chūshingura, \"The Treasury of Loyal Retainers.\" It has been retold in theater, movies and TV ever since." },
-    { section: "Heroes or murderers?", background: "snow", tint: night, camera: "slow zoom in", text: "Heroes or murderers?",
+    { section: "Heroes or outlaws?", background: "snow", tint: night, camera: "slow zoom in", text: "Heroes or outlaws?",
       characters: [ch("Ronin", C.ronin, 250, { scale: 1.1, ground: 365 })],
-      narration: "But here's the question people have been arguing about for three hundred years. Were the forty-seven ronin heroes, men who gave everything for loyalty? Or were they killers who chose revenge over the law?" },
-    { section: "Heroes or murderers?", background: "paper", camera: "static", text: "Next: Okehazama, 1560", pause: 3,
+      narration: "But here's the question people have been arguing about for three hundred years. Were the forty-seven ronin heroes, men who gave everything for loyalty? Or were they lawbreakers who put revenge above the law?" },
+    { section: "Heroes or outlaws?", background: "paper", camera: "static", text: "Next: Okehazama, 1560", pause: 3,
       characters: [ch("Narrator", C.narrator, 170, { flip: true }), ch("Warlord", mk({ outfit: "armor", color: "#a8342c", hat: "kabuto", face: "smug", prop: "katana" }), 330)],
       narration: "Let me know what you think in the comments. And if you want more stories like this, from samurai to emperors to forgotten rebels, subscribe. Next time, we'll meet the warlord who said he would conquer all of Japan, with an army one-tenth the size of his enemy's." },
   ],
