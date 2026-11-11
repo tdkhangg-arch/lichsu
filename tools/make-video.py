@@ -85,6 +85,55 @@ def gemini_tts(text, out, voice, model):
     raw.unlink()
 
 
+def silences(path):
+    log = subprocess.run(["ffmpeg", "-i", str(path), "-af", "silencedetect=n=-38dB:d=0.25", "-f", "null", "-"],
+                         capture_output=True, text=True).stderr
+    starts = [float(x) for x in re.findall(r"silence_start: ([\d.]+)", log)]
+    ends = [float(x) for x in re.findall(r"silence_end: ([\d.]+)", log)]
+    return list(zip(starts, ends))
+
+
+def batch_voice(shots, build, voice, model):
+    """One Gemini request per section; split the audio into shots at the pauses nearest
+    to where each shot should end (by word count). Returns {shot id: mp3 path}."""
+    out, sections = {}, []
+    for s in shots:
+        if not sections or sections[-1][0] != s["section"]:
+            sections.append((s["section"], []))
+        sections[-1][1].append(s)
+    for n, (name, group) in enumerate(sections, 1):
+        paths = [build / "audio" / f"{s['id']}-{voice}-{model}.mp3" for s in group]
+        if all(p.exists() for p in paths):
+            out.update({s["id"]: p for s, p in zip(group, paths)})
+            continue
+        whole = build / "audio" / f"section-{n:02d}-{voice}-{model}.mp3"
+        if not whole.exists():
+            print(f"voice section {n}: {name} ({len(group)} shots)", flush=True)
+            gemini_tts("\n\n".join(s["narration"] for s in group), whole, voice, model)
+        total = duration(whole)
+        words = [len(s["narration"].split()) for s in group]
+        gaps = silences(whole)
+        cuts, used, acc = [0.0], set(), 0
+        for w in words[:-1]:
+            acc += w
+            target = total * acc / sum(words)
+            cands = [(abs((a + b) / 2 - target) - 0.6 * (b - a), i) for i, (a, b) in enumerate(gaps)
+                     if i not in used and (a + b) / 2 > cuts[-1] + 0.5]
+            if not cands:
+                sys.exit(f"Could not find a pause to split section {n}")
+            _, i = min(cands)
+            used.add(i)
+            cuts.append((gaps[i][0] + gaps[i][1]) / 2)
+        cuts.append(total)
+        for s, p, a0, a1 in zip(group, paths, cuts, cuts[1:]):
+            run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(whole), "-ss", f"{a0:.3f}", "-to", f"{a1:.3f}",
+                 "-af", "silenceremove=start_periods=1:start_threshold=-45dB,areverse,silenceremove=start_periods=1:start_threshold=-45dB,areverse",
+                 "-b:a", "192k", str(p)])
+            print(f"  {s['id']}: {a1 - a0:.1f}s for {len(s['narration'].split())} words", flush=True)
+        out.update({s["id"]: p for s, p in zip(group, paths)})
+    return out
+
+
 def camera_filter(cam, frames):
     d = max(frames - 1, 1)
     cx, cy = "iw/2-(iw/zoom/2)", "ih/2-(ih/zoom/2)"
@@ -122,6 +171,7 @@ def main():
     ap.add_argument("--voice", help="Gemini: Charon, Orus, Puck... Cloud: en-US-Neural2-J...")
     ap.add_argument("--rate", type=float, default=0.95)
     ap.add_argument("--silent", action="store_true")
+    ap.add_argument("--per-shot", action="store_true", help="one TTS request per shot (needs a paid quota)")
     ap.add_argument("--only", type=int, help="render only the first N shots (preview)")
     a = ap.parse_args()
 
@@ -133,6 +183,9 @@ def main():
     (build / "audio").mkdir(parents=True, exist_ok=True)
     (build / "video").mkdir(parents=True, exist_ok=True)
 
+    batched = {}
+    if not a.silent and a.engine == "gemini" and not a.per_shot:
+        batched = batch_voice(shots, build, a.voice, a.model)
     timed, t = [], 0.0
     for i, s in enumerate(shots):
         last = i == len(shots) - 1
@@ -140,7 +193,7 @@ def main():
         if a.silent:
             dur = float(s["duration"])
         else:
-            audio = build / "audio" / f"{s['id']}-{a.voice}.mp3"
+            audio = batched.get(s["id"]) or build / "audio" / f"{s['id']}-{a.voice}-{a.model}.mp3"
             if not audio.exists():
                 print(f"voice {s['id']}", flush=True)
                 if a.engine == "gemini":
