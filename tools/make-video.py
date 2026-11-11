@@ -11,7 +11,7 @@ Usage:
   python3 tools/make-video.py episodes/01-47-ronin --voice Charon            # Gemini voice name
   python3 tools/make-video.py episodes/01-47-ronin --engine cloud --voice en-US-Neural2-J
 """
-import argparse, base64, json, os, subprocess, sys
+import argparse, base64, json, os, re, subprocess, sys, time
 from pathlib import Path
 
 FPS = 30
@@ -62,10 +62,18 @@ def gemini_tts(text, out, voice, model):
     })
     key = os.environ.get("GEMINI_API_KEY") or os.environ.get("KEY")
     auth = ["-H", f"x-goog-api-key: {key}"] if key else []  # otherwise the proxy adds it
-    res = run(["curl", "-sS", "--fail-with-body", "-X", "POST",
-               f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent",
-               "-H", "Content-Type: application/json", *auth, "--data-binary", body])
-    data = json.loads(res)
+    for attempt in range(30):
+        res = run(["curl", "-sS", "-X", "POST",
+                   f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent",
+                   "-H", "Content-Type: application/json", *auth, "--data-binary", body])
+        data = json.loads(res)
+        err = data.get("error", {})
+        if err.get("code") not in (429, 500, 503):
+            break
+        m = re.search(r'"retryDelay":\s*"(\d+)', res)
+        wait = int(m.group(1)) + 2 if m else 30
+        print(f"  quota/busy ({err.get('code')}), waiting {wait}s", flush=True)
+        time.sleep(wait)
     try:
         pcm = base64.b64decode(data["candidates"][0]["content"]["parts"][0]["inlineData"]["data"])
     except (KeyError, IndexError):
