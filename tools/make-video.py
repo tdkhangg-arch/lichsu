@@ -52,7 +52,14 @@ def tts(text, out, voice, rate):
 STYLE = ""
 
 
-def gemini_tts(text, out, voice, model):
+class TTSError(Exception):
+    pass
+
+
+FALLBACK_MODELS = ["gemini-3.1-flash-tts-preview", "gemini-2.5-flash-preview-tts", "gemini-3.8-flash-lite-tts"]
+
+
+def gemini_once(text, out, voice, model):
     body = json.dumps({
         "contents": [{"parts": [{"text": STYLE + text}]}],
         "generationConfig": {
@@ -62,7 +69,7 @@ def gemini_tts(text, out, voice, model):
     })
     key = os.environ.get("GEMINI_API_KEY") or os.environ.get("KEY")
     auth = ["-H", f"x-goog-api-key: {key}"] if key else []  # otherwise the proxy adds it
-    for attempt in range(30):
+    for attempt in range(10):
         res = run(["curl", "-sS", "-X", "POST",
                    f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent",
                    "-H", "Content-Type: application/json", *auth, "--data-binary", body])
@@ -72,17 +79,37 @@ def gemini_tts(text, out, voice, model):
             break
         m = re.search(r'"retryDelay":\s*"(\d+)', res)
         wait = int(m.group(1)) + 2 if m else 30
-        print(f"  quota/busy ({err.get('code')}), waiting {wait}s", flush=True)
+        if wait > 120:
+            raise TTSError(f"daily quota used up for {model}")
+        print(f"  busy ({err.get('code')}), waiting {wait}s", flush=True)
         time.sleep(wait)
     try:
         pcm = base64.b64decode(data["candidates"][0]["content"]["parts"][0]["inlineData"]["data"])
     except (KeyError, IndexError):
-        sys.exit(f"Gemini TTS error: {res[:500]}")
+        reason = (data.get("candidates") or [{}])[0].get("finishReason") or data.get("error", {}).get("message", "")
+        raise TTSError(f"{model}: {str(reason)[:200]}")
     raw = out.with_suffix(".pcm")
     raw.write_bytes(pcm)
     run(["ffmpeg", "-y", "-loglevel", "error", "-f", "s16le", "-ar", "24000", "-ac", "1", "-i", str(raw),
          "-ar", "44100", "-b:a", "192k", str(out)])
     raw.unlink()
+
+
+def gemini_tts(text, out, voice, model):
+    """Try the chosen model, then the fallbacks; a blocked or failed reply is retried once per model."""
+    errors = []
+    for m in [model] + [x for x in FALLBACK_MODELS if x != model]:
+        for _ in range(2):
+            try:
+                gemini_once(text, out, voice, m)
+                if m != model:
+                    print(f"  used fallback model {m}", flush=True)
+                return
+            except TTSError as e:
+                errors.append(str(e))
+                if "quota" in str(e):
+                    break
+    raise TTSError("; ".join(errors))
 
 
 def silences(path):
@@ -109,7 +136,15 @@ def batch_voice(shots, build, voice, model):
         whole = build / "audio" / f"section-{n:02d}-{voice}-{model}.mp3"
         if not whole.exists():
             print(f"voice section {n}: {name} ({len(group)} shots)", flush=True)
-            gemini_tts("\n\n".join(s["narration"] for s in group), whole, voice, model)
+            try:
+                gemini_tts("\n\n".join(s["narration"] for s in group), whole, voice, model)
+            except TTSError as e:
+                print(f"  section blocked or failed ({e}); voicing its shots one by one", flush=True)
+                for s, p in zip(group, paths):
+                    if not p.exists():
+                        gemini_tts(s["narration"], p, voice, model)
+                out.update({s["id"]: p for s, p in zip(group, paths)})
+                continue
         total = duration(whole)
         words = [len(s["narration"].split()) for s in group]
         gaps = silences(whole)
