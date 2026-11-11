@@ -1,0 +1,1141 @@
+{
+  "title": "How 2,000 Samurai Beat an Army of 25,000 (Battle of Okehazama)",
+  "language": "en",
+  "resolution": {
+    "width": 1920,
+    "height": 1080
+  },
+  "fps": 30,
+  "total_duration": 531,
+  "voiceover": {
+    "words_per_minute": 145,
+    "file": "voiceover.txt"
+  },
+  "music_moods": {
+    "Hook": "tense",
+    "The Great Fool of Owari": "light",
+    "The finest archer of the Eastern Sea Road": "court",
+    "The forts fall": "mystery",
+    "Fifty years of human life": "solemn",
+    "The storm": "raid",
+    "Why it worked": "quiet",
+    "What came next": "reflect"
+  },
+  "shots": [
+    {
+      "id": "shot-01",
+      "section": "Hook",
+      "start": 0,
+      "duration": 12,
+      "image": "images/shot-01.png",
+      "background": "valley",
+      "camera": "slow pan right",
+      "characters": [
+        {
+          "name": "Imagawa soldier",
+          "expression": "neutral",
+          "pose": "walk"
+        },
+        {
+          "name": "Imagawa soldier",
+          "expression": "neutral",
+          "pose": "walk"
+        },
+        {
+          "name": "Imagawa soldier",
+          "expression": "neutral",
+          "pose": "walk"
+        },
+        {
+          "name": "Imagawa soldier",
+          "expression": "neutral",
+          "pose": "walk"
+        },
+        {
+          "name": "Imagawa soldier",
+          "expression": "neutral",
+          "pose": "walk"
+        }
+      ],
+      "on_screen_text": "Central Japan, 1560",
+      "narration": "June 1560. Central Japan. A huge army is marching west. Twenty-five thousand men, maybe more. Banners, horses and spears as far as the eye can see.",
+      "word_count": 26
+    },
+    {
+      "id": "shot-02",
+      "section": "Hook",
+      "start": 12,
+      "duration": 9,
+      "image": "images/shot-02.png",
+      "background": "valley",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Nobunaga",
+          "expression": "determined",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "Standing in their way is a young lord with a few thousand soldiers, a bad reputation and one very risky idea.",
+      "word_count": 21
+    },
+    {
+      "id": "shot-03",
+      "section": "Hook",
+      "start": 21,
+      "duration": 15,
+      "image": "images/shot-03.png",
+      "background": "valley",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Nobunaga",
+          "expression": "smug",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "His own advisers think he's finished. His enemies think he's a joke. By the end of the day, one of those two men will be gone, and the history of Japan will change direction.",
+      "word_count": 34
+    },
+    {
+      "id": "shot-04",
+      "section": "The Great Fool of Owari",
+      "start": 36,
+      "duration": 16,
+      "image": "images/shot-04.png",
+      "background": "village",
+      "camera": "track left",
+      "characters": [
+        {
+          "name": "Nobunaga",
+          "expression": "smug",
+          "pose": "walk"
+        }
+      ],
+      "on_screen_text": "Oda Nobunaga",
+      "narration": "To understand how unlikely this was, you need to meet Oda Nobunaga. Nobunaga was the heir to a small clan in Owari, a province in the middle of Japan. And as a teenager, he was a disaster.",
+      "word_count": 37
+    },
+    {
+      "id": "shot-05",
+      "section": "The Great Fool of Owari",
+      "start": 52,
+      "duration": 15,
+      "image": "images/shot-05.png",
+      "background": "village",
+      "camera": "static",
+      "characters": [
+        {
+          "name": "Townsman",
+          "expression": "surprised",
+          "pose": "stand"
+        },
+        {
+          "name": "Nobunaga",
+          "expression": "smug",
+          "pose": "stand"
+        },
+        {
+          "name": "Townsman",
+          "expression": "smug",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "He wore his clothes half open. He tied his hair with bright cords. He walked through town eating chestnuts and persimmons, leaning on his friends' shoulders, and spent his days running around with village boys.",
+      "word_count": 35
+    },
+    {
+      "id": "shot-06",
+      "section": "The Great Fool of Owari",
+      "start": 67,
+      "duration": 5,
+      "image": "images/shot-06.png",
+      "background": "village",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Townsman",
+          "expression": "smug",
+          "pose": "stand"
+        },
+        {
+          "name": "Townsman",
+          "expression": "surprised",
+          "pose": "stand"
+        },
+        {
+          "name": "Nobunaga",
+          "expression": "smug",
+          "pose": "walk"
+        }
+      ],
+      "on_screen_text": "\"The Great Fool of Owari\"",
+      "narration": "People had a nickname for him: the Great Fool of Owari.",
+      "word_count": 11
+    },
+    {
+      "id": "shot-07",
+      "section": "The Great Fool of Owari",
+      "start": 72,
+      "duration": 14,
+      "image": "images/shot-07.png",
+      "background": "palace",
+      "camera": "quick push in",
+      "characters": [
+        {
+          "name": "Nobunaga",
+          "expression": "angry",
+          "pose": "stand"
+        },
+        {
+          "name": "Retainer",
+          "expression": "surprised",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "At his own father's funeral, the story goes, he showed up dressed like that, walked to the altar, grabbed a handful of incense and threw it at the shrine. Then he walked out.",
+      "word_count": 33
+    },
+    {
+      "id": "shot-08",
+      "section": "The Great Fool of Owari",
+      "start": 86,
+      "duration": 12,
+      "image": "images/shot-08.png",
+      "background": "palace",
+      "camera": "static",
+      "characters": [
+        {
+          "name": "Nobunaga",
+          "expression": "determined",
+          "pose": "stand"
+        },
+        {
+          "name": "Relative",
+          "expression": "angry",
+          "pose": "stand"
+        },
+        {
+          "name": "Relative",
+          "expression": "angry",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "Even his own family didn't trust him. In his first years as clan leader, he had to fight his own relatives just to keep his seat.",
+      "word_count": 26
+    },
+    {
+      "id": "shot-09",
+      "section": "The Great Fool of Owari",
+      "start": 98,
+      "duration": 17,
+      "image": "images/shot-09.png",
+      "background": "village",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Nobunaga",
+          "expression": "determined",
+          "pose": "stand"
+        },
+        {
+          "name": "Oda soldier",
+          "expression": "determined",
+          "pose": "stand"
+        },
+        {
+          "name": "Oda soldier",
+          "expression": "determined",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "But the fool was paying attention. He trained his men with extra-long spears. He studied the new guns that had recently arrived in Japan with Portuguese traders. And he chose his men for their talent, not their family name.",
+      "word_count": 39
+    },
+    {
+      "id": "shot-10",
+      "section": "The finest archer of the Eastern Sea Road",
+      "start": 115,
+      "duration": 8,
+      "image": "images/shot-10.png",
+      "background": "palace",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Yoshimoto",
+          "expression": "smug",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": "Imagawa Yoshimoto",
+      "narration": "Now meet his neighbor, Imagawa Yoshimoto. Yoshimoto was everything Nobunaga was not. He was rich, respected and refined.",
+      "word_count": 18
+    },
+    {
+      "id": "shot-11",
+      "section": "The finest archer of the Eastern Sea Road",
+      "start": 123,
+      "duration": 18,
+      "image": "images/shot-11.png",
+      "background": "palace",
+      "camera": "static",
+      "characters": [
+        {
+          "name": "Retainer",
+          "expression": "closed",
+          "pose": "bow"
+        },
+        {
+          "name": "Yoshimoto",
+          "expression": "smug",
+          "pose": "stand"
+        },
+        {
+          "name": "Retainer",
+          "expression": "closed",
+          "pose": "bow"
+        }
+      ],
+      "on_screen_text": "\"Finest archer of the Eastern Sea Road\"",
+      "narration": "He ruled three provinces along the Pacific coast and loved the elegant culture of the imperial court in Kyoto. People called him the finest archer of the Eastern Sea Road, a title that meant he was the strongest lord in the region.",
+      "word_count": 42
+    },
+    {
+      "id": "shot-12",
+      "section": "The finest archer of the Eastern Sea Road",
+      "start": 141,
+      "duration": 5,
+      "image": "images/shot-12.png",
+      "background": "palace",
+      "camera": "quick push in",
+      "characters": [
+        {
+          "name": "Yoshimoto",
+          "expression": "determined",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "And in the summer of 1560, Yoshimoto decided to march west.",
+      "word_count": 11
+    },
+    {
+      "id": "shot-13",
+      "section": "The finest archer of the Eastern Sea Road",
+      "start": 146,
+      "duration": 13,
+      "image": "images/shot-13.png",
+      "background": "paper",
+      "camera": "static",
+      "characters": [
+        {
+          "name": "Narrator",
+          "expression": "surprised",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": "Why? Historians still argue.",
+      "narration": "Historians still debate why. Maybe he wanted to reach Kyoto and take control of the government. Maybe he just wanted Owari. Either way, Nobunaga's land was right in his path.",
+      "word_count": 30
+    },
+    {
+      "id": "shot-14",
+      "section": "The finest archer of the Eastern Sea Road",
+      "start": 159,
+      "duration": 14,
+      "image": "images/shot-14.png",
+      "background": "paper",
+      "camera": "slow zoom out",
+      "characters": [
+        {
+          "name": "Imagawa",
+          "expression": "neutral",
+          "pose": "stand"
+        },
+        {
+          "name": "Imagawa",
+          "expression": "neutral",
+          "pose": "stand"
+        },
+        {
+          "name": "Imagawa",
+          "expression": "neutral",
+          "pose": "stand"
+        },
+        {
+          "name": "Imagawa",
+          "expression": "neutral",
+          "pose": "stand"
+        },
+        {
+          "name": "Imagawa",
+          "expression": "neutral",
+          "pose": "stand"
+        },
+        {
+          "name": "Oda",
+          "expression": "surprised",
+          "pose": "stand"
+        },
+        {
+          "name": "Oda",
+          "expression": "determined",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": "25,000 vs 2,000",
+      "narration": "Yoshimoto's army is usually counted at about twenty-five thousand men. Some sources say more. Nobunaga could gather maybe two or three thousand. On paper, this wasn't a war. It was a formality.",
+      "word_count": 32
+    },
+    {
+      "id": "shot-15",
+      "section": "The forts fall",
+      "start": 173,
+      "duration": 8,
+      "image": "images/shot-15.png",
+      "background": "ruins",
+      "camera": "slow pan left",
+      "characters": [
+        {
+          "name": "Imagawa soldier",
+          "expression": "neutral",
+          "pose": "walk"
+        },
+        {
+          "name": "Imagawa soldier",
+          "expression": "neutral",
+          "pose": "walk"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "Along the border, Nobunaga had built a line of small forts. Yoshimoto's army hit them one by one.",
+      "word_count": 18
+    },
+    {
+      "id": "shot-16",
+      "section": "The forts fall",
+      "start": 181,
+      "duration": 13,
+      "image": "images/shot-16.png",
+      "background": "ruins",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Motoyasu",
+          "expression": "determined",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": "Matsudaira Motoyasu, age 17",
+      "narration": "One of the commanders leading that attack was a seventeen-year-old named Matsudaira Motoyasu. He had grown up as a hostage in the Imagawa household, and now he fought for Yoshimoto.",
+      "word_count": 30
+    },
+    {
+      "id": "shot-17",
+      "section": "The forts fall",
+      "start": 194,
+      "duration": 5,
+      "image": "images/shot-17.png",
+      "background": "ruins",
+      "camera": "static",
+      "characters": [
+        {
+          "name": "Narrator",
+          "expression": "smug",
+          "pose": "stand"
+        },
+        {
+          "name": "Motoyasu",
+          "expression": "smug",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "Remember that name. He'll come back later, under a different one.",
+      "word_count": 11
+    },
+    {
+      "id": "shot-18",
+      "section": "The forts fall",
+      "start": 199,
+      "duration": 16,
+      "image": "images/shot-18.png",
+      "background": "village",
+      "camera": "track left",
+      "characters": [
+        {
+          "name": "Messenger",
+          "expression": "surprised",
+          "pose": "walk"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "Before dawn on the nineteenth day of the fifth month, the border forts of Marune and Washizu came under attack. Smoke was rising over the border, and messengers were riding hard to Nobunaga's castle at Kiyosu.",
+      "word_count": 36
+    },
+    {
+      "id": "shot-19",
+      "section": "Fifty years of human life",
+      "start": 215,
+      "duration": 12,
+      "image": "images/shot-19.png",
+      "background": "palace",
+      "camera": "static",
+      "characters": [
+        {
+          "name": "General",
+          "expression": "surprised",
+          "pose": "stand"
+        },
+        {
+          "name": "General",
+          "expression": "surprised",
+          "pose": "stand"
+        },
+        {
+          "name": "Nobunaga",
+          "expression": "smug",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "The night before, Nobunaga's generals had gathered for a war council. They wanted a plan. Should they hide in the castle? Should they ask for peace?",
+      "word_count": 26
+    },
+    {
+      "id": "shot-20",
+      "section": "Fifty years of human life",
+      "start": 227,
+      "duration": 12,
+      "image": "images/shot-20.png",
+      "background": "palace",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Nobunaga",
+          "expression": "gentle",
+          "pose": "stand"
+        },
+        {
+          "name": "General",
+          "expression": "surprised",
+          "pose": "stand"
+        },
+        {
+          "name": "General",
+          "expression": "angry",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "Nobunaga just chatted about everyday things. Then he told everyone to go home and get some sleep. His generals walked out convinced their lord had lost his mind.",
+      "word_count": 28
+    },
+    {
+      "id": "shot-21",
+      "section": "Fifty years of human life",
+      "start": 239,
+      "duration": 6,
+      "image": "images/shot-21.png",
+      "background": "palace",
+      "camera": "quick push in",
+      "characters": [
+        {
+          "name": "Messenger",
+          "expression": "surprised",
+          "pose": "bow"
+        },
+        {
+          "name": "Nobunaga",
+          "expression": "surprised",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "Then, before dawn, the news arrived. The border forts were under attack.",
+      "word_count": 12
+    },
+    {
+      "id": "shot-22",
+      "section": "Fifty years of human life",
+      "start": 245,
+      "duration": 11,
+      "image": "images/shot-22.png",
+      "background": "palace",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Nobunaga",
+          "expression": "closed",
+          "pose": "walk"
+        }
+      ],
+      "on_screen_text": "Atsumori",
+      "narration": "Nobunaga got up and did something strange. He performed a dance from a famous Noh play called Atsumori, and sang its most famous lines.",
+      "word_count": 24
+    },
+    {
+      "id": "shot-23",
+      "section": "Fifty years of human life",
+      "start": 256,
+      "duration": 12,
+      "image": "images/shot-23.png",
+      "background": "palace",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Nobunaga",
+          "expression": "closed",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": "\"Fifty years of human life...\"",
+      "narration": "Fifty years of human life, compared to the world below heaven, are like a dream, an illusion. In other words: life is short. Don't waste it.",
+      "word_count": 26
+    },
+    {
+      "id": "shot-24",
+      "section": "Fifty years of human life",
+      "start": 268,
+      "duration": 13,
+      "image": "images/shot-24.png",
+      "background": "village",
+      "camera": "track left",
+      "characters": [
+        {
+          "name": "Nobunaga",
+          "expression": "determined",
+          "pose": "walk"
+        },
+        {
+          "name": "Rider",
+          "expression": "determined",
+          "pose": "walk"
+        },
+        {
+          "name": "Rider",
+          "expression": "determined",
+          "pose": "walk"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "Then he called for his armor, ate his breakfast standing up and rode out of the castle. At first, only a handful of riders could keep up with him.",
+      "word_count": 29
+    },
+    {
+      "id": "shot-25",
+      "section": "Fifty years of human life",
+      "start": 281,
+      "duration": 10,
+      "image": "images/shot-25.png",
+      "background": "shrine",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Nobunaga",
+          "expression": "closed",
+          "pose": "bow"
+        }
+      ],
+      "on_screen_text": "Atsuta Shrine",
+      "narration": "He stopped at Atsuta Shrine to pray. Soldiers kept arriving until he had perhaps two thousand men. Some accounts say a little more.",
+      "word_count": 23
+    },
+    {
+      "id": "shot-26",
+      "section": "Fifty years of human life",
+      "start": 291,
+      "duration": 6,
+      "image": "images/shot-26.png",
+      "background": "ruins",
+      "camera": "slow pan right",
+      "characters": [
+        {
+          "name": "Nobunaga",
+          "expression": "angry",
+          "pose": "stand"
+        },
+        {
+          "name": "Oda soldier",
+          "expression": "determined",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "From the hills, he could see the smoke of his burning forts.",
+      "word_count": 12
+    },
+    {
+      "id": "shot-27",
+      "section": "The storm",
+      "start": 297,
+      "duration": 12,
+      "image": "images/shot-27.png",
+      "background": "valley",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Yoshimoto",
+          "expression": "smug",
+          "pose": "stand"
+        },
+        {
+          "name": "Guard",
+          "expression": "neutral",
+          "pose": "stand"
+        },
+        {
+          "name": "Guard",
+          "expression": "neutral",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": "Okehazama",
+      "narration": "Meanwhile, Yoshimoto was in a great mood. His army had won the morning. So around midday, he stopped to rest in a narrow valley called Okehazama.",
+      "word_count": 26
+    },
+    {
+      "id": "shot-28",
+      "section": "The storm",
+      "start": 309,
+      "duration": 13,
+      "image": "images/shot-28.png",
+      "background": "valley",
+      "camera": "static",
+      "characters": [
+        {
+          "name": "Imagawa soldier",
+          "expression": "gentle",
+          "pose": "stand"
+        },
+        {
+          "name": "Imagawa soldier",
+          "expression": "smug",
+          "pose": "stand"
+        },
+        {
+          "name": "Yoshimoto",
+          "expression": "smug",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "Some of his troops spread out to guard the area. Others celebrated. Yoshimoto sat down for a meal. He was confident. Nobody attacks an army ten times their size.",
+      "word_count": 29
+    },
+    {
+      "id": "shot-29",
+      "section": "The storm",
+      "start": 322,
+      "duration": 17,
+      "image": "images/shot-29.png",
+      "background": "valley",
+      "camera": "shake",
+      "characters": [
+        {
+          "name": "Imagawa soldier",
+          "expression": "surprised",
+          "pose": "stand"
+        },
+        {
+          "name": "Imagawa soldier",
+          "expression": "surprised",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "And then the weather turned. A violent storm swept over the hills. Rain came down so hard that soldiers couldn't see more than a few steps ahead. One chronicle says the wind was strong enough to knock down trees.",
+      "word_count": 39
+    },
+    {
+      "id": "shot-30",
+      "section": "The storm",
+      "start": 339,
+      "duration": 4,
+      "image": "images/shot-30.png",
+      "background": "valley",
+      "camera": "track left",
+      "characters": [
+        {
+          "name": "Oda soldier",
+          "expression": "determined",
+          "pose": "walk"
+        },
+        {
+          "name": "Nobunaga",
+          "expression": "determined",
+          "pose": "walk"
+        },
+        {
+          "name": "Oda soldier",
+          "expression": "determined",
+          "pose": "walk"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "Yoshimoto's men took cover. Nobunaga's men kept moving.",
+      "word_count": 8
+    },
+    {
+      "id": "shot-31",
+      "section": "The storm",
+      "start": 343,
+      "duration": 20,
+      "image": "images/shot-31.png",
+      "background": "paper",
+      "camera": "static",
+      "characters": [
+        {
+          "name": "Narrator",
+          "expression": "neutral",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": "Around the side, or straight ahead?",
+      "narration": "Historians still argue about exactly what happened next. The famous version says Nobunaga circled through the hills and came down on the camp from behind. Some scholars now think he simply marched straight at the enemy, hidden by the storm. Either way, the result was the same.",
+      "word_count": 47
+    },
+    {
+      "id": "shot-32",
+      "section": "The storm",
+      "start": 363,
+      "duration": 4,
+      "image": "images/shot-32.png",
+      "background": "valley",
+      "camera": "shake",
+      "characters": [
+        {
+          "name": "Nobunaga",
+          "expression": "angry",
+          "pose": "walk"
+        },
+        {
+          "name": "Oda soldier",
+          "expression": "angry",
+          "pose": "walk"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "The moment the rain stopped, Nobunaga's men charged.",
+      "word_count": 8
+    },
+    {
+      "id": "shot-33",
+      "section": "The storm",
+      "start": 367,
+      "duration": 10,
+      "image": "images/shot-33.png",
+      "background": "valley",
+      "camera": "shake",
+      "characters": [
+        {
+          "name": "Imagawa soldier",
+          "expression": "surprised",
+          "pose": "walk"
+        },
+        {
+          "name": "Imagawa soldier",
+          "expression": "surprised",
+          "pose": "walk"
+        },
+        {
+          "name": "Imagawa soldier",
+          "expression": "surprised",
+          "pose": "walk"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "The Imagawa camp fell into chaos. Soldiers were scattered, armor was off, and many had no idea where the enemy was coming from.",
+      "word_count": 23
+    },
+    {
+      "id": "shot-34",
+      "section": "The storm",
+      "start": 377,
+      "duration": 14,
+      "image": "images/shot-34.png",
+      "background": "valley",
+      "camera": "quick push in",
+      "characters": [
+        {
+          "name": "Yoshimoto",
+          "expression": "angry",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "According to one account, when Yoshimoto heard the noise, he thought his own men had started a fight and stepped out to tell them to be quiet. It wasn't his own men.",
+      "word_count": 32
+    },
+    {
+      "id": "shot-35",
+      "section": "The storm",
+      "start": 391,
+      "duration": 13,
+      "image": "images/shot-35.png",
+      "background": "valley",
+      "camera": "shake",
+      "characters": [
+        {
+          "name": "Oda samurai",
+          "expression": "angry",
+          "pose": "stand"
+        },
+        {
+          "name": "Yoshimoto",
+          "expression": "surprised",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "His bodyguards fought hard, but the attackers broke through. Two of Nobunaga's samurai reached Yoshimoto himself. The strongest lord in the region fell in the mud of a small valley.",
+      "word_count": 30
+    },
+    {
+      "id": "shot-36",
+      "section": "The storm",
+      "start": 404,
+      "duration": 10,
+      "image": "images/shot-36.png",
+      "background": "valley",
+      "camera": "slow zoom out",
+      "characters": [
+        {
+          "name": "Imagawa soldier",
+          "expression": "neutral",
+          "pose": "walk"
+        },
+        {
+          "name": "Imagawa soldier",
+          "expression": "neutral",
+          "pose": "walk"
+        },
+        {
+          "name": "Nobunaga",
+          "expression": "determined",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "With their leader gone, the huge Imagawa army simply fell apart. Units retreated in every direction. The invasion was over in an afternoon.",
+      "word_count": 23
+    },
+    {
+      "id": "shot-37",
+      "section": "Why it worked",
+      "start": 414,
+      "duration": 17,
+      "image": "images/shot-37.png",
+      "background": "paper",
+      "camera": "static",
+      "characters": [
+        {
+          "name": "Oda",
+          "expression": "determined",
+          "pose": "stand"
+        },
+        {
+          "name": "Oda",
+          "expression": "determined",
+          "pose": "stand"
+        },
+        {
+          "name": "Imagawa",
+          "expression": "surprised",
+          "pose": "stand"
+        },
+        {
+          "name": "Yoshimoto",
+          "expression": "surprised",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": "1. Only fight part of the army",
+      "narration": "So how did two thousand beat twenty-five thousand? First, Nobunaga never had to fight all twenty-five thousand. Yoshimoto's army was spread out over miles of roads and forts. At Okehazama, Nobunaga only had to beat the part protecting the lord.",
+      "word_count": 40
+    },
+    {
+      "id": "shot-38",
+      "section": "Why it worked",
+      "start": 431,
+      "duration": 5,
+      "image": "images/shot-38.png",
+      "background": "paper",
+      "camera": "static",
+      "characters": [
+        {
+          "name": "Nobunaga",
+          "expression": "determined",
+          "pose": "walk"
+        }
+      ],
+      "on_screen_text": "2. Speed",
+      "narration": "Second, speed. While everyone else was planning, Nobunaga was moving.",
+      "word_count": 10
+    },
+    {
+      "id": "shot-39",
+      "section": "Why it worked",
+      "start": 436,
+      "duration": 11,
+      "image": "images/shot-39.png",
+      "background": "valley",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Nobunaga",
+          "expression": "smug",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": "3. Luck",
+      "narration": "And third, luck. That storm arrived at exactly the right moment. But luck only helps people who are already in position to use it.",
+      "word_count": 24
+    },
+    {
+      "id": "shot-40",
+      "section": "What came next",
+      "start": 447,
+      "duration": 5,
+      "image": "images/shot-40.png",
+      "background": "village",
+      "camera": "slow pan right",
+      "characters": [
+        {
+          "name": "Townsman",
+          "expression": "gentle",
+          "pose": "stand"
+        },
+        {
+          "name": "Nobunaga",
+          "expression": "smug",
+          "pose": "stand"
+        },
+        {
+          "name": "Townsman",
+          "expression": "gentle",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "The battle made the Great Fool of Owari famous overnight.",
+      "word_count": 10
+    },
+    {
+      "id": "shot-41",
+      "section": "What came next",
+      "start": 452,
+      "duration": 14,
+      "image": "images/shot-41.png",
+      "background": "palace",
+      "camera": "static",
+      "characters": [
+        {
+          "name": "Nobunaga",
+          "expression": "gentle",
+          "pose": "stand"
+        },
+        {
+          "name": "Motoyasu",
+          "expression": "gentle",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": "Tokugawa Ieyasu",
+      "narration": "And remember that seventeen-year-old commander, Matsudaira Motoyasu? With the Imagawa clan in chaos, he broke free, went home and two years later became Nobunaga's ally. He later changed his name to Tokugawa Ieyasu.",
+      "word_count": 33
+    },
+    {
+      "id": "shot-42",
+      "section": "What came next",
+      "start": 466,
+      "duration": 20,
+      "image": "images/shot-42.png",
+      "background": "palace",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Ieyasu",
+          "expression": "smug",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": "Tokugawa shogunate, 1603",
+      "narration": "Yes, that Tokugawa. About forty years after Okehazama, Ieyasu would win the struggle for Japan and found the Tokugawa shogunate, the government that gave Japan the long peace we saw in our last episode. The same peace that left the forty-seven ronin with no wars to fight.",
+      "word_count": 47
+    },
+    {
+      "id": "shot-43",
+      "section": "What came next",
+      "start": 486,
+      "duration": 17,
+      "image": "images/shot-43.png",
+      "background": "palace",
+      "camera": "quick push in",
+      "characters": [
+        {
+          "name": "Nobunaga",
+          "expression": "determined",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": "天下布武 Tenka fubu",
+      "narration": "As for Nobunaga, he kept going. He took new provinces, marched into Kyoto and began using a personal seal with four words on it: Tenka fubu, roughly \"the whole realm under military rule.\" The fool now wanted all of Japan.",
+      "word_count": 40
+    },
+    {
+      "id": "shot-44",
+      "section": "What came next",
+      "start": 503,
+      "duration": 17,
+      "image": "images/shot-44.png",
+      "background": "palace",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Nobunaga",
+          "expression": "surprised",
+          "pose": "stand"
+        },
+        {
+          "name": "General",
+          "expression": "smug",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": "Honnō-ji, 1582",
+      "narration": "He came very close. Within about twenty years, Nobunaga controlled much of central Japan. Then, in 1582, at a temple in Kyoto called Honnō-ji, one of his own generals turned against him. That's a story for next time.",
+      "word_count": 38
+    },
+    {
+      "id": "shot-45",
+      "section": "What came next",
+      "start": 520,
+      "duration": 11,
+      "image": "images/shot-45.png",
+      "background": "paper",
+      "camera": "static",
+      "characters": [
+        {
+          "name": "Narrator",
+          "expression": "smug",
+          "pose": "stand"
+        },
+        {
+          "name": "Nobunaga",
+          "expression": "smug",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": "Genius or luck?",
+      "narration": "If you enjoyed this, subscribe. And tell me in the comments: was Okehazama genius, or just very good luck?",
+      "word_count": 19
+    }
+  ]
+}

@@ -32,6 +32,16 @@ function frameSVG(shot) {
     // character art spans x 0..200; flipped art is mirrored inside the same box
     s += `<g transform="translate(${ch.x - 100 * sc} ${y}) scale(${sc})">${ctx.character(ch.cfg)}</g>`;
   }
+  if (shot.rain) {
+    // heavy diagonal rain drawn over the scene (fixed pattern so frames are reproducible)
+    let seed = 7;
+    const rnd = () => ((seed = (seed * 16807) % 2147483647) / 2147483647);
+    s += `<rect x="0" y="0" width="480" height="320" fill="#2b3442" opacity="0.35"/>`;
+    for (let i = 0; i < 260; i++) {
+      const x = rnd() * 560 - 40, y = rnd() * 300 + 20, l = 10 + rnd() * 14;
+      s += `<line x1="${x.toFixed(1)}" y1="${y.toFixed(1)}" x2="${(x - l * 0.35).toFixed(1)}" y2="${(y + l).toFixed(1)}" stroke="#dfe7f2" stroke-width="1.3" opacity="0.7"/>`;
+    }
+  }
   return s + "</svg>";
 }
 
@@ -71,6 +81,7 @@ function frameSVG(shot) {
     fps: 30,
     total_duration: t,
     voiceover: { words_per_minute: WPM, file: "voiceover.txt" },
+    music_moods: def.music_moods || null,
     shots,
   };
   fs.writeFileSync(path.join(outDir, "episode.json"), JSON.stringify(episode, null, 2) + "\n");

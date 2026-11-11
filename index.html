@@ -288,7 +288,21 @@ const SCENES={
     s+=`<path d="M340,176 L360,150 L372,160 L390,128 L420,150 L432,140 L450,176 Z" fill="#6b5a46" ${st}/><path d="M348,176 Q356,140 372,150 Q380,112 396,132 Q410,104 420,138 Q436,128 444,176Z" fill="#f29a3a" ${st}/><path d="M368,176 Q378,150 392,158 Q404,140 414,176Z" fill="#f6c453"/>`;
     s+=`<rect y="176" width="480" height="144" fill="#77735f"/><path d="M0,176 L480,176" ${st}/>`;
     s+=`<path d="M40,200 L200,196 L190,226 L20,232Z M220,196 L330,198 L340,226 L214,228Z" fill="#6a6653" ${st}/>`;
-    s+=`<path d="M60,176 L62,140 M62,152 L72,144 M440,190 L442,150 M150,176 L150,156" stroke="${INK}" stroke-width="3" fill="none"/>`+`<path d="M100,176 L110,162 L124,170 L130,160 L140,176Z" fill="#8a8574" ${st}/>`;return s}}
+    s+=`<path d="M60,176 L62,140 M62,152 L72,144 M440,190 L442,150 M150,176 L150,156" stroke="${INK}" stroke-width="3" fill="none"/>`+`<path d="M100,176 L110,162 L124,170 L130,160 L140,176Z" fill="#8a8574" ${st}/>`;return s}},
+  valley:{label:"Thung lũng",d:()=>{let s=`<rect width="480" height="320" fill="#b9cdb7"/>`+cloud(40,60,140,"#e8eee6")+cloud(300,44,120,"#e8eee6");
+    s+=`<path d="M0,120 Q90,90 170,150 Q200,175 230,190 L0,230 Z" fill="#5f7a55" ${st}/><path d="M480,110 Q380,96 300,160 Q270,180 250,192 L480,232 Z" fill="#56704d" ${st}/>`;
+    s+=`<path d="M0,190 Q240,176 480,192 L480,320 L0,320 Z" fill="#8fa66f" ${st}/><path d="M200,320 Q230,250 240,192 Q252,250 300,320 Z" fill="#b6a57c" ${st}/>`;
+    const tree=(x,y,r)=>`<line x1="${x}" y1="${y}" x2="${x}" y2="${y+r*1.3}" stroke="${INK}" stroke-width="3"/><circle cx="${x}" cy="${y}" r="${r}" fill="#3f5a3a" ${st}/>`;
+    for(const [x,y,r] of [[30,150,18],[70,140,14],[110,160,16],[20,200,22],[150,178,12],[350,150,14],[400,140,18],[445,150,16],[460,200,22],[330,176,12]])s+=tree(x,y,r);
+    return s}},
+  shrine:{label:"Đền thần đạo",d:()=>{let s=`<rect width="480" height="320" fill="#cfe3ef"/>`+cloud(60,54,120,"#fff");
+    s+=`<path d="M0,170 Q120,120 240,150 Q360,120 480,165 L480,320 L0,320Z" fill="#6f8a63" ${st}/><rect y="226" width="480" height="94" fill="#d8cfb6"/><path d="M0,226 L480,226" ${st}/>`;
+    s+=`<path d="M190,320 L222,226 L258,226 L290,320 Z" fill="#c4b99b" ${st}/>`;
+    s+=`<rect x="300" y="150" width="120" height="76" fill="#efe6d2" ${st}/><path d="M286,154 L360,112 L434,154 Z" fill="#5c524a" ${st}/><rect x="344" y="176" width="32" height="50" fill="#7a5a3a" ${st}/>`;
+    s+=`<rect x="120" y="92" width="12" height="150" fill="#d0452f" ${st}/><rect x="228" y="92" width="12" height="150" fill="#d0452f" ${st}/>`;
+    s+=`<path d="M96,84 Q180,96 264,84 L262,96 Q180,106 98,96 Z" fill="#d0452f" ${st}/><rect x="104" y="108" width="152" height="9" fill="#d0452f" ${st}/>`;
+    s+=`<path d="M94,82 Q180,94 266,82" fill="none" stroke="${INK}" stroke-width="6"/>`;
+    return s}}
 };
 
 /* ---------- State + UI ---------- */

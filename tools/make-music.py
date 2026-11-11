@@ -237,7 +237,7 @@ def main():
     XF = 2.0  # crossfade seconds between moods
     mix = np.zeros((2, int((total + 1) * SR)))
     for i, (name, a, b) in enumerate(bounds):
-        mood = MOODS.get(name, "light")
+        mood = (ep.get("music_moods") or {}).get(name) or MOODS.get(name, "light")
         rng = np.random.default_rng(1703 + i)
         np.random.seed(1703 + i)
         dur = (b - a) + (XF if i + 1 < len(bounds) else 0)
