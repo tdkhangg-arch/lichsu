@@ -7,7 +7,8 @@ free of third-party copyright.
 
 Usage: python3 tools/make-music.py episodes/01-47-ronin
 Needs episode.timed.json and the rendered <name>.mp4 from make-video.py.
-Writes build/music.wav and <name>-music.mp4.
+Writes build/music.wav and <name>-music.mp4. The music is mixed at one fixed level
+(no ducking or automatic leveling), VOICE_TO_MUSIC_DB under the voice.
 """
 import json, subprocess, sys
 from pathlib import Path
@@ -206,6 +207,23 @@ def reverb(buf, seconds=2.2, wet=0.28, rng=None):
     return out
 
 
+VOICE_TO_MUSIC_DB = 18   # music this many dB under the voice, all the time
+TARGET_LUFS = -14        # YouTube loudness
+
+
+def ff(args):
+    r = subprocess.run(["ffmpeg", "-y", "-loglevel", "error", *args], capture_output=True, text=True)
+    if r.returncode:
+        sys.exit(r.stderr[-1500:])
+
+
+def lufs(path):
+    log = subprocess.run(["ffmpeg", "-i", str(path), "-af", "ebur128", "-f", "null", "-"],
+                         capture_output=True, text=True).stderr
+    import re
+    return float(re.findall(r"I:\s+(-?[\d.]+) LUFS", log)[-1])
+
+
 def main():
     ep_dir = Path(sys.argv[1]).resolve()
     ep = json.loads((ep_dir / "episode.timed.json").read_text())
@@ -224,6 +242,7 @@ def main():
         np.random.seed(1703 + i)
         dur = (b - a) + (XF if i + 1 < len(bounds) else 0)
         seg = reverb(compose(mood, dur, rng), rng=rng)
+        seg *= 0.05 / (np.sqrt(np.mean(seg ** 2)) + 1e-9)   # same average level in every section
         n = seg.shape[1]; fade = np.ones(n); k = int(XF * SR)
         if i > 0: fade[:k] = np.linspace(0, 1, k)
         if i + 1 < len(bounds): fade[-k:] = np.linspace(1, 0, k)
@@ -240,17 +259,20 @@ def main():
 
     name = "47-ronin" if "ronin" in ep_dir.name else ep_dir.name
     src, out = ep_dir / f"{name}.mp4", ep_dir / f"{name}-music.mp4"
-    # Music sits about 15 dB under the voice and ducks a further step while someone is talking.
-    graph = ("[1:a]loudnorm=I=-26:TP=-6:LRA=11,aresample=44100[m];"
-             "[0:a]asplit=2[v][sc];"
-             "[m][sc]sidechaincompress=threshold=0.02:ratio=4:attack=30:release=600[md];"
-             f"[v][md]amix=inputs=2:normalize=0:duration=first,afade=t=out:st={total-2:.2f}:d=2,loudnorm=I=-14:TP=-1.5:LRA=11,aresample=44100[a]")
-    r = subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(src), "-i", str(wav),
-                        "-filter_complex", graph, "-map", "0:v", "-map", "[a]",
-                        "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-movflags", "+faststart", str(out)],
-                       capture_output=True, text=True)
-    if r.returncode:
-        sys.exit(r.stderr[-1500:])
+    voice_wav = build / "voice.wav"
+    ff(["-i", str(src), "-vn", "-ac", "2", "-ar", str(SR), str(voice_wav)])
+    # Fixed gains only (no ducking, no automatic leveling), so the music stays at one
+    # steady level whether or not someone is talking.
+    music_gain = (lufs(voice_wav) - VOICE_TO_MUSIC_DB) - lufs(wav)
+    mixed = build / "mixed.wav"
+    ff(["-i", str(voice_wav), "-i", str(wav), "-filter_complex",
+        f"[1:a]volume={music_gain:.2f}dB[m];[0:a][m]amix=inputs=2:normalize=0:duration=first[a]",
+        "-map", "[a]", str(mixed)])
+    final_gain = TARGET_LUFS - lufs(mixed)
+    ff(["-i", str(src), "-i", str(mixed), "-filter_complex",
+        f"[1:a]volume={final_gain:.2f}dB,alimiter=limit=0.89:level=false,afade=t=out:st={total-2:.2f}:d=2[a]",
+        "-map", "0:v", "-map", "[a]", "-c:v", "copy", "-c:a", "aac", "-b:a", "192k",
+        "-movflags", "+faststart", str(out)])
     print(f"done: {out.name}")
 
 
