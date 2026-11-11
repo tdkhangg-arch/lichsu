@@ -1,0 +1,1101 @@
+{
+  "title": "The 47 Samurai Who Waited 2 Years for Revenge",
+  "language": "en",
+  "resolution": {
+    "width": 1920,
+    "height": 1080
+  },
+  "fps": 30,
+  "total_duration": 575,
+  "voiceover": {
+    "words_per_minute": 145,
+    "file": "voiceover.txt"
+  },
+  "shots": [
+    {
+      "id": "shot-01",
+      "section": "Hook",
+      "start": 0,
+      "duration": 5,
+      "image": "images/shot-01.png",
+      "background": "snow",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Ronin",
+          "expression": "determined",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": "Edo, 1703",
+      "narration": "Edo, Japan. A winter night in 1703. Snow covers the city.",
+      "word_count": 11
+    },
+    {
+      "id": "shot-02",
+      "section": "Hook",
+      "start": 5,
+      "duration": 10,
+      "image": "images/shot-02.png",
+      "background": "snow",
+      "camera": "slow pan right",
+      "characters": [
+        {
+          "name": "Ronin",
+          "expression": "determined",
+          "pose": "stand"
+        },
+        {
+          "name": "Ronin",
+          "expression": "determined",
+          "pose": "stand"
+        },
+        {
+          "name": "Ronin",
+          "expression": "determined",
+          "pose": "stand"
+        },
+        {
+          "name": "Ronin",
+          "expression": "determined",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "Outside the mansion of a powerful old official, forty-seven men stand in the dark. They wear black. They carry swords, spears and bows.",
+      "word_count": 23
+    },
+    {
+      "id": "shot-03",
+      "section": "Hook",
+      "start": 15,
+      "duration": 19,
+      "image": "images/shot-03.png",
+      "background": "snow",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Ronin",
+          "expression": "angry",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "None of them is a soldier anymore. They have no lord, no salary and no home. They have been waiting for almost two years. Tonight, they are going to kill one man. And when it's over, every one of them knows exactly what happens next.",
+      "word_count": 45
+    },
+    {
+      "id": "shot-04",
+      "section": "Samurai without wars",
+      "start": 34,
+      "duration": 18,
+      "image": "images/shot-04.png",
+      "background": "village",
+      "camera": "track left",
+      "characters": [
+        {
+          "name": "Samurai",
+          "expression": "smug",
+          "pose": "walk"
+        }
+      ],
+      "on_screen_text": "1701: 100 years of peace",
+      "narration": "To understand why, we need to go back a little. By 1701, Japan had been at peace for about a hundred years. The Tokugawa shoguns ruled from the city of Edo, which we now call Tokyo. The great civil wars were over.",
+      "word_count": 42
+    },
+    {
+      "id": "shot-05",
+      "section": "Samurai without wars",
+      "start": 52,
+      "duration": 6,
+      "image": "images/shot-05.png",
+      "background": "village",
+      "camera": "static",
+      "characters": [
+        {
+          "name": "Farmer",
+          "expression": "gentle",
+          "pose": "stand"
+        },
+        {
+          "name": "Samurai",
+          "expression": "surprised",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "That was good news for farmers. It was strange news for samurai.",
+      "word_count": 12
+    },
+    {
+      "id": "shot-06",
+      "section": "Samurai without wars",
+      "start": 58,
+      "duration": 21,
+      "image": "images/shot-06.png",
+      "background": "palace",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Samurai clerk",
+          "expression": "closed",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "Samurai were warriors, but now there was nobody to fight. So most of them became something much less exciting: government employees. They kept the swords, wore the topknots and followed a strict code of honor. Most of their days, though, went on paperwork, ceremonies and very long meetings.",
+      "word_count": 48
+    },
+    {
+      "id": "shot-07",
+      "section": "Samurai without wars",
+      "start": 79,
+      "duration": 13,
+      "image": "images/shot-07.png",
+      "background": "palace",
+      "camera": "static",
+      "characters": [
+        {
+          "name": "Daimyo",
+          "expression": "smug",
+          "pose": "stand"
+        },
+        {
+          "name": "Samurai",
+          "expression": "closed",
+          "pose": "bow"
+        },
+        {
+          "name": "Samurai",
+          "expression": "closed",
+          "pose": "bow"
+        }
+      ],
+      "on_screen_text": "Daimyo = lord",
+      "narration": "Every samurai served a lord, called a daimyo. The lord paid them in rice. In return they gave him total loyalty. If the lord fell, his samurai fell with him.",
+      "word_count": 30
+    },
+    {
+      "id": "shot-08",
+      "section": "Samurai without wars",
+      "start": 92,
+      "duration": 8,
+      "image": "images/shot-08.png",
+      "background": "palace",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Asano",
+          "expression": "neutral",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": "Asano Naganori, lord of Akō",
+      "narration": "One of those lords was a young man named Asano Naganori, ruler of the small domain of Akō.",
+      "word_count": 18
+    },
+    {
+      "id": "shot-09",
+      "section": "The sword in the castle",
+      "start": 100,
+      "duration": 17,
+      "image": "images/shot-09.png",
+      "background": "palace",
+      "camera": "static",
+      "characters": [
+        {
+          "name": "Asano",
+          "expression": "determined",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "In the spring of 1701, Asano was given an important job. Envoys from the emperor were visiting Edo, and Asano had to help receive them at the Shogun's castle. Every bow, every gift and every word had to be perfect.",
+      "word_count": 40
+    },
+    {
+      "id": "shot-10",
+      "section": "The sword in the castle",
+      "start": 117,
+      "duration": 8,
+      "image": "images/shot-10.png",
+      "background": "palace",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Kira",
+          "expression": "smug",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": "Kira Yoshinaka, master of ceremonies",
+      "narration": "So Asano was placed under the instruction of a senior official, a master of ceremonies named Kira Yoshinaka.",
+      "word_count": 18
+    },
+    {
+      "id": "shot-11",
+      "section": "The sword in the castle",
+      "start": 125,
+      "duration": 21,
+      "image": "images/shot-11.png",
+      "background": "palace",
+      "camera": "static",
+      "characters": [
+        {
+          "name": "Asano",
+          "expression": "angry",
+          "pose": "stand"
+        },
+        {
+          "name": "Kira",
+          "expression": "smug",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "Kira was old, rich and well connected. According to the stories, he was also arrogant, greedy and rude. The accounts say he expected gifts, maybe bribes, and Asano refused to pay them. So Kira insulted him. He mocked his manners and called him a country bumpkin in front of others.",
+      "word_count": 50
+    },
+    {
+      "id": "shot-12",
+      "section": "The sword in the castle",
+      "start": 146,
+      "duration": 11,
+      "image": "images/shot-12.png",
+      "background": "paper",
+      "camera": "static",
+      "characters": [
+        {
+          "name": "Narrator",
+          "expression": "surprised",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": "What did Kira say? Nobody knows.",
+      "narration": "Here's the honest truth: we don't actually know what Kira said. Historians still argue about it. But we do know what Asano did next.",
+      "word_count": 24
+    },
+    {
+      "id": "shot-13",
+      "section": "The sword in the castle",
+      "start": 157,
+      "duration": 15,
+      "image": "images/shot-13.png",
+      "background": "palace",
+      "camera": "quick push in",
+      "characters": [
+        {
+          "name": "Asano",
+          "expression": "angry",
+          "pose": "walk"
+        },
+        {
+          "name": "Kira",
+          "expression": "surprised",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "In a corridor of Edo Castle, Asano drew his short sword and attacked Kira. He cut him on the forehead and the back. Kira survived. Guards grabbed Asano before he could finish the job.",
+      "word_count": 34
+    },
+    {
+      "id": "shot-14",
+      "section": "The sword in the castle",
+      "start": 172,
+      "duration": 13,
+      "image": "images/shot-14.png",
+      "background": "palace",
+      "camera": "static",
+      "characters": [
+        {
+          "name": "Official",
+          "expression": "angry",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "That might not sound like the worst crime ever. But drawing a sword inside the Shogun's castle was strictly forbidden. To the government, it was an attack on order itself.",
+      "word_count": 30
+    },
+    {
+      "id": "shot-15",
+      "section": "Masters become ronin",
+      "start": 185,
+      "duration": 12,
+      "image": "images/shot-15.png",
+      "background": "palace",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Asano",
+          "expression": "closed",
+          "pose": "bow"
+        },
+        {
+          "name": "Kira",
+          "expression": "smug",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": "Seppuku",
+      "narration": "The punishment was immediate. That same day, Asano was ordered to commit seppuku, ritual suicide by cutting open the stomach. Kira, meanwhile, was not punished at all.",
+      "word_count": 27
+    },
+    {
+      "id": "shot-16",
+      "section": "Masters become ronin",
+      "start": 197,
+      "duration": 12,
+      "image": "images/shot-16.png",
+      "background": "ruins",
+      "camera": "slow pan left",
+      "characters": [
+        {
+          "name": "Samurai",
+          "expression": "gentle",
+          "pose": "stand"
+        },
+        {
+          "name": "Samurai",
+          "expression": "closed",
+          "pose": "stand"
+        },
+        {
+          "name": "Samurai",
+          "expression": "surprised",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "Then things got worse. Asano's family lost their domain. His castle at Akō was taken. And more than three hundred samurai who served him suddenly had no master.",
+      "word_count": 28
+    },
+    {
+      "id": "shot-17",
+      "section": "Masters become ronin",
+      "start": 209,
+      "duration": 11,
+      "image": "images/shot-17.png",
+      "background": "village",
+      "camera": "track left",
+      "characters": [
+        {
+          "name": "Ronin",
+          "expression": "gentle",
+          "pose": "walk"
+        }
+      ],
+      "on_screen_text": "Ronin (浪人) = \"wave man\"",
+      "narration": "There is a word for a samurai without a master: ronin. It literally means \"wave man,\" someone drifting like a wave on the sea.",
+      "word_count": 24
+    },
+    {
+      "id": "shot-18",
+      "section": "Masters become ronin",
+      "start": 220,
+      "duration": 18,
+      "image": "images/shot-18.png",
+      "background": "village",
+      "camera": "static",
+      "characters": [
+        {
+          "name": "Ronin",
+          "expression": "closed",
+          "pose": "stand"
+        },
+        {
+          "name": "Ronin",
+          "expression": "neutral",
+          "pose": "walk"
+        },
+        {
+          "name": "Ronin",
+          "expression": "determined",
+          "pose": "walk"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "Being a ronin was a kind of shame. You had no income and no rank, and in many people's eyes you had no purpose. Many of Asano's men simply moved on. But a small group looked to one man for leadership.",
+      "word_count": 41
+    },
+    {
+      "id": "shot-19",
+      "section": "The long wait",
+      "start": 238,
+      "duration": 8,
+      "image": "images/shot-19.png",
+      "background": "palace",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Ōishi",
+          "expression": "determined",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": "Ōishi Kuranosuke",
+      "narration": "His name was Ōishi Kuranosuke. He had been Asano's chief retainer, the most senior samurai in the domain.",
+      "word_count": 18
+    },
+    {
+      "id": "shot-20",
+      "section": "The long wait",
+      "start": 246,
+      "duration": 13,
+      "image": "images/shot-20.png",
+      "background": "palace",
+      "camera": "static",
+      "characters": [
+        {
+          "name": "Ōishi",
+          "expression": "closed",
+          "pose": "bow"
+        },
+        {
+          "name": "Official",
+          "expression": "neutral",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "At first, Ōishi tried the legal route. He asked the government to let Asano's younger brother restore the family house. For more than a year, he waited for an answer.",
+      "word_count": 30
+    },
+    {
+      "id": "shot-21",
+      "section": "The long wait",
+      "start": 259,
+      "duration": 7,
+      "image": "images/shot-21.png",
+      "background": "palace",
+      "camera": "static",
+      "characters": [
+        {
+          "name": "Guard",
+          "expression": "angry",
+          "pose": "stand"
+        },
+        {
+          "name": "Kira",
+          "expression": "surprised",
+          "pose": "stand"
+        },
+        {
+          "name": "Guard",
+          "expression": "angry",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "Meanwhile, Kira expected trouble. He increased his guards and kept spies watching the former Akō samurai.",
+      "word_count": 16
+    },
+    {
+      "id": "shot-22",
+      "section": "The long wait",
+      "start": 266,
+      "duration": 16,
+      "image": "images/shot-22.png",
+      "background": "village",
+      "camera": "track left",
+      "characters": [
+        {
+          "name": "Ōishi",
+          "expression": "smug",
+          "pose": "walk"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "So, according to legend, Ōishi gave Kira's spies something to watch. He moved to Kyoto and started living like a man who had given up. He drank. He partied. He spent his nights in the pleasure quarters.",
+      "word_count": 37
+    },
+    {
+      "id": "shot-23",
+      "section": "The long wait",
+      "start": 282,
+      "duration": 19,
+      "image": "images/shot-23.png",
+      "background": "village",
+      "camera": "static",
+      "characters": [
+        {
+          "name": "Ōishi",
+          "expression": "closed",
+          "pose": "stand"
+        },
+        {
+          "name": "Samurai",
+          "expression": "angry",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "One famous story says a samurai found him passed out drunk in the street and spat on him for being a disgrace. Some of that is probably exaggerated by later plays. But the point was simple: make Kira believe that nobody was coming.",
+      "word_count": 43
+    },
+    {
+      "id": "shot-24",
+      "section": "The long wait",
+      "start": 301,
+      "duration": 11,
+      "image": "images/shot-24.png",
+      "background": "palace",
+      "camera": "quick push in",
+      "characters": [
+        {
+          "name": "Ōishi",
+          "expression": "surprised",
+          "pose": "stand"
+        },
+        {
+          "name": "Official",
+          "expression": "angry",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": "1702",
+      "narration": "In the summer of 1702, the answer finally came. Asano's brother would not be allowed to restore the family. The legal road was closed.",
+      "word_count": 24
+    },
+    {
+      "id": "shot-25",
+      "section": "The long wait",
+      "start": 312,
+      "duration": 7,
+      "image": "images/shot-25.png",
+      "background": "palace",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Ronin",
+          "expression": "determined",
+          "pose": "stand"
+        },
+        {
+          "name": "Ronin",
+          "expression": "determined",
+          "pose": "stand"
+        },
+        {
+          "name": "Ōishi",
+          "expression": "determined",
+          "pose": "stand"
+        },
+        {
+          "name": "Ronin",
+          "expression": "determined",
+          "pose": "stand"
+        },
+        {
+          "name": "Ronin",
+          "expression": "determined",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": "47",
+      "narration": "So the ronin made a pact. Forty-seven of them would take revenge, whatever the cost.",
+      "word_count": 15
+    },
+    {
+      "id": "shot-26",
+      "section": "The long wait",
+      "start": 319,
+      "duration": 19,
+      "image": "images/shot-26.png",
+      "background": "village",
+      "camera": "static",
+      "characters": [
+        {
+          "name": "Ronin in disguise",
+          "expression": "smug",
+          "pose": "stand"
+        },
+        {
+          "name": "Ronin in disguise",
+          "expression": "determined",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "They spread out across Edo. Some worked as merchants or laborers. One of them got close to a carpenter's family and obtained the layout of Kira's mansion. They gathered weapons quietly, a few pieces at a time. And they waited for the right night.",
+      "word_count": 44
+    },
+    {
+      "id": "shot-27",
+      "section": "The night raid",
+      "start": 338,
+      "duration": 9,
+      "image": "images/shot-27.png",
+      "background": "snow",
+      "camera": "track left",
+      "characters": [
+        {
+          "name": "Ronin",
+          "expression": "determined",
+          "pose": "walk"
+        },
+        {
+          "name": "Ronin",
+          "expression": "determined",
+          "pose": "walk"
+        },
+        {
+          "name": "Ōishi",
+          "expression": "determined",
+          "pose": "walk"
+        },
+        {
+          "name": "Ronin",
+          "expression": "determined",
+          "pose": "walk"
+        }
+      ],
+      "on_screen_text": "January 1703",
+      "narration": "Before dawn on the fourteenth day of the twelfth month, in what we would call late January 1703, they struck.",
+      "word_count": 20
+    },
+    {
+      "id": "shot-28",
+      "section": "The night raid",
+      "start": 347,
+      "duration": 14,
+      "image": "images/shot-28.png",
+      "background": "snow",
+      "camera": "static",
+      "characters": [
+        {
+          "name": "Ōishi",
+          "expression": "determined",
+          "pose": "stand"
+        },
+        {
+          "name": "Chikara",
+          "expression": "determined",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "Snow lay on the ground. The ronin split into two groups. Ōishi led one through the front gate. His son, Chikara, who was only fifteen, led the other through the back.",
+      "word_count": 31
+    },
+    {
+      "id": "shot-29",
+      "section": "The night raid",
+      "start": 361,
+      "duration": 17,
+      "image": "images/shot-29.png",
+      "background": "snow",
+      "camera": "static",
+      "characters": [
+        {
+          "name": "Ronin",
+          "expression": "angry",
+          "pose": "stand"
+        },
+        {
+          "name": "Neighbor",
+          "expression": "surprised",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "They had ladders, hammers and swords. Archers took positions on the roofs to stop anyone from running for help. They even called out to the neighbors that this was a matter of revenge, not robbery, so nobody would interfere.",
+      "word_count": 39
+    },
+    {
+      "id": "shot-30",
+      "section": "The night raid",
+      "start": 378,
+      "duration": 9,
+      "image": "images/shot-30.png",
+      "background": "snow",
+      "camera": "shake",
+      "characters": [
+        {
+          "name": "Ronin",
+          "expression": "angry",
+          "pose": "walk"
+        },
+        {
+          "name": "Guard",
+          "expression": "angry",
+          "pose": "walk"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "Kira's guards fought back. In the chaos, around sixteen of his men were killed. Not a single ronin died.",
+      "word_count": 19
+    },
+    {
+      "id": "shot-31",
+      "section": "The night raid",
+      "start": 387,
+      "duration": 7,
+      "image": "images/shot-31.png",
+      "background": "palace",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Ronin",
+          "expression": "surprised",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "But when they reached Kira's bedroom, it was empty. The bed was still warm.",
+      "word_count": 14
+    },
+    {
+      "id": "shot-32",
+      "section": "The night raid",
+      "start": 394,
+      "duration": 15,
+      "image": "images/shot-32.png",
+      "background": "palace",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Kira",
+          "expression": "surprised",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "They searched the mansion for hours. Finally, they found an old man hiding in a storage shed for charcoal. He had a scar on his forehead, the one Asano had given him. It was Kira.",
+      "word_count": 35
+    },
+    {
+      "id": "shot-33",
+      "section": "The night raid",
+      "start": 409,
+      "duration": 12,
+      "image": "images/shot-33.png",
+      "background": "palace",
+      "camera": "static",
+      "characters": [
+        {
+          "name": "Ōishi",
+          "expression": "angry",
+          "pose": "stand"
+        },
+        {
+          "name": "Kira",
+          "expression": "closed",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "The ronin offered him the chance to die like a samurai, by his own hand. Kira said nothing. So Ōishi killed him, and the ronin took his head.",
+      "word_count": 28
+    },
+    {
+      "id": "shot-34",
+      "section": "The walk to Sengaku-ji",
+      "start": 421,
+      "duration": 17,
+      "image": "images/shot-34.png",
+      "background": "village",
+      "camera": "track left",
+      "characters": [
+        {
+          "name": "Ronin",
+          "expression": "determined",
+          "pose": "walk"
+        },
+        {
+          "name": "Ronin",
+          "expression": "determined",
+          "pose": "walk"
+        },
+        {
+          "name": "Ronin",
+          "expression": "determined",
+          "pose": "walk"
+        },
+        {
+          "name": "Townsman",
+          "expression": "surprised",
+          "pose": "stand"
+        },
+        {
+          "name": "Townsman",
+          "expression": "gentle",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": "To Sengaku-ji",
+      "narration": "Now the ronin did something remarkable. They didn't run, and they didn't hide. In the morning light, they walked across Edo, several miles, to Sengaku-ji, the temple where their lord was buried. Crowds came out to watch them pass.",
+      "word_count": 39
+    },
+    {
+      "id": "shot-35",
+      "section": "The walk to Sengaku-ji",
+      "start": 438,
+      "duration": 10,
+      "image": "images/shot-35.png",
+      "background": "village",
+      "camera": "static",
+      "characters": [
+        {
+          "name": "Ronin",
+          "expression": "closed",
+          "pose": "bow"
+        },
+        {
+          "name": "Ōishi",
+          "expression": "closed",
+          "pose": "bow"
+        },
+        {
+          "name": "Ronin",
+          "expression": "closed",
+          "pose": "bow"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "At the temple, they washed Kira's head in a well and placed it in front of Asano's grave. Their master's revenge was complete.",
+      "word_count": 23
+    },
+    {
+      "id": "shot-36",
+      "section": "The walk to Sengaku-ji",
+      "start": 448,
+      "duration": 4,
+      "image": "images/shot-36.png",
+      "background": "palace",
+      "camera": "static",
+      "characters": [
+        {
+          "name": "Ōishi",
+          "expression": "closed",
+          "pose": "bow"
+        },
+        {
+          "name": "Official",
+          "expression": "surprised",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "Then they turned themselves in to the authorities.",
+      "word_count": 8
+    },
+    {
+      "id": "shot-37",
+      "section": "The verdict",
+      "start": 452,
+      "duration": 14,
+      "image": "images/shot-37.png",
+      "background": "palace",
+      "camera": "static",
+      "characters": [
+        {
+          "name": "Official",
+          "expression": "angry",
+          "pose": "stand"
+        },
+        {
+          "name": "Official",
+          "expression": "neutral",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "This put the Shogun's government in a very awkward position. On one hand, the ronin had broken the law. They had planned a murder and carried out a private war in the capital.",
+      "word_count": 33
+    },
+    {
+      "id": "shot-38",
+      "section": "The verdict",
+      "start": 466,
+      "duration": 12,
+      "image": "images/shot-38.png",
+      "background": "village",
+      "camera": "slow pan right",
+      "characters": [
+        {
+          "name": "Townsman",
+          "expression": "gentle",
+          "pose": "stand"
+        },
+        {
+          "name": "Townsman",
+          "expression": "smug",
+          "pose": "stand"
+        },
+        {
+          "name": "Townswoman",
+          "expression": "gentle",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "On the other hand, they had done exactly what the samurai code taught: total loyalty to their lord, even beyond death. Many people across Edo called them heroes.",
+      "word_count": 28
+    },
+    {
+      "id": "shot-39",
+      "section": "The verdict",
+      "start": 478,
+      "duration": 14,
+      "image": "images/shot-39.png",
+      "background": "palace",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Official",
+          "expression": "closed",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "The government argued about it for weeks. In the end, it chose a compromise. The ronin would not be executed like criminals. Instead, they were allowed to die with honor, by seppuku.",
+      "word_count": 32
+    },
+    {
+      "id": "shot-40",
+      "section": "The verdict",
+      "start": 492,
+      "duration": 5,
+      "image": "images/shot-40.png",
+      "background": "paper",
+      "camera": "slow zoom out",
+      "characters": [
+        {
+          "name": "Ronin",
+          "expression": "closed",
+          "pose": "bow"
+        },
+        {
+          "name": "Ronin",
+          "expression": "closed",
+          "pose": "bow"
+        },
+        {
+          "name": "Ronin",
+          "expression": "closed",
+          "pose": "bow"
+        },
+        {
+          "name": "Ronin",
+          "expression": "closed",
+          "pose": "bow"
+        },
+        {
+          "name": "Ronin",
+          "expression": "closed",
+          "pose": "bow"
+        }
+      ],
+      "on_screen_text": "March 1703",
+      "narration": "In March 1703, forty-six of them did just that.",
+      "word_count": 9
+    },
+    {
+      "id": "shot-41",
+      "section": "The verdict",
+      "start": 497,
+      "duration": 16,
+      "image": "images/shot-41.png",
+      "background": "village",
+      "camera": "track left",
+      "characters": [
+        {
+          "name": "Terasaka",
+          "expression": "gentle",
+          "pose": "walk"
+        }
+      ],
+      "on_screen_text": "Terasaka Kichiemon",
+      "narration": "And the forty-seventh? A man named Terasaka Kichiemon had left the group after the raid. Some say Ōishi sent him away to carry the news home. He was pardoned, and he lived to the age of eighty-three.",
+      "word_count": 37
+    },
+    {
+      "id": "shot-42",
+      "section": "Heroes or murderers?",
+      "start": 513,
+      "duration": 12,
+      "image": "images/shot-42.png",
+      "background": "village",
+      "camera": "slow pan right",
+      "characters": [
+        {
+          "name": "Visitor",
+          "expression": "closed",
+          "pose": "bow"
+        }
+      ],
+      "on_screen_text": "Sengaku-ji, Tokyo",
+      "narration": "The forty-six were buried next to their lord at Sengaku-ji. You can still visit their graves in Tokyo today. Every December, people come to burn incense for them.",
+      "word_count": 28
+    },
+    {
+      "id": "shot-43",
+      "section": "Heroes or murderers?",
+      "start": 525,
+      "duration": 12,
+      "image": "images/shot-43.png",
+      "background": "palace",
+      "camera": "static",
+      "characters": [
+        {
+          "name": "Actor as Ōishi",
+          "expression": "angry",
+          "pose": "stand"
+        },
+        {
+          "name": "Actor as Kira",
+          "expression": "surprised",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": "Chūshingura",
+      "narration": "Within a few decades, their story became Japan's most famous play, Chūshingura, \"The Treasury of Loyal Retainers.\" It has been retold in theater, movies and TV ever since.",
+      "word_count": 28
+    },
+    {
+      "id": "shot-44",
+      "section": "Heroes or murderers?",
+      "start": 537,
+      "duration": 15,
+      "image": "images/shot-44.png",
+      "background": "snow",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Ronin",
+          "expression": "determined",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": "Heroes or murderers?",
+      "narration": "But here's the question people have been arguing about for three hundred years. Were the forty-seven ronin heroes, men who gave everything for loyalty? Or were they killers who chose revenge over the law?",
+      "word_count": 34
+    },
+    {
+      "id": "shot-45",
+      "section": "Heroes or murderers?",
+      "start": 552,
+      "duration": 23,
+      "image": "images/shot-45.png",
+      "background": "paper",
+      "camera": "static",
+      "characters": [
+        {
+          "name": "Narrator",
+          "expression": "smug",
+          "pose": "stand"
+        },
+        {
+          "name": "Warlord",
+          "expression": "smug",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": "Next: Okehazama, 1560",
+      "narration": "Let me know what you think in the comments. And if you want more stories like this, from samurai to emperors to forgotten rebels, subscribe. Next time, we'll meet the warlord who said he would conquer all of Japan, with an army one-tenth the size of his enemy's.",
+      "word_count": 48
+    }
+  ]
+}
