@@ -1,0 +1,178 @@
+#!/usr/bin/env python3
+"""Render a finished MP4 from an episode pack (episode.json + images/).
+
+Voiceover comes from Google AI Studio (Gemini TTS, default) or Google Cloud
+Text-to-Speech. The API key is not read here: the session's network proxy adds it
+(header x-goog-api-key) to requests for generativelanguage.googleapis.com or
+texttospeech.googleapis.com.
+
+Usage:
+  python3 tools/make-video.py episodes/01-47-ronin                 # with voiceover
+  python3 tools/make-video.py episodes/01-47-ronin --silent        # draft, no voice
+  python3 tools/make-video.py episodes/01-47-ronin --voice Charon            # Gemini voice name
+  python3 tools/make-video.py episodes/01-47-ronin --engine cloud --voice en-US-Neural2-J
+"""
+import argparse, base64, json, subprocess, sys
+from pathlib import Path
+
+FPS = 30
+W, H = 1920, 1080
+FONT = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
+TAIL = 0.5          # silence after each shot's narration
+END_HOLD = 3.0      # extra hold on the last shot
+
+
+def run(cmd):
+    r = subprocess.run(cmd, capture_output=True, text=True)
+    if r.returncode != 0:
+        sys.exit(f"Command failed: {' '.join(cmd[:6])}...\n{r.stderr[-1500:]}")
+    return r.stdout
+
+
+def duration(path):
+    return float(run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", str(path)]).strip())
+
+
+def tts(text, out, voice, rate):
+    lang = "-".join(voice.split("-")[:2])
+    body = json.dumps({
+        "input": {"text": text},
+        "voice": {"languageCode": lang, "name": voice},
+        "audioConfig": {"audioEncoding": "MP3", "speakingRate": rate, "sampleRateHertz": 44100},
+    })
+    res = run(["curl", "-sS", "--fail-with-body", "-X", "POST",
+               "https://texttospeech.googleapis.com/v1/text:synthesize",
+               "-H", "Content-Type: application/json", "--data-binary", body])
+    data = json.loads(res)
+    if "audioContent" not in data:
+        sys.exit(f"Google TTS error: {res[:500]}")
+    out.write_bytes(base64.b64decode(data["audioContent"]))
+
+
+STYLE = ("Read this as the narrator of a history documentary on YouTube: calm, warm, clear, "
+         "slightly dry humor, steady pace, serious and quiet in sad moments. Text: ")
+
+
+def gemini_tts(text, out, voice, model):
+    body = json.dumps({
+        "contents": [{"parts": [{"text": STYLE + text}]}],
+        "generationConfig": {
+            "responseModalities": ["AUDIO"],
+            "speechConfig": {"voiceConfig": {"prebuiltVoiceConfig": {"voiceName": voice}}},
+        },
+    })
+    res = run(["curl", "-sS", "--fail-with-body", "-X", "POST",
+               f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent",
+               "-H", "Content-Type: application/json", "--data-binary", body])
+    data = json.loads(res)
+    try:
+        pcm = base64.b64decode(data["candidates"][0]["content"]["parts"][0]["inlineData"]["data"])
+    except (KeyError, IndexError):
+        sys.exit(f"Gemini TTS error: {res[:500]}")
+    raw = out.with_suffix(".pcm")
+    raw.write_bytes(pcm)
+    run(["ffmpeg", "-y", "-loglevel", "error", "-f", "s16le", "-ar", "24000", "-ac", "1", "-i", str(raw),
+         "-ar", "44100", "-b:a", "192k", str(out)])
+    raw.unlink()
+
+
+def camera_filter(cam, frames):
+    d = max(frames - 1, 1)
+    cx, cy = "iw/2-(iw/zoom/2)", "ih/2-(ih/zoom/2)"
+    if cam == "slow zoom in":
+        z, x, y = f"1+0.12*on/{d}", cx, cy
+    elif cam == "slow zoom out":
+        z, x, y = f"1.12-0.12*on/{d}", cx, cy
+    elif cam == "quick push in":
+        z, x, y = f"1+0.18*min(on/({d}*0.25),1)", cx, cy
+    elif cam in ("track left", "slow pan left"):
+        z, x, y = "1.12", f"(iw-iw/zoom)*(1-on/{d})", cy
+    elif cam in ("slow pan right",):
+        z, x, y = "1.12", f"(iw-iw/zoom)*on/{d}", cy
+    elif cam == "shake":
+        z, x, y = "1.08", f"{cx}+18*sin(on*1.7)", f"{cy}+12*cos(on*2.3)"
+    else:
+        z, x, y = "1.0001", cx, cy
+    return (f"scale=2880:1620,zoompan=z='{z}':x='{x}':y='{y}':d={frames}:s={W}x{H}:fps={FPS}")
+
+
+def caption_filter(text):
+    if not text:
+        return ""
+    safe = text.replace("\\", "\\\\").replace(":", "\\:").replace("'", "’").replace("%", "\\%")
+    return (f",drawtext=fontfile={FONT}:text='{safe}':fontsize=60:fontcolor=0x1c1b22"
+            f":box=1:boxcolor=white@0.92:boxborderw=24:x=80:y=80"
+            f":alpha='if(lt(t,0.4),t/0.4,1)'")
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("episode_dir")
+    ap.add_argument("--engine", choices=["gemini", "cloud"], default="gemini")
+    ap.add_argument("--model", default="gemini-2.5-flash-preview-tts")
+    ap.add_argument("--voice", help="Gemini: Charon, Orus, Puck... Cloud: en-US-Neural2-J...")
+    ap.add_argument("--rate", type=float, default=0.95)
+    ap.add_argument("--silent", action="store_true")
+    ap.add_argument("--only", type=int, help="render only the first N shots (preview)")
+    a = ap.parse_args()
+
+    a.voice = a.voice or ("Charon" if a.engine == "gemini" else "en-US-Neural2-J")
+    ep_dir = Path(a.episode_dir).resolve()
+    ep = json.loads((ep_dir / "episode.json").read_text())
+    shots = ep["shots"][: a.only] if a.only else ep["shots"]
+    build = ep_dir / "build"
+    (build / "audio").mkdir(parents=True, exist_ok=True)
+    (build / "video").mkdir(parents=True, exist_ok=True)
+
+    timed, t = [], 0.0
+    for i, s in enumerate(shots):
+        last = i == len(shots) - 1
+        audio = None
+        if a.silent:
+            dur = float(s["duration"])
+        else:
+            audio = build / "audio" / f"{s['id']}-{a.voice}.mp3"
+            if not audio.exists():
+                print(f"voice {s['id']}", flush=True)
+                if a.engine == "gemini":
+                    gemini_tts(s["narration"], audio, a.voice, a.model)
+                else:
+                    tts(s["narration"], audio, a.voice, a.rate)
+            dur = duration(audio) + TAIL
+        if last:
+            dur += END_HOLD
+        dur = round(dur, 2)
+        frames = round(dur * FPS)
+        seg = build / "video" / f"{s['id']}.mp4"
+        print(f"render {s['id']} {dur:.1f}s {s['camera']}", flush=True)
+        vf = camera_filter(s["camera"], frames) + caption_filter(s.get("on_screen_text"))
+        cmd = ["ffmpeg", "-y", "-loglevel", "error", "-loop", "1", "-i", str(ep_dir / s["image"])]
+        if audio:
+            cmd += ["-i", str(audio), "-af", f"apad,atrim=0:{dur}"]
+        else:
+            cmd += ["-f", "lavfi", "-i", "anullsrc=r=44100:cl=stereo"]
+        cmd += ["-vf", vf, "-frames:v", str(frames), "-t", str(dur),
+                "-c:v", "libx264", "-preset", "medium", "-crf", "20", "-pix_fmt", "yuv420p",
+                "-c:a", "aac", "-b:a", "192k", "-ar", "44100", "-ac", "2", str(seg)]
+        run(cmd)
+        timed.append({**s, "start": round(t, 2), "duration": dur})
+        t += dur
+
+    lst = build / "segments.txt"
+    lst.write_text("".join(f"file 'video/{s['id']}.mp4'\n" for s in shots))
+    name = "47-ronin" if "ronin" in ep_dir.name else ep_dir.name
+    out = ep_dir / f"{name}{'-draft' if a.silent else ''}.mp4"
+    total = t
+    run(["ffmpeg", "-y", "-loglevel", "error", "-f", "concat", "-safe", "0", "-i", str(lst),
+         "-vf", f"fade=t=in:st=0:d=0.8,fade=t=out:st={total-1.2:.2f}:d=1.2",
+         "-af", f"afade=t=out:st={total-1.2:.2f}:d=1.2",
+         "-c:v", "libx264", "-preset", "medium", "-crf", "20", "-pix_fmt", "yuv420p",
+         "-c:a", "aac", "-b:a", "192k", "-movflags", "+faststart", str(out)])
+    (ep_dir / ("episode.timed.json" if not a.silent else "episode.draft-timed.json")).write_text(
+        json.dumps({**ep, "total_duration": round(total, 2), "shots": timed}, indent=2, ensure_ascii=False) + "\n")
+    m, sec = divmod(round(total), 60)
+    print(f"done: {out.name} {m}:{sec:02d}")
+
+
+if __name__ == "__main__":
+    main()
