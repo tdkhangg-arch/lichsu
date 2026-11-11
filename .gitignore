@@ -2,3 +2,5 @@ episodes/*/build/
 episodes/*/*-draft.mp4
 episodes/*/episode.draft-timed.json
 __pycache__/
+episodes/*/*.mp4
+episodes/*/episode.timed.json
