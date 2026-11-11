@@ -91,7 +91,7 @@ def gemini_once(text, out, voice, model):
     raw = out.with_suffix(".pcm")
     raw.write_bytes(pcm)
     run(["ffmpeg", "-y", "-loglevel", "error", "-f", "s16le", "-ar", "24000", "-ac", "1", "-i", str(raw),
-         "-ar", "44100", "-b:a", "192k", str(out)])
+         "-af", "loudnorm=I=-16:TP=-1.5:LRA=11", "-ar", "44100", "-ar", "44100", "-b:a", "192k", str(out)])
     raw.unlink()
 
 
@@ -118,6 +118,41 @@ def silences(path):
     starts = [float(x) for x in re.findall(r"silence_start: ([\d.]+)", log)]
     ends = [float(x) for x in re.findall(r"silence_end: ([\d.]+)", log)]
     return list(zip(starts, ends))
+
+
+def best_cuts(total, words, gaps):
+    """Pick one pause per shot boundary so every shot's speaking rate is as close as possible
+    to the section average (dynamic programming over all pauses, in order). Longer pauses are
+    preferred because paragraph breaks between shots produce longer silences."""
+    k = len(words)
+    rate = total / sum(words)
+    pts = [((a + b) / 2, b - a) for a, b in gaps if 0.5 < (a + b) / 2 < total - 0.5]
+    INF = float("inf")
+    # best[j][i]: cost of placing the first j cuts with the j-th cut at pause i
+    best = [[INF] * len(pts) for _ in range(k)]
+    prev = [[-1] * len(pts) for _ in range(k)]
+    def cost(t0, t1, w, gap):
+        exp = w * rate
+        return ((t1 - t0) - exp) ** 2 / exp - 2.0 * gap
+    for i, (t, g) in enumerate(pts):
+        best[1][i] = cost(0, t, words[0], g) if k > 1 else INF
+    for j in range(2, k):
+        for i, (t, g) in enumerate(pts):
+            for h in range(i):
+                if best[j - 1][h] < INF:
+                    c = best[j - 1][h] + cost(pts[h][0], t, words[j - 1], g)
+                    if c < best[j][i]:
+                        best[j][i], prev[j][i] = c, h
+    if k == 1:
+        return [0.0, total]
+    last = min(range(len(pts)), key=lambda i: best[k - 1][i] + cost(pts[i][0], total, words[-1], 0)
+               if best[k - 1][i] < INF else INF, default=None)
+    if last is None or best[k - 1][last] == INF:
+        return None
+    chain, j, i = [], k - 1, last
+    while j >= 1:
+        chain.append(pts[i][0]); i = prev[j][i]; j -= 1
+    return [0.0] + chain[::-1] + [total]
 
 
 def batch_voice(shots, build, voice, model):
@@ -148,21 +183,12 @@ def batch_voice(shots, build, voice, model):
         total = duration(whole)
         words = [len(s["narration"].split()) for s in group]
         gaps = silences(whole)
-        cuts, used, acc = [0.0], set(), 0
-        for w in words[:-1]:
-            acc += w
-            target = total * acc / sum(words)
-            cands = [(abs((a + b) / 2 - target) - 0.6 * (b - a), i) for i, (a, b) in enumerate(gaps)
-                     if i not in used and (a + b) / 2 > cuts[-1] + 0.5]
-            if not cands:
-                sys.exit(f"Could not find a pause to split section {n}")
-            _, i = min(cands)
-            used.add(i)
-            cuts.append((gaps[i][0] + gaps[i][1]) / 2)
-        cuts.append(total)
+        cuts = best_cuts(total, words, gaps)
+        if cuts is None:
+            sys.exit(f"Could not find pauses to split section {n}")
         for s, p, a0, a1 in zip(group, paths, cuts, cuts[1:]):
             run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(whole), "-ss", f"{a0:.3f}", "-to", f"{a1:.3f}",
-                 "-af", "silenceremove=start_periods=1:start_threshold=-45dB,areverse,silenceremove=start_periods=1:start_threshold=-45dB,areverse",
+                 "-af", "silenceremove=start_periods=1:start_threshold=-45dB,areverse,silenceremove=start_periods=1:start_threshold=-45dB,areverse,loudnorm=I=-16:TP=-1.5:LRA=11", "-ar", "44100",
                  "-b:a", "192k", str(p)])
             print(f"  {s['id']}: {a1 - a0:.1f}s for {len(s['narration'].split())} words", flush=True)
         out.update({s["id"]: p for s, p in zip(group, paths)})
