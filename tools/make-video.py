@@ -2,9 +2,8 @@
 """Render a finished MP4 from an episode pack (episode.json + images/).
 
 Voiceover comes from Google AI Studio (Gemini TTS, default) or Google Cloud
-Text-to-Speech. The API key is not read here: the session's network proxy adds it
-(header x-goog-api-key) to requests for generativelanguage.googleapis.com or
-texttospeech.googleapis.com.
+Text-to-Speech. For Gemini the key is read from the GEMINI_API_KEY or KEY environment
+variable; if neither is set, the session's network proxy is expected to add it.
 
 Usage:
   python3 tools/make-video.py episodes/01-47-ronin                 # with voiceover
@@ -12,7 +11,7 @@ Usage:
   python3 tools/make-video.py episodes/01-47-ronin --voice Charon            # Gemini voice name
   python3 tools/make-video.py episodes/01-47-ronin --engine cloud --voice en-US-Neural2-J
 """
-import argparse, base64, json, subprocess, sys
+import argparse, base64, json, os, subprocess, sys
 from pathlib import Path
 
 FPS = 30
@@ -49,8 +48,8 @@ def tts(text, out, voice, rate):
     out.write_bytes(base64.b64decode(data["audioContent"]))
 
 
-STYLE = ("Read this as the narrator of a history documentary on YouTube: calm, warm, clear, "
-         "slightly dry humor, steady pace, serious and quiet in sad moments. Text: ")
+# Gemini reads any instruction text aloud, so only the narration is sent.
+STYLE = ""
 
 
 def gemini_tts(text, out, voice, model):
@@ -61,9 +60,11 @@ def gemini_tts(text, out, voice, model):
             "speechConfig": {"voiceConfig": {"prebuiltVoiceConfig": {"voiceName": voice}}},
         },
     })
+    key = os.environ.get("GEMINI_API_KEY") or os.environ.get("KEY")
+    auth = ["-H", f"x-goog-api-key: {key}"] if key else []  # otherwise the proxy adds it
     res = run(["curl", "-sS", "--fail-with-body", "-X", "POST",
                f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent",
-               "-H", "Content-Type: application/json", "--data-binary", body])
+               "-H", "Content-Type: application/json", *auth, "--data-binary", body])
     data = json.loads(res)
     try:
         pcm = base64.b64decode(data["candidates"][0]["content"]["parts"][0]["inlineData"]["data"])
@@ -109,7 +110,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("episode_dir")
     ap.add_argument("--engine", choices=["gemini", "cloud"], default="gemini")
-    ap.add_argument("--model", default="gemini-2.5-flash-preview-tts")
+    ap.add_argument("--model", default="gemini-3.8-flash-tts")
     ap.add_argument("--voice", help="Gemini: Charon, Orus, Puck... Cloud: en-US-Neural2-J...")
     ap.add_argument("--rate", type=float, default=0.95)
     ap.add_argument("--silent", action="store_true")
@@ -135,7 +136,12 @@ def main():
             if not audio.exists():
                 print(f"voice {s['id']}", flush=True)
                 if a.engine == "gemini":
-                    gemini_tts(s["narration"], audio, a.voice, a.model)
+                    words = len(s["narration"].split())
+                    for attempt in range(3):
+                        gemini_tts(s["narration"], audio, a.voice, a.model)
+                        if duration(audio) <= words * 0.6 + 3:  # longer means extra or garbled speech
+                            break
+                        print(f"  {s['id']} too long ({duration(audio):.1f}s for {words} words), retrying", flush=True)
                 else:
                     tts(s["narration"], audio, a.voice, a.rate)
             dur = duration(audio) + TAIL
