@@ -1,0 +1,44 @@
+# Lịch Sử Các Nước: YouTube history channel
+
+English-language animated history videos for viewers in the US, UK, Canada and Australia.
+The owner writes in Vietnamese; reply in Vietnamese, but write all video scripts, titles and
+descriptions in English.
+
+## Style
+- Stick-figure characters: big round white head with a lavender crescent shadow, thick black
+  ink outlines, stick arms and legs, black dot hands, white oval feet, detailed period costumes.
+- Characters and backgrounds are drawn by code in `index.html` (Xưởng Nhân Vật Sử). New scenes
+  go in its `SCENES` table; new parts in `HAIR`, `HATS`, `OUTFITS`, `PROPS`.
+- Narration voice: calm documentary narrator, light dry humor, serious at sad moments.
+- YouTube safety: no graphic violence or crude words. Avoid "kill", "murder", "head" (as a
+  trophy), "blood", "suicide" described graphically. Use "fell", "struck down", "was gone".
+- Copyright: scripts are original; images are drawn by our code; music is synthesized by
+  `tools/make-music.py`. Never add downloaded music, images or clips.
+
+## Episodes
+| # | Folder | Topic | Status |
+|---|---|---|---|
+| 1 | `episodes/01-47-ronin` | The 47 Ronin (1701–1703) | Video done (8:43, with music) |
+| 2 | `episodes/02-okehazama` | Battle of Okehazama (1560) | Script and frames done; video waiting for voice quota |
+| 3 | (next) | Honnō-ji Incident (1582) | Teased at the end of episode 2 |
+
+## Pipeline (run from the repo root)
+1. Write `episodes/<NN-name>/shots.js` (narration, scene notes, characters, YouTube package,
+   `music_moods`). Copy the structure of episode 2.
+2. `node tools/build-episode.js episodes/<NN-name>/shots.js` → 1920×1080 frames + `episode.json` + `voiceover.txt`
+3. `node tools/build-prompts.js episodes/<NN-name>` → `prompts.jsonl` (one AI prompt per shot)
+4. `node tools/build-script.js episodes/<NN-name>` → `scripts/<NN-name>.md`
+5. `python3 tools/make-video.py episodes/<NN-name> --model gemini-3.1-flash-tts-preview`
+   → `<NN-name>.mp4` with Gemini voice (voice Charon). Voices one request per section and splits
+   at pauses, to fit the free tier; falls back to other TTS models on blocks or quota.
+6. `python3 tools/make-music.py episodes/<NN-name>` → `<NN-name>-music.mp4` (final video).
+   Music stays at one fixed level, 18 dB under the voice (owner asked for no ducking).
+   Final loudness −14 LUFS.
+
+Rendered videos and `build/` are git-ignored; send finished videos to the owner as files.
+
+## Environment notes
+- Google AI Studio key is in the environment variable `KEY` (sent as `x-goog-api-key`).
+- Free tier: 10 TTS requests per day per model; resets at midnight Pacific time.
+- Python needs `scipy` (`pip install scipy`); ffmpeg and Playwright are preinstalled.
+- Work branch: `add-47-ronin-script` on github.com/tdkhangg-arch/lichsu.
