@@ -2,6 +2,7 @@
 
 - `episode.json`: shot list for the video editor (GOHA or any other tool)
 - `images/shot-XX.png`: one 1920×1080 frame per shot
+- `prompts.jsonl`: one JSON object per line, one line per shot, with an AI image/video prompt, negative prompt, timing, camera, caption, narration and reference frame. Rebuild with `node tools/build-prompts.js episodes/01-47-ronin`
 - `voiceover.txt`: full English narration, one paragraph per shot, for AI voice or recording
 - `shots.js`: source definitions; rebuild with `node tools/build-episode.js episodes/01-47-ronin/shots.js`
 
