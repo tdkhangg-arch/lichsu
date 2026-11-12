@@ -6,7 +6,7 @@ const path = require("path");
 const vm = require("vm");
 const { chromium } = require("playwright");
 
-const [title = "History With Dad", tagline = "Pause the game. Dad's got a story.", outDir = "channel"] = process.argv.slice(2);
+const [title = "StickDad History", tagline = "Pause the game. Dad's got a story.", outDir = "channel"] = process.argv.slice(2);
 const root = path.join(__dirname, "..");
 const html = fs.readFileSync(path.join(root, "index.html"), "utf8");
 const ctx = {};

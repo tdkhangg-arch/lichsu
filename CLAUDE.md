@@ -1,8 +1,12 @@
-# Lịch Sử Các Nước: YouTube history channel
+# StickDad History: YouTube history channel (project "Lịch Sử Các Nước")
 
 English-language animated history videos for viewers in the US, UK, Canada and Australia.
 The owner writes in Vietnamese; reply in Vietnamese, but write all video scripts, titles and
 descriptions in English.
+
+Channel name: **StickDad History** (handle @StickDadHistory if available). Channel art in
+`channel/`: `stickdad-banner.png` (2560×1440), `stickdad-logo.png` / `stickdad-logo-800.png`.
+From episode 2 on, the father can mention the channel name in the outro.
 
 ## Style
 - Stick-figure characters: big round white head with a lavender crescent shadow, thick black
