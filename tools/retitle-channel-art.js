@@ -28,10 +28,26 @@ const tail = (s, dir) => { // notched ribbon end, tucked behind the band
   return `M${pt(rOut - 25, s)} L${pt(rOut - 25, e)} L${pt((rIn + rOut) / 2, m)} L${pt(rIn + 25, e)} L${pt(rIn + 25, s)} Z`;
 };
 const rText = 1098;
+const K = 0.82;   // logo scaled into the frame so YouTube's round crop keeps everything
+let seed = 11; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+let STARS = "";
+for (let i = 0; i < 70; i++) {
+  const x = rnd() * 2000, y = rnd() * 2000;
+  if (Math.abs(x - 1000) < 1000 * K - 40 && Math.abs(y - 1000) < 1000 * K - 40) continue;  // only in the new margin
+  const r = 2 + rnd() * 5;
+  STARS += `<circle cx="${x.toFixed(0)}" cy="${y.toFixed(0)}" r="${r.toFixed(1)}" fill="#fff4c2" opacity="${(0.5 + rnd() * 0.5).toFixed(2)}"/>`;
+}
 const logo = `<svg xmlns="http://www.w3.org/2000/svg" width="2000" height="2000" viewBox="0 0 2000 2000">
 <defs>${grad("g")}<path id="arc" d="M${pt(rText, a0 - 2)} A${rText},${rText} 0 0,0 ${pt(rText, a1 + 2)}"/>
 <filter id="sh"><feDropShadow dx="0" dy="10" stdDeviation="6" flood-color="#000" flood-opacity=".45"/></filter></defs>
-<image href="${b64("/home/user/lichsu/channel/history-with-dad-logo.png")}" width="2000" height="2000"/>
+<radialGradient id="sky" cx="1000" cy="1000" r="1414" gradientUnits="userSpaceOnUse"><stop offset=".5" stop-color="rgb(0,56,82)"/><stop offset="1" stop-color="rgb(1,24,54)"/></radialGradient>
+<radialGradient id="fade" cx="1000" cy="1000" r="1000" gradientUnits="userSpaceOnUse"><stop offset=".9" stop-color="#fff"/><stop offset="1" stop-color="#000"/></radialGradient>
+<mask id="soft"><rect width="2000" height="2000" fill="#000"/><rect x="60" y="60" width="1880" height="1880" rx="120" fill="#fff" filter="url(#blur)"/></mask>
+<filter id="blur"><feGaussianBlur stdDeviation="40"/></filter>
+<rect width="2000" height="2000" fill="url(#sky)"/>
+${STARS}
+<g transform="translate(1000 1000) scale(${K}) translate(-1000 -1000)">
+<image href="${b64("/home/user/lichsu/channel/history-with-dad-logo.png")}" width="2000" height="2000" mask="url(#soft)"/>
 <g filter="url(#sh)">
   <path d="${tail(a0 + 1, 1)}" fill="#7d1d18" stroke="#1c1b22" stroke-width="12" stroke-linejoin="round"/>
   <path d="${tail(a1 - 1, -1)}" fill="#7d1d18" stroke="#1c1b22" stroke-width="12" stroke-linejoin="round"/>
@@ -41,6 +57,7 @@ const logo = `<svg xmlns="http://www.w3.org/2000/svg" width="2000" height="2000"
 <g font-family="'Luckiest Guy', sans-serif" font-size="172" letter-spacing="6">
   <text text-anchor="middle" fill="none" stroke="#1c1b22" stroke-width="26" stroke-linejoin="round"><textPath href="#arc" startOffset="50%">${NAME.toUpperCase()}</textPath></text>
   <text text-anchor="middle" fill="url(#g)"><textPath href="#arc" startOffset="50%">${NAME.toUpperCase()}</textPath></text>
+</g>
 </g>
 </svg>`;
 
