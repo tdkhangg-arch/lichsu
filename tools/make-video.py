@@ -52,6 +52,10 @@ def tts(text, out, voice, rate):
 STYLE = ""
 
 
+# Voices for dialogue shots ("speaker" in shots.js). The father is also the narrator.
+SPEAKERS = {"father": "Charon", "son": "Puck"}
+
+
 class TTSError(Exception):
     pass
 
@@ -160,6 +164,8 @@ def batch_voice(shots, build, voice, model):
     to where each shot should end (by word count). Returns {shot id: mp3 path}."""
     out, sections = {}, []
     for s in shots:
+        if s.get("speaker"):
+            continue  # dialogue lines are voiced one by one with the speaker's own voice
         if not sections or sections[-1][0] != s["section"]:
             sections.append((s["section"], []))
         sections[-1][1].append(s)
@@ -230,6 +236,8 @@ def main():
     ap.add_argument("--engine", choices=["gemini", "cloud"], default="gemini")
     ap.add_argument("--model", default="gemini-3.8-flash-tts")
     ap.add_argument("--voice", help="Gemini: Charon, Orus, Puck... Cloud: en-US-Neural2-J...")
+    ap.add_argument("--dialogue-model", default="gemini-3.8-flash-tts",
+                    help="model for shots with a speaker (kept separate to spread the free quota)")
     ap.add_argument("--rate", type=float, default=0.95)
     ap.add_argument("--silent", action="store_true")
     ap.add_argument("--per-shot", action="store_true", help="one TTS request per shot (needs a paid quota)")
@@ -254,13 +262,17 @@ def main():
         if a.silent:
             dur = float(s["duration"])
         else:
-            audio = batched.get(s["id"]) or build / "audio" / f"{s['id']}-{a.voice}-{a.model}.mp3"
+            voice, model = a.voice, a.model
+            if s.get("speaker"):
+                voice = SPEAKERS.get(s["speaker"], a.voice)
+                model = a.dialogue_model
+            audio = batched.get(s["id"]) or build / "audio" / f"{s['id']}-{voice}-{model}.mp3"
             if not audio.exists():
                 print(f"voice {s['id']}", flush=True)
                 if a.engine == "gemini":
                     words = len(s["narration"].split())
                     for attempt in range(3):
-                        gemini_tts(s["narration"], audio, a.voice, a.model)
+                        gemini_tts(s["narration"], audio, voice, model)
                         if duration(audio) <= words * 0.6 + 3:  # longer means extra or garbled speech
                             break
                         print(f"  {s['id']} too long ({duration(audio):.1f}s for {words} words), retrying", flush=True)

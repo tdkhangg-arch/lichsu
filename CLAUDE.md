@@ -10,6 +10,12 @@ descriptions in English.
 - Characters and backgrounds are drawn by code in `index.html` (Xưởng Nhân Vật Sử). New scenes
   go in its `SCENES` table; new parts in `HAIR`, `HATS`, `OUTFITS`, `PROPS`.
 - Narration voice: calm documentary narrator, light dry humor, serious at sad moments.
+- Framing (since episode 1 revision): a modern-day father tells the story to his 16-year-old
+  son in their living room. Intro: son plays a samurai game on his phone, father asks if he
+  knows about real samurai, invites him to sit and listen. Outro: back on the sofa, father asks
+  if he wants the next story and tells viewers to like and subscribe. Dialogue shots have
+  `id` ("intro-1"…), `speaker` ("father" = Charon, also the narrator; "son" = Puck) and use
+  the `livingroom` scene, `tshirt`/`hoodie` outfits, `glasses`, `book`, `phone`, `sit` pose.
 - YouTube safety: no graphic violence or crude words. Avoid "kill", "murder", "head" (as a
   trophy), "blood", "suicide" described graphically. Use "fell", "struck down", "was gone".
 - Copyright: scripts are original; images are drawn by our code; music is synthesized by
@@ -18,7 +24,7 @@ descriptions in English.
 ## Episodes
 | # | Folder | Topic | Status |
 |---|---|---|---|
-| 1 | `episodes/01-47-ronin` | The 47 Ronin (1701–1703) | Video done (8:43, with music) |
+| 1 | `episodes/01-47-ronin` | The 47 Ronin (1701–1703) | Video done with father/son intro and outro; 3 Shorts |
 | 2 | `episodes/02-okehazama` | Battle of Okehazama (1560) | Script and frames done; video waiting for voice quota |
 | 3 | (next) | Honnō-ji Incident (1582) | Teased at the end of episode 2 |
 
@@ -29,11 +35,15 @@ descriptions in English.
 3. `node tools/build-prompts.js episodes/<NN-name>` → `prompts.jsonl` (one AI prompt per shot)
 4. `node tools/build-script.js episodes/<NN-name>` → `scripts/<NN-name>.md`
 5. `python3 tools/make-video.py episodes/<NN-name> --model gemini-3.1-flash-tts-preview`
-   → `<NN-name>.mp4` with Gemini voice (voice Charon). Voices one request per section and splits
+   → `<NN-name>.mp4` with Gemini voice (voice Charon). Dialogue shots use
+   `--dialogue-model` (default gemini-3.8-flash-tts) to spread the free quota. Voices one request per section and splits
    at pauses, to fit the free tier; falls back to other TTS models on blocks or quota.
 6. `python3 tools/make-music.py episodes/<NN-name>` → `<NN-name>-music.mp4` (final video).
    Music stays at one fixed level, 18 dB under the voice (owner asked for no ducking).
    Final loudness −14 LUFS.
+
+7. Shorts: `python3 tools/make-short.py episodes/<NN-name> --shots ... --title ... --out ...`
+   (vertical 1080×1920 cut from the finished video; see `episodes/01-47-ronin/shorts.md`).
 
 Rendered videos and `build/` are git-ignored; send finished videos to the owner as files.
 

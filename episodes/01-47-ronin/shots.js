@@ -15,6 +15,11 @@ const C = {
   narrator: mk({ face: "smug" }),
 };
 const ch = (name, cfg, x, { scale, ground, ...more } = {}) => ({ name, x, scale, ground, cfg: { ...cfg, ...more } });
+// Modern-day father and son who frame the story (the father is the narrator's voice)
+const DAD = mk({ hair: "short", hat: "glasses", outfit: "tshirt", color: "#5b6b3a", prop: "book", face: "neutral" });
+const SON = mk({ hair: "short", outfit: "hoodie", color: "#a8342c", prop: "phone", face: "determined" });
+const SEAT = 303;   // ground line that puts a sitting character on the sofa
+const sit = (name, cfg, x, more = {}) => ch(name, cfg, x, { pose: "sit", ground: SEAT, ...more });
 const night = { color: "#141a33", opacity: 0.45 };
 const dark = { color: "#120f1a", opacity: 0.5 };
 const dawn = { color: "#f29a3a", opacity: 0.12 };
@@ -22,6 +27,22 @@ const dawn = { color: "#f29a3a", opacity: 0.12 };
 module.exports = {
   title: "The 47 Samurai Who Waited 2 Years for Revenge",
   shots: [
+    // Intro: father and son in the living room
+    { id: "intro-1", section: "Intro", speaker: "son", background: "livingroom", camera: "static",
+      characters: [sit("Father", DAD, 110, { flip: true }), sit("Son", SON, 375, { scale: 0.68 })],
+      narration: "Come on, come on... one more level!" },
+    { id: "intro-2", section: "Intro", speaker: "father", background: "livingroom", camera: "slow zoom in",
+      characters: [ch("Father", DAD, 250, { flip: true, pose: "walk", prop: "book", face: "smug" }), sit("Son", SON, 375, { scale: 0.68 })],
+      narration: "Samurai, huh? Do you actually know anything about real samurai?" },
+    { id: "intro-3", section: "Intro", speaker: "son", background: "livingroom", camera: "quick push in",
+      characters: [ch("Father", DAD, 260, { flip: true, prop: "none", face: "smug" }), sit("Son", SON, 375, { scale: 0.68, face: "closed" })],
+      narration: "No. Not really." },
+    { id: "intro-4", section: "Intro", speaker: "father", background: "livingroom", camera: "slow zoom in",
+      characters: [ch("Father", DAD, 260, { flip: true, prop: "none", face: "gentle" }), sit("Son", SON, 375, { scale: 0.68, face: "surprised" })],
+      narration: "Then pause your game and come sit with me. I'll tell you a true story, full of courage and determination." },
+    { id: "intro-5", section: "Intro", speaker: "son", background: "livingroom", camera: "slow zoom in",
+      characters: [sit("Father", DAD, 95, { flip: true, prop: "none", face: "gentle" }), sit("Son", SON, 165, { scale: 0.68, prop: "none", face: "gentle" })],
+      narration: "Okay. I'm listening." },
     // 0:00 Hook
     { section: "Hook", background: "snow", tint: night, camera: "slow zoom in", text: "Edo, 1703",
       characters: [ch("Ronin", C.ronin, 240)],
@@ -171,8 +192,18 @@ module.exports = {
     { section: "Heroes or outlaws?", background: "snow", tint: night, camera: "slow zoom in", text: "Heroes or outlaws?",
       characters: [ch("Ronin", C.ronin, 250, { scale: 1.1, ground: 365 })],
       narration: "But here's the question people have been arguing about for three hundred years. Were the forty-seven ronin heroes, men who gave everything for loyalty? Or were they lawbreakers who put revenge above the law?" },
-    { section: "Heroes or outlaws?", background: "paper", camera: "static", text: "Next: Okehazama, 1560", pause: 3,
-      characters: [ch("Narrator", C.narrator, 170, { flip: true }), ch("Warlord", mk({ outfit: "armor", color: "#a8342c", hat: "kabuto", face: "smug", prop: "katana" }), 330)],
-      narration: "Let me know what you think in the comments. And if you want more stories like this, from samurai to emperors to forgotten rebels, subscribe. Next time, we'll meet the warlord who said he would conquer all of Japan, with an army one-tenth the size of his enemy's." },
+    // Outro: back to the living room
+    { id: "outro-1", section: "Outro", speaker: "son", background: "livingroom", camera: "static",
+      characters: [sit("Father", DAD, 95, { flip: true, prop: "none", face: "gentle" }), sit("Son", SON, 165, { scale: 0.68, prop: "none", face: "surprised" })],
+      narration: "Wow. They really waited two years for that." },
+    { id: "outro-2", section: "Outro", speaker: "father", background: "livingroom", camera: "slow zoom in",
+      characters: [sit("Father", DAD, 95, { flip: true, prop: "none", face: "smug" }), sit("Son", SON, 165, { scale: 0.68, prop: "none", face: "neutral" })],
+      narration: "Do you want to know what happens next in the story?" },
+    { id: "outro-3", section: "Outro", speaker: "son", background: "livingroom", camera: "quick push in",
+      characters: [sit("Father", DAD, 95, { flip: true, prop: "none", face: "gentle" }), sit("Son", SON, 165, { scale: 0.68, prop: "none", face: "determined" })],
+      narration: "Yes! Tell me!" },
+    { id: "outro-4", section: "Outro", speaker: "father", background: "livingroom", camera: "slow zoom in", text: "Like & Subscribe", pause: 3,
+      characters: [sit("Father", DAD, 95, { flip: true, prop: "none", face: "smug" }), sit("Son", SON, 165, { scale: 0.68, prop: "none", face: "gentle" })],
+      narration: "Then ask everyone watching to hit like and subscribe. Next time, I'll tell you about a young warlord who beat an army ten times his size." },
   ],
 };

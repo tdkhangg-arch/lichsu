@@ -54,7 +54,7 @@ def text_lines(lines, y0, size, step, color="white", box=None, enable=None):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("episode_dir")
-    ap.add_argument("--shots", required=True, help="comma-separated shot numbers, 1-based")
+    ap.add_argument("--shots", required=True, help="comma-separated story shot numbers (13 = shot-13) or ids")
     ap.add_argument("--title", required=True, help="use | for a line break")
     ap.add_argument("--end", default="Full story on our channel", help="end card text, | for line breaks")
     ap.add_argument("--out", required=True)
@@ -67,7 +67,9 @@ def main():
     build = ep_dir / "build" / "shorts"
     build.mkdir(parents=True, exist_ok=True)
 
-    picks = [ep["shots"][int(n) - 1] for n in a.shots.split(",")]
+    # numbers mean story shots ("13" -> shot-13); other values are taken as ids ("intro-2")
+    by_id = {s["id"]: s for s in ep["shots"]}
+    picks = [by_id[f"shot-{int(n):02d}" if n.strip().isdigit() else n.strip()] for n in a.shots.split(",")]
     parts = []
     for k, s in enumerate(picks):
         part = build / f"{a.out}-{k:02d}.mp4"

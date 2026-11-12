@@ -38,6 +38,28 @@
 
 Scene notes in [brackets] use presets and settings from Xưởng Nhân Vật Sử.
 
+### 0:00 – Intro: father and son
+
+[SCENE: Living room. Father (glasses, green T-shirt, jeans) reads a book on the blue sofa. His 16-year-old son (red hoodie) sits on the orange sofa opposite, playing a samurai game on his phone.]
+
+SON: Come on, come on... one more level!
+
+[SCENE: Father puts the book down and walks over, smiling.]
+
+FATHER: Samurai, huh? Do you actually know anything about real samurai?
+
+[SCENE: Son shakes his head.]
+
+SON: No. Not really.
+
+[SCENE: Father, gentle.]
+
+FATHER: Then pause your game and come sit with me. I'll tell you a true story, full of courage and determination.
+
+[SCENE: Father and son side by side on the blue sofa.]
+
+SON: Okay. I'm listening.
+
 ### 0:00 – Hook
 
 [SCENE: Snowy field, night. "Sengoku samurai" preset, black armor, determined face. Slow zoom in.]
@@ -202,8 +224,18 @@ But here's the question people have been arguing about for three hundred years.
 
 Were the forty-seven ronin heroes, men who gave everything for loyalty? Or were they lawbreakers who put revenge above the law?
 
-Let me know what you think in the comments.
+### Outro: back to the living room
 
-And if you want more stories like this, from samurai to emperors to forgotten rebels, subscribe. Next time, we'll meet the warlord who said he would conquer all of Japan, with an army one-tenth the size of his enemy's.
+[SCENE: Living room. Father and son on the blue sofa.]
+
+SON: Wow. They really waited two years for that.
+
+FATHER: Do you want to know what happens next in the story?
+
+SON: Yes! Tell me!
+
+[SCENE: Father smiles. On screen: Like & Subscribe.]
+
+FATHER: Then ask everyone watching to hit like and subscribe. Next time, I'll tell you about a young warlord who beat an army ten times his size.
 
 [END CARD]

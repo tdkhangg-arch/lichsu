@@ -50,15 +50,18 @@ function frameSVG(shot) {
   const page = await browser.newPage({ viewport: { width: 1920, height: 1080 } });
   let t = 0;
   const shots = [];
-  for (const [i, shot] of def.shots.entries()) {
-    const id = String(i + 1).padStart(2, "0");
-    const file = `images/shot-${id}.png`;
+  let n = 0;
+  for (const shot of def.shots) {
+    // shots may carry their own id (e.g. "intro-1") so inserting them does not renumber the rest
+    const id = shot.id || `shot-${String(++n).padStart(2, "0")}`;
+    const file = `images/${id}.png`;
     await page.setContent(`<html><body style="margin:0">${frameSVG(shot)}</body></html>`);
     await page.screenshot({ path: path.join(outDir, file), clip: { x: 0, y: 0, width: 1920, height: 1080 } });
     const words = shot.narration.split(/\s+/).filter(Boolean).length;
-    const duration = Math.round((words / WPM) * 60 + (shot.pause ?? 0.8));
+    const duration = shot.duration || Math.round((words / WPM) * 60 + (shot.pause ?? 0.8));
     shots.push({
-      id: `shot-${id}`,
+      id,
+      speaker: shot.speaker || null,
       section: shot.section,
       start: t,
       duration,
@@ -85,7 +88,7 @@ function frameSVG(shot) {
     shots,
   };
   fs.writeFileSync(path.join(outDir, "episode.json"), JSON.stringify(episode, null, 2) + "\n");
-  fs.writeFileSync(path.join(outDir, "voiceover.txt"), shots.map(s => s.narration).join("\n\n") + "\n");
+  fs.writeFileSync(path.join(outDir, "voiceover.txt"), shots.map(s => (s.speaker ? `${s.speaker.toUpperCase()}: ` : "") + s.narration).join("\n\n") + "\n");
   const m = Math.floor(t / 60), sec = t % 60;
   console.log(`${shots.length} shots, ${m}:${String(sec).padStart(2, "0")} total`);
 })();

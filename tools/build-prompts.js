@@ -20,10 +20,15 @@ const BACKGROUNDS = {
   village: "dirt street of a traditional Japanese Edo-period town, wooden houses with tiled and thatched roofs, green mountains, temple in the distance, sunny blue sky",
   snow: "snowy open field with frozen puddles and small snow-covered wooden houses on the horizon, overcast sky",
   palace: "interior of a Japanese castle hall, tatami floor, golden folding screen, shoji paper sliding doors, wooden posts, warm light beam",
+  valley: "narrow green valley between wooded hills, dirt path, Sengoku-era Japan",
+  shrine: "Japanese Shinto shrine with a red torii gate, stone path and small shrine hall",
+  livingroom: "modern cozy living room, a blue sofa and an orange sofa facing each other, window, floor lamp, wooden floor, rug",
   ruins: "devastated rice fields under a grey sky, distant Japanese castle burning with smoke, dead trees",
 };
 const OUTFITS = {
   stick: "no clothes, plain stick body",
+  tshirt: "modern T-shirt and blue jeans",
+  hoodie: "modern hoodie and dark jeans",
   armor: "lamellar samurai armor with shoulder plates and plated skirt",
   kimono: "kimono with white obi sash and wave pattern",
   robe: "long flowing layered court robe",
@@ -35,10 +40,10 @@ const OUTFITS = {
   knight: "chainmail and surcoat",
 };
 const HAIR = { none: "bald", short: "short black hair", topknot: "samurai chonmage topknot with shaved crown", bun: "black hair in a bun", long: "very long straight black hair" };
-const HAT = { none: "", nonla: "conical straw hat", kabuto: "samurai kabuto helmet with gold crest", cap: "military field cap", helmet: "steel helmet", mandarin: "black official hat with side wings", crown: "gold crown", roman: "Roman helmet with red crest", tophat: "black top hat" };
+const HAT = { none: "", glasses: "round glasses", nonla: "conical straw hat", kabuto: "samurai kabuto helmet with gold crest", cap: "military field cap", helmet: "steel helmet", mandarin: "black official hat with side wings", crown: "gold crown", roman: "Roman helmet with red crest", tophat: "black top hat" };
 const FACE = { neutral: "calm", angry: "angry frowning", smug: "smug half-lidded smirk", gentle: "gentle shy smile", determined: "determined", surprised: "shocked wide-eyed", closed: "eyes closed, solemn" };
-const PROP = { none: "", katana: "katana and short sword at the hip", sword: "straight sword", rifle: "rifle with bayonet", spear: "spear", fan: "folding paper fan", scroll: "paper scroll" };
-const POSE = { stand: "standing", walk: "walking", bow: "bowing deeply" };
+const PROP = { none: "", book: "an open book", phone: "a smartphone playing a samurai game", katana: "katana and short sword at the hip", sword: "straight sword", rifle: "rifle with bayonet", spear: "spear", fan: "folding paper fan", scroll: "paper scroll" };
+const POSE = { stand: "standing", walk: "walking", bow: "bowing deeply", sit: "sitting on the sofa" };
 const COLOR = { "#3a3640": "black", "#8a6a4a": "brown", "#9a7f55": "khaki", "#2f4f7f": "indigo blue", "#a8342c": "vermilion red", "#5b6b3a": "olive green", "#c2a77a": "beige silk", "#6b4a7a": "purple" };
 
 function who(c) {

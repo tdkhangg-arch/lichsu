@@ -6,16 +6,143 @@
     "height": 1080
   },
   "fps": 30,
-  "total_duration": 575,
+  "total_duration": 599,
   "voiceover": {
     "words_per_minute": 145,
     "file": "voiceover.txt"
   },
+  "music_moods": null,
   "shots": [
     {
-      "id": "shot-01",
-      "section": "Hook",
+      "id": "intro-1",
+      "speaker": "son",
+      "section": "Intro",
       "start": 0,
+      "duration": 4,
+      "image": "images/intro-1.png",
+      "background": "livingroom",
+      "camera": "static",
+      "characters": [
+        {
+          "name": "Father",
+          "expression": "neutral",
+          "pose": "sit"
+        },
+        {
+          "name": "Son",
+          "expression": "determined",
+          "pose": "sit"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "Come on, come on... one more level!",
+      "word_count": 7
+    },
+    {
+      "id": "intro-2",
+      "speaker": "father",
+      "section": "Intro",
+      "start": 4,
+      "duration": 5,
+      "image": "images/intro-2.png",
+      "background": "livingroom",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Father",
+          "expression": "smug",
+          "pose": "walk"
+        },
+        {
+          "name": "Son",
+          "expression": "determined",
+          "pose": "sit"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "Samurai, huh? Do you actually know anything about real samurai?",
+      "word_count": 10
+    },
+    {
+      "id": "intro-3",
+      "speaker": "son",
+      "section": "Intro",
+      "start": 9,
+      "duration": 2,
+      "image": "images/intro-3.png",
+      "background": "livingroom",
+      "camera": "quick push in",
+      "characters": [
+        {
+          "name": "Father",
+          "expression": "smug",
+          "pose": "stand"
+        },
+        {
+          "name": "Son",
+          "expression": "closed",
+          "pose": "sit"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "No. Not really.",
+      "word_count": 3
+    },
+    {
+      "id": "intro-4",
+      "speaker": "father",
+      "section": "Intro",
+      "start": 11,
+      "duration": 9,
+      "image": "images/intro-4.png",
+      "background": "livingroom",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Father",
+          "expression": "gentle",
+          "pose": "stand"
+        },
+        {
+          "name": "Son",
+          "expression": "surprised",
+          "pose": "sit"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "Then pause your game and come sit with me. I'll tell you a true story, full of courage and determination.",
+      "word_count": 20
+    },
+    {
+      "id": "intro-5",
+      "speaker": "son",
+      "section": "Intro",
+      "start": 20,
+      "duration": 2,
+      "image": "images/intro-5.png",
+      "background": "livingroom",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Father",
+          "expression": "gentle",
+          "pose": "sit"
+        },
+        {
+          "name": "Son",
+          "expression": "gentle",
+          "pose": "sit"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "Okay. I'm listening.",
+      "word_count": 3
+    },
+    {
+      "id": "shot-01",
+      "speaker": null,
+      "section": "Hook",
+      "start": 22,
       "duration": 5,
       "image": "images/shot-01.png",
       "background": "snow",
@@ -33,8 +160,9 @@
     },
     {
       "id": "shot-02",
+      "speaker": null,
       "section": "Hook",
-      "start": 5,
+      "start": 27,
       "duration": 10,
       "image": "images/shot-02.png",
       "background": "snow",
@@ -67,8 +195,9 @@
     },
     {
       "id": "shot-03",
+      "speaker": null,
       "section": "Hook",
-      "start": 15,
+      "start": 37,
       "duration": 19,
       "image": "images/shot-03.png",
       "background": "snow",
@@ -86,8 +215,9 @@
     },
     {
       "id": "shot-04",
+      "speaker": null,
       "section": "Samurai without wars",
-      "start": 34,
+      "start": 56,
       "duration": 18,
       "image": "images/shot-04.png",
       "background": "village",
@@ -105,8 +235,9 @@
     },
     {
       "id": "shot-05",
+      "speaker": null,
       "section": "Samurai without wars",
-      "start": 52,
+      "start": 74,
       "duration": 6,
       "image": "images/shot-05.png",
       "background": "village",
@@ -129,8 +260,9 @@
     },
     {
       "id": "shot-06",
+      "speaker": null,
       "section": "Samurai without wars",
-      "start": 58,
+      "start": 80,
       "duration": 21,
       "image": "images/shot-06.png",
       "background": "palace",
@@ -148,8 +280,9 @@
     },
     {
       "id": "shot-07",
+      "speaker": null,
       "section": "Samurai without wars",
-      "start": 79,
+      "start": 101,
       "duration": 13,
       "image": "images/shot-07.png",
       "background": "palace",
@@ -177,8 +310,9 @@
     },
     {
       "id": "shot-08",
+      "speaker": null,
       "section": "Samurai without wars",
-      "start": 92,
+      "start": 114,
       "duration": 8,
       "image": "images/shot-08.png",
       "background": "palace",
@@ -196,8 +330,9 @@
     },
     {
       "id": "shot-09",
+      "speaker": null,
       "section": "The sword in the castle",
-      "start": 100,
+      "start": 122,
       "duration": 17,
       "image": "images/shot-09.png",
       "background": "palace",
@@ -215,8 +350,9 @@
     },
     {
       "id": "shot-10",
+      "speaker": null,
       "section": "The sword in the castle",
-      "start": 117,
+      "start": 139,
       "duration": 8,
       "image": "images/shot-10.png",
       "background": "palace",
@@ -234,8 +370,9 @@
     },
     {
       "id": "shot-11",
+      "speaker": null,
       "section": "The sword in the castle",
-      "start": 125,
+      "start": 147,
       "duration": 21,
       "image": "images/shot-11.png",
       "background": "palace",
@@ -258,8 +395,9 @@
     },
     {
       "id": "shot-12",
+      "speaker": null,
       "section": "The sword in the castle",
-      "start": 146,
+      "start": 168,
       "duration": 11,
       "image": "images/shot-12.png",
       "background": "paper",
@@ -277,8 +415,9 @@
     },
     {
       "id": "shot-13",
+      "speaker": null,
       "section": "The sword in the castle",
-      "start": 157,
+      "start": 179,
       "duration": 15,
       "image": "images/shot-13.png",
       "background": "palace",
@@ -301,8 +440,9 @@
     },
     {
       "id": "shot-14",
+      "speaker": null,
       "section": "The sword in the castle",
-      "start": 172,
+      "start": 194,
       "duration": 13,
       "image": "images/shot-14.png",
       "background": "palace",
@@ -320,8 +460,9 @@
     },
     {
       "id": "shot-15",
+      "speaker": null,
       "section": "Masters become ronin",
-      "start": 185,
+      "start": 207,
       "duration": 12,
       "image": "images/shot-15.png",
       "background": "palace",
@@ -344,8 +485,9 @@
     },
     {
       "id": "shot-16",
+      "speaker": null,
       "section": "Masters become ronin",
-      "start": 197,
+      "start": 219,
       "duration": 12,
       "image": "images/shot-16.png",
       "background": "ruins",
@@ -373,8 +515,9 @@
     },
     {
       "id": "shot-17",
+      "speaker": null,
       "section": "Masters become ronin",
-      "start": 209,
+      "start": 231,
       "duration": 11,
       "image": "images/shot-17.png",
       "background": "village",
@@ -392,8 +535,9 @@
     },
     {
       "id": "shot-18",
+      "speaker": null,
       "section": "Masters become ronin",
-      "start": 220,
+      "start": 242,
       "duration": 18,
       "image": "images/shot-18.png",
       "background": "village",
@@ -421,8 +565,9 @@
     },
     {
       "id": "shot-19",
+      "speaker": null,
       "section": "The long wait",
-      "start": 238,
+      "start": 260,
       "duration": 8,
       "image": "images/shot-19.png",
       "background": "palace",
@@ -440,8 +585,9 @@
     },
     {
       "id": "shot-20",
+      "speaker": null,
       "section": "The long wait",
-      "start": 246,
+      "start": 268,
       "duration": 13,
       "image": "images/shot-20.png",
       "background": "palace",
@@ -464,8 +610,9 @@
     },
     {
       "id": "shot-21",
+      "speaker": null,
       "section": "The long wait",
-      "start": 259,
+      "start": 281,
       "duration": 7,
       "image": "images/shot-21.png",
       "background": "palace",
@@ -493,8 +640,9 @@
     },
     {
       "id": "shot-22",
+      "speaker": null,
       "section": "The long wait",
-      "start": 266,
+      "start": 288,
       "duration": 16,
       "image": "images/shot-22.png",
       "background": "village",
@@ -512,8 +660,9 @@
     },
     {
       "id": "shot-23",
+      "speaker": null,
       "section": "The long wait",
-      "start": 282,
+      "start": 304,
       "duration": 19,
       "image": "images/shot-23.png",
       "background": "village",
@@ -536,8 +685,9 @@
     },
     {
       "id": "shot-24",
+      "speaker": null,
       "section": "The long wait",
-      "start": 301,
+      "start": 323,
       "duration": 11,
       "image": "images/shot-24.png",
       "background": "palace",
@@ -560,8 +710,9 @@
     },
     {
       "id": "shot-25",
+      "speaker": null,
       "section": "The long wait",
-      "start": 312,
+      "start": 334,
       "duration": 7,
       "image": "images/shot-25.png",
       "background": "palace",
@@ -599,8 +750,9 @@
     },
     {
       "id": "shot-26",
+      "speaker": null,
       "section": "The long wait",
-      "start": 319,
+      "start": 341,
       "duration": 19,
       "image": "images/shot-26.png",
       "background": "village",
@@ -623,8 +775,9 @@
     },
     {
       "id": "shot-27",
+      "speaker": null,
       "section": "The night raid",
-      "start": 338,
+      "start": 360,
       "duration": 9,
       "image": "images/shot-27.png",
       "background": "snow",
@@ -657,8 +810,9 @@
     },
     {
       "id": "shot-28",
+      "speaker": null,
       "section": "The night raid",
-      "start": 347,
+      "start": 369,
       "duration": 14,
       "image": "images/shot-28.png",
       "background": "snow",
@@ -681,8 +835,9 @@
     },
     {
       "id": "shot-29",
+      "speaker": null,
       "section": "The night raid",
-      "start": 361,
+      "start": 383,
       "duration": 17,
       "image": "images/shot-29.png",
       "background": "snow",
@@ -705,8 +860,9 @@
     },
     {
       "id": "shot-30",
+      "speaker": null,
       "section": "The night raid",
-      "start": 378,
+      "start": 400,
       "duration": 9,
       "image": "images/shot-30.png",
       "background": "snow",
@@ -729,8 +885,9 @@
     },
     {
       "id": "shot-31",
+      "speaker": null,
       "section": "The night raid",
-      "start": 387,
+      "start": 409,
       "duration": 7,
       "image": "images/shot-31.png",
       "background": "palace",
@@ -748,8 +905,9 @@
     },
     {
       "id": "shot-32",
+      "speaker": null,
       "section": "The night raid",
-      "start": 394,
+      "start": 416,
       "duration": 15,
       "image": "images/shot-32.png",
       "background": "palace",
@@ -767,8 +925,9 @@
     },
     {
       "id": "shot-33",
+      "speaker": null,
       "section": "The night raid",
-      "start": 409,
+      "start": 431,
       "duration": 13,
       "image": "images/shot-33.png",
       "background": "palace",
@@ -791,8 +950,9 @@
     },
     {
       "id": "shot-34",
+      "speaker": null,
       "section": "The walk to Sengaku-ji",
-      "start": 422,
+      "start": 444,
       "duration": 17,
       "image": "images/shot-34.png",
       "background": "village",
@@ -830,8 +990,9 @@
     },
     {
       "id": "shot-35",
+      "speaker": null,
       "section": "The walk to Sengaku-ji",
-      "start": 439,
+      "start": 461,
       "duration": 9,
       "image": "images/shot-35.png",
       "background": "village",
@@ -859,8 +1020,9 @@
     },
     {
       "id": "shot-36",
+      "speaker": null,
       "section": "The walk to Sengaku-ji",
-      "start": 448,
+      "start": 470,
       "duration": 4,
       "image": "images/shot-36.png",
       "background": "palace",
@@ -883,8 +1045,9 @@
     },
     {
       "id": "shot-37",
+      "speaker": null,
       "section": "The verdict",
-      "start": 452,
+      "start": 474,
       "duration": 14,
       "image": "images/shot-37.png",
       "background": "palace",
@@ -907,8 +1070,9 @@
     },
     {
       "id": "shot-38",
+      "speaker": null,
       "section": "The verdict",
-      "start": 466,
+      "start": 488,
       "duration": 12,
       "image": "images/shot-38.png",
       "background": "village",
@@ -936,8 +1100,9 @@
     },
     {
       "id": "shot-39",
+      "speaker": null,
       "section": "The verdict",
-      "start": 478,
+      "start": 500,
       "duration": 14,
       "image": "images/shot-39.png",
       "background": "palace",
@@ -955,8 +1120,9 @@
     },
     {
       "id": "shot-40",
+      "speaker": null,
       "section": "The verdict",
-      "start": 492,
+      "start": 514,
       "duration": 5,
       "image": "images/shot-40.png",
       "background": "paper",
@@ -994,8 +1160,9 @@
     },
     {
       "id": "shot-41",
+      "speaker": null,
       "section": "The verdict",
-      "start": 497,
+      "start": 519,
       "duration": 16,
       "image": "images/shot-41.png",
       "background": "village",
@@ -1013,8 +1180,9 @@
     },
     {
       "id": "shot-42",
+      "speaker": null,
       "section": "Heroes or outlaws?",
-      "start": 513,
+      "start": 535,
       "duration": 12,
       "image": "images/shot-42.png",
       "background": "village",
@@ -1032,8 +1200,9 @@
     },
     {
       "id": "shot-43",
+      "speaker": null,
       "section": "Heroes or outlaws?",
-      "start": 525,
+      "start": 547,
       "duration": 12,
       "image": "images/shot-43.png",
       "background": "palace",
@@ -1056,8 +1225,9 @@
     },
     {
       "id": "shot-44",
+      "speaker": null,
       "section": "Heroes or outlaws?",
-      "start": 537,
+      "start": 559,
       "duration": 15,
       "image": "images/shot-44.png",
       "background": "snow",
@@ -1074,28 +1244,104 @@
       "word_count": 34
     },
     {
-      "id": "shot-45",
-      "section": "Heroes or outlaws?",
-      "start": 552,
-      "duration": 23,
-      "image": "images/shot-45.png",
-      "background": "paper",
+      "id": "outro-1",
+      "speaker": "son",
+      "section": "Outro",
+      "start": 574,
+      "duration": 4,
+      "image": "images/outro-1.png",
+      "background": "livingroom",
       "camera": "static",
       "characters": [
         {
-          "name": "Narrator",
-          "expression": "smug",
-          "pose": "stand"
+          "name": "Father",
+          "expression": "gentle",
+          "pose": "sit"
         },
         {
-          "name": "Warlord",
-          "expression": "smug",
-          "pose": "stand"
+          "name": "Son",
+          "expression": "surprised",
+          "pose": "sit"
         }
       ],
-      "on_screen_text": "Next: Okehazama, 1560",
-      "narration": "Let me know what you think in the comments. And if you want more stories like this, from samurai to emperors to forgotten rebels, subscribe. Next time, we'll meet the warlord who said he would conquer all of Japan, with an army one-tenth the size of his enemy's.",
-      "word_count": 48
+      "on_screen_text": null,
+      "narration": "Wow. They really waited two years for that.",
+      "word_count": 8
+    },
+    {
+      "id": "outro-2",
+      "speaker": "father",
+      "section": "Outro",
+      "start": 578,
+      "duration": 5,
+      "image": "images/outro-2.png",
+      "background": "livingroom",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Father",
+          "expression": "smug",
+          "pose": "sit"
+        },
+        {
+          "name": "Son",
+          "expression": "neutral",
+          "pose": "sit"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "Do you want to know what happens next in the story?",
+      "word_count": 11
+    },
+    {
+      "id": "outro-3",
+      "speaker": "son",
+      "section": "Outro",
+      "start": 583,
+      "duration": 2,
+      "image": "images/outro-3.png",
+      "background": "livingroom",
+      "camera": "quick push in",
+      "characters": [
+        {
+          "name": "Father",
+          "expression": "gentle",
+          "pose": "sit"
+        },
+        {
+          "name": "Son",
+          "expression": "determined",
+          "pose": "sit"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "Yes! Tell me!",
+      "word_count": 3
+    },
+    {
+      "id": "outro-4",
+      "speaker": "father",
+      "section": "Outro",
+      "start": 585,
+      "duration": 14,
+      "image": "images/outro-4.png",
+      "background": "livingroom",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Father",
+          "expression": "smug",
+          "pose": "sit"
+        },
+        {
+          "name": "Son",
+          "expression": "gentle",
+          "pose": "sit"
+        }
+      ],
+      "on_screen_text": "Like & Subscribe",
+      "narration": "Then ask everyone watching to hit like and subscribe. Next time, I'll tell you about a young warlord who beat an army ten times his size.",
+      "word_count": 26
     }
   ]
 }
