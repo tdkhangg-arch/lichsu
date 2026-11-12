@@ -24,7 +24,7 @@ descriptions in English.
 ## Episodes
 | # | Folder | Topic | Status |
 |---|---|---|---|
-| 1 | `episodes/01-47-ronin` | The 47 Ronin (1701–1703) | Video done with father/son intro and outro; 3 Shorts |
+| 1 | `episodes/01-47-ronin` | The 47 Ronin (1701–1703) | Final: Gemini voice (Charon/Puck), father/son intro and outro, 3 Shorts. Owner wants it kept as is; do not re-voice with ElevenLabs |
 | 2 | `episodes/02-okehazama` | Battle of Okehazama (1560) | Script and frames done, with father/son intro and outro; render with ElevenLabs |
 | 3 | (next) | Honnō-ji Incident (1582) | Teased at the end of episode 2 |
 
