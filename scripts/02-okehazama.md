@@ -1,6 +1,6 @@
 # How 2,000 Samurai Beat an Army of 25,000 (Battle of Okehazama)
 
-**Target length:** about 10 minutes (1299 spoken words at 145 words per minute)
+**Target length:** about 10 minutes (1297 spoken words at 145 words per minute)
 **Audience:** US, UK, Canada, Australia
 
 ---
@@ -18,15 +18,15 @@
 > In 1560, the most powerful lord in central Japan marched west with about 25,000 men. Standing in his way was a 25-year-old everyone called the Great Fool of Owari. What happened in a small valley called Okehazama changed the course of Japanese history.
 >
 > 0:00 Intro
-> 0:30 Hook
-> 1:06 The Great Fool of Owari
-> 2:25 The finest archer of the Eastern Sea Road
-> 3:23 The forts fall
-> 4:05 Fifty years of human life
-> 5:27 The storm
-> 7:24 Why it worked
-> 7:57 What came next
-> 9:10 Outro
+> 0:27 Hook
+> 1:03 The Great Fool of Owari
+> 2:22 The finest archer of the Eastern Sea Road
+> 3:20 The forts fall
+> 4:02 Fifty years of human life
+> 5:24 The storm
+> 7:21 Why it worked
+> 7:54 What came next
+> 9:09 Outro
 
 Chapter times are estimates; update them from episode.timed.json after the voiceover is recorded.
 
@@ -42,27 +42,27 @@ Scene notes in [brackets]. Characters and backgrounds come from Xưởng Nhân V
 
 ### 0:00 – Intro
 
-[SCENE 1: Living room. Father reads on the blue sofa; son walks in, excited.]
+[SCENE 1: Living room. Father (glasses, green T-shirt) reads on the blue sofa. His 16-year-old son (red hoodie) sits on the orange sofa, playing a samurai game on his phone.]
 
-SON: Dad! You promised me the next story!
+SON: Come on, come on... one more battle!
 
-[SCENE 2: Father lowers his book, smiling.]
+[SCENE 2: Father puts the book down and walks over, smiling.]
 
-FATHER: I did. Last time, the samurai had peace and nothing left to fight. This time, we go back to when Japan was at war with itself.
+FATHER: Samurai, huh? Do you know anything about real samurai battles?
 
-[SCENE 3: Son, curious.]
+[SCENE 3: Son shakes his head.]
 
-SON: Was there a big battle?
+SON: Not really.
 
-[SCENE 4: Father puts the book down.]
+[SCENE 4: Father, gentle and a little mysterious.]
 
-FATHER: One of the most surprising battles in history. Two thousand men against twenty-five thousand. Sit down, and I'll tell you.
+FATHER: Then pause your game and come sit with me. I'll tell you about one of the most surprising battles in history. Two thousand men against twenty-five thousand.
 
 [SCENE 5: Father and son side by side on the blue sofa.]
 
-SON: Okay. I'm ready.
+SON: Two thousand against twenty-five thousand? Okay. I'm listening.
 
-### 0:30 – Hook
+### 0:27 – Hook
 
 [SCENE 6: Valley, day. A long line of Imagawa soldiers with spears marching. On screen: Central Japan, 1560]
 
@@ -76,7 +76,7 @@ Standing in their way is a young lord with a few thousand soldiers, a bad reputa
 
 His own advisers think he's finished. His enemies think he's a joke. By the end of the day, one of those two men will be gone, and the history of Japan will change direction.
 
-### 1:06 – The Great Fool of Owari
+### 1:03 – The Great Fool of Owari
 
 [SCENE 9: Teenage Nobunaga in a red kimono walking through town, smug. On screen: Oda Nobunaga]
 
@@ -102,7 +102,7 @@ Even his own family didn't trust him. In his first years as clan leader, he had 
 
 But the fool was paying attention. He trained his men with extra-long spears. He studied the new guns that had recently arrived in Japan with Portuguese traders. And he chose his men for their talent, not their family name.
 
-### 2:25 – The finest archer of the Eastern Sea Road
+### 2:22 – The finest archer of the Eastern Sea Road
 
 [SCENE 15: Yoshimoto in an elegant court robe with a fan, smug. On screen: Imagawa Yoshimoto]
 
@@ -124,7 +124,7 @@ Historians still debate why. Maybe he wanted to reach Kyoto and take control of 
 
 Yoshimoto's army is usually counted at about twenty-five thousand men. Some sources say more. Nobunaga could gather maybe two or three thousand. On paper, this wasn't a war. It was a formality.
 
-### 3:23 – The forts fall
+### 3:20 – The forts fall
 
 [SCENE 20: Burning fort on the horizon, Imagawa soldiers advancing.]
 
@@ -142,7 +142,7 @@ Remember that name. He'll come back later, under a different one.
 
 Before dawn on the nineteenth day of the fifth month, the border forts of Marune and Washizu came under attack. Smoke was rising over the border, and messengers were riding hard to Nobunaga's castle at Kiyosu.
 
-### 4:05 – Fifty years of human life
+### 4:02 – Fifty years of human life
 
 [SCENE 24: War council the night before. Worried generals, relaxed Nobunaga.]
 
@@ -176,7 +176,7 @@ He stopped at Atsuta Shrine to pray. Soldiers kept arriving until he had perhaps
 
 From the hills, he could see the smoke of his burning forts.
 
-### 5:27 – The storm
+### 5:24 – The storm
 
 [SCENE 32: Yoshimoto in armor resting in the valley with his fan, smug. On screen: Okehazama]
 
@@ -218,7 +218,7 @@ His bodyguards fought hard, but the attackers broke through. Two of Nobunaga's s
 
 With their leader gone, the huge Imagawa army simply fell apart. Units retreated in every direction. The invasion was over in an afternoon.
 
-### 7:24 – Why it worked
+### 7:21 – Why it worked
 
 [SCENE 42: Diagram-like: few Oda soldiers vs a small Imagawa group. On screen: 1. Only fight part of the army]
 
@@ -232,7 +232,7 @@ Second, speed. While everyone else was planning, Nobunaga was moving.
 
 And third, luck. That storm arrived at exactly the right moment. But luck only helps people who are already in position to use it.
 
-### 7:57 – What came next
+### 7:54 – What came next
 
 [SCENE 45: Townspeople cheering Nobunaga.]
 
@@ -244,7 +244,7 @@ And remember that seventeen-year-old commander, Matsudaira Motoyasu? With the Im
 
 [SCENE 47: Older Ieyasu in an official robe with a scroll. On screen: Tokugawa shogunate, 1603]
 
-Yes, that Tokugawa. About forty years after Okehazama, Ieyasu would win the struggle for Japan and found the Tokugawa shogunate, the government that gave Japan the long peace we saw in our last episode. The same peace that left the forty-seven ronin with no wars to fight.
+Yes, that Tokugawa. About forty years after Okehazama, Ieyasu would win the struggle for Japan and found the Tokugawa shogunate, the government that gave Japan more than two hundred and fifty years of peace. And that long peace would lead to one of the most famous revenge stories in Japanese history.
 
 [SCENE 48: Nobunaga with a scroll, determined. On screen: 天下布武 Tenka fubu]
 
@@ -252,9 +252,9 @@ As for Nobunaga, he kept going. He took new provinces, marched into Kyoto and be
 
 [SCENE 49: Nobunaga surprised at night, a shadowy general behind him. On screen: Honnō-ji, 1582]
 
-He came very close. Within about twenty years, Nobunaga controlled much of central Japan. Then, in 1582, at a temple in Kyoto called Honnō-ji, one of his own generals turned against him. That's a story for next time.
+He came very close. Within about twenty years, Nobunaga controlled much of central Japan. Then, in 1582, at a temple in Kyoto called Honnō-ji, one of his own generals turned against him. But that's a story for another day.
 
-### 9:10 – Outro
+### 9:09 – Outro
 
 [SCENE 50: Living room. Father and son on the blue sofa; son amazed.]
 

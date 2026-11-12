@@ -14,7 +14,7 @@ What you'll find here:
 • Legends from Asia, Europe and around the world, and what really happened
 • Shorts with the best moments from each story
 
-New to history? Start with The 47 Ronin.
+New here? Start with "How 2,000 Samurai Beat an Army of 25,000."
 
 Subscribe and tell us in the comments which story Dad should tell next.
 
