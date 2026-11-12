@@ -6,7 +6,7 @@
     "height": 1080
   },
   "fps": 30,
-  "total_duration": 599,
+  "total_duration": 601,
   "voiceover": {
     "words_per_minute": 145,
     "file": "voiceover.txt"
@@ -1273,7 +1273,7 @@
       "speaker": "father",
       "section": "Outro",
       "start": 578,
-      "duration": 5,
+      "duration": 10,
       "image": "images/outro-2.png",
       "background": "livingroom",
       "camera": "slow zoom in",
@@ -1290,14 +1290,14 @@
         }
       ],
       "on_screen_text": null,
-      "narration": "Do you want to know what happens next in the story?",
-      "word_count": 11
+      "narration": "Do you want to hear the next story? It's an incredible one, all about the courage and resilience of the Japanese people.",
+      "word_count": 22
     },
     {
       "id": "outro-3",
       "speaker": "son",
       "section": "Outro",
-      "start": 583,
+      "start": 588,
       "duration": 2,
       "image": "images/outro-3.png",
       "background": "livingroom",
@@ -1322,8 +1322,8 @@
       "id": "outro-4",
       "speaker": "father",
       "section": "Outro",
-      "start": 585,
-      "duration": 14,
+      "start": 590,
+      "duration": 11,
       "image": "images/outro-4.png",
       "background": "livingroom",
       "camera": "slow zoom in",
@@ -1340,8 +1340,8 @@
         }
       ],
       "on_screen_text": "Like & Subscribe",
-      "narration": "Then ask everyone watching to hit like and subscribe. Next time, I'll tell you about a young warlord who beat an army ten times his size.",
-      "word_count": 26
+      "narration": "If you want to hear it, tell everyone watching to hit like and subscribe. Then I'll tell you next time.",
+      "word_count": 20
     }
   ]
 }

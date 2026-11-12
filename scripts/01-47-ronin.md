@@ -230,12 +230,12 @@ Were the forty-seven ronin heroes, men who gave everything for loyalty? Or were 
 
 SON: Wow. They really waited two years for that.
 
-FATHER: Do you want to know what happens next in the story?
+FATHER: Do you want to hear the next story? It's an incredible one, all about the courage and resilience of the Japanese people.
 
 SON: Yes! Tell me!
 
 [SCENE: Father smiles. On screen: Like & Subscribe.]
 
-FATHER: Then ask everyone watching to hit like and subscribe. Next time, I'll tell you about a young warlord who beat an army ten times his size.
+FATHER: If you want to hear it, tell everyone watching to hit like and subscribe. Then I'll tell you next time.
 
 [END CARD]
