@@ -17,6 +17,11 @@ const C = {
   narrator: mk({ face: "smug" }),
 };
 const ch = (name, cfg, x, { scale, ground, ...more } = {}) => ({ name, x, scale, ground, cfg: { ...cfg, ...more } });
+// Modern-day father and son who frame the story (the father is the narrator's voice)
+const DAD = mk({ hair: "short", hat: "glasses", outfit: "tshirt", color: "#5b6b3a", prop: "book", face: "neutral" });
+const SON = mk({ hair: "short", outfit: "hoodie", color: "#a8342c", prop: "none", face: "determined" });
+const SEAT = 303;   // ground line that puts a sitting character on the sofa
+const sit = (name, cfg, x, more = {}) => ch(name, cfg, x, { pose: "sit", ground: SEAT, ...more });
 const dusk = { color: "#2a2440", opacity: 0.35 };
 const smoke = { color: "#5a5248", opacity: 0.25 };
 
@@ -43,8 +48,31 @@ module.exports = {
     "The storm": "raid",
     "Why it worked": "quiet",
     "What came next": "reflect",
+    "Intro": "light",
+    "Outro": "light",
   },
   shots: [
+    // Intro: father and son in the living room
+    { id: "intro-1", section: "Intro", speaker: "son", background: "livingroom", camera: "static",
+      note: "Living room. Father reads on the blue sofa; son walks in, excited.",
+      characters: [sit("Father", DAD, 110, { flip: true }), ch("Son", SON, 330, { scale: 0.68, pose: "walk", face: "smug" })],
+      narration: "Dad! You promised me the next story!" },
+    { id: "intro-2", section: "Intro", speaker: "father", background: "livingroom", camera: "slow zoom in",
+      note: "Father lowers his book, smiling.",
+      characters: [sit("Father", DAD, 110, { flip: true, face: "smug" }), ch("Son", SON, 300, { scale: 0.68, face: "gentle" })],
+      narration: "I did. Last time, the samurai had peace and nothing left to fight. This time, we go back to when Japan was at war with itself." },
+    { id: "intro-3", section: "Intro", speaker: "son", background: "livingroom", camera: "quick push in",
+      note: "Son, curious.",
+      characters: [sit("Father", DAD, 110, { flip: true, face: "gentle" }), ch("Son", SON, 300, { scale: 0.68, face: "surprised" })],
+      narration: "Was there a big battle?" },
+    { id: "intro-4", section: "Intro", speaker: "father", background: "livingroom", camera: "slow zoom in",
+      note: "Father puts the book down.",
+      characters: [sit("Father", DAD, 110, { flip: true, prop: "none", face: "smug" }), ch("Son", SON, 300, { scale: 0.68, face: "surprised" })],
+      narration: "One of the most surprising battles in history. Two thousand men against twenty-five thousand. Sit down, and I'll tell you." },
+    { id: "intro-5", section: "Intro", speaker: "son", background: "livingroom", camera: "slow zoom in",
+      note: "Father and son side by side on the blue sofa.",
+      characters: [sit("Father", DAD, 95, { flip: true, prop: "none", face: "gentle" }), sit("Son", SON, 165, { scale: 0.68, face: "gentle" })],
+      narration: "Okay. I'm ready." },
     // Hook
     { section: "Hook", background: "valley", camera: "slow pan right", text: "Central Japan, 1560",
       note: "Valley, day. A long line of Imagawa soldiers with spears marching.",
@@ -236,9 +264,22 @@ module.exports = {
       note: "Nobunaga surprised at night, a shadowy general behind him.",
       characters: [ch("Nobunaga", { ...C.nobuYoung, face: "surprised" }, 300), ch("General", { ...C.odaSoldier, face: "smug", color: "#2a2830" }, 150, { flip: true, scale: 0.65 })],
       narration: "He came very close. Within about twenty years, Nobunaga controlled much of central Japan. Then, in 1582, at a temple in Kyoto called Honnō-ji, one of his own generals turned against him. That's a story for next time." },
-    { section: "What came next", background: "paper", camera: "static", text: "Genius or luck?", pause: 3,
-      note: "Narrator and Nobunaga side by side.",
-      characters: [ch("Narrator", C.narrator, 170, { flip: true }), ch("Nobunaga", C.nobunaga, 330, { face: "smug" })],
-      narration: "If you enjoyed this, subscribe. And tell me in the comments: was Okehazama genius, or just very good luck?" },
+    // Outro: back to the living room
+    { id: "outro-1", section: "Outro", speaker: "son", background: "livingroom", camera: "static",
+      note: "Living room. Father and son on the blue sofa; son amazed.",
+      characters: [sit("Father", DAD, 95, { flip: true, prop: "none", face: "gentle" }), sit("Son", SON, 165, { scale: 0.68, face: "surprised" })],
+      narration: "So the fool won. Was he a genius, or just lucky?" },
+    { id: "outro-2", section: "Outro", speaker: "father", background: "livingroom", camera: "slow zoom in", text: "Genius or luck? Comment below",
+      note: "Father, thoughtful smile.",
+      characters: [sit("Father", DAD, 95, { flip: true, prop: "none", face: "smug" }), sit("Son", SON, 165, { scale: 0.68, face: "neutral" })],
+      narration: "People still argue about that. Do you want to hear the next story? It's an incredible one, all about the courage and resilience of the Japanese people." },
+    { id: "outro-3", section: "Outro", speaker: "son", background: "livingroom", camera: "quick push in",
+      note: "Son, excited.",
+      characters: [sit("Father", DAD, 95, { flip: true, prop: "none", face: "gentle" }), sit("Son", SON, 165, { scale: 0.68, face: "determined" })],
+      narration: "Yes! Tell me!" },
+    { id: "outro-4", section: "Outro", speaker: "father", background: "livingroom", camera: "slow zoom in", text: "Like & Subscribe", pause: 3,
+      note: "Father smiles at the viewer.",
+      characters: [sit("Father", DAD, 95, { flip: true, prop: "none", face: "smug" }), sit("Son", SON, 165, { scale: 0.68, face: "gentle" })],
+      narration: "If you want to hear it, tell everyone watching to hit like and subscribe. Then I'll tell you next time." },
   ],
 };

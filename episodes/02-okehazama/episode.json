@@ -6,7 +6,7 @@
     "height": 1080
   },
   "fps": 30,
-  "total_duration": 531,
+  "total_duration": 580,
   "voiceover": {
     "words_per_minute": 145,
     "file": "voiceover.txt"
@@ -19,13 +19,141 @@
     "Fifty years of human life": "solemn",
     "The storm": "raid",
     "Why it worked": "quiet",
-    "What came next": "reflect"
+    "What came next": "reflect",
+    "Intro": "light",
+    "Outro": "light"
   },
   "shots": [
     {
-      "id": "shot-01",
-      "section": "Hook",
+      "id": "intro-1",
+      "speaker": "son",
+      "section": "Intro",
       "start": 0,
+      "duration": 4,
+      "image": "images/intro-1.png",
+      "background": "livingroom",
+      "camera": "static",
+      "characters": [
+        {
+          "name": "Father",
+          "expression": "neutral",
+          "pose": "sit"
+        },
+        {
+          "name": "Son",
+          "expression": "smug",
+          "pose": "walk"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "Dad! You promised me the next story!",
+      "word_count": 7
+    },
+    {
+      "id": "intro-2",
+      "speaker": "father",
+      "section": "Intro",
+      "start": 4,
+      "duration": 12,
+      "image": "images/intro-2.png",
+      "background": "livingroom",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Father",
+          "expression": "smug",
+          "pose": "sit"
+        },
+        {
+          "name": "Son",
+          "expression": "gentle",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "I did. Last time, the samurai had peace and nothing left to fight. This time, we go back to when Japan was at war with itself.",
+      "word_count": 26
+    },
+    {
+      "id": "intro-3",
+      "speaker": "son",
+      "section": "Intro",
+      "start": 16,
+      "duration": 3,
+      "image": "images/intro-3.png",
+      "background": "livingroom",
+      "camera": "quick push in",
+      "characters": [
+        {
+          "name": "Father",
+          "expression": "gentle",
+          "pose": "sit"
+        },
+        {
+          "name": "Son",
+          "expression": "surprised",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "Was there a big battle?",
+      "word_count": 5
+    },
+    {
+      "id": "intro-4",
+      "speaker": "father",
+      "section": "Intro",
+      "start": 19,
+      "duration": 9,
+      "image": "images/intro-4.png",
+      "background": "livingroom",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Father",
+          "expression": "smug",
+          "pose": "sit"
+        },
+        {
+          "name": "Son",
+          "expression": "surprised",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "One of the most surprising battles in history. Two thousand men against twenty-five thousand. Sit down, and I'll tell you.",
+      "word_count": 20
+    },
+    {
+      "id": "intro-5",
+      "speaker": "son",
+      "section": "Intro",
+      "start": 28,
+      "duration": 2,
+      "image": "images/intro-5.png",
+      "background": "livingroom",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Father",
+          "expression": "gentle",
+          "pose": "sit"
+        },
+        {
+          "name": "Son",
+          "expression": "gentle",
+          "pose": "sit"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "Okay. I'm ready.",
+      "word_count": 3
+    },
+    {
+      "id": "shot-01",
+      "speaker": null,
+      "section": "Hook",
+      "start": 30,
       "duration": 12,
       "image": "images/shot-01.png",
       "background": "valley",
@@ -63,8 +191,9 @@
     },
     {
       "id": "shot-02",
+      "speaker": null,
       "section": "Hook",
-      "start": 12,
+      "start": 42,
       "duration": 9,
       "image": "images/shot-02.png",
       "background": "valley",
@@ -82,8 +211,9 @@
     },
     {
       "id": "shot-03",
+      "speaker": null,
       "section": "Hook",
-      "start": 21,
+      "start": 51,
       "duration": 15,
       "image": "images/shot-03.png",
       "background": "valley",
@@ -101,8 +231,9 @@
     },
     {
       "id": "shot-04",
+      "speaker": null,
       "section": "The Great Fool of Owari",
-      "start": 36,
+      "start": 66,
       "duration": 16,
       "image": "images/shot-04.png",
       "background": "village",
@@ -120,8 +251,9 @@
     },
     {
       "id": "shot-05",
+      "speaker": null,
       "section": "The Great Fool of Owari",
-      "start": 52,
+      "start": 82,
       "duration": 15,
       "image": "images/shot-05.png",
       "background": "village",
@@ -149,8 +281,9 @@
     },
     {
       "id": "shot-06",
+      "speaker": null,
       "section": "The Great Fool of Owari",
-      "start": 67,
+      "start": 97,
       "duration": 5,
       "image": "images/shot-06.png",
       "background": "village",
@@ -178,8 +311,9 @@
     },
     {
       "id": "shot-07",
+      "speaker": null,
       "section": "The Great Fool of Owari",
-      "start": 72,
+      "start": 102,
       "duration": 14,
       "image": "images/shot-07.png",
       "background": "palace",
@@ -202,8 +336,9 @@
     },
     {
       "id": "shot-08",
+      "speaker": null,
       "section": "The Great Fool of Owari",
-      "start": 86,
+      "start": 116,
       "duration": 12,
       "image": "images/shot-08.png",
       "background": "palace",
@@ -231,8 +366,9 @@
     },
     {
       "id": "shot-09",
+      "speaker": null,
       "section": "The Great Fool of Owari",
-      "start": 98,
+      "start": 128,
       "duration": 17,
       "image": "images/shot-09.png",
       "background": "village",
@@ -260,8 +396,9 @@
     },
     {
       "id": "shot-10",
+      "speaker": null,
       "section": "The finest archer of the Eastern Sea Road",
-      "start": 115,
+      "start": 145,
       "duration": 8,
       "image": "images/shot-10.png",
       "background": "palace",
@@ -279,8 +416,9 @@
     },
     {
       "id": "shot-11",
+      "speaker": null,
       "section": "The finest archer of the Eastern Sea Road",
-      "start": 123,
+      "start": 153,
       "duration": 18,
       "image": "images/shot-11.png",
       "background": "palace",
@@ -308,8 +446,9 @@
     },
     {
       "id": "shot-12",
+      "speaker": null,
       "section": "The finest archer of the Eastern Sea Road",
-      "start": 141,
+      "start": 171,
       "duration": 5,
       "image": "images/shot-12.png",
       "background": "palace",
@@ -327,8 +466,9 @@
     },
     {
       "id": "shot-13",
+      "speaker": null,
       "section": "The finest archer of the Eastern Sea Road",
-      "start": 146,
+      "start": 176,
       "duration": 13,
       "image": "images/shot-13.png",
       "background": "paper",
@@ -346,8 +486,9 @@
     },
     {
       "id": "shot-14",
+      "speaker": null,
       "section": "The finest archer of the Eastern Sea Road",
-      "start": 159,
+      "start": 189,
       "duration": 14,
       "image": "images/shot-14.png",
       "background": "paper",
@@ -395,8 +536,9 @@
     },
     {
       "id": "shot-15",
+      "speaker": null,
       "section": "The forts fall",
-      "start": 173,
+      "start": 203,
       "duration": 8,
       "image": "images/shot-15.png",
       "background": "ruins",
@@ -419,8 +561,9 @@
     },
     {
       "id": "shot-16",
+      "speaker": null,
       "section": "The forts fall",
-      "start": 181,
+      "start": 211,
       "duration": 13,
       "image": "images/shot-16.png",
       "background": "ruins",
@@ -438,8 +581,9 @@
     },
     {
       "id": "shot-17",
+      "speaker": null,
       "section": "The forts fall",
-      "start": 194,
+      "start": 224,
       "duration": 5,
       "image": "images/shot-17.png",
       "background": "ruins",
@@ -462,8 +606,9 @@
     },
     {
       "id": "shot-18",
+      "speaker": null,
       "section": "The forts fall",
-      "start": 199,
+      "start": 229,
       "duration": 16,
       "image": "images/shot-18.png",
       "background": "village",
@@ -481,8 +626,9 @@
     },
     {
       "id": "shot-19",
+      "speaker": null,
       "section": "Fifty years of human life",
-      "start": 215,
+      "start": 245,
       "duration": 12,
       "image": "images/shot-19.png",
       "background": "palace",
@@ -510,8 +656,9 @@
     },
     {
       "id": "shot-20",
+      "speaker": null,
       "section": "Fifty years of human life",
-      "start": 227,
+      "start": 257,
       "duration": 12,
       "image": "images/shot-20.png",
       "background": "palace",
@@ -539,8 +686,9 @@
     },
     {
       "id": "shot-21",
+      "speaker": null,
       "section": "Fifty years of human life",
-      "start": 239,
+      "start": 269,
       "duration": 6,
       "image": "images/shot-21.png",
       "background": "palace",
@@ -563,8 +711,9 @@
     },
     {
       "id": "shot-22",
+      "speaker": null,
       "section": "Fifty years of human life",
-      "start": 245,
+      "start": 275,
       "duration": 11,
       "image": "images/shot-22.png",
       "background": "palace",
@@ -582,8 +731,9 @@
     },
     {
       "id": "shot-23",
+      "speaker": null,
       "section": "Fifty years of human life",
-      "start": 256,
+      "start": 286,
       "duration": 12,
       "image": "images/shot-23.png",
       "background": "palace",
@@ -601,8 +751,9 @@
     },
     {
       "id": "shot-24",
+      "speaker": null,
       "section": "Fifty years of human life",
-      "start": 268,
+      "start": 298,
       "duration": 13,
       "image": "images/shot-24.png",
       "background": "village",
@@ -630,8 +781,9 @@
     },
     {
       "id": "shot-25",
+      "speaker": null,
       "section": "Fifty years of human life",
-      "start": 281,
+      "start": 311,
       "duration": 10,
       "image": "images/shot-25.png",
       "background": "shrine",
@@ -649,8 +801,9 @@
     },
     {
       "id": "shot-26",
+      "speaker": null,
       "section": "Fifty years of human life",
-      "start": 291,
+      "start": 321,
       "duration": 6,
       "image": "images/shot-26.png",
       "background": "ruins",
@@ -673,8 +826,9 @@
     },
     {
       "id": "shot-27",
+      "speaker": null,
       "section": "The storm",
-      "start": 297,
+      "start": 327,
       "duration": 12,
       "image": "images/shot-27.png",
       "background": "valley",
@@ -702,8 +856,9 @@
     },
     {
       "id": "shot-28",
+      "speaker": null,
       "section": "The storm",
-      "start": 309,
+      "start": 339,
       "duration": 13,
       "image": "images/shot-28.png",
       "background": "valley",
@@ -731,8 +886,9 @@
     },
     {
       "id": "shot-29",
+      "speaker": null,
       "section": "The storm",
-      "start": 322,
+      "start": 352,
       "duration": 17,
       "image": "images/shot-29.png",
       "background": "valley",
@@ -755,8 +911,9 @@
     },
     {
       "id": "shot-30",
+      "speaker": null,
       "section": "The storm",
-      "start": 339,
+      "start": 369,
       "duration": 4,
       "image": "images/shot-30.png",
       "background": "valley",
@@ -784,8 +941,9 @@
     },
     {
       "id": "shot-31",
+      "speaker": null,
       "section": "The storm",
-      "start": 343,
+      "start": 373,
       "duration": 20,
       "image": "images/shot-31.png",
       "background": "paper",
@@ -803,8 +961,9 @@
     },
     {
       "id": "shot-32",
+      "speaker": null,
       "section": "The storm",
-      "start": 363,
+      "start": 393,
       "duration": 4,
       "image": "images/shot-32.png",
       "background": "valley",
@@ -827,8 +986,9 @@
     },
     {
       "id": "shot-33",
+      "speaker": null,
       "section": "The storm",
-      "start": 367,
+      "start": 397,
       "duration": 10,
       "image": "images/shot-33.png",
       "background": "valley",
@@ -856,8 +1016,9 @@
     },
     {
       "id": "shot-34",
+      "speaker": null,
       "section": "The storm",
-      "start": 377,
+      "start": 407,
       "duration": 14,
       "image": "images/shot-34.png",
       "background": "valley",
@@ -875,8 +1036,9 @@
     },
     {
       "id": "shot-35",
+      "speaker": null,
       "section": "The storm",
-      "start": 391,
+      "start": 421,
       "duration": 13,
       "image": "images/shot-35.png",
       "background": "valley",
@@ -899,8 +1061,9 @@
     },
     {
       "id": "shot-36",
+      "speaker": null,
       "section": "The storm",
-      "start": 404,
+      "start": 434,
       "duration": 10,
       "image": "images/shot-36.png",
       "background": "valley",
@@ -928,8 +1091,9 @@
     },
     {
       "id": "shot-37",
+      "speaker": null,
       "section": "Why it worked",
-      "start": 414,
+      "start": 444,
       "duration": 17,
       "image": "images/shot-37.png",
       "background": "paper",
@@ -962,8 +1126,9 @@
     },
     {
       "id": "shot-38",
+      "speaker": null,
       "section": "Why it worked",
-      "start": 431,
+      "start": 461,
       "duration": 5,
       "image": "images/shot-38.png",
       "background": "paper",
@@ -981,8 +1146,9 @@
     },
     {
       "id": "shot-39",
+      "speaker": null,
       "section": "Why it worked",
-      "start": 436,
+      "start": 466,
       "duration": 11,
       "image": "images/shot-39.png",
       "background": "valley",
@@ -1000,8 +1166,9 @@
     },
     {
       "id": "shot-40",
+      "speaker": null,
       "section": "What came next",
-      "start": 447,
+      "start": 477,
       "duration": 5,
       "image": "images/shot-40.png",
       "background": "village",
@@ -1029,8 +1196,9 @@
     },
     {
       "id": "shot-41",
+      "speaker": null,
       "section": "What came next",
-      "start": 452,
+      "start": 482,
       "duration": 14,
       "image": "images/shot-41.png",
       "background": "palace",
@@ -1053,8 +1221,9 @@
     },
     {
       "id": "shot-42",
+      "speaker": null,
       "section": "What came next",
-      "start": 466,
+      "start": 496,
       "duration": 20,
       "image": "images/shot-42.png",
       "background": "palace",
@@ -1072,8 +1241,9 @@
     },
     {
       "id": "shot-43",
+      "speaker": null,
       "section": "What came next",
-      "start": 486,
+      "start": 516,
       "duration": 17,
       "image": "images/shot-43.png",
       "background": "palace",
@@ -1091,8 +1261,9 @@
     },
     {
       "id": "shot-44",
+      "speaker": null,
       "section": "What came next",
-      "start": 503,
+      "start": 533,
       "duration": 17,
       "image": "images/shot-44.png",
       "background": "palace",
@@ -1114,28 +1285,104 @@
       "word_count": 38
     },
     {
-      "id": "shot-45",
-      "section": "What came next",
-      "start": 520,
-      "duration": 11,
-      "image": "images/shot-45.png",
-      "background": "paper",
+      "id": "outro-1",
+      "speaker": "son",
+      "section": "Outro",
+      "start": 550,
+      "duration": 5,
+      "image": "images/outro-1.png",
+      "background": "livingroom",
       "camera": "static",
       "characters": [
         {
-          "name": "Narrator",
-          "expression": "smug",
-          "pose": "stand"
+          "name": "Father",
+          "expression": "gentle",
+          "pose": "sit"
         },
         {
-          "name": "Nobunaga",
-          "expression": "smug",
-          "pose": "stand"
+          "name": "Son",
+          "expression": "surprised",
+          "pose": "sit"
         }
       ],
-      "on_screen_text": "Genius or luck?",
-      "narration": "If you enjoyed this, subscribe. And tell me in the comments: was Okehazama genius, or just very good luck?",
-      "word_count": 19
+      "on_screen_text": null,
+      "narration": "So the fool won. Was he a genius, or just lucky?",
+      "word_count": 11
+    },
+    {
+      "id": "outro-2",
+      "speaker": "father",
+      "section": "Outro",
+      "start": 555,
+      "duration": 12,
+      "image": "images/outro-2.png",
+      "background": "livingroom",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Father",
+          "expression": "smug",
+          "pose": "sit"
+        },
+        {
+          "name": "Son",
+          "expression": "neutral",
+          "pose": "sit"
+        }
+      ],
+      "on_screen_text": "Genius or luck? Comment below",
+      "narration": "People still argue about that. Do you want to hear the next story? It's an incredible one, all about the courage and resilience of the Japanese people.",
+      "word_count": 27
+    },
+    {
+      "id": "outro-3",
+      "speaker": "son",
+      "section": "Outro",
+      "start": 567,
+      "duration": 2,
+      "image": "images/outro-3.png",
+      "background": "livingroom",
+      "camera": "quick push in",
+      "characters": [
+        {
+          "name": "Father",
+          "expression": "gentle",
+          "pose": "sit"
+        },
+        {
+          "name": "Son",
+          "expression": "determined",
+          "pose": "sit"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "Yes! Tell me!",
+      "word_count": 3
+    },
+    {
+      "id": "outro-4",
+      "speaker": "father",
+      "section": "Outro",
+      "start": 569,
+      "duration": 11,
+      "image": "images/outro-4.png",
+      "background": "livingroom",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Father",
+          "expression": "smug",
+          "pose": "sit"
+        },
+        {
+          "name": "Son",
+          "expression": "gentle",
+          "pose": "sit"
+        }
+      ],
+      "on_screen_text": "Like & Subscribe",
+      "narration": "If you want to hear it, tell everyone watching to hit like and subscribe. Then I'll tell you next time.",
+      "word_count": 20
     }
   ]
 }

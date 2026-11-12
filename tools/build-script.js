@@ -30,7 +30,8 @@ def.shots.forEach((s, i) => {
     current = s.section;
     md += `\n### ${mmss(ep.shots[i].start)} – ${s.section}\n`;
   }
-  md += `\n[SCENE ${i + 1}: ${s.note || s.background}${s.text ? ` On screen: ${s.text}` : ""}]\n\n${s.narration}\n`;
+  const who = s.speaker ? `${s.speaker.toUpperCase()}: ` : "";
+  md += `\n[SCENE ${i + 1}: ${s.note || s.background}${s.text ? ` On screen: ${s.text}` : ""}]\n\n${who}${s.narration}\n`;
 });
 
 const out = path.join(__dirname, "..", "scripts", `${path.basename(dir)}.md`);

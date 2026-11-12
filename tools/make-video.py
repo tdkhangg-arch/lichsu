@@ -272,7 +272,8 @@ def caption_filter(text):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("episode_dir")
-    ap.add_argument("--engine", choices=["gemini", "cloud", "elevenlabs"], default="gemini")
+    ap.add_argument("--engine", choices=["gemini", "cloud", "elevenlabs", "files"], default="gemini",
+                    help="files = use ready-made build/audio/<shot id>.mp3 (e.g. downloaded from the ElevenLabs connector)")
     ap.add_argument("--model", default="gemini-3.8-flash-tts")
     ap.add_argument("--voice", help="Gemini: Charon, Orus, Puck... Cloud: en-US-Neural2-J...")
     ap.add_argument("--dialogue-model", default="gemini-3.8-flash-tts",
@@ -283,7 +284,7 @@ def main():
     ap.add_argument("--only", type=int, help="render only the first N shots (preview)")
     a = ap.parse_args()
 
-    a.voice = a.voice or {"gemini": "Charon", "cloud": "en-US-Neural2-J", "elevenlabs": ELEVEN_NARRATOR}[a.engine]
+    a.voice = a.voice or {"gemini": "Charon", "cloud": "en-US-Neural2-J", "elevenlabs": ELEVEN_NARRATOR, "files": "files"}[a.engine]
     if a.engine == "elevenlabs" and a.model.startswith("gemini"):
         a.model = "eleven_multilingual_v2"
     ep_dir = Path(a.episode_dir).resolve()
@@ -303,6 +304,24 @@ def main():
         if a.silent:
             dur = float(s["duration"])
         else:
+            if a.engine == "files":
+                audio = build / "audio" / f"{s['id']}.mp3"
+                if not audio.exists():
+                    sys.exit(f"Missing voice file {audio} (generate it first)")
+                dur = duration(audio) + TAIL + (END_HOLD if last else 0)
+                dur = round(dur, 2)
+                frames = round(dur * FPS)
+                seg = build / "video" / f"{s['id']}.mp4"
+                print(f"render {s['id']} {dur:.1f}s {s['camera']}", flush=True)
+                vf = camera_filter(s["camera"], frames) + caption_filter(s.get("on_screen_text"))
+                run(["ffmpeg", "-y", "-loglevel", "error", "-loop", "1", "-i", str(ep_dir / s["image"]),
+                     "-i", str(audio), "-af", f"loudnorm=I=-16:TP=-1.5:LRA=11,aresample=44100,apad,atrim=0:{dur}",
+                     "-vf", vf, "-frames:v", str(frames), "-t", str(dur),
+                     "-c:v", "libx264", "-preset", "medium", "-crf", "20", "-pix_fmt", "yuv420p",
+                     "-c:a", "aac", "-b:a", "192k", "-ar", "44100", "-ac", "2", str(seg)])
+                timed.append({**s, "start": round(t, 2), "duration": dur})
+                t += dur
+                continue
             voice, model = a.voice, a.model
             if s.get("speaker"):
                 if a.engine == "elevenlabs":

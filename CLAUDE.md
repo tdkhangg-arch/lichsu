@@ -25,7 +25,7 @@ descriptions in English.
 | # | Folder | Topic | Status |
 |---|---|---|---|
 | 1 | `episodes/01-47-ronin` | The 47 Ronin (1701–1703) | Video done with father/son intro and outro; 3 Shorts |
-| 2 | `episodes/02-okehazama` | Battle of Okehazama (1560) | Script and frames done; video waiting for voice quota |
+| 2 | `episodes/02-okehazama` | Battle of Okehazama (1560) | Script and frames done, with father/son intro and outro; render with ElevenLabs |
 | 3 | (next) | Honnō-ji Incident (1582) | Teased at the end of episode 2 |
 
 ## Pipeline (run from the repo root)
@@ -48,10 +48,17 @@ descriptions in English.
 Rendered videos and `build/` are git-ignored; send finished videos to the owner as files.
 
 ## Environment notes
-- Voice engines: ElevenLabs (paid, preferred from episode 2): `--engine elevenlabs`, key in env var
-  `ELEVENLABS_API_KEY`, host `api.elevenlabs.io` must be allowed. Narrator/father = Brian
-  (nPczCjzI2devNBz1zQrb), son = Liam (TX3LPaxmHKxFdv7VOQHJ), model eleven_multilingual_v2;
-  one request per shot. Gemini (free fallback) key is in env var `KEY`.
+- Voice engines:
+  - **ElevenLabs connector (preferred from episode 2; owner has a paid plan).** Run in a session on
+    the `lichsu` environment, which allows `elevenlabsusercontent.com` so generated audio can be
+    downloaded. For every shot in episode.json: `creative_generate_speech` with model `eleven_v4`,
+    voice = narrator/father "Marcus K - Calm Documentary Narrator" (3H55HGnNE1XjYxigHSAS) or
+    son "Brayden - Conversational Older Teen" (3XOBzXhnDY98yeWQ3GdM); reuse one flow per episode;
+    poll `creative_get_flow_run_status`; download the first take's `content_url` with curl to
+    `episodes/<NN>/build/audio/<shot id>.mp3`. Then `python3 tools/make-video.py episodes/<NN> --engine files`.
+    Costs about 1 credit per character per take (2 takes by default).
+  - Direct ElevenLabs API (`--engine elevenlabs`, env var `ELEVENLABS_API_KEY`) also works if a key is added.
+  - Gemini (free fallback, env var `KEY`): see step 5.
 - Free tier: 10 TTS requests per day per model; resets at midnight Pacific time.
 - Python needs `scipy` (`pip install scipy`); ffmpeg and Playwright are preinstalled.
 - Work branch: `add-47-ronin-script` on github.com/tdkhangg-arch/lichsu.
