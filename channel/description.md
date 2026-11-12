@@ -1,6 +1,6 @@
 # StickDad History: channel description
 
-## YouTube "Description" field (English, 878 characters)
+## YouTube "Description" field (English, 921 characters)
 
 Pause the game. Dad's got a story.
 
@@ -9,9 +9,9 @@ StickDad History is an animated history channel where a dad tells his teenage so
 Every episode is a short, easy-to-follow story told with stick figures, clear narration and a bit of humor. No long lectures, no dry dates. Just real history, told the way a good dad would tell it on the sofa.
 
 What you'll find here:
-• Japanese history: samurai, shoguns and the Sengoku period
-• Famous battles and the people who fought them
-• Legends from Asia, Europe and around the world, and what really happened
+• History from all over the world: Asia, Europe, the Americas, Africa and the Middle East
+• Famous battles, empires and the people behind them
+• Legends from every country, and what really happened
 • Shorts with the best moments from each story
 
 New here? Start with "How 2,000 Samurai Beat an Army of 25,000."
@@ -20,7 +20,7 @@ Subscribe and tell us in the comments which story Dad should tell next.
 
 ## Keywords (Channel settings → Keywords)
 
-history, animated history, history explained, stick figure history, samurai, japanese history, sengoku period, 47 ronin, oda nobunaga, world history, history for kids and teens, history stories, StickDad History
+history, world history, animated history, history explained, stick figure history, history stories, ancient history, empires, famous battles, samurai, japanese history, roman empire, history for kids and teens, StickDad History
 
 ## Short tagline (for the banner, Shorts and social profiles)
 
