@@ -48,7 +48,10 @@ descriptions in English.
 Rendered videos and `build/` are git-ignored; send finished videos to the owner as files.
 
 ## Environment notes
-- Google AI Studio key is in the environment variable `KEY` (sent as `x-goog-api-key`).
+- Voice engines: ElevenLabs (paid, preferred from episode 2): `--engine elevenlabs`, key in env var
+  `ELEVENLABS_API_KEY`, host `api.elevenlabs.io` must be allowed. Narrator/father = Brian
+  (nPczCjzI2devNBz1zQrb), son = Liam (TX3LPaxmHKxFdv7VOQHJ), model eleven_multilingual_v2;
+  one request per shot. Gemini (free fallback) key is in env var `KEY`.
 - Free tier: 10 TTS requests per day per model; resets at midnight Pacific time.
 - Python needs `scipy` (`pip install scipy`); ffmpeg and Playwright are preinstalled.
 - Work branch: `add-47-ronin-script` on github.com/tdkhangg-arch/lichsu.

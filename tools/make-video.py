@@ -99,6 +99,45 @@ def gemini_once(text, out, voice, model):
     raw.unlink()
 
 
+# ElevenLabs premade voices (override with --voice / ELEVEN_SPEAKERS below)
+ELEVEN_NARRATOR = "nPczCjzI2devNBz1zQrb"          # Brian: deep, calm American narrator
+ELEVEN_SPEAKERS = {"father": ELEVEN_NARRATOR,       # the father is also the narrator
+                   "son": "TX3LPaxmHKxFdv7VOQHJ"}   # Liam: young American male
+
+
+def eleven_tts(text, out, voice, model, prev_text="", next_text=""):
+    """ElevenLabs text-to-speech. Key from ELEVENLABS_API_KEY, or added by the network proxy."""
+    key = os.environ.get("ELEVENLABS_API_KEY")
+    auth = ["-H", f"xi-api-key: {key}"] if key else []
+    body = {"text": text, "model_id": model,
+            "voice_settings": {"stability": 0.5, "similarity_boost": 0.75, "style": 0.15, "use_speaker_boost": True}}
+    if prev_text:
+        body["previous_text"] = prev_text   # keeps intonation continuous across shots
+    if next_text:
+        body["next_text"] = next_text
+    for attempt in range(6):
+        r = subprocess.run(["curl", "-sS", "-X", "POST", "-o", str(out), "-w", "%{http_code}",
+                            f"https://api.elevenlabs.io/v1/text-to-speech/{voice}?output_format=mp3_44100_192",
+                            "-H", "Content-Type: application/json", *auth, "--data-binary", json.dumps(body)],
+                           capture_output=True, text=True)
+        code = r.stdout.strip()
+        if code == "200":
+            # normalize loudness like the Gemini path
+            tmp = out.with_suffix(".raw.mp3"); out.rename(tmp)
+            run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(tmp), "-af", "loudnorm=I=-16:TP=-1.5:LRA=11",
+                 "-ar", "44100", "-b:a", "192k", str(out)])
+            tmp.unlink()
+            return
+        msg = out.read_text(errors="ignore")[:400] if out.exists() else r.stderr[-400:]
+        out.unlink(missing_ok=True)
+        if code in ("429", "500", "502", "503"):
+            print(f"  ElevenLabs busy ({code}), retrying", flush=True)
+            time.sleep(5 * (attempt + 1))
+            continue
+        sys.exit(f"ElevenLabs error {code}: {msg}")
+    sys.exit("ElevenLabs kept failing; try again later")
+
+
 def gemini_tts(text, out, voice, model):
     """Try the chosen model, then the fallbacks; a blocked or failed reply is retried once per model."""
     errors = []
@@ -233,7 +272,7 @@ def caption_filter(text):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("episode_dir")
-    ap.add_argument("--engine", choices=["gemini", "cloud"], default="gemini")
+    ap.add_argument("--engine", choices=["gemini", "cloud", "elevenlabs"], default="gemini")
     ap.add_argument("--model", default="gemini-3.8-flash-tts")
     ap.add_argument("--voice", help="Gemini: Charon, Orus, Puck... Cloud: en-US-Neural2-J...")
     ap.add_argument("--dialogue-model", default="gemini-3.8-flash-tts",
@@ -244,7 +283,9 @@ def main():
     ap.add_argument("--only", type=int, help="render only the first N shots (preview)")
     a = ap.parse_args()
 
-    a.voice = a.voice or ("Charon" if a.engine == "gemini" else "en-US-Neural2-J")
+    a.voice = a.voice or {"gemini": "Charon", "cloud": "en-US-Neural2-J", "elevenlabs": ELEVEN_NARRATOR}[a.engine]
+    if a.engine == "elevenlabs" and a.model.startswith("gemini"):
+        a.model = "eleven_multilingual_v2"
     ep_dir = Path(a.episode_dir).resolve()
     ep = json.loads((ep_dir / "episode.json").read_text())
     shots = ep["shots"][: a.only] if a.only else ep["shots"]
@@ -264,12 +305,19 @@ def main():
         else:
             voice, model = a.voice, a.model
             if s.get("speaker"):
-                voice = SPEAKERS.get(s["speaker"], a.voice)
-                model = a.dialogue_model
+                if a.engine == "elevenlabs":
+                    voice = ELEVEN_SPEAKERS.get(s["speaker"], a.voice)
+                else:
+                    voice = SPEAKERS.get(s["speaker"], a.voice)
+                    model = a.dialogue_model
             audio = batched.get(s["id"]) or build / "audio" / f"{s['id']}-{voice}-{model}.mp3"
             if not audio.exists():
                 print(f"voice {s['id']}", flush=True)
-                if a.engine == "gemini":
+                if a.engine == "elevenlabs":
+                    prev_t = shots[i - 1]["narration"] if i > 0 and not s.get("speaker") and not shots[i - 1].get("speaker") else ""
+                    next_t = shots[i + 1]["narration"] if i + 1 < len(shots) and not s.get("speaker") and not shots[i + 1].get("speaker") else ""
+                    eleven_tts(s["narration"], audio, voice, model, prev_t, next_t)
+                elif a.engine == "gemini":
                     words = len(s["narration"].split())
                     for attempt in range(3):
                         gemini_tts(s["narration"], audio, voice, model)
