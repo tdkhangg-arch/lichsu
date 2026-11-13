@@ -2,7 +2,7 @@
 
 Channel opener (first upload). Chapter times are from the finished video `02-okehazama-music.mp4` (8:14).
 
-## Title (63/100)
+## Title (62/100)
 How 2,000 Samurai Beat an Army of 25,000 (Battle of Okehazama)
 
 Other options:
