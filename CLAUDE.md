@@ -40,7 +40,7 @@ Folder numbers are the order they were written; **upload order** is what viewers
 |---|---|---|---|
 | **1st** | `episodes/02-okehazama` | Battle of Okehazama (1560), "2,000 vs 25,000" | Channel opener. Intro written as the first meeting (son playing a samurai game). Script and frames done; render with ElevenLabs |
 | **2nd** | `episodes/01-47-ronin` | The 47 Ronin (1701–1703) | Final video done (Gemini voice, father/son intro and outro, 3 Shorts). Owner wants it kept as is; do not re-voice with ElevenLabs |
-| 3rd | `episodes/03-agincourt` | Battle of Agincourt (1415), first European episode | Script and frames done (intro refers back to Okehazama; ends teasing Joan of Arc). Not voiced yet; render with ElevenLabs. Music: medieval palette done (`music_palette: "medieval"`) |
+| 3rd | `episodes/03-agincourt` | Battle of Agincourt (1415), first European episode | Video done (10:21, ElevenLabs voice, medieval music). Intro refers back to Okehazama; ends teasing Joan of Arc |
 | later | (ideas) | Honnō-ji Incident (1582); Joan of Arc | Honnō-ji is mentioned in the Okehazama ending, Joan of Arc in the Agincourt ending |
 
 ## Pipeline (run from the repo root)
@@ -74,7 +74,9 @@ Rendered videos and `build/` are git-ignored; send finished videos to the owner 
     son "Brayden - Conversational Older Teen" (3XOBzXhnDY98yeWQ3GdM); reuse one flow per episode;
     poll `creative_get_flow_run_status`; download the first take's `content_url` with curl to
     `episodes/<NN>/build/audio/<shot id>.mp3`. Then `python3 tools/make-video.py episodes/<NN> --engine files`.
-    Costs about 1 credit per character per take (2 takes by default).
+    Costs about 1 credit per character per take (the son's voice costs about 2.4×). To save credits
+    (owner's preference from episode 3 on) pass `generations_count: 1`: one take per shot halves the cost.
+    eleven_v4, flash and multilingual cost the same, so keep eleven_v4 for a consistent voice.
   - Direct ElevenLabs API (`--engine elevenlabs`, env var `ELEVENLABS_API_KEY`) also works if a key is added.
   - Gemini (free fallback, env var `KEY`): see step 5.
 - Free tier: 10 TTS requests per day per model; resets at midnight Pacific time.
