@@ -302,7 +302,7 @@ function character(cfg){
   u+=pr.over?handS+pr.d():pr.d()+handS;
   // head
   u+=`<defs><clipPath id="${id}"><circle cx="100" cy="70" r="46"/></clipPath></defs><circle cx="100" cy="70" r="46" fill="#cdc8da"/><circle cx="92" cy="67" r="45" fill="#fff" clip-path="url(#${id})"/><g clip-path="url(#${id})">${hr.clip()}</g><circle cx="100" cy="70" r="46" fill="none" stroke="${INK}" stroke-width="4.5"/>`;
-  u+=hr.front()+FACES[cfg.face].d()+(cfg.scar?`<path d="M86,80 L95,92" stroke="#b5676a" stroke-width="3" stroke-linecap="round"/><path d="M87,85 L91,83 M90,89 L94,87" stroke="#b5676a" stroke-width="1.8" stroke-linecap="round"/>`:"")+HATS[cfg.hat].d();
+  u+=hr.front()+FACES[cfg.face].d()+(cfg.scar?`<path d="M107,80 Q111,87 114,95" fill="none" stroke="#b5676a" stroke-width="3.2" stroke-linecap="round"/><path d="M106,85 L112,83 M108,90 L114,88" stroke="#b5676a" stroke-width="1.8" stroke-linecap="round"/>`:"")+HATS[cfg.hat].d();
   if(cfg.pose==="bow")u=`<g transform="rotate(-26 100 196)">${u}</g>`;
   s+=u;
   return cfg.flip?`<g transform="translate(200 0) scale(-1 1)">${s}</g>`:s;
