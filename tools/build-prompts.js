@@ -24,6 +24,11 @@ const BACKGROUNDS = {
   shrine: "Japanese Shinto shrine with a red torii gate, stone path and small shrine hall",
   livingroom: "modern cozy living room, a blue sofa and an orange sofa facing each other, window, floor lamp, wooden floor, rug",
   ruins: "devastated rice fields under a grey sky, distant Japanese castle burning with smoke, dead trees",
+  field: "freshly ploughed muddy field in northern France between two dark woods, puddles, overcast grey sky, 1415",
+  hall: "medieval stone castle hall, gothic arched window, blue banner with gold fleurs-de-lis and red banner with gold lions, torches, red carpet",
+  siege: "medieval town walls and towers of Harfleur with a breach, smoke, English tents with red crosses and a bronze cannon in front",
+  river: "autumn riverbank of the River Somme, broken stone bridge, orange and brown trees, grey sky",
+  camp: "medieval French army camp at night, blue and white tents with gold pennants, campfire, stars and moon",
 };
 const OUTFITS = {
   stick: "no clothes, plain stick body",
@@ -38,13 +43,17 @@ const OUTFITS = {
   mandarin: "long official court robe with square badge",
   suit: "modern dark suit and tie",
   knight: "chainmail and surcoat",
+  knight_en: "English man-at-arms in chainmail and plate shoulders with a white surcoat bearing the red cross of St George",
+  knight_fr: "French knight in chainmail and plate shoulders with a royal blue surcoat covered in gold fleurs-de-lis",
+  knight_royal: "King Henry V in armor with a surcoat of the quartered English royal arms (blue with gold fleurs-de-lis, red with gold lions)",
+  archer: "English longbowman's padded quilted jacket with a small red St George cross badge on the chest, leather belt and pouch",
 };
 const HAIR = { none: "bald", short: "short black hair", topknot: "samurai chonmage topknot with shaved crown", bun: "black hair in a bun", long: "very long straight black hair" };
-const HAT = { none: "", glasses: "round glasses", nonla: "conical straw hat", kabuto: "samurai kabuto helmet with gold crest", cap: "military field cap", helmet: "steel helmet", mandarin: "black official hat with side wings", crown: "gold crown", roman: "Roman helmet with red crest", tophat: "black top hat" };
+const HAT = { none: "", glasses: "round glasses", nonla: "conical straw hat", kabuto: "samurai kabuto helmet with gold crest", cap: "military field cap", helmet: "steel helmet", mandarin: "black official hat with side wings", crown: "gold crown", roman: "Roman helmet with red crest", tophat: "black top hat", bascinet: "steel bascinet helmet with mail neck guard", royalhelm: "steel bascinet helmet with a gold crown around it", kettle: "wide-brimmed steel kettle hat" };
 const FACE = { neutral: "calm", angry: "angry frowning", smug: "smug half-lidded smirk", gentle: "gentle shy smile", determined: "determined", surprised: "shocked wide-eyed", closed: "eyes closed, solemn" };
-const PROP = { none: "", book: "an open book", phone: "a smartphone playing a samurai game", katana: "katana and short sword at the hip", sword: "straight sword", rifle: "rifle with bayonet", spear: "spear", fan: "folding paper fan", scroll: "paper scroll" };
+const PROP = { none: "", book: "an open book", phone: "a smartphone playing a samurai game", katana: "katana and short sword at the hip", sword: "straight sword", rifle: "rifle with bayonet", spear: "spear", fan: "folding paper fan", scroll: "paper scroll", longbow: "a tall yew longbow", bowdraw: "a longbow, drawing an arrow", stake: "a long sharpened wooden stake", mallet: "a wooden mallet", stgeorge: "a white banner with the red cross of St George", fleur: "a royal blue banner with gold fleurs-de-lis" };
 const POSE = { stand: "standing", walk: "walking", bow: "bowing deeply", sit: "sitting on the sofa" };
-const COLOR = { "#3a3640": "black", "#8a6a4a": "brown", "#9a7f55": "khaki", "#2f4f7f": "indigo blue", "#a8342c": "vermilion red", "#5b6b3a": "olive green", "#c2a77a": "beige silk", "#6b4a7a": "purple" };
+const COLOR = { "#3a3640": "black", "#8a6a4a": "brown", "#9a7f55": "khaki", "#2f4f7f": "indigo blue", "#a8342c": "vermilion red", "#5b6b3a": "olive green", "#c2a77a": "beige silk", "#6b4a7a": "purple", "#2f4f9f": "royal blue", "#c0392b": "red" };
 
 function who(c) {
   const k = c.cfg;

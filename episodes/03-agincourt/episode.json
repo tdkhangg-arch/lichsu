@@ -1,0 +1,1541 @@
+{
+  "title": "How a Sick, Starving Army Beat the Knights of France (Battle of Agincourt)",
+  "language": "en",
+  "resolution": {
+    "width": 1920,
+    "height": 1080
+  },
+  "fps": 30,
+  "total_duration": 755,
+  "voiceover": {
+    "words_per_minute": 145,
+    "file": "voiceover.txt"
+  },
+  "music_moods": {
+    "Intro": "light",
+    "Hook": "tense",
+    "A king with a claim": "court",
+    "Harfleur": "mystery",
+    "The long march": "solemn",
+    "The night before": "quiet",
+    "The longbow": "court",
+    "The field": "tense",
+    "Into the mud": "raid",
+    "The darkest moment": "sad",
+    "The herald's answer": "solemn",
+    "Why it worked": "quiet",
+    "What came next": "reflect",
+    "Outro": "light"
+  },
+  "shots": [
+    {
+      "id": "intro-1",
+      "speaker": "father",
+      "section": "Intro",
+      "start": 0,
+      "duration": 8,
+      "image": "images/intro-1.png",
+      "background": "livingroom",
+      "camera": "static",
+      "characters": [
+        {
+          "name": "Father",
+          "expression": "smug",
+          "pose": "sit"
+        },
+        {
+          "name": "Son",
+          "expression": "neutral",
+          "pose": "sit"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "So, what did you think of Okehazama? Did you see how clever and brave those samurai were?",
+      "word_count": 17
+    },
+    {
+      "id": "intro-2",
+      "speaker": "son",
+      "section": "Intro",
+      "start": 8,
+      "duration": 4,
+      "image": "images/intro-2.png",
+      "background": "livingroom",
+      "camera": "quick push in",
+      "characters": [
+        {
+          "name": "Father",
+          "expression": "gentle",
+          "pose": "sit"
+        },
+        {
+          "name": "Son",
+          "expression": "surprised",
+          "pose": "sit"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "Two thousand against twenty-five thousand? That was insane.",
+      "word_count": 8
+    },
+    {
+      "id": "intro-3",
+      "speaker": "father",
+      "section": "Intro",
+      "start": 12,
+      "duration": 8,
+      "image": "images/intro-3.png",
+      "background": "livingroom",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Father",
+          "expression": "smug",
+          "pose": "sit"
+        },
+        {
+          "name": "Son",
+          "expression": "neutral",
+          "pose": "sit"
+        }
+      ],
+      "on_screen_text": "Who wins?",
+      "narration": "Quick question, then. Six thousand tired, hungry men against an army three or four times bigger. Who wins?",
+      "word_count": 18
+    },
+    {
+      "id": "intro-4",
+      "speaker": "son",
+      "section": "Intro",
+      "start": 20,
+      "duration": 2,
+      "image": "images/intro-4.png",
+      "background": "livingroom",
+      "camera": "static",
+      "characters": [
+        {
+          "name": "Father",
+          "expression": "smug",
+          "pose": "sit"
+        },
+        {
+          "name": "Son",
+          "expression": "smug",
+          "pose": "sit"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "The big army. Obviously.",
+      "word_count": 4
+    },
+    {
+      "id": "intro-5",
+      "speaker": "father",
+      "section": "Intro",
+      "start": 22,
+      "duration": 15,
+      "image": "images/intro-5.png",
+      "background": "livingroom",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Father",
+          "expression": "gentle",
+          "pose": "sit"
+        },
+        {
+          "name": "Son",
+          "expression": "surprised",
+          "pose": "sit"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "That's exactly what the French thought. Europe had a battle just like Okehazama. Knights in shining armor, a young king with something to prove, and a field full of mud. Want to hear it?",
+      "word_count": 34
+    },
+    {
+      "id": "intro-6",
+      "speaker": "son",
+      "section": "Intro",
+      "start": 37,
+      "duration": 3,
+      "image": "images/intro-6.png",
+      "background": "livingroom",
+      "camera": "quick push in",
+      "characters": [
+        {
+          "name": "Father",
+          "expression": "gentle",
+          "pose": "sit"
+        },
+        {
+          "name": "Son",
+          "expression": "determined",
+          "pose": "sit"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "Knights? Okay, now I'm interested.",
+      "word_count": 5
+    },
+    {
+      "id": "shot-01",
+      "speaker": null,
+      "section": "Hook",
+      "start": 40,
+      "duration": 12,
+      "image": "images/shot-01.png",
+      "background": "field",
+      "camera": "slow pan right",
+      "characters": [
+        {
+          "name": "Archer",
+          "expression": "closed",
+          "pose": "stand"
+        },
+        {
+          "name": "English knight",
+          "expression": "closed",
+          "pose": "stand"
+        },
+        {
+          "name": "Archer",
+          "expression": "closed",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": "Northern France, 1415",
+      "narration": "October 1415. Northern France. A small English army is trapped. The men are soaked, starving and sick. Many of them haven't had a proper meal in days.",
+      "word_count": 27
+    },
+    {
+      "id": "shot-02",
+      "speaker": null,
+      "section": "Hook",
+      "start": 52,
+      "duration": 13,
+      "image": "images/shot-02.png",
+      "background": "field",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "French knight",
+          "expression": "smug",
+          "pose": "stand"
+        },
+        {
+          "name": "French knight",
+          "expression": "smug",
+          "pose": "stand"
+        },
+        {
+          "name": "French knight",
+          "expression": "smug",
+          "pose": "stand"
+        },
+        {
+          "name": "French knight",
+          "expression": "smug",
+          "pose": "stand"
+        },
+        {
+          "name": "French knight",
+          "expression": "smug",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "In front of them, blocking the road home, is the army of France. Knights in shining armor, some of the finest warriors in Europe. And many, many more of them.",
+      "word_count": 30
+    },
+    {
+      "id": "shot-03",
+      "speaker": null,
+      "section": "Hook",
+      "start": 65,
+      "duration": 14,
+      "image": "images/shot-03.png",
+      "background": "field",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Henry V",
+          "expression": "determined",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "By the next evening, one of these armies would be broken, and this battle would become a legend that people in England still talk about, more than six hundred years later.",
+      "word_count": 31
+    },
+    {
+      "id": "shot-04",
+      "speaker": null,
+      "section": "A king with a claim",
+      "start": 79,
+      "duration": 12,
+      "image": "images/shot-04.png",
+      "background": "hall",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Henry V",
+          "expression": "smug",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": "Henry V of England",
+      "narration": "To understand how they got there, meet Henry the Fifth, King of England. He was twenty-nine years old, serious, deeply religious, and extremely sure of himself.",
+      "word_count": 26
+    },
+    {
+      "id": "shot-05",
+      "speaker": null,
+      "section": "A king with a claim",
+      "start": 91,
+      "duration": 19,
+      "image": "images/shot-05.png",
+      "background": "village",
+      "camera": "track left",
+      "characters": [
+        {
+          "name": "Young Henry",
+          "expression": "smug",
+          "pose": "walk"
+        },
+        {
+          "name": "Narrator",
+          "expression": "surprised",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": "Prince Hal?",
+      "narration": "Legend says that as a young prince, he was a wild party boy who spent his nights in taverns. Shakespeare made that story famous. Historians aren't sure how much of it is true. Either way, by the time he became king, the party was over.",
+      "word_count": 45
+    },
+    {
+      "id": "shot-06",
+      "speaker": null,
+      "section": "A king with a claim",
+      "start": 110,
+      "duration": 21,
+      "image": "images/shot-06.png",
+      "background": "paper",
+      "camera": "static",
+      "characters": [
+        {
+          "name": "English knight",
+          "expression": "angry",
+          "pose": "stand"
+        },
+        {
+          "name": "French knight",
+          "expression": "angry",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": "The Hundred Years' War (1337–1453)",
+      "narration": "Henry believed he had a right to the throne of France. His great-grandfather Edward the Third had claimed it too, and England and France had been fighting on and off for generations. We call it the Hundred Years' War, even though it actually lasted more than a hundred years.",
+      "word_count": 49
+    },
+    {
+      "id": "shot-07",
+      "speaker": null,
+      "section": "A king with a claim",
+      "start": 131,
+      "duration": 16,
+      "image": "images/shot-07.png",
+      "background": "hall",
+      "camera": "quick push in",
+      "characters": [
+        {
+          "name": "Charles VI",
+          "expression": "surprised",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": "Charles VI of France",
+      "narration": "And France was in trouble. Its king, Charles the Sixth, suffered from long bouts of mental illness. During some of them, it's said, he believed he was made of glass, and was terrified that he might shatter.",
+      "word_count": 37
+    },
+    {
+      "id": "shot-08",
+      "speaker": null,
+      "section": "A king with a claim",
+      "start": 147,
+      "duration": 11,
+      "image": "images/shot-08.png",
+      "background": "hall",
+      "camera": "static",
+      "characters": [
+        {
+          "name": "French noble",
+          "expression": "angry",
+          "pose": "stand"
+        },
+        {
+          "name": "French noble",
+          "expression": "angry",
+          "pose": "stand"
+        },
+        {
+          "name": "Charles VI",
+          "expression": "closed",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "Meanwhile, two powerful groups of French nobles were feuding over who should really run the country. For Henry, it looked like the perfect moment.",
+      "word_count": 24
+    },
+    {
+      "id": "shot-09",
+      "speaker": null,
+      "section": "Harfleur",
+      "start": 158,
+      "duration": 11,
+      "image": "images/shot-09.png",
+      "background": "siege",
+      "camera": "slow pan left",
+      "characters": [
+        {
+          "name": "Henry V",
+          "expression": "determined",
+          "pose": "stand"
+        },
+        {
+          "name": "Archer",
+          "expression": "neutral",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": "Harfleur, August 1415",
+      "narration": "In August 1415, Henry crossed the Channel with around ten to twelve thousand men, and laid siege to the port of Harfleur in Normandy.",
+      "word_count": 24
+    },
+    {
+      "id": "shot-10",
+      "speaker": null,
+      "section": "Harfleur",
+      "start": 169,
+      "duration": 11,
+      "image": "images/shot-10.png",
+      "background": "siege",
+      "camera": "shake",
+      "characters": [
+        {
+          "name": "English knight",
+          "expression": "surprised",
+          "pose": "stand"
+        },
+        {
+          "name": "Archer",
+          "expression": "closed",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "He expected the town to fall quickly. It held out for more than a month, while his cannons pounded the walls day after day.",
+      "word_count": 24
+    },
+    {
+      "id": "shot-11",
+      "speaker": null,
+      "section": "Harfleur",
+      "start": 180,
+      "duration": 14,
+      "image": "images/shot-11.png",
+      "background": "siege",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Sick archer",
+          "expression": "closed",
+          "pose": "sit"
+        },
+        {
+          "name": "Sick archer",
+          "expression": "closed",
+          "pose": "sit"
+        },
+        {
+          "name": "English knight",
+          "expression": "surprised",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "But the real enemy was already inside his camp. A terrible disease called dysentery swept through the army. Thousands fell sick. Some were gone within days. Many more had to be sent home.",
+      "word_count": 33
+    },
+    {
+      "id": "shot-12",
+      "speaker": null,
+      "section": "Harfleur",
+      "start": 194,
+      "duration": 11,
+      "image": "images/shot-12.png",
+      "background": "siege",
+      "camera": "static",
+      "characters": [
+        {
+          "name": "Henry V",
+          "expression": "neutral",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "Harfleur finally surrendered in late September. Henry had his town. But he had lost a large part of his army, and winter was coming.",
+      "word_count": 24
+    },
+    {
+      "id": "shot-13",
+      "speaker": null,
+      "section": "The long march",
+      "start": 205,
+      "duration": 21,
+      "image": "images/shot-13.png",
+      "background": "hall",
+      "camera": "static",
+      "characters": [
+        {
+          "name": "Adviser",
+          "expression": "surprised",
+          "pose": "stand"
+        },
+        {
+          "name": "Adviser",
+          "expression": "angry",
+          "pose": "stand"
+        },
+        {
+          "name": "Henry V",
+          "expression": "determined",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "His advisers told him to go home by sea. Henry refused. Instead, he decided to march his remaining men overland to Calais, an English-held town on the coast. It was partly a show of strength: the King of England walking through France, and nobody able to stop him.",
+      "word_count": 48
+    },
+    {
+      "id": "shot-14",
+      "speaker": null,
+      "section": "The long march",
+      "start": 226,
+      "duration": 6,
+      "image": "images/shot-14.png",
+      "background": "paper",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Archer",
+          "expression": "gentle",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": "Food for 8 days",
+      "narration": "The men carried enough food for about eight days. That was the plan.",
+      "word_count": 13
+    },
+    {
+      "id": "shot-15",
+      "speaker": null,
+      "section": "The long march",
+      "start": 232,
+      "duration": 8,
+      "image": "images/shot-15.png",
+      "background": "river",
+      "camera": "slow pan right",
+      "characters": [
+        {
+          "name": "English knight",
+          "expression": "surprised",
+          "pose": "stand"
+        },
+        {
+          "name": "Archer",
+          "expression": "surprised",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": "The River Somme",
+      "narration": "Then they reached the River Somme. Every bridge and every crossing was broken or guarded by French troops.",
+      "word_count": 18
+    },
+    {
+      "id": "shot-16",
+      "speaker": null,
+      "section": "The long march",
+      "start": 240,
+      "duration": 17,
+      "image": "images/shot-16.png",
+      "background": "river",
+      "camera": "track left",
+      "characters": [
+        {
+          "name": "Archer",
+          "expression": "closed",
+          "pose": "walk"
+        },
+        {
+          "name": "Henry V",
+          "expression": "closed",
+          "pose": "walk"
+        },
+        {
+          "name": "Archer",
+          "expression": "closed",
+          "pose": "walk"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "So the English had to march inland, upstream, searching for a way across. Day after day, in the cold October rain. The eight days of food ran out. Men picked nuts and berries from the hedges to stay alive.",
+      "word_count": 39
+    },
+    {
+      "id": "shot-17",
+      "speaker": null,
+      "section": "The long march",
+      "start": 257,
+      "duration": 11,
+      "image": "images/shot-17.png",
+      "background": "field",
+      "camera": "slow zoom out",
+      "characters": [
+        {
+          "name": "French knight",
+          "expression": "smug",
+          "pose": "stand"
+        },
+        {
+          "name": "French knight",
+          "expression": "smug",
+          "pose": "stand"
+        },
+        {
+          "name": "French knight",
+          "expression": "smug",
+          "pose": "stand"
+        },
+        {
+          "name": "Archer",
+          "expression": "surprised",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "It took them about two and a half weeks. And all the while, the French army was gathering behind the river, growing bigger every day.",
+      "word_count": 25
+    },
+    {
+      "id": "shot-18",
+      "speaker": null,
+      "section": "The long march",
+      "start": 268,
+      "duration": 12,
+      "image": "images/shot-18.png",
+      "background": "field",
+      "camera": "quick push in",
+      "characters": [
+        {
+          "name": "Henry V",
+          "expression": "surprised",
+          "pose": "stand"
+        },
+        {
+          "name": "French knight",
+          "expression": "smug",
+          "pose": "stand"
+        },
+        {
+          "name": "French knight",
+          "expression": "smug",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": "Agincourt, 24 October",
+      "narration": "On the twenty-fourth of October, near a village called Agincourt, they finally saw them. The French army was right in front of them, blocking the road to Calais.",
+      "word_count": 28
+    },
+    {
+      "id": "shot-19",
+      "speaker": null,
+      "section": "The night before",
+      "start": 280,
+      "duration": 16,
+      "image": "images/shot-19.png",
+      "background": "field",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Archer",
+          "expression": "closed",
+          "pose": "bow"
+        },
+        {
+          "name": "Henry V",
+          "expression": "closed",
+          "pose": "stand"
+        },
+        {
+          "name": "Archer",
+          "expression": "closed",
+          "pose": "bow"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "That night, it poured. The English camped in the open: wet, cold and hungry. Henry ordered total silence in his camp. Many of his men expected not to see another sunset, and spent the night in prayer.",
+      "word_count": 37
+    },
+    {
+      "id": "shot-20",
+      "speaker": null,
+      "section": "The night before",
+      "start": 296,
+      "duration": 15,
+      "image": "images/shot-20.png",
+      "background": "camp",
+      "camera": "slow pan right",
+      "characters": [
+        {
+          "name": "French knight",
+          "expression": "smug",
+          "pose": "sit"
+        },
+        {
+          "name": "French knight",
+          "expression": "gentle",
+          "pose": "sit"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "On the other side, according to some chroniclers, the French camp was noisy and confident. Some knights were said to be playing dice for the rich English prisoners they expected to capture the next day.",
+      "word_count": 35
+    },
+    {
+      "id": "shot-21",
+      "speaker": null,
+      "section": "The night before",
+      "start": 311,
+      "duration": 26,
+      "image": "images/shot-21.png",
+      "background": "paper",
+      "camera": "static",
+      "characters": [
+        {
+          "name": "Archer",
+          "expression": "neutral",
+          "pose": "stand"
+        },
+        {
+          "name": "English knight",
+          "expression": "determined",
+          "pose": "stand"
+        },
+        {
+          "name": "French knight",
+          "expression": "smug",
+          "pose": "stand"
+        },
+        {
+          "name": "French knight",
+          "expression": "smug",
+          "pose": "stand"
+        },
+        {
+          "name": "French knight",
+          "expression": "smug",
+          "pose": "stand"
+        },
+        {
+          "name": "French knight",
+          "expression": "smug",
+          "pose": "stand"
+        },
+        {
+          "name": "French knight",
+          "expression": "smug",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": "Outnumbered 3 or 4 to 1?",
+      "narration": "How big were the armies? Henry had perhaps six to nine thousand men, and most of them, maybe five out of every six, were archers. The French are often said to have had three or four times as many. Some modern historians think the gap was smaller. But everyone agrees: the English were badly outnumbered, and in far worse shape.",
+      "word_count": 60
+    },
+    {
+      "id": "shot-22",
+      "speaker": null,
+      "section": "The longbow",
+      "start": 337,
+      "duration": 5,
+      "image": "images/shot-22.png",
+      "background": "paper",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Archer",
+          "expression": "determined",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": "The English longbow",
+      "narration": "But those archers had a secret weapon. The English longbow.",
+      "word_count": 10
+    },
+    {
+      "id": "shot-23",
+      "speaker": null,
+      "section": "The longbow",
+      "start": 342,
+      "duration": 17,
+      "image": "images/shot-23.png",
+      "background": "village",
+      "camera": "static",
+      "characters": [
+        {
+          "name": "Young archer",
+          "expression": "determined",
+          "pose": "stand"
+        },
+        {
+          "name": "Old archer",
+          "expression": "smug",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "It was a simple stick of yew wood, almost as tall as a man. But pulling one took enormous strength. English boys trained from childhood, and by law, men were expected to practise archery on Sundays and holidays.",
+      "word_count": 38
+    },
+    {
+      "id": "shot-24",
+      "speaker": null,
+      "section": "The longbow",
+      "start": 359,
+      "duration": 16,
+      "image": "images/shot-24.png",
+      "background": "field",
+      "camera": "slow pan right",
+      "characters": [
+        {
+          "name": "Archer",
+          "expression": "determined",
+          "pose": "stand"
+        },
+        {
+          "name": "Archer",
+          "expression": "determined",
+          "pose": "stand"
+        },
+        {
+          "name": "Archer",
+          "expression": "angry",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": "10+ arrows a minute",
+      "narration": "A good archer could shoot ten or more arrows a minute, at targets about two hundred and fifty yards away. Five thousand archers could send tens of thousands of arrows into the sky in a single minute.",
+      "word_count": 37
+    },
+    {
+      "id": "shot-25",
+      "speaker": null,
+      "section": "The longbow",
+      "start": 375,
+      "duration": 12,
+      "image": "images/shot-25.png",
+      "background": "field",
+      "camera": "static",
+      "characters": [
+        {
+          "name": "Archer",
+          "expression": "determined",
+          "pose": "stand"
+        },
+        {
+          "name": "Archer",
+          "expression": "angry",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "Each archer also carried a long wooden stake, sharpened at both ends. Hammered into the ground at an angle, a row of them could stop a charging horse.",
+      "word_count": 28
+    },
+    {
+      "id": "shot-26",
+      "speaker": null,
+      "section": "The field",
+      "start": 387,
+      "duration": 14,
+      "image": "images/shot-26.png",
+      "background": "field",
+      "camera": "slow zoom out",
+      "characters": [],
+      "on_screen_text": "25 October 1415, St Crispin's Day",
+      "narration": "The morning of the twenty-fifth of October. Saint Crispin's Day. The battlefield was a freshly ploughed field between two woods. After a night of rain, it had turned into deep, sticky mud.",
+      "word_count": 32
+    },
+    {
+      "id": "shot-27",
+      "speaker": null,
+      "section": "The field",
+      "start": 401,
+      "duration": 13,
+      "image": "images/shot-27.png",
+      "background": "field",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "French knight",
+          "expression": "smug",
+          "pose": "stand"
+        },
+        {
+          "name": "French knight",
+          "expression": "smug",
+          "pose": "stand"
+        },
+        {
+          "name": "French knight",
+          "expression": "smug",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "The woods on both sides squeezed the field narrower. Whatever the French did, they couldn't spread out and surround Henry's small army. They would have to come straight at him.",
+      "word_count": 30
+    },
+    {
+      "id": "shot-28",
+      "speaker": null,
+      "section": "The field",
+      "start": 414,
+      "duration": 16,
+      "image": "images/shot-28.png",
+      "background": "field",
+      "camera": "static",
+      "characters": [
+        {
+          "name": "Archer",
+          "expression": "neutral",
+          "pose": "stand"
+        },
+        {
+          "name": "French knight",
+          "expression": "neutral",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "And then... nothing happened. For hours, the two armies just stood there, staring at each other. The French were happy to wait. Time was on their side. The English were the ones running out of food.",
+      "word_count": 36
+    },
+    {
+      "id": "shot-29",
+      "speaker": null,
+      "section": "The field",
+      "start": 430,
+      "duration": 17,
+      "image": "images/shot-29.png",
+      "background": "field",
+      "camera": "track left",
+      "characters": [
+        {
+          "name": "Henry V",
+          "expression": "determined",
+          "pose": "walk"
+        },
+        {
+          "name": "Archer",
+          "expression": "neutral",
+          "pose": "walk"
+        },
+        {
+          "name": "Archer",
+          "expression": "neutral",
+          "pose": "walk"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "So Henry made a bold move. He ordered his whole army to pull up their stakes and walk forward, toward the enemy, until the French were within bow range. Then the archers hammered their stakes back into the mud.",
+      "word_count": 39
+    },
+    {
+      "id": "shot-30",
+      "speaker": null,
+      "section": "The field",
+      "start": 447,
+      "duration": 3,
+      "image": "images/shot-30.png",
+      "background": "field",
+      "camera": "shake",
+      "characters": [
+        {
+          "name": "Archer",
+          "expression": "angry",
+          "pose": "stand"
+        },
+        {
+          "name": "Archer",
+          "expression": "angry",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": "Loose!",
+      "narration": "And the archers began to shoot.",
+      "word_count": 6
+    },
+    {
+      "id": "shot-31",
+      "speaker": null,
+      "section": "Into the mud",
+      "start": 450,
+      "duration": 15,
+      "image": "images/shot-31.png",
+      "background": "field",
+      "camera": "shake",
+      "characters": [
+        {
+          "name": "French knight",
+          "expression": "surprised",
+          "pose": "walk"
+        },
+        {
+          "name": "French knight",
+          "expression": "surprised",
+          "pose": "walk"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "The arrows provoked the French into attacking. Their mounted knights charged at the edges of the English line. But the woods squeezed them together, the stakes stopped their horses, and the arrows kept coming.",
+      "word_count": 34
+    },
+    {
+      "id": "shot-32",
+      "speaker": null,
+      "section": "Into the mud",
+      "start": 465,
+      "duration": 10,
+      "image": "images/shot-32.png",
+      "background": "field",
+      "camera": "track left",
+      "characters": [
+        {
+          "name": "French knight",
+          "expression": "surprised",
+          "pose": "walk"
+        },
+        {
+          "name": "French knight",
+          "expression": "angry",
+          "pose": "walk"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "Panicking horses turned and galloped back, straight into their own soldiers who were advancing on foot. The mud got churned up even worse.",
+      "word_count": 23
+    },
+    {
+      "id": "shot-33",
+      "speaker": null,
+      "section": "Into the mud",
+      "start": 475,
+      "duration": 17,
+      "image": "images/shot-33.png",
+      "background": "field",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "French knight",
+          "expression": "closed",
+          "pose": "walk"
+        },
+        {
+          "name": "French knight",
+          "expression": "surprised",
+          "pose": "walk"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "Now the main French army walked forward. Thousands of men in heavy steel armor, trudging through deep mud while arrows rained down on them. By the time they reached the English line, many of them were already exhausted.",
+      "word_count": 38
+    },
+    {
+      "id": "shot-34",
+      "speaker": null,
+      "section": "Into the mud",
+      "start": 492,
+      "duration": 13,
+      "image": "images/shot-34.png",
+      "background": "field",
+      "camera": "shake",
+      "characters": [
+        {
+          "name": "French knight",
+          "expression": "surprised",
+          "pose": "stand"
+        },
+        {
+          "name": "French knight",
+          "expression": "angry",
+          "pose": "stand"
+        },
+        {
+          "name": "French knight",
+          "expression": "surprised",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "And the field kept narrowing. The French were packed so tightly that many couldn't even raise their weapons. Men who slipped in the mud struggled to get back up.",
+      "word_count": 29
+    },
+    {
+      "id": "shot-35",
+      "speaker": null,
+      "section": "Into the mud",
+      "start": 505,
+      "duration": 18,
+      "image": "images/shot-35.png",
+      "background": "field",
+      "camera": "shake",
+      "characters": [
+        {
+          "name": "Archer",
+          "expression": "angry",
+          "pose": "walk"
+        },
+        {
+          "name": "Archer",
+          "expression": "angry",
+          "pose": "walk"
+        },
+        {
+          "name": "French knight",
+          "expression": "surprised",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "Then the English archers dropped their bows, picked up swords, axes and the wooden mallets they'd used for the stakes, and ran into the fight. Lightly dressed, they could move easily through the mud. The knights could barely move at all.",
+      "word_count": 41
+    },
+    {
+      "id": "shot-36",
+      "speaker": null,
+      "section": "Into the mud",
+      "start": 523,
+      "duration": 14,
+      "image": "images/shot-36.png",
+      "background": "field",
+      "camera": "quick push in",
+      "characters": [
+        {
+          "name": "Henry V",
+          "expression": "angry",
+          "pose": "stand"
+        },
+        {
+          "name": "French knight",
+          "expression": "angry",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "Henry fought in the front line himself, with a crown on his helmet. One story says a French knight struck him so hard that part of the crown was knocked off.",
+      "word_count": 31
+    },
+    {
+      "id": "shot-37",
+      "speaker": null,
+      "section": "The darkest moment",
+      "start": 537,
+      "duration": 24,
+      "image": "images/shot-37.png",
+      "background": "field",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Henry V",
+          "expression": "angry",
+          "pose": "stand"
+        },
+        {
+          "name": "English knight",
+          "expression": "surprised",
+          "pose": "stand"
+        },
+        {
+          "name": "Prisoner",
+          "expression": "closed",
+          "pose": "bow"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "Then came the darkest moment of the day. Fearing a fresh French attack, and worried that his many prisoners might join it, Henry ordered that most of them be struck down. Even his own men hesitated. It is still the most controversial decision of the battle, and historians argue about it to this day.",
+      "word_count": 54
+    },
+    {
+      "id": "shot-38",
+      "speaker": null,
+      "section": "The darkest moment",
+      "start": 561,
+      "duration": 6,
+      "image": "images/shot-38.png",
+      "background": "field",
+      "camera": "slow zoom out",
+      "characters": [
+        {
+          "name": "Archer",
+          "expression": "closed",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "The new attack never really came. By the afternoon, it was over.",
+      "word_count": 12
+    },
+    {
+      "id": "shot-39",
+      "speaker": null,
+      "section": "The herald's answer",
+      "start": 567,
+      "duration": 20,
+      "image": "images/shot-39.png",
+      "background": "field",
+      "camera": "static",
+      "characters": [
+        {
+          "name": "Henry V",
+          "expression": "neutral",
+          "pose": "stand"
+        },
+        {
+          "name": "Montjoie",
+          "expression": "neutral",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "After the battle, according to the chroniclers, Henry asked the French royal herald, Montjoie, who had won. The herald answered: the King of England. Henry asked the name of the castle nearby. Agincourt, came the reply. Then this, said Henry, shall be called the Battle of Agincourt.",
+      "word_count": 47
+    },
+    {
+      "id": "shot-40",
+      "speaker": null,
+      "section": "The herald's answer",
+      "start": 587,
+      "duration": 16,
+      "image": "images/shot-40.png",
+      "background": "paper",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "French knight",
+          "expression": "closed",
+          "pose": "stand"
+        },
+        {
+          "name": "English knight",
+          "expression": "closed",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": "France: thousands lost · England: a few hundred",
+      "narration": "The losses were completely one-sided. The French lost thousands of men, including a huge part of their nobility: dukes, counts, and the commander of the royal army himself. The English lost a few hundred at most.",
+      "word_count": 36
+    },
+    {
+      "id": "shot-41",
+      "speaker": null,
+      "section": "Why it worked",
+      "start": 603,
+      "duration": 12,
+      "image": "images/shot-41.png",
+      "background": "field",
+      "camera": "static",
+      "characters": [
+        {
+          "name": "French knight",
+          "expression": "surprised",
+          "pose": "stand"
+        },
+        {
+          "name": "French knight",
+          "expression": "surprised",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": "1. The ground",
+      "narration": "So how did a sick, hungry army win? First, the ground. The mud and the woods turned the French advantage in numbers into a traffic jam.",
+      "word_count": 26
+    },
+    {
+      "id": "shot-42",
+      "speaker": null,
+      "section": "Why it worked",
+      "start": 615,
+      "duration": 6,
+      "image": "images/shot-42.png",
+      "background": "paper",
+      "camera": "static",
+      "characters": [
+        {
+          "name": "Archer",
+          "expression": "determined",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": "2. The longbow",
+      "narration": "Second, the longbow, and the years of practice behind every single archer.",
+      "word_count": 12
+    },
+    {
+      "id": "shot-43",
+      "speaker": null,
+      "section": "Why it worked",
+      "start": 621,
+      "duration": 15,
+      "image": "images/shot-43.png",
+      "background": "camp",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "French knight",
+          "expression": "smug",
+          "pose": "sit"
+        }
+      ],
+      "on_screen_text": "3. Overconfidence",
+      "narration": "And third, overconfidence. The French were so sure of winning that they never really agreed on a plan. Just like Yoshimoto at Okehazama, they never imagined that the small, desperate army was the dangerous one.",
+      "word_count": 35
+    },
+    {
+      "id": "shot-44",
+      "speaker": null,
+      "section": "What came next",
+      "start": 636,
+      "duration": 17,
+      "image": "images/shot-44.png",
+      "background": "village",
+      "camera": "slow pan right",
+      "characters": [
+        {
+          "name": "Townsman",
+          "expression": "gentle",
+          "pose": "stand"
+        },
+        {
+          "name": "Henry V",
+          "expression": "gentle",
+          "pose": "stand"
+        },
+        {
+          "name": "Townsman",
+          "expression": "gentle",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": "\"We few, we happy few...\"",
+      "narration": "Henry returned to London a hero. Agincourt became a national legend, especially after Shakespeare wrote his play Henry the Fifth, almost two hundred years later, with its famous speech: We few, we happy few, we band of brothers.",
+      "word_count": 38
+    },
+    {
+      "id": "shot-45",
+      "speaker": null,
+      "section": "What came next",
+      "start": 653,
+      "duration": 16,
+      "image": "images/shot-45.png",
+      "background": "paper",
+      "camera": "static",
+      "characters": [
+        {
+          "name": "Archer",
+          "expression": "smug",
+          "pose": "stand"
+        },
+        {
+          "name": "Narrator",
+          "expression": "surprised",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": "Myth?",
+      "narration": "There's also a popular story that a rude two-finger gesture in Britain comes from English archers, showing the French they still had their drawing fingers. It's a great story. Unfortunately, historians have found no evidence for it.",
+      "word_count": 37
+    },
+    {
+      "id": "shot-46",
+      "speaker": null,
+      "section": "What came next",
+      "start": 669,
+      "duration": 12,
+      "image": "images/shot-46.png",
+      "background": "hall",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Henry V",
+          "expression": "gentle",
+          "pose": "stand"
+        },
+        {
+          "name": "Catherine",
+          "expression": "gentle",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": "Treaty of Troyes, 1420",
+      "narration": "Five years after Agincourt, Henry got almost everything he wanted. A treaty named him heir to the throne of France, and he married the French king's daughter, Catherine.",
+      "word_count": 28
+    },
+    {
+      "id": "shot-47",
+      "speaker": null,
+      "section": "What came next",
+      "start": 681,
+      "duration": 19,
+      "image": "images/shot-47.png",
+      "background": "hall",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Henry V",
+          "expression": "closed",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": "1422",
+      "narration": "But in 1422, Henry fell ill, probably with the same disease that had struck his army at Harfleur, and he died at just thirty-five. The French king died less than two months later. Henry missed becoming King of France by a matter of weeks.",
+      "word_count": 44
+    },
+    {
+      "id": "shot-48",
+      "speaker": null,
+      "section": "What came next",
+      "start": 700,
+      "duration": 20,
+      "image": "images/shot-48.png",
+      "background": "village",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Farm girl",
+          "expression": "determined",
+          "pose": "stand"
+        },
+        {
+          "name": "French knight",
+          "expression": "surprised",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": "To be continued...",
+      "narration": "His son became King of England while still a baby, and the war dragged on. And a few years later, France would find a hero in the most unlikely person imaginable: a teenage farm girl from a small village. But that's a story for another day.",
+      "word_count": 46
+    },
+    {
+      "id": "outro-1",
+      "speaker": "son",
+      "section": "Outro",
+      "start": 720,
+      "duration": 6,
+      "image": "images/outro-1.png",
+      "background": "livingroom",
+      "camera": "static",
+      "characters": [
+        {
+          "name": "Father",
+          "expression": "gentle",
+          "pose": "sit"
+        },
+        {
+          "name": "Son",
+          "expression": "surprised",
+          "pose": "sit"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "So a sick, starving army beat the knights of France. Because of mud?",
+      "word_count": 13
+    },
+    {
+      "id": "outro-2",
+      "speaker": "father",
+      "section": "Outro",
+      "start": 726,
+      "duration": 12,
+      "image": "images/outro-2.png",
+      "background": "livingroom",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Father",
+          "expression": "smug",
+          "pose": "sit"
+        },
+        {
+          "name": "Son",
+          "expression": "neutral",
+          "pose": "sit"
+        }
+      ],
+      "on_screen_text": "Archer or knight? Comment below",
+      "narration": "Mud, longbows, and a king who refused to give up. Tell me: if you'd been there, would you rather be an English archer, or a French knight?",
+      "word_count": 27
+    },
+    {
+      "id": "outro-3",
+      "speaker": "son",
+      "section": "Outro",
+      "start": 738,
+      "duration": 5,
+      "image": "images/outro-3.png",
+      "background": "livingroom",
+      "camera": "quick push in",
+      "characters": [
+        {
+          "name": "Father",
+          "expression": "gentle",
+          "pose": "sit"
+        },
+        {
+          "name": "Son",
+          "expression": "smug",
+          "pose": "sit"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "Archer. Definitely. But wait, who was that farm girl?",
+      "word_count": 9
+    },
+    {
+      "id": "outro-4",
+      "speaker": "father",
+      "section": "Outro",
+      "start": 743,
+      "duration": 12,
+      "image": "images/outro-4.png",
+      "background": "livingroom",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Father",
+          "expression": "smug",
+          "pose": "sit"
+        },
+        {
+          "name": "Son",
+          "expression": "gentle",
+          "pose": "sit"
+        }
+      ],
+      "on_screen_text": "Like & Subscribe",
+      "narration": "If you want to find out, tell everyone watching to like and subscribe to StickDad History. Then I'll tell you next time.",
+      "word_count": 22
+    }
+  ]
+}

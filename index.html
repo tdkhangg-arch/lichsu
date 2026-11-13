@@ -349,6 +349,54 @@ const SCENES={
     s+=`<path d="M96,84 Q180,96 264,84 L262,96 Q180,106 98,96 Z" fill="#d0452f" ${st}/><rect x="104" y="108" width="152" height="9" fill="#d0452f" ${st}/>`;
     s+=`<path d="M94,82 Q180,94 266,82" fill="none" stroke="${INK}" stroke-width="6"/>`;
     return s}},
+  field:{label:"Cánh đồng bùn (Agincourt)",d:()=>{let s=`<rect width="480" height="320" fill="#b4bcc0"/>`+cloud(20,72,170,"#c9cfd2")+cloud(270,52,190,"#c9cfd2")+cloud(170,96,90,"#bfc6ca");
+    s+=`<path d="M0,184 Q240,176 480,184 L480,320 L0,320Z" fill="#6f5a43" ${st}/>`;
+    for(let i=-12;i<=12;i++)s+=`<line x1="${240+i*13}" y1="182" x2="${240+i*62}" y2="320" stroke="#4f3f2e" stroke-width="2" opacity=".55"/>`;
+    for(const [x,y,rx] of [[96,252,30],[340,282,42],[250,214,20],[410,232,24],[170,300,26]])s+=`<ellipse cx="${x}" cy="${y}" rx="${rx}" ry="${(rx*.22).toFixed(1)}" fill="#8e9aa3" stroke="${INK}" stroke-width="1.5"/>`;
+    const tree=(x,y,r)=>`<line x1="${x}" y1="${y}" x2="${x}" y2="${y+r*1.4}" stroke="${INK}" stroke-width="3"/><circle cx="${x}" cy="${y}" r="${r}" fill="#3b4f36" ${st}/>`;
+    s+=`<path d="M0,112 Q50,104 96,128 L120,196 L0,232Z" fill="#44593d" ${st}/><path d="M480,108 Q430,100 384,126 L360,196 L480,232Z" fill="#44593d" ${st}/>`;
+    for(const [x,y,r] of [[14,120,20],[48,112,18],[82,126,16],[20,170,24],[66,162,20],[100,176,14],[30,214,22],[466,118,20],[432,110,18],[398,124,16],[460,168,24],[414,160,20],[380,176,14],[452,212,22]])s+=tree(x,y,r);
+    return s}},
+  hall:{label:"Đại sảnh lâu đài",d:()=>{let s=`<rect width="480" height="320" fill="#cfc6b6"/>`;
+    for(let y=0;y<240;y+=18)for(let x=(y/18)%2?-20:0;x<480;x+=40)s+=`<rect x="${x}" y="${y}" width="40" height="18" fill="none" stroke="#b3a993" stroke-width="1.2"/>`;
+    s+=`<path d="M196,206 L196,96 Q240,36 284,96 L284,206 Z" fill="#bcd6ea" ${st}/><path d="M240,58 L240,206 M196,140 L284,140 M218,206 L218,90 M262,206 L262,90" stroke="${INK}" stroke-width="2"/>`;
+    s+=`<polygon points="196,206 284,206 340,320 140,320" fill="#fff8dc" opacity=".22"/>`;
+    const banner=(x,col)=>`<path d="M${x},20 L${x+54},20 L${x+54},150 L${x+27},134 L${x},150 Z" fill="${col}" ${st}/><rect x="${x-6}" y="14" width="66" height="7" fill="#7a5a3a" ${st}/>`;
+    s+=banner(110,"#2f4f9f")+LYS(124,62,1.3)+LYS(150,62,1.3)+LYS(137,96,1.3)+banner(316,"#c0392b")+LION(343,52,1.5)+LION(343,76,1.5)+LION(343,100,1.5);
+    for(const x of[20,426])s+=`<rect x="${x}" y="0" width="34" height="240" fill="#e4ddcf" ${st}/><rect x="${x-6}" y="20" width="46" height="12" fill="#d3cab8" ${st}/><rect x="${x-6}" y="228" width="46" height="14" fill="#d3cab8" ${st}/>`+[10,22].map(d=>`<line x1="${x+d}" y1="32" x2="${x+d}" y2="228" stroke="#b3a993" stroke-width="2"/>`).join("");
+    for(const x of[80,400])s+=`<rect x="${x-3}" y="110" width="6" height="26" fill="#6b4a2e" ${st}/><path d="M${x},84 Q${x-10},100 ${x-4},110 L${x+4},110 Q${x+10},100 ${x},84Z" fill="#f29a3a" ${st}/><path d="M${x},94 Q${x-4},104 ${x},110 Q${x+4},104 ${x},94Z" fill="#f5d95a"/><circle cx="${x}" cy="100" r="26" fill="#f5d95a" opacity=".15"/>`;
+    s+=`<rect y="240" width="480" height="80" fill="#a89c88"/><path d="M0,240 L480,240" ${st}/>`;
+    for(const x of[-120,-40,40,120,200,280,360,440,520,600])s+=`<line x1="${240+(x-240)*.5}" y1="240" x2="${x}" y2="320" stroke="#8d8270" stroke-width="1.5"/>`;
+    s+=`<path d="M205,240 L275,240 L330,320 L150,320 Z" fill="#a8342c" ${st}/><path d="M212,244 L268,244 L318,316 L162,316 Z" fill="none" stroke="#e2bd4f" stroke-width="3"/>`;
+    return s}},
+  siege:{label:"Vây thành (Harfleur)",d:()=>{let s=`<rect width="480" height="320" fill="#cdbfa8"/>`+cloud(300,60,150,"#8f8a82")+cloud(370,40,120,"#7d7871")+cloud(40,70,120,"#e2d9c8");
+    s+=`<rect y="196" width="480" height="124" fill="#8d8a5a"/><path d="M0,196 L480,196" ${st}/>`;
+    s+=`<path d="M236,196 L236,124 L330,124 L336,140 L352,132 L356,124 L480,124 L480,196 Z" fill="#b9ae98" ${st}/>`;
+    for(let x=236;x<480;x+=16)if(x<326||x>356)s+=`<rect x="${x}" y="114" width="9" height="10" fill="#b9ae98" ${st}/>`;
+    for(let y=140;y<196;y+=14)s+=`<line x1="238" y1="${y}" x2="478" y2="${y}" stroke="#9c917c" stroke-width="1.4"/>`;
+    for(const x of[256,430])s+=`<rect x="${x}" y="92" width="34" height="104" fill="#c4b9a2" ${st}/><path d="M${x-4},94 L${x+17},62 L${x+38},94 Z" fill="#6e655c" ${st}/><rect x="${x+12}" y="120" width="10" height="16" fill="${INK}"/>`;
+    s+=`<path d="M326,196 L330,170 L344,176 L352,160 L362,196 Z" fill="#9c917c" ${st}/>`;
+    const tent=(x,c)=>`<path d="M${x},198 L${x+26},158 L${x+52},198 Z" fill="#f4f2f7" ${st}/><path d="M${x+13},178 L${x+26},158 L${x+39},178 Z" fill="${c}"/><path d="M${x},198 L${x+26},158 L${x+52},198 Z" fill="none" ${st}/>`+ln(x+26,158,x+26,142,INK,2)+`<path d="M${x+26},142 L${x+40},147 L${x+26},152Z" fill="${c}" stroke="${INK}" stroke-width="1.5"/>`;
+    s+=tent(20,"#c0392b")+tent(96,"#c0392b")+tent(168,"#c0392b");
+    s+=`<rect x="150" y="242" width="56" height="18" rx="8" fill="#3b3742" ${st} transform="rotate(-12 178 251)"/><circle cx="168" cy="262" r="10" fill="#7a5a3a" ${st}/><circle cx="196" cy="258" r="10" fill="#7a5a3a" ${st}/>`;
+    return s}},
+  river:{label:"Sông Somme",d:()=>{let s=`<rect width="480" height="320" fill="#b8c6cf"/>`+cloud(40,70,150,"#d6dee3")+cloud(300,54,160,"#d6dee3");
+    s+=`<path d="M0,170 Q120,140 240,160 Q360,138 480,166 L480,320 L0,320Z" fill="#8d8a5a" ${st}/>`;
+    s+=`<path d="M0,196 Q160,206 300,200 Q400,196 480,210 L480,236 Q400,224 300,230 Q160,236 0,226 Z" fill="#7f98ab" ${st}/>`;
+    s+=`<path d="M40,212 L80,212 M200,218 L250,216 M360,214 L420,218" stroke="#c9d8e2" stroke-width="2"/>`;
+    s+=`<rect x="150" y="192" width="16" height="40" fill="#a59a86" ${st}/><rect x="210" y="190" width="16" height="42" fill="#a59a86" ${st}/><path d="M140,190 L172,190 L176,184 L138,186 Z M204,186 L236,188 L232,194 L206,192 Z" fill="#8a6a4a" ${st}/>`;
+    const tree=(x,y,r,c)=>`<line x1="${x}" y1="${y}" x2="${x}" y2="${y+r*1.4}" stroke="${INK}" stroke-width="3"/><circle cx="${x}" cy="${y}" r="${r}" fill="${c}" ${st}/>`;
+    for(const [x,y,r,c] of [[30,160,16,"#c9853a"],[70,152,12,"#a85f2a"],[330,150,14,"#c9853a"],[380,156,18,"#b7702f"],[440,150,14,"#a85f2a"]])s+=tree(x,y,r,c);
+    s+=`<rect y="250" width="480" height="70" fill="#7d7a4d"/><path d="M0,250 Q240,244 480,252" fill="none" ${st}/>`;
+    return s}},
+  camp:{label:"Doanh trại đêm",d:()=>{let s=`<rect width="480" height="320" fill="#2d2c46"/>`;
+    for(const [x,y] of [[40,40],[120,70],[200,36],[300,60],[380,30],[450,80],[90,110],[420,120]])s+=`<circle cx="${x}" cy="${y}" r="1.8" fill="#f4f2f7"/>`;
+    s+=`<circle cx="400" cy="56" r="18" fill="#e9e4c8" ${st}/>`;
+    s+=`<rect y="196" width="480" height="124" fill="#3e3a33"/><path d="M0,196 L480,196" ${st}/>`;
+    const tent=(x,c,w)=>`<path d="M${x},198 L${x+w/2},${198-w*.8} L${x+w},198 Z" fill="${c}" ${st}/><path d="M${x+w/2},${198-w*.8} L${x+w/2-6},198 L${x+w/2+6},198Z" fill="#1c1b22" opacity=".5"/>`+ln(x+w/2,198-w*.8,x+w/2,182-w*.8,INK,2)+`<path d="M${x+w/2},${182-w*.8} L${x+w/2+14},${187-w*.8} L${x+w/2},${192-w*.8}Z" fill="#e2bd4f" stroke="${INK}" stroke-width="1.5"/>`;
+    s+=tent(10,"#2f4f9f",60)+tent(84,"#e9e4c8",44)+tent(330,"#2f4f9f",64)+tent(410,"#e9e4c8",52);
+    s+=`<circle cx="240" cy="262" r="70" fill="#f29a3a" opacity=".16"/><path d="M216,276 L264,268 M218,268 L262,278" stroke="#6b4a2e" stroke-width="6" stroke-linecap="round"/><path d="M240,226 Q222,252 230,272 L250,272 Q258,252 240,226Z" fill="#f29a3a" ${st}/><path d="M240,244 Q232,260 238,272 L244,272 Q250,260 240,244Z" fill="#f5d95a"/>`;
+    return s}},
   livingroom:{label:"Phòng khách",d:()=>{let s=`<rect width="480" height="320" fill="#e9dcc8"/><rect y="276" width="480" height="44" fill="#b98d63"/><path d="M0,276 L480,276" ${st}/>`;
     for(const x of [60,150,240,330,420])s+=`<line x1="${x}" y1="276" x2="${x-14}" y2="320" stroke="${INK}" stroke-width="1.5" opacity=".35"/>`;
     s+=`<rect x="196" y="70" width="88" height="104" fill="#a9d8f0" ${st}/><path d="M240,70 L240,174 M196,122 L284,122" ${st}/><rect x="190" y="174" width="100" height="8" fill="#f4efe2" ${st}/>`;

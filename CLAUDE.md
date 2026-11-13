@@ -13,6 +13,11 @@ From episode 2 on, the father can mention the channel name in the outro.
   ink outlines, stick arms and legs, black dot hands, white oval feet, detailed period costumes.
 - Characters and backgrounds are drawn by code in `index.html` (Xưởng Nhân Vật Sử). New scenes
   go in its `SCENES` table; new parts in `HAIR`, `HATS`, `OUTFITS`, `PROPS`.
+- European episodes: keep the two sides visually distinct. England = white surcoat with the red
+  St George cross (`knight_en`, `archer` with a cross badge, `stgeorge` banner); France = royal blue
+  with gold fleurs-de-lis (`knight_fr`, `fleur` banner); Henry V = `knight_royal` + `royalhelm`.
+  Scenes: `field`, `hall`, `siege`, `river`, `camp`. Owner chose the original wide-shot style
+  (not the close-up test in `episodes/03-agincourt/style-test-closeup.png`).
 - Narration voice: calm documentary narrator, light dry humor, serious at sad moments.
 - Framing (since episode 1 revision): a modern-day father tells the story to his 16-year-old
   son in their living room. Intro: son plays a samurai game on his phone, father asks if he
@@ -32,7 +37,8 @@ Folder numbers are the order they were written; **upload order** is what viewers
 |---|---|---|---|
 | **1st** | `episodes/02-okehazama` | Battle of Okehazama (1560), "2,000 vs 25,000" | Channel opener. Intro written as the first meeting (son playing a samurai game). Script and frames done; render with ElevenLabs |
 | **2nd** | `episodes/01-47-ronin` | The 47 Ronin (1701–1703) | Final video done (Gemini voice, father/son intro and outro, 3 Shorts). Owner wants it kept as is; do not re-voice with ElevenLabs |
-| 3rd | (next) | Honnō-ji Incident (1582) | Mentioned in the Okehazama ending ("a story for another day") |
+| 3rd | `episodes/03-agincourt` | Battle of Agincourt (1415), first European episode | Script and frames done (intro refers back to Okehazama; ends teasing Joan of Arc). Not voiced yet; render with ElevenLabs. Music is still Japanese-style (koto/taiko); consider a medieval European palette first |
+| later | (ideas) | Honnō-ji Incident (1582); Joan of Arc | Honnō-ji is mentioned in the Okehazama ending, Joan of Arc in the Agincourt ending |
 
 ## Pipeline (run from the repo root)
 1. Write `episodes/<NN-name>/shots.js` (narration, scene notes, characters, YouTube package,
