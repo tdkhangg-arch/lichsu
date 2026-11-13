@@ -34,7 +34,7 @@ s += `<rect x="0" y="0" width="480" height="320" fill="#1d2233" opacity="0.38"/>
 s += `<defs><radialGradient id="flash" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#f4f1e6" stop-opacity="0.85"/><stop offset="1" stop-color="#dfe8ff" stop-opacity="0"/></radialGradient></defs>`;
 s += `<ellipse cx="360" cy="150" rx="170" ry="100" fill="url(#flash)"/>`;
 // the French: rows and rows of shiny blue knights, back rows smaller
-s += ctx.FX.crowd({ side: "fr", x0: 225, x1: 486, rows: 6, gBack: 196, gFront: 286, scBack: 0.11, scFront: 0.36, perRow: 8, seed: 17, banners: 0.25,
+s += ctx.FX.crowd({ side: "fr", x0: 262, x1: 486, rows: 6, gBack: 196, gFront: 286, scBack: 0.11, scFront: 0.36, perRow: 8, seed: 17, banners: 0.25,
   faces: ["panic", "panic", "panic", "surprised"], flee: 0.6, tilt: 22, fall: 0.08 });
 // front of the rout: a knight fallen face down in the mud, a dropped banner, mud splashing
 const putRot = (cfg, x, ground, sc, a) => `<g transform="translate(${x - 100 * sc} ${ground - 272 * sc}) scale(${sc}) rotate(${a} 100 268)">${ctx.character(mk(cfg))}</g>`;
@@ -45,12 +45,15 @@ s += ctx.MUDAT(296, 284, 0.4 * 0.7, 0.3);
 s += ctx.FX.splash({ x: 290, y: 280, k: 0.9 }) + ctx.FX.splash({ x: 410, y: 292, k: 0.7 }) + ctx.FX.splash({ x: 350, y: 298, k: 0.6 });
 // arrows pouring onto them, with a shadow on the ground
 s += ctx.FX.arrowstorm({ x0: 120, x1: 480, y0: 34, y1: 150, dir: 1, n: 170, seed: 8 });
-// two ragged archers behind their stakes, ankle-deep in mud
-s += put({ outfit: "archer", color: "#5b6b3a", hat: "hood", prop: "bowdraw", face: "angry", flip: true }, 196, 300, 0.62);
-s += ctx.MUDAT(196, 300, 0.62, 0.2);
-s += ctx.FX.stakes({ x0: 150, x1: 250, y: 304, dir: 1, step: 11 });
+// archers: one further back shooting straight at the French, two in front shooting high into the sky
+s += put({ outfit: "archer", color: "#5b6b3a", hat: "hood", prop: "bowdraw", face: "angry", flip: true }, 236, 270, 0.48);
+s += ctx.MUDAT(236, 270, 0.48, 0.15);
+s += ctx.FX.stakes({ x0: 196, x1: 300, y: 304, dir: 1, step: 11 });
+s += put({ outfit: "archer", color: "#8a6a4a", hat: "kettle", prop: "bowup", face: "determined", flip: true }, 178, 298, 0.56);
+s += put({ outfit: "archer", color: "#9a7f55", hat: "hood", prop: "bowup", face: "angry", flip: true }, 262, 302, 0.54);
+s += ctx.MUDAT(178, 298, 0.56, 0.15) + ctx.MUDAT(262, 302, 0.54, 0.2);
 // Henry V, big, facing right: crown on the helmet, scar, confident smirk
-s += put({ outfit: "knight_royal", hat: "royalhelm", prop: "sword", face: "fierce", scar: true, flip: true }, 104, 392, 1.1);
+s += put({ outfit: "knight_royal", hat: "royalhelm", prop: "sword", face: "fierce", scar: true, flip: true }, 88, 384, 1.0);
 // text
 const T = (x, y, size, fill, txt, sw = 9) =>
   `<text x="${x}" y="${y}" font-family="Inter" font-weight="900" font-size="${size}" text-anchor="middle" fill="${fill}" stroke="#1c1b22" stroke-width="${sw}" paint-order="stroke" stroke-linejoin="round">${txt}</text>`;

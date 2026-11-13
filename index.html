@@ -259,6 +259,8 @@ const PROPS={
     d:()=>`<path d="M74,-14 Q30,144 74,302" fill="none" stroke="${INK}" stroke-width="9.5" stroke-linecap="round"/><path d="M74,-14 Q30,144 74,302" fill="none" stroke="#9a6a36" stroke-width="5.5" stroke-linecap="round"/>`+ln(74,-12,74,300,INK,1.3)+`<rect x="44" y="136" width="14" height="16" rx="3" fill="#6b4a2e" stroke="${INK}" stroke-width="1.6"/>`},
   bowdraw:{label:"Giương cung",hands:[[27,135],[96,128]],
     d:()=>`<path d="M50,-4 Q4,135 50,274" fill="none" stroke="${INK}" stroke-width="9.5" stroke-linecap="round"/><path d="M50,-4 Q4,135 50,274" fill="none" stroke="#9a6a36" stroke-width="5.5" stroke-linecap="round"/>`+ln(50,-2,96,128,INK,1.3)+ln(96,128,50,272,INK,1.3)+thick(96,128,-6,136,"#c9b48a",2)+P("M-6,136 L7,130 L6,141 Z","#d5d9e0",2)+P("M90,128 L99,121 L101,128 Z","#f4f2f7",1.5)},
+  bowup:{label:"Giương cung lên trời",hands:[[34,52],[78,100]],top:true,
+    d:()=>`<path d="M143.2,-18.3 Q19.1,35.8 -45.5,154.7" fill="none" stroke="${INK}" stroke-width="9.5" stroke-linecap="round"/><path d="M143.2,-18.3 Q19.1,35.8 -45.5,154.7" fill="none" stroke="#9a6a36" stroke-width="5.5" stroke-linecap="round"/>`+ln(143.2,-18.3,78.0,100.0,INK,1.3)+ln(78.0,100.0,-45.5,154.7,INK,1.3)+thick(78.0,100.0,2.9,18.1,"#c9b48a",2)+P("M2.9,18.1 L13.4,22.1 L6.0,28.8 Z","#d5d9e0",2)+P("M78.0,100.0 L85.7,101.0 L83.4,105.9 Z","#f4f2f7",1.5)},
   stake:{label:"Cọc nhọn",hands:[[86,198],[118,172]],
     d:()=>thick(54,254,142,118,"#a8834e",7)+P("M142,118 L160,96 L148,124 Z","#c9a46a",2.4)+P("M54,254 L40,276 L48,248 Z","#c9a46a",2.4)},
   mallet:{label:"Búa gỗ",hands:[[78,198],[122,180]],
@@ -299,10 +301,11 @@ function character(cfg){
     if(sleeve){const e=[a[0]+(b[0]-a[0])*sf,a[1]+(b[1]-a[1])*sf];u+=ln(a[0],a[1],e[0].toFixed(1),e[1].toFixed(1),INK,sw+5)+ln(a[0],a[1],e[0].toFixed(1),e[1].toFixed(1),sleeve,sw)}}
   u+=o.front(c);
   const handS=hands.map(h=>`<circle cx="${h[0]}" cy="${h[1]}" r="6.5" fill="${INK}"/>`).join("");
-  u+=pr.over?handS+pr.d():pr.d()+handS;
+  if(!pr.top)u+=pr.over?handS+pr.d():pr.d()+handS;   // top: props drawn in front of the head (e.g. a bow aimed at the sky)
   // head
   u+=`<defs><clipPath id="${id}"><circle cx="100" cy="70" r="46"/></clipPath></defs><circle cx="100" cy="70" r="46" fill="#cdc8da"/><circle cx="92" cy="67" r="45" fill="#fff" clip-path="url(#${id})"/><g clip-path="url(#${id})">${hr.clip()}</g><circle cx="100" cy="70" r="46" fill="none" stroke="${INK}" stroke-width="4.5"/>`;
   u+=hr.front()+FACES[cfg.face].d()+(cfg.scar?`<path d="M107,80 Q111,87 114,95" fill="none" stroke="#b5676a" stroke-width="3.2" stroke-linecap="round"/><path d="M106,85 L112,83 M108,90 L114,88" stroke="#b5676a" stroke-width="1.8" stroke-linecap="round"/>`:"")+HATS[cfg.hat].d();
+  if(pr.top)u+=pr.d()+handS;
   if(cfg.pose==="bow")u=`<g transform="rotate(-26 100 196)">${u}</g>`;
   s+=u;
   return cfg.flip?`<g transform="translate(200 0) scale(-1 1)">${s}</g>`:s;
