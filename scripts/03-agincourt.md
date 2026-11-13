@@ -152,11 +152,11 @@ On the twenty-fourth of October, near a village called Agincourt, they finally s
 
 ### 4:40 – The night before
 
-[SCENE 25: English camp at night in the rain, archers praying, Henry with a finger to his lips.]
+[SCENE 25: English camp at night in the rain, dying campfires, archers shivering and praying, Henry silent.]
 
 That night, it poured. The English camped in the open: wet, cold and hungry. Henry ordered total silence in his camp. Many of his men expected not to see another sunset, and spent the night in prayer.
 
-[SCENE 26: French camp by a fire, blue tents, knights laughing and playing dice.]
+[SCENE 26: French camp by a big fire, blue tents, shiny knights laughing and playing dice.]
 
 On the other side, according to some chroniclers, the French camp was noisy and confident. Some knights were said to be playing dice for the rich English prisoners they expected to capture the next day.
 
@@ -178,13 +178,13 @@ It was a simple stick of yew wood, almost as tall as a man. But pulling one took
 
 A good archer could shoot ten or more arrows a minute, at targets about two hundred and fifty yards away. Five thousand archers could send tens of thousands of arrows into the sky in a single minute.
 
-[SCENE 31: An archer holding a long sharpened stake, another hammering one into the ground with a mallet.]
+[SCENE 31: Archers behind a row of slanted stakes, one holding a stake, one with a mallet.]
 
 Each archer also carried a long wooden stake, sharpened at both ends. Hammered into the ground at an angle, a row of them could stop a charging horse.
 
 ### 6:27 – The field
 
-[SCENE 32: Wide shot of the muddy ploughed field between two woods, morning. On screen: 25 October 1415, St Crispin's Day]
+[SCENE 32: Wide shot: deep, wet furrows between two woods squeezing the field; English stakes in the foreground, French far away. On screen: 25 October 1415, St Crispin's Day]
 
 The morning of the twenty-fifth of October. Saint Crispin's Day. The battlefield was a freshly ploughed field between two woods. After a night of rain, it had turned into deep, sticky mud.
 
@@ -200,13 +200,13 @@ And then... nothing happened. For hours, the two armies just stood there, starin
 
 So Henry made a bold move. He ordered his whole army to pull up their stakes and walk forward, toward the enemy, until the French were within bow range. Then the archers hammered their stakes back into the mud.
 
-[SCENE 36: Archers shooting, sky full of arrows. On screen: Loose!]
+[SCENE 36: Archers behind their stakes shooting; the sky fills with arrows; a dark shadow falls on the French side. On screen: Loose!]
 
 And the archers began to shoot.
 
 ### 7:30 – Into the mud
 
-[SCENE 37: French knights charging, surprised, hitting the line of stakes.]
+[SCENE 37: French knights charging toward the English stakes under falling arrows, mud splashing.]
 
 The arrows provoked the French into attacking. Their mounted knights charged at the edges of the English line. But the woods squeezed them together, the stakes stopped their horses, and the arrows kept coming.
 
@@ -214,11 +214,11 @@ The arrows provoked the French into attacking. Their mounted knights charged at 
 
 Panicking horses turned and galloped back, straight into their own soldiers who were advancing on foot. The mud got churned up even worse.
 
-[SCENE 39: French knights trudging through the mud, exhausted, under a sky of arrows.]
+[SCENE 39: French knights sunk to the knees in mud, exhausted, under a sky full of arrows.]
 
 Now the main French army walked forward. Thousands of men in heavy steel armor, trudging through deep mud while arrows rained down on them. By the time they reached the English line, many of them were already exhausted.
 
-[SCENE 40: French knights packed shoulder to shoulder, unable to lift their swords.]
+[SCENE 40: French knights packed shoulder to shoulder in the mud; one has fallen face down in front of them, splash.]
 
 And the field kept narrowing. The French were packed so tightly that many couldn't even raise their weapons. Men who slipped in the mud struggled to get back up.
 

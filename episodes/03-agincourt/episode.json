@@ -320,7 +320,7 @@
       "start": 110,
       "duration": 21,
       "image": "images/shot-06.png",
-      "background": "paper",
+      "background": "parchment",
       "camera": "static",
       "characters": [
         {
@@ -525,7 +525,7 @@
       "start": 226,
       "duration": 6,
       "image": "images/shot-14.png",
-      "background": "paper",
+      "background": "parchment",
       "camera": "slow zoom in",
       "characters": [
         {
@@ -720,7 +720,7 @@
       "start": 311,
       "duration": 26,
       "image": "images/shot-21.png",
-      "background": "paper",
+      "background": "parchment",
       "camera": "static",
       "characters": [
         {
@@ -770,7 +770,7 @@
       "start": 337,
       "duration": 5,
       "image": "images/shot-22.png",
-      "background": "paper",
+      "background": "parchment",
       "camera": "slow zoom in",
       "characters": [
         {
@@ -872,7 +872,23 @@
       "image": "images/shot-26.png",
       "background": "field",
       "camera": "slow zoom out",
-      "characters": [],
+      "characters": [
+        {
+          "name": "French knight",
+          "expression": "smug",
+          "pose": "stand"
+        },
+        {
+          "name": "French knight",
+          "expression": "smug",
+          "pose": "stand"
+        },
+        {
+          "name": "French knight",
+          "expression": "smug",
+          "pose": "stand"
+        }
+      ],
       "on_screen_text": "25 October 1415, St Crispin's Day",
       "narration": "The morning of the twenty-fifth of October. Saint Crispin's Day. The battlefield was a freshly ploughed field between two woods. After a night of rain, it had turned into deep, sticky mud.",
       "word_count": 32
@@ -887,6 +903,16 @@
       "background": "field",
       "camera": "slow zoom in",
       "characters": [
+        {
+          "name": "French knight",
+          "expression": "smug",
+          "pose": "stand"
+        },
+        {
+          "name": "French knight",
+          "expression": "smug",
+          "pose": "stand"
+        },
         {
           "name": "French knight",
           "expression": "smug",
@@ -980,6 +1006,11 @@
         {
           "name": "Archer",
           "expression": "angry",
+          "pose": "stand"
+        },
+        {
+          "name": "French knight",
+          "expression": "surprised",
           "pose": "stand"
         }
       ],
@@ -1085,6 +1116,11 @@
         {
           "name": "French knight",
           "expression": "surprised",
+          "pose": "stand"
+        },
+        {
+          "name": "Fallen knight",
+          "expression": "closed",
           "pose": "stand"
         }
       ],
@@ -1229,7 +1265,7 @@
       "start": 587,
       "duration": 16,
       "image": "images/shot-40.png",
-      "background": "paper",
+      "background": "parchment",
       "camera": "slow zoom in",
       "characters": [
         {
@@ -1279,7 +1315,7 @@
       "start": 615,
       "duration": 6,
       "image": "images/shot-42.png",
-      "background": "paper",
+      "background": "parchment",
       "camera": "static",
       "characters": [
         {
@@ -1349,7 +1385,7 @@
       "start": 653,
       "duration": 16,
       "image": "images/shot-45.png",
-      "background": "paper",
+      "background": "parchment",
       "camera": "static",
       "characters": [
         {

@@ -11,7 +11,7 @@ const html = fs.readFileSync(path.join(root, "index.html"), "utf8");
 const script = html.split("<script>")[1].split("/* ---------- State + UI")[0];
 const ctx = {};
 vm.createContext(ctx);
-vm.runInContext(script + ";this.character=character;this.SCENES=SCENES;", ctx);
+vm.runInContext(script + ";this.character=character;this.SCENES=SCENES;this.FX=FX;this.MUDAT=MUDAT;this.SHIVER=SHIVER;", ctx);
 
 const defPath = path.resolve(process.argv[2]);
 const def = require(defPath);
@@ -26,12 +26,22 @@ function frameSVG(shot) {
   let s = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 30 480 270" width="1920" height="1080">`;
   s += ctx.SCENES[shot.background].d();
   if (shot.tint) s += `<rect x="0" y="0" width="480" height="320" fill="${shot.tint.color}" opacity="${shot.tint.opacity}"/>`;
+  // optional effects: shot.fx = [{ type: "stakes" | "arrowstorm" | "groundarrows" | "campfire" | "splash", front, ...params }]
+  const fx = (front) => (shot.fx || []).filter(f => !!f.front === front).map(f => ctx.FX[f.type](f)).join("");
+  s += fx(false);
   for (const ch of shot.characters || []) {
     const sc = ch.scale || 0.75;
-    const y = (ch.ground || GROUND) - 272 * sc;
-    // character art spans x 0..200; flipped art is mirrored inside the same box
-    s += `<g transform="translate(${ch.x - 100 * sc} ${y}) scale(${sc})">${ctx.character(ch.cfg)}</g>`;
+    const g = ch.ground || GROUND;
+    const y = g - 272 * sc;
+    // character art spans x 0..200; flipped art is mirrored inside the same box.
+    // rot tips the character over around its feet (e.g. 85 = fallen face down, facing left)
+    const rot = ch.rot ? ` rotate(${ch.rot} 100 268)` : "";
+    s += `<g transform="translate(${ch.x - 100 * sc} ${y}) scale(${sc})${rot}">${ctx.character(ch.cfg)}</g>`;
+    // for a fallen character the mud covers its face: the head ends up about 197 units from the feet
+    if (ch.mud) s += ch.rot ? ctx.MUDAT(ch.x + Math.sign(ch.rot) * 190 * sc, g, sc * 0.7, ch.mud) : ctx.MUDAT(ch.x, g, sc, ch.mud);
+    if (ch.shiver) s += ctx.SHIVER(ch.x, g, sc);
   }
+  s += fx(true);
   if (shot.rain) {
     // heavy diagonal rain drawn over the scene (fixed pattern so frames are reproducible)
     let seed = 7;

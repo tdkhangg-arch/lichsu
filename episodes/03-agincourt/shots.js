@@ -3,18 +3,19 @@
 // Characters face left by default; flip:true faces right.
 // Costumes keep the two sides apart at a glance:
 //   England: white surcoat with the red cross of St George (Henry V ordered every English soldier to wear it),
-//            archers in padded jacks with a St George badge, Henry V in the quartered royal arms with a crown on his helmet.
-//   France:  royal blue surcoat with gold fleurs-de-lis, blue banners.
+//            archers in torn, muddy padded jacks with a St George badge and a tall longbow, Henry V in the quartered
+//            royal arms with a crown on his helmet and the arrow scar on his cheek (Shrewsbury, 1403).
+//   France:  royal blue surcoat with gold fleurs-de-lis, shiny clean armor, blue banners.
 const base = { hair: "none", hat: "none", face: "neutral", outfit: "stick", color: "#3a3640", prop: "none", pose: "stand", flip: false };
 const mk = o => ({ ...base, ...o });
 
 const C = {
-  henry: mk({ outfit: "knight_royal", hat: "royalhelm", prop: "sword", face: "determined" }),
-  henryCourt: mk({ outfit: "robe", color: "#a8342c", hat: "crown", hair: "short", face: "smug" }),
+  henry: mk({ outfit: "knight_royal", hat: "royalhelm", prop: "sword", face: "determined", scar: true }),
+  henryCourt: mk({ outfit: "robe", color: "#a8342c", hat: "crown", hair: "short", face: "smug", scar: true }),
   enKnight: mk({ outfit: "knight_en", hat: "bascinet", prop: "sword", face: "determined" }),
   enBanner: mk({ outfit: "knight_en", hat: "bascinet", prop: "stgeorge", face: "determined" }),
   archer: mk({ outfit: "archer", color: "#8a6a4a", hat: "kettle", prop: "longbow", face: "neutral" }),
-  archer2: mk({ outfit: "archer", color: "#5b6b3a", hair: "short", prop: "longbow", face: "neutral" }),
+  archer2: mk({ outfit: "archer", color: "#5b6b3a", hat: "hood", prop: "longbow", face: "neutral" }),
   frKnight: mk({ outfit: "knight_fr", hat: "bascinet", prop: "sword", face: "smug" }),
   frBanner: mk({ outfit: "knight_fr", hat: "bascinet", prop: "fleur", face: "smug" }),
   charles: mk({ outfit: "robe", color: "#2f4f7f", hat: "crown", hair: "short", face: "surprised" }),
@@ -23,7 +24,8 @@ const C = {
   adviser: mk({ outfit: "robe", color: "#8a6a4a", hair: "short", face: "surprised" }),
   narrator: mk({ face: "smug" }),
 };
-const ch = (name, cfg, x, { scale, ground, ...more } = {}) => ({ name, x, scale, ground, cfg: { ...cfg, ...more } });
+// mud: 0..1 how deep the feet sink; shiver: tremble marks; rot: tip over around the feet (-85 = fallen face down)
+const ch = (name, cfg, x, { scale, ground, mud, shiver, rot, ...more } = {}) => ({ name, x, scale, ground, mud, shiver, rot, cfg: { ...cfg, ...more } });
 // Modern-day father and son who frame the story (the father is the narrator's voice)
 const DAD = mk({ hair: "short", hat: "glasses", outfit: "tshirt", color: "#5b6b3a", prop: "book", face: "neutral" });
 const SON = mk({ hair: "short", outfit: "hoodie", color: "#a8342c", prop: "none", face: "determined" });
@@ -93,7 +95,7 @@ module.exports = {
     // Hook
     { section: "Hook", background: "field", rain: true, camera: "slow pan right", text: "Northern France, 1415",
       note: "Muddy field in the rain. Tired English archers and a knight with a St George banner, heads down.",
-      characters: [ch("Archer", { ...C.archer, face: "closed" }, 120, { scale: 0.62 }), ch("English knight", { ...C.enBanner, face: "closed" }, 240, { scale: 0.66 }), ch("Archer", { ...C.archer2, face: "closed" }, 360, { scale: 0.62 })],
+      characters: [ch("Archer", { ...C.archer, face: "closed" }, 150, { scale: 0.62, mud: 0.25, shiver: true }), ch("English knight", { ...C.enBanner, face: "closed" }, 240, { scale: 0.66, mud: 0.2 }), ch("Archer", { ...C.archer2, face: "closed" }, 330, { scale: 0.62, mud: 0.25, shiver: true })],
       narration: "October 1415. Northern France. A small English army is trapped. The men are soaked, starving and sick. Many of them haven't had a proper meal in days." },
     { section: "Hook", background: "field", tint: grey, camera: "slow zoom in",
       note: "A wall of French knights in blue surcoats with fleur-de-lis banners, smug.",
@@ -111,9 +113,9 @@ module.exports = {
       narration: "To understand how they got there, meet Henry the Fifth, King of England. He was twenty-nine years old, serious, deeply religious, and extremely sure of himself." },
     { section: "A king with a claim", background: "village", tint: dusk, camera: "track left", text: "Prince Hal?",
       note: "A young Henry walking out of a tavern street at night, grinning; narrator shrugging.",
-      characters: [ch("Young Henry", { ...C.henryCourt, hat: "none", face: "smug", color: "#c0392b" }, 200, { pose: "walk" }), ch("Narrator", { ...C.narrator, face: "surprised" }, 360, { scale: 0.6 })],
+      characters: [ch("Young Henry", { ...C.henryCourt, hat: "none", face: "smug", color: "#c0392b", scar: false }, 200, { pose: "walk" }), ch("Narrator", { ...C.narrator, face: "surprised" }, 360, { scale: 0.6 })],
       narration: "Legend says that as a young prince, he was a wild party boy who spent his nights in taverns. Shakespeare made that story famous. Historians aren't sure how much of it is true. Either way, by the time he became king, the party was over." },
-    { section: "A king with a claim", background: "paper", camera: "static", text: "The Hundred Years' War (1337–1453)",
+    { section: "A king with a claim", background: "parchment", camera: "static", text: "The Hundred Years' War (1337–1453)",
       note: "Plain background: an English knight and a French knight facing each other.",
       characters: [ch("English knight", C.enKnight, 170, { flip: true, face: "angry" }), ch("French knight", C.frKnight, 310, { face: "angry" })],
       narration: "Henry believed he had a right to the throne of France. His great-grandfather Edward the Third had claimed it too, and England and France had been fighting on and off for generations. We call it the Hundred Years' War, even though it actually lasted more than a hundred years." },
@@ -149,7 +151,7 @@ module.exports = {
       note: "Henry's advisers pleading; Henry with his arms folded, determined.",
       characters: [ch("Adviser", C.adviser, 140, { flip: true }), ch("Adviser", { ...C.adviser, color: "#5b6b3a", face: "angry" }, 230, { flip: true, scale: 0.7 }), ch("Henry V", C.henry, 360)],
       narration: "His advisers told him to go home by sea. Henry refused. Instead, he decided to march his remaining men overland to Calais, an English-held town on the coast. It was partly a show of strength: the King of England walking through France, and nobody able to stop him." },
-    { section: "The long march", background: "paper", camera: "slow zoom in", text: "Food for 8 days",
+    { section: "The long march", background: "parchment", camera: "slow zoom in", text: "Food for 8 days",
       note: "An archer holding a small sack of bread, smiling optimistically.",
       characters: [ch("Archer", { ...C.archer, prop: "scroll", face: "gentle" }, 240)],
       narration: "The men carried enough food for about eight days. That was the plan." },
@@ -159,7 +161,7 @@ module.exports = {
       narration: "Then they reached the River Somme. Every bridge and every crossing was broken or guarded by French troops." },
     { section: "The long march", background: "river", rain: true, camera: "track left",
       note: "English column trudging along the river in the rain.",
-      characters: [ch("Archer", { ...C.archer, face: "closed" }, 120, { pose: "walk" }), ch("Henry V", { ...C.henry, face: "closed" }, 240, { pose: "walk" }), ch("Archer", { ...C.archer2, face: "closed" }, 360, { pose: "walk" })],
+      characters: [ch("Archer", { ...C.archer, face: "closed" }, 120, { pose: "walk", shiver: true }), ch("Henry V", { ...C.henry, face: "closed" }, 240, { pose: "walk" }), ch("Archer", { ...C.archer2, face: "closed" }, 360, { pose: "walk", shiver: true })],
       narration: "So the English had to march inland, upstream, searching for a way across. Day after day, in the cold October rain. The eight days of food ran out. Men picked nuts and berries from the hedges to stay alive." },
     { section: "The long march", background: "field", rain: true, camera: "slow zoom out",
       note: "Rain over the field; far away, small blue figures gathering.",
@@ -172,20 +174,21 @@ module.exports = {
 
     // The night before
     { section: "The night before", background: "field", tint: dusk, rain: true, camera: "slow zoom in",
-      note: "English camp at night in the rain, archers praying, Henry with a finger to his lips.",
-      characters: [ch("Archer", { ...C.archer, face: "closed", prop: "none" }, 110, { pose: "bow" }), ch("Henry V", { ...C.henry, face: "closed", prop: "none" }, 240), ch("Archer", { ...C.archer2, face: "closed", prop: "none" }, 370, { pose: "bow" })],
+      note: "English camp at night in the rain, dying campfires, archers shivering and praying, Henry silent.",
+      fx: [{ type: "campfire", x: 175, y: 284, dying: true }, { type: "campfire", x: 310, y: 280, dying: true }],
+      characters: [ch("Archer", { ...C.archer, face: "closed", prop: "none" }, 110, { pose: "bow", shiver: true }), ch("Henry V", { ...C.henry, face: "closed", prop: "none" }, 240), ch("Archer", { ...C.archer2, face: "closed", prop: "none" }, 370, { pose: "bow", shiver: true })],
       narration: "That night, it poured. The English camped in the open: wet, cold and hungry. Henry ordered total silence in his camp. Many of his men expected not to see another sunset, and spent the night in prayer." },
     { section: "The night before", background: "camp", camera: "slow pan right",
-      note: "French camp by a fire, blue tents, knights laughing and playing dice.",
+      note: "French camp by a big fire, blue tents, shiny knights laughing and playing dice.",
       characters: [ch("French knight", { ...C.frKnight, prop: "none", face: "smug" }, 160, { flip: true, pose: "sit", ground: 300 }), ch("French knight", { ...C.frKnight, prop: "none", face: "gentle" }, 330, { pose: "sit", ground: 300 })],
       narration: "On the other side, according to some chroniclers, the French camp was noisy and confident. Some knights were said to be playing dice for the rich English prisoners they expected to capture the next day." },
-    { section: "The night before", background: "paper", camera: "static", text: "Outnumbered 3 or 4 to 1?",
+    { section: "The night before", background: "parchment", camera: "static", text: "Outnumbered 3 or 4 to 1?",
       note: "Left: a few English soldiers. Right: many French knights.",
       characters: [ch("Archer", C.archer, 60, { scale: 0.45, flip: true }), ch("English knight", C.enKnight, 110, { scale: 0.45, flip: true }), ch("French knight", C.frKnight, 230, { scale: 0.45 }), ch("French knight", C.frBanner, 280, { scale: 0.45 }), ch("French knight", C.frKnight, 330, { scale: 0.45 }), ch("French knight", C.frKnight, 380, { scale: 0.45 }), ch("French knight", C.frBanner, 430, { scale: 0.45 })],
       narration: "How big were the armies? Henry had perhaps six to nine thousand men, and most of them, maybe five out of every six, were archers. The French are often said to have had three or four times as many. Some modern historians think the gap was smaller. But everyone agrees: the English were badly outnumbered, and in far worse shape." },
 
     // The longbow
-    { section: "The longbow", background: "paper", camera: "slow zoom in", text: "The English longbow",
+    { section: "The longbow", background: "parchment", camera: "slow zoom in", text: "The English longbow",
       note: "An English archer drawing a longbow.",
       characters: [ch("Archer", { ...C.archer, prop: "bowdraw", face: "determined" }, 240)],
       narration: "But those archers had a secret weapon. The English longbow." },
@@ -195,21 +198,24 @@ module.exports = {
       narration: "It was a simple stick of yew wood, almost as tall as a man. But pulling one took enormous strength. English boys trained from childhood, and by law, men were expected to practise archery on Sundays and holidays." },
     { section: "The longbow", background: "field", tint: grey, camera: "slow pan right", text: "10+ arrows a minute",
       note: "A row of archers drawing their bows.",
-      characters: [ch("Archer", { ...C.archer, prop: "bowdraw", face: "determined" }, 120, { scale: 0.62 }), ch("Archer", { ...C.archer2, prop: "bowdraw", face: "determined" }, 240, { scale: 0.62 }), ch("Archer", { ...C.archer, prop: "bowdraw", face: "angry" }, 360, { scale: 0.62 })],
+      fx: [{ type: "arrowstorm", x0: 60, x1: 480, y0: 40, y1: 150, dir: -1, n: 110 }, { type: "groundarrows", x: 150, y: 294, front: true }, { type: "groundarrows", x: 270, y: 294, front: true }, { type: "groundarrows", x: 390, y: 294, front: true }],
+      characters: [ch("Archer", { ...C.archer, prop: "bowdraw", face: "determined" }, 170, { scale: 0.62, mud: 0.15 }), ch("Archer", { ...C.archer2, prop: "bowdraw", face: "determined" }, 290, { scale: 0.62, mud: 0.15 }), ch("Archer", { ...C.archer, prop: "bowdraw", face: "angry" }, 410, { scale: 0.62, mud: 0.15 })],
       narration: "A good archer could shoot ten or more arrows a minute, at targets about two hundred and fifty yards away. Five thousand archers could send tens of thousands of arrows into the sky in a single minute." },
     { section: "The longbow", background: "field", tint: grey, camera: "static",
-      note: "An archer holding a long sharpened stake, another hammering one into the ground with a mallet.",
-      characters: [ch("Archer", { ...C.archer, prop: "stake", face: "determined" }, 160), ch("Archer", { ...C.archer2, prop: "mallet", face: "angry" }, 320, { flip: true })],
+      note: "Archers behind a row of slanted stakes, one holding a stake, one with a mallet.",
+      fx: [{ type: "stakes", x0: 150, x1: 330, y: 300, dir: 1, front: true }],
+      characters: [ch("Archer", { ...C.archer, prop: "stake", face: "determined" }, 180, { flip: true }), ch("Archer", { ...C.archer2, prop: "mallet", face: "angry" }, 300, { flip: true })],
       narration: "Each archer also carried a long wooden stake, sharpened at both ends. Hammered into the ground at an angle, a row of them could stop a charging horse." },
 
     // The field
     { section: "The field", background: "field", camera: "slow zoom out", text: "25 October 1415, St Crispin's Day",
-      note: "Wide shot of the muddy ploughed field between two woods, morning.",
-      characters: [],
+      note: "Wide shot: deep, wet furrows between two woods squeezing the field; English stakes in the foreground, French far away.",
+      fx: [{ type: "stakes", x0: 150, x1: 330, y: 306, dir: -1, front: true }],
+      characters: [ch("French knight", C.frBanner, 220, { scale: 0.32, ground: 200 }), ch("French knight", C.frKnight, 245, { scale: 0.32, ground: 200 }), ch("French knight", C.frKnight, 270, { scale: 0.32, ground: 200 })],
       narration: "The morning of the twenty-fifth of October. Saint Crispin's Day. The battlefield was a freshly ploughed field between two woods. After a night of rain, it had turned into deep, sticky mud." },
     { section: "The field", background: "field", camera: "slow zoom in",
       note: "French knights bunched together in the narrow middle of the field.",
-      characters: [ch("French knight", C.frKnight, 190, { scale: 0.55 }), ch("French knight", C.frBanner, 240, { scale: 0.58 }), ch("French knight", C.frKnight, 290, { scale: 0.55 })],
+      characters: [ch("French knight", C.frKnight, 175, { scale: 0.52 }), ch("French knight", C.frKnight, 205, { scale: 0.55, ground: 300 }), ch("French knight", C.frBanner, 240, { scale: 0.58 }), ch("French knight", C.frKnight, 275, { scale: 0.55, ground: 300 }), ch("French knight", C.frKnight, 305, { scale: 0.52 })],
       narration: "The woods on both sides squeezed the field narrower. Whatever the French did, they couldn't spread out and surround Henry's small army. They would have to come straight at him." },
     { section: "The field", background: "field", camera: "static", pause: 1.5,
       note: "An English archer and a French knight staring at each other across the field, bored.",
@@ -220,34 +226,39 @@ module.exports = {
       characters: [ch("Henry V", C.henry, 150, { flip: true, pose: "walk" }), ch("Archer", { ...C.archer, prop: "stake" }, 270, { flip: true, pose: "walk", scale: 0.68 }), ch("Archer", { ...C.archer2, prop: "stake" }, 370, { flip: true, pose: "walk", scale: 0.64 })],
       narration: "So Henry made a bold move. He ordered his whole army to pull up their stakes and walk forward, toward the enemy, until the French were within bow range. Then the archers hammered their stakes back into the mud." },
     { section: "The field", background: "field", camera: "shake", text: "Loose!",
-      note: "Archers shooting, sky full of arrows.",
-      characters: [ch("Archer", { ...C.archer, prop: "bowdraw", face: "angry" }, 140, { flip: true }), ch("Archer", { ...C.archer2, prop: "bowdraw", face: "angry" }, 300, { flip: true })],
+      note: "Archers behind their stakes shooting; the sky fills with arrows; a dark shadow falls on the French side.",
+      fx: [{ type: "arrowstorm", x0: 160, x1: 480, y0: 36, y1: 160, dir: 1, n: 140, shadowX0: 320, shadowX1: 480 }, { type: "stakes", x0: 60, x1: 250, y: 302, dir: 1, front: true }],
+      characters: [ch("Archer", { ...C.archer, prop: "bowdraw", face: "angry" }, 110, { flip: true, scale: 0.7, mud: 0.15 }), ch("Archer", { ...C.archer2, prop: "bowdraw", face: "angry" }, 220, { flip: true, scale: 0.7, mud: 0.15 }), ch("French knight", { ...C.frKnight, face: "surprised" }, 420, { scale: 0.5, mud: 0.3 })],
       narration: "And the archers began to shoot." },
 
     // Into the mud
     { section: "Into the mud", background: "field", camera: "shake",
-      note: "French knights charging, surprised, hitting the line of stakes.",
-      characters: [ch("French knight", { ...C.frBanner, face: "surprised" }, 180, { flip: true, pose: "walk" }), ch("French knight", { ...C.frKnight, face: "surprised" }, 300, { flip: true, pose: "walk", scale: 0.66 })],
+      note: "French knights charging toward the English stakes under falling arrows, mud splashing.",
+      fx: [{ type: "arrowstorm", x0: 120, x1: 480, y0: 40, y1: 170, dir: -1, n: 90, shadowX0: 180, shadowX1: 460, seed: 5 }, { type: "stakes", x0: 30, x1: 140, y: 300, dir: 1, front: true }, { type: "splash", x: 300, y: 292 }],
+      characters: [ch("French knight", { ...C.frBanner, face: "surprised" }, 230, { pose: "walk", mud: 0.3 }), ch("French knight", { ...C.frKnight, face: "surprised" }, 360, { pose: "walk", scale: 0.66, mud: 0.3 })],
       narration: "The arrows provoked the French into attacking. Their mounted knights charged at the edges of the English line. But the woods squeezed them together, the stakes stopped their horses, and the arrows kept coming." },
     { section: "Into the mud", background: "field", camera: "track left",
       note: "French knights running back in panic toward their own advancing men.",
-      characters: [ch("French knight", { ...C.frKnight, face: "surprised", prop: "none" }, 150, { pose: "walk" }), ch("French knight", { ...C.frKnight, face: "angry" }, 320, { flip: true, pose: "walk", scale: 0.66 })],
+      fx: [{ type: "splash", x: 150, y: 292 }, { type: "splash", x: 320, y: 296, k: 0.8 }],
+      characters: [ch("French knight", { ...C.frKnight, face: "surprised", prop: "none" }, 150, { pose: "walk", mud: 0.35 }), ch("French knight", { ...C.frKnight, face: "angry" }, 320, { flip: true, pose: "walk", scale: 0.66, mud: 0.35 })],
       narration: "Panicking horses turned and galloped back, straight into their own soldiers who were advancing on foot. The mud got churned up even worse." },
     { section: "Into the mud", background: "field", rain: false, camera: "slow zoom in",
-      note: "French knights trudging through the mud, exhausted, under a sky of arrows.",
-      characters: [ch("French knight", { ...C.frKnight, face: "closed" }, 160, { pose: "walk", ground: 300 }), ch("French knight", { ...C.frBanner, face: "surprised" }, 300, { pose: "walk", ground: 300 })],
+      note: "French knights sunk to the knees in mud, exhausted, under a sky full of arrows.",
+      fx: [{ type: "arrowstorm", x0: 0, x1: 480, y0: 36, y1: 150, dir: 1, n: 150, shadowX0: 80, shadowX1: 400, seed: 23 }],
+      characters: [ch("French knight", { ...C.frKnight, face: "closed" }, 170, { pose: "walk", mud: 0.75, ground: 282 }), ch("French knight", { ...C.frBanner, face: "surprised" }, 310, { pose: "walk", mud: 0.7, ground: 282, shiver: true })],
       narration: "Now the main French army walked forward. Thousands of men in heavy steel armor, trudging through deep mud while arrows rained down on them. By the time they reached the English line, many of them were already exhausted." },
     { section: "Into the mud", background: "field", camera: "shake",
-      note: "French knights packed shoulder to shoulder, unable to lift their swords.",
-      characters: [ch("French knight", { ...C.frKnight, face: "surprised" }, 190, { scale: 0.7 }), ch("French knight", { ...C.frBanner, face: "angry" }, 240, { scale: 0.72 }), ch("French knight", { ...C.frKnight, face: "surprised" }, 290, { scale: 0.7 })],
+      note: "French knights packed shoulder to shoulder in the mud; one has fallen face down in front of them, splash.",
+      fx: [{ type: "splash", x: 100, y: 286, k: 1.2, front: true }],
+      characters: [ch("French knight", { ...C.frKnight, face: "surprised" }, 210, { scale: 0.7, mud: 0.55, ground: 282 }), ch("French knight", { ...C.frBanner, face: "angry" }, 260, { scale: 0.72, mud: 0.55, ground: 282 }), ch("French knight", { ...C.frKnight, face: "surprised" }, 310, { scale: 0.7, mud: 0.55, ground: 282 }), ch("Fallen knight", { ...C.frKnight, face: "closed", prop: "none" }, 190, { scale: 0.55, ground: 292, rot: -84, mud: 0.35 })],
       narration: "And the field kept narrowing. The French were packed so tightly that many couldn't even raise their weapons. Men who slipped in the mud struggled to get back up." },
     { section: "Into the mud", background: "field", camera: "shake",
       note: "English archers with swords and mallets running into the fight.",
-      characters: [ch("Archer", { ...C.archer, prop: "mallet", face: "angry" }, 140, { flip: true, pose: "walk" }), ch("Archer", { ...C.archer2, prop: "sword", face: "angry" }, 250, { flip: true, pose: "walk" }), ch("French knight", { ...C.frKnight, face: "surprised" }, 380, { scale: 0.7 })],
+      characters: [ch("Archer", { ...C.archer, prop: "mallet", face: "angry" }, 140, { flip: true, pose: "walk", mud: 0.1 }), ch("Archer", { ...C.archer2, prop: "sword", face: "angry" }, 250, { flip: true, pose: "walk", mud: 0.1 }), ch("French knight", { ...C.frKnight, face: "surprised" }, 380, { scale: 0.7, mud: 0.65, ground: 282, shiver: true })],
       narration: "Then the English archers dropped their bows, picked up swords, axes and the wooden mallets they'd used for the stakes, and ran into the fight. Lightly dressed, they could move easily through the mud. The knights could barely move at all." },
     { section: "Into the mud", background: "field", camera: "quick push in",
       note: "Henry in the front line, crown on his helmet, facing a French knight.",
-      characters: [ch("Henry V", { ...C.henry, face: "angry" }, 170, { flip: true }), ch("French knight", { ...C.frKnight, face: "angry" }, 320)],
+      characters: [ch("Henry V", { ...C.henry, face: "angry" }, 170, { flip: true, mud: 0.2 }), ch("French knight", { ...C.frKnight, face: "angry" }, 320, { mud: 0.45 })],
       narration: "Henry fought in the front line himself, with a crown on his helmet. One story says a French knight struck him so hard that part of the crown was knocked off." },
 
     // The darkest moment
@@ -265,7 +276,7 @@ module.exports = {
       note: "Henry facing the French herald Montjoie, who holds a scroll.",
       characters: [ch("Henry V", { ...C.henry, face: "neutral", prop: "none" }, 160, { flip: true }), ch("Montjoie", C.herald, 320)],
       narration: "After the battle, according to the chroniclers, Henry asked the French royal herald, Montjoie, who had won. The herald answered: the King of England. Henry asked the name of the castle nearby. Agincourt, came the reply. Then this, said Henry, shall be called the Battle of Agincourt." },
-    { section: "The herald's answer", background: "paper", camera: "slow zoom in", text: "France: thousands lost · England: a few hundred",
+    { section: "The herald's answer", background: "parchment", camera: "slow zoom in", text: "France: thousands lost · England: a few hundred",
       note: "A single French banner and a single English banner side by side.",
       characters: [ch("French knight", { ...C.frBanner, face: "closed" }, 170, { flip: true }), ch("English knight", { ...C.enBanner, face: "closed" }, 310)],
       narration: "The losses were completely one-sided. The French lost thousands of men, including a huge part of their nobility: dukes, counts, and the commander of the royal army himself. The English lost a few hundred at most." },
@@ -273,9 +284,9 @@ module.exports = {
     // Why it worked
     { section: "Why it worked", background: "field", camera: "static", text: "1. The ground",
       note: "French knights stuck in the narrow, muddy middle of the field.",
-      characters: [ch("French knight", { ...C.frKnight, face: "surprised" }, 210, { scale: 0.6 }), ch("French knight", { ...C.frBanner, face: "surprised" }, 270, { scale: 0.6 })],
+      characters: [ch("French knight", { ...C.frKnight, face: "surprised" }, 205, { scale: 0.6, mud: 0.8, ground: 282 }), ch("French knight", { ...C.frBanner, face: "surprised" }, 275, { scale: 0.6, mud: 0.8, ground: 282, shiver: true })],
       narration: "So how did a sick, hungry army win? First, the ground. The mud and the woods turned the French advantage in numbers into a traffic jam." },
-    { section: "Why it worked", background: "paper", camera: "static", text: "2. The longbow",
+    { section: "Why it worked", background: "parchment", camera: "static", text: "2. The longbow",
       note: "An archer drawing his longbow.",
       characters: [ch("Archer", { ...C.archer, prop: "bowdraw", face: "determined" }, 240)],
       narration: "Second, the longbow, and the years of practice behind every single archer." },
@@ -289,7 +300,7 @@ module.exports = {
       note: "Townspeople cheering Henry back in England.",
       characters: [ch("Townsman", { ...C.adviser, face: "gentle", color: "#9a7f55" }, 110, { flip: true }), ch("Henry V", { ...C.henryCourt, face: "gentle" }, 240), ch("Townsman", { ...C.adviser, face: "gentle", color: "#5b6b3a" }, 370)],
       narration: "Henry returned to London a hero. Agincourt became a national legend, especially after Shakespeare wrote his play Henry the Fifth, almost two hundred years later, with its famous speech: We few, we happy few, we band of brothers." },
-    { section: "What came next", background: "paper", camera: "static", text: "Myth?",
+    { section: "What came next", background: "parchment", camera: "static", text: "Myth?",
       note: "An English archer holding up two fingers proudly; narrator looking doubtful.",
       characters: [ch("Archer", { ...C.archer, prop: "none", face: "smug" }, 180, { flip: true }), ch("Narrator", { ...C.narrator, face: "surprised" }, 320)],
       narration: "There's also a popular story that a rude two-finger gesture in Britain comes from English archers, showing the French they still had their drawing fingers. It's a great story. Unfortunately, historians have found no evidence for it." },
