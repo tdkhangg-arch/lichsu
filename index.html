@@ -153,8 +153,19 @@ const HATS={
   mandarin:{label:"Mũ cánh chuồn",d:()=>`<ellipse cx="32" cy="34" rx="24" ry="7" fill="${INK}" transform="rotate(-8 32 34)"/><ellipse cx="168" cy="34" rx="24" ry="7" fill="${INK}" transform="rotate(8 168 34)"/>`+P("M56,48 Q58,16 100,14 Q142,16 144,48 Z",INK,3)+P("M76,22 Q78,-6 100,-8 Q122,-6 124,22 Z","#2a2830",3)+ln(60,44,140,44,"#c9a45a",2.5)},
   crown:{label:"Vương miện",d:()=>P("M56,40 L56,8 L72,24 L86,-2 L100,20 L114,-2 L128,24 L144,8 L144,40 Q100,48 56,40Z","#e2bd4f",3.2)+`<circle cx="86" cy="30" r="4" fill="#a8342c"/><circle cx="114" cy="30" r="4" fill="#2f4f7f"/><circle cx="100" cy="32" r="4.5" fill="#3c7a52"/>`},
   roman:{label:"Mũ La Mã",d:()=>`<path d="M58,6 Q100,-34 152,10 Q140,0 100,-10 Q74,-6 58,6Z" fill="#a8342c" stroke="${INK}" stroke-width="3"/>`+P("M54,52 Q56,8 100,6 Q144,8 146,52 Z","#b8bcc4",3.5)+P("M128,50 L152,50 L150,100 L132,92 Z","#a3a8b1",3)+P("M44,52 Q100,42 156,52 L154,58 Q100,50 46,58Z","#8e939c",3)+ln(100,8,100,48,"#8e939c",2)},
+  bascinet:{label:"Mũ hiệp sĩ",d:()=>P("M118,54 L152,58 L160,120 Q134,128 114,114 Z","#9ca1ab",3)+[66,78,90,102,114].map(y=>ln(126,y,154,y+2,INK,1.3,'stroke-dasharray="2 3" opacity=".6"')).join("")+P("M50,58 Q50,6 100,-12 Q150,6 150,62 Z","#b8bcc4",3.5)+`<path d="M64,48 Q66,14 98,0" fill="none" stroke="#e6e8ec" stroke-width="4" stroke-linecap="round"/>`+[[60,54],[80,56],[120,58],[140,60]].map(([x,y])=>`<circle cx="${x}" cy="${y}" r="2.4" fill="${INK}"/>`).join("")},
+  royalhelm:{label:"Mũ hiệp sĩ đội vương miện",d:()=>HATS.bascinet.d()+P("M56,38 L58,14 L70,28 L82,6 L94,26 L106,4 L118,26 L130,8 L140,30 L146,16 L148,42 Q100,32 56,38Z","#e2bd4f",3)+`<circle cx="82" cy="30" r="3.5" fill="#a8342c"/><circle cx="106" cy="28" r="3.5" fill="#2f4f7f"/><circle cx="130" cy="31" r="3.5" fill="#a8342c"/>`},
+  kettle:{label:"Mũ sắt vành rộng",d:()=>P("M62,44 Q62,-2 100,-4 Q138,-2 138,44 Z","#9ca1ab",3.5)+`<path d="M74,34 Q76,10 98,4" fill="none" stroke="#d5d9e0" stroke-width="3.5" stroke-linecap="round"/>`+P("M24,46 Q100,30 176,46 Q100,58 24,46Z","#868b94",3)},
   tophat:{label:"Mũ chóp cao",d:()=>P("M68,30 L72,-28 L128,-28 L132,30 Z","#26242c",3.5)+`<rect x="70" y="14" width="60" height="9" fill="#a8342c"/>`+P("M40,34 Q100,22 160,34 Q100,42 40,34Z","#26242c",3.5)}
 };
+
+/* ---------- Heraldry helpers (European episodes) ---------- */
+const LYS=(x,y,k=1)=>`<g transform="translate(${x} ${y}) scale(${k})"><path d="M0,0 Q-5,-8 0,-15 Q5,-8 0,0Z M-1,-3 Q-9,-11 -11,-3 Q-8,-6 -3,-1Z M1,-3 Q9,-11 11,-3 Q8,-6 3,-1Z" fill="#e2bd4f" stroke="${INK}" stroke-width="1"/><rect x="-6" y="-1" width="12" height="3" fill="#e2bd4f" stroke="${INK}" stroke-width="1"/></g>`;
+const LION=(x,y,k=1)=>`<g transform="translate(${x} ${y}) scale(${k})"><path d="M-9,2 L-5,-3 L4,-3 L8,-7 L11,-4 L9,0 L10,4 L6,3 L4,0 L-4,0 L-6,4 L-9,4 Z" fill="#e2bd4f" stroke="${INK}" stroke-width="1"/></g>`;
+const MAIL=()=>{let s=`<rect x="73" y="128" width="54" height="98" rx="8" fill="#9ca1ab" stroke="${INK}" stroke-width="3"/>`;for(let y=134;y<224;y+=7)s+=`<line x1="75" y1="${y}" x2="125" y2="${y}" stroke="${INK}" stroke-width="1.2" stroke-dasharray="2 3" opacity=".5"/>`;return s};
+const SURCOAT="M80,134 L120,134 L125,224 L75,224 Z";
+const BELT=`<rect x="74" y="190" width="52" height="7" fill="#6b4a2e" stroke="${INK}" stroke-width="2"/><rect x="96" y="189" width="9" height="9" fill="#e2bd4f" stroke="${INK}" stroke-width="1.6"/>`;
+const PAULDRONS=()=>P("M64,134 Q78,122 94,130 L92,148 Q78,142 66,150 Z","#b8bcc4",2.6)+P("M136,134 Q122,122 106,130 L108,148 Q122,142 134,150 Z","#b8bcc4",2.6);
 
 /* ---------- Outfits ---------- */
 const OUTFITS={
@@ -200,6 +211,19 @@ const OUTFITS={
   suit:{label:"Com-lê",sleeve:c=>c,legs:c=>[{to:.9,col:c,w:12}],
     body:c=>{let s=P("M76,128 L124,128 L127,214 L73,214 Z",c,3)+`<path d="M90,128 L100,160 L110,128 Z" fill="#f4f2f7" stroke="${INK}" stroke-width="2"/>`+P("M98,131 L102,131 L104,154 L100,160 L96,154 Z","#a8342c",1.8);
       s+=`<path d="M90,128 L95,166 L100,160 M110,128 L105,166 L100,160" fill="none" stroke="${INK}" stroke-width="2.4"/>`+`<circle cx="100" cy="180" r="2.6" fill="${INK}"/><circle cx="100" cy="194" r="2.6" fill="${INK}"/>`+ln(80,176,90,176,INK,2);return s},front:()=>""},
+  archer:{label:"Cung thủ Anh (áo chần, chữ thập đỏ)",sleeve:c=>c,sleeveFrac:.85,sleeveW:15,legs:()=>[{to:.86,col:"#4a3a2e",w:12}],
+    body:c=>{let s=P("M76,128 L124,128 L130,216 L70,216 Z",c,3);for(const x of[88,100,112])s+=ln(x,132,x+(x-100)*.15,212,INK,1.4,'opacity=".45"');for(const y of[150,170,200])s+=ln(75,y,125,y,INK,1.2,'opacity=".3"');
+      s+=`<path d="M90,128 Q100,138 110,128" fill="none" stroke="${INK}" stroke-width="2.4"/>`+`<rect x="72" y="184" width="56" height="8" fill="#6b4a2e" stroke="${INK}" stroke-width="2.2"/>`+P("M112,190 L124,190 L123,206 L113,206 Z","#8a6a3a",2);
+      s+=`<rect x="88" y="142" width="24" height="24" fill="#f4f2f7" stroke="${INK}" stroke-width="2"/><rect x="97" y="142" width="6" height="24" fill="#c0392b"/><rect x="88" y="151" width="24" height="6" fill="#c0392b"/><rect x="88" y="142" width="24" height="24" fill="none" stroke="${INK}" stroke-width="2"/>`;return s},front:()=>""},
+  knight_en:{label:"Hiệp sĩ Anh (chữ thập đỏ)",sleeve:()=>"#9ca1ab",legs:()=>[{to:.9,col:"#9ca1ab",w:12}],
+    body:()=>MAIL()+P(SURCOAT,"#f4f2f7",3)+`<rect x="95" y="136" width="11" height="86" fill="#c0392b"/><rect x="78" y="156" width="45" height="11" fill="#c0392b"/>`+P(SURCOAT,"none",3)+BELT,front:()=>PAULDRONS()},
+  knight_fr:{label:"Hiệp sĩ Pháp (hoa bách hợp)",sleeve:()=>"#9ca1ab",legs:()=>[{to:.9,col:"#9ca1ab",w:12}],
+    body:()=>MAIL()+P(SURCOAT,"#2f4f9f",3)+[[90,152],[110,152],[100,172],[90,210],[110,210]].map(([x,y])=>LYS(x,y,.75)).join("")+BELT,front:()=>PAULDRONS()},
+  knight_royal:{label:"Vua Anh (huy hiệu hoàng gia)",sleeve:()=>"#9ca1ab",legs:()=>[{to:.9,col:"#9ca1ab",w:12}],
+    body:()=>{const id="q"+(++uid);let s=MAIL()+`<defs><clipPath id="${id}"><path d="${SURCOAT}"/></clipPath></defs><g clip-path="url(#${id})">`;
+      s+=`<rect x="70" y="130" width="30" height="58" fill="#2f4f9f"/><rect x="100" y="130" width="30" height="58" fill="#c0392b"/><rect x="70" y="188" width="30" height="40" fill="#c0392b"/><rect x="100" y="188" width="30" height="40" fill="#2f4f9f"/>`;
+      s+=LYS(90,160,.7)+LYS(90,178,.6)+LION(111,150,.75)+LION(111,164,.75)+LION(111,178,.75)+LION(89,202,.7)+LION(89,214,.7)+LYS(112,206,.7)+`</g>`;
+      return s+P(SURCOAT,"none",3)+ln(100,134,100,224,INK,1.6)+ln(78,188,123,188,INK,1.6)+BELT},front:()=>PAULDRONS()},
   knight:{label:"Giáp hiệp sĩ",sleeve:()=>"#9ca1ab",legs:()=>[{to:.9,col:"#9ca1ab",w:12}],
     body:c=>{let s=`<rect x="73" y="128" width="54" height="98" rx="8" fill="#9ca1ab" stroke="${INK}" stroke-width="3"/>`;for(let y=134;y<224;y+=7)s+=`<line x1="75" y1="${y}" x2="125" y2="${y}" stroke="${INK}" stroke-width="1.2" stroke-dasharray="2 3" opacity=".5"/>`;
       s+=P("M80,134 L120,134 L125,224 L75,224 Z",c,3)+P("M87,172 L100,158 L113,172 L113,182 L100,168 L87,182 Z","#e2bd4f",2)+`<rect x="74" y="190" width="52" height="7" fill="#6b4a2e" stroke="${INK}" stroke-width="2"/>`;return s},front:()=>""}
@@ -224,6 +248,19 @@ const PROPS={
     d:()=>{const cx=118,cy=174,r=38,pt=a=>[cx+r*Math.cos(a*Math.PI/180),cy+r*Math.sin(a*Math.PI/180)];const a=pt(205),b=pt(335);
       let s=`<path d="M${cx},${cy} L${a[0].toFixed(1)},${a[1].toFixed(1)} A${r},${r} 0 0 1 ${b[0].toFixed(1)},${b[1].toFixed(1)} Z" fill="#cfb27a" stroke="${INK}" stroke-width="2.8" stroke-linejoin="round"/>`;
       for(let g=215;g<335;g+=12){const p=pt(g);s+=ln(cx,cy,p[0].toFixed(1),p[1].toFixed(1),"#7a5a30",1.4)}return s+`<circle cx="${cx}" cy="${cy}" r="4" fill="${INK}"/>`}},
+  longbow:{label:"Cung dài",hands:[[54,160],[110,192]],
+    d:()=>`<path d="M74,28 Q34,160 74,290" fill="none" stroke="${INK}" stroke-width="9" stroke-linecap="round"/><path d="M74,28 Q34,160 74,290" fill="none" stroke="#9a6a36" stroke-width="5" stroke-linecap="round"/>`+ln(74,30,74,288,INK,1.3)},
+  bowdraw:{label:"Giương cung",hands:[[30,140],[96,132]],
+    d:()=>`<path d="M50,26 Q10,140 50,254" fill="none" stroke="${INK}" stroke-width="9" stroke-linecap="round"/><path d="M50,26 Q10,140 50,254" fill="none" stroke="#9a6a36" stroke-width="5" stroke-linecap="round"/>`+ln(50,28,96,132,INK,1.3)+ln(96,132,50,252,INK,1.3)+thick(96,132,4,140,"#c9b48a",2)+P("M4,140 L16,134 L15,145 Z","#d5d9e0",2)+P("M92,132 L100,126 L102,132 Z","#f4f2f7",1.5)},
+  stake:{label:"Cọc nhọn",hands:[[86,198],[118,172]],
+    d:()=>thick(54,254,142,118,"#a8834e",7)+P("M142,118 L160,96 L148,124 Z","#c9a46a",2.4)+P("M54,254 L40,276 L48,248 Z","#c9a46a",2.4)},
+  mallet:{label:"Búa gỗ",hands:[[78,198],[122,180]],
+    d:()=>thick(122,182,140,118,"#8a6a3a",4)+`<rect x="122" y="96" width="38" height="24" rx="4" fill="#9a7a4a" stroke="${INK}" stroke-width="3" transform="rotate(-18 141 108)"/>`},
+  stgeorge:{label:"Cờ thánh George",hands:[[120,196],[132,150]],
+    d:()=>thick(134,282,134,-14,"#8a6a3a",3.5)+`<rect x="134" y="-10" width="64" height="58" fill="#f4f2f7" stroke="${INK}" stroke-width="3"/><rect x="160" y="-10" width="12" height="58" fill="#c0392b"/><rect x="134" y="13" width="64" height="12" fill="#c0392b"/><rect x="134" y="-10" width="64" height="58" fill="none" stroke="${INK}" stroke-width="3"/>`},
+  fleur:{label:"Cờ hoa bách hợp",hands:[[120,196],[132,150]],
+    d:()=>{const lys=(x,y)=>LYS(x,y,1.2);
+      return thick(134,282,134,-14,"#8a6a3a",3.5)+`<rect x="134" y="-10" width="64" height="58" fill="#2f4f9f" stroke="${INK}" stroke-width="3"/>`+lys(152,14)+lys(180,14)+lys(166,40)}},
   scroll:{label:"Cuộn chiếu",hands:[[86,182],[116,182]],
     d:()=>`<rect x="88" y="158" width="26" height="42" fill="#efe6cc" stroke="${INK}" stroke-width="2.4"/>`+[166,174,182,190].map(y=>ln(93,y,109,y,INK,1.4,'opacity=".5"')).join("")+`<rect x="84" y="153" width="34" height="7" rx="3.5" fill="#7a4a2a" stroke="${INK}" stroke-width="2"/><rect x="84" y="198" width="34" height="7" rx="3.5" fill="#7a4a2a" stroke="${INK}" stroke-width="2"/>`}
 };
