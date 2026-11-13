@@ -1,6 +1,6 @@
 // Thumbnail for episode 3 (1280x720), drawn with the character code in index.html.
 // Usage: node episodes/03-agincourt/thumbnail.js
-// Idea: "Can the few beat the many? 3,000 vs 9,000" (owner's wording). Henry V (crown on helmet, scar, confident smirk) and a few ragged English
+// Idea: "Can the few beat the many? 1 vs 4" (owner's wording; a ratio instead of disputed head counts). Henry V (crown on helmet, scar, confident smirk) and a few ragged English
 // archers behind their stakes in the mud, facing a huge wall of shiny French knights under a
 // sky full of arrows.
 const fs = require("fs"), path = require("path"), vm = require("vm");
@@ -42,7 +42,7 @@ const T = (x, y, size, fill, txt, sw = 9) =>
   `<text x="${x}" y="${y}" font-family="Inter" font-weight="900" font-size="${size}" text-anchor="middle" fill="${fill}" stroke="#1c1b22" stroke-width="${sw}" paint-order="stroke" stroke-linejoin="round">${txt}</text>`;
 s += T(316, 70, 30, "#ffffff", "CAN THE FEW", 7);
 s += T(316, 102, 30, "#ffffff", "BEAT THE MANY?", 7);
-s += T(316, 132, 26, "#ffd75a", "3,000 vs 9,000", 7);
+s += T(316, 140, 36, "#ffd75a", "1 vs 4", 8);
 s += "</svg>";
 
 (async () => {
