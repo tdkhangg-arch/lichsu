@@ -19,7 +19,7 @@ From episode 2 on, the father can mention the channel name in the outro.
   English archers look ragged and muddy, French knights shiny. Henry V has `scar: true` (Shrewsbury
   arrow, 1403). Scenes: `field`, `hall`, `siege`, `river`, `camp`, `parchment` (use it instead of
   `paper` for infographics). Effects: `shot.fx` (`stakes`, `arrowstorm`, `groundarrows`, `campfire`,
-  `splash`) and per character `mud` (0..1), `shiver`, `rot` (-84 = fallen face down). Owner chose the original wide-shot style
+  `splash`, `crowd` for army size, `label` for infographic captions) and per character `mud` (0..1), `shiver`, `rot` (-84 = fallen face down). Owner chose the original wide-shot style
   (not the close-up test in `episodes/03-agincourt/style-test-closeup.png`).
 - Narration voice: calm documentary narrator, light dry humor, serious at sad moments.
 - Framing (since episode 1 revision): a modern-day father tells the story to his 16-year-old

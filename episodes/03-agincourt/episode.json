@@ -604,21 +604,6 @@
       "camera": "slow zoom out",
       "characters": [
         {
-          "name": "French knight",
-          "expression": "smug",
-          "pose": "stand"
-        },
-        {
-          "name": "French knight",
-          "expression": "smug",
-          "pose": "stand"
-        },
-        {
-          "name": "French knight",
-          "expression": "smug",
-          "pose": "stand"
-        },
-        {
           "name": "Archer",
           "expression": "surprised",
           "pose": "stand"
@@ -641,16 +626,6 @@
         {
           "name": "Henry V",
           "expression": "surprised",
-          "pose": "stand"
-        },
-        {
-          "name": "French knight",
-          "expression": "smug",
-          "pose": "stand"
-        },
-        {
-          "name": "French knight",
-          "expression": "smug",
           "pose": "stand"
         }
       ],
@@ -722,43 +697,7 @@
       "image": "images/shot-21.png",
       "background": "parchment",
       "camera": "static",
-      "characters": [
-        {
-          "name": "Archer",
-          "expression": "neutral",
-          "pose": "stand"
-        },
-        {
-          "name": "English knight",
-          "expression": "determined",
-          "pose": "stand"
-        },
-        {
-          "name": "French knight",
-          "expression": "smug",
-          "pose": "stand"
-        },
-        {
-          "name": "French knight",
-          "expression": "smug",
-          "pose": "stand"
-        },
-        {
-          "name": "French knight",
-          "expression": "smug",
-          "pose": "stand"
-        },
-        {
-          "name": "French knight",
-          "expression": "smug",
-          "pose": "stand"
-        },
-        {
-          "name": "French knight",
-          "expression": "smug",
-          "pose": "stand"
-        }
-      ],
+      "characters": [],
       "on_screen_text": "Outnumbered 3 or 4 to 1?",
       "narration": "How big were the armies? Henry had perhaps six to nine thousand men, and most of them, maybe five out of every six, were archers. The French are often said to have had three or four times as many. Some modern historians think the gap was smaller. But everyone agrees: the English were badly outnumbered, and in far worse shape.",
       "word_count": 60
@@ -872,23 +811,7 @@
       "image": "images/shot-26.png",
       "background": "field",
       "camera": "slow zoom out",
-      "characters": [
-        {
-          "name": "French knight",
-          "expression": "smug",
-          "pose": "stand"
-        },
-        {
-          "name": "French knight",
-          "expression": "smug",
-          "pose": "stand"
-        },
-        {
-          "name": "French knight",
-          "expression": "smug",
-          "pose": "stand"
-        }
-      ],
+      "characters": [],
       "on_screen_text": "25 October 1415, St Crispin's Day",
       "narration": "The morning of the twenty-fifth of October. Saint Crispin's Day. The battlefield was a freshly ploughed field between two woods. After a night of rain, it had turned into deep, sticky mud.",
       "word_count": 32
@@ -1006,11 +929,6 @@
         {
           "name": "Archer",
           "expression": "angry",
-          "pose": "stand"
-        },
-        {
-          "name": "French knight",
-          "expression": "surprised",
           "pose": "stand"
         }
       ],

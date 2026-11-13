@@ -440,6 +440,19 @@ const FX={
   // small campfire; dying = embers and a thin wisp of smoke
   campfire:({x=240,y=292,dying=false})=>dying?`<circle cx="${x}" cy="${y-4}" r="22" fill="#f29a3a" opacity=".1"/><path d="M${x-14},${y} L${x+14},${y-4} M${x-12},${y-5} L${x+12},${y}" stroke="#4a3a2e" stroke-width="5" stroke-linecap="round"/>`+[[-6,-6],[2,-7],[7,-4]].map(([dx,dy])=>`<circle cx="${x+dx}" cy="${y+dy}" r="2" fill="#f29a3a"/>`).join("")+`<path d="M${x},${y-10} q-6,-12 2,-22 q8,-10 0,-22" fill="none" stroke="#b8b4c4" stroke-width="2.4" opacity=".55"/>`
     :`<circle cx="${x}" cy="${y-14}" r="40" fill="#f29a3a" opacity=".16"/><path d="M${x-14},${y} L${x+14},${y-4} M${x-12},${y-5} L${x+12},${y}" stroke="#6b4a2e" stroke-width="5" stroke-linecap="round"/><path d="M${x},${y-34} Q${x-12},${y-18} ${x-6},${y-4} L${x+6},${y-4} Q${x+12},${y-18} ${x},${y-34}Z" fill="#f29a3a" ${st}/><path d="M${x},${y-22} Q${x-5},${y-12} ${x-2},${y-4} L${x+2},${y-4} Q${x+5},${y-12} ${x},${y-22}Z" fill="#f5d95a"/>`,
+  // a crowd of small soldiers in rows (back rows smaller), to show army size at a glance.
+  // side "fr" = French knights with some fleur-de-lis banners; "en" = English archers with a few St George knights
+  crowd:({side="fr",x0=260,x1=470,rows=4,gBack=200,gFront=260,scBack=.16,scFront=.32,perRow=9,flip=false,seed=3,banners=.2})=>{
+    const r=rng(seed),pick=a=>a[Math.floor(r()*a.length)];let s="";
+    for(let k=0;k<rows;k++){const t=rows>1?k/(rows-1):1,g=gBack+(gFront-gBack)*t,sc0=scBack+(scFront-scBack)*t,n=Math.max(1,Math.round(perRow*(1+.45*(1-t))));
+      for(let i=0;i<n;i++){const sc=sc0*(.92+r()*.16),x=x0+(i+.5+(k%2?.35:0))*(x1-x0)/(n+.35)+(r()-.5)*5,gg=g+(r()-.5)*4;
+        const cfg=side==="fr"?{hair:"none",hat:"bascinet",face:pick(["smug","smug","neutral","determined"]),outfit:"knight_fr",color:"#2f4f9f",prop:r()<banners?"fleur":"sword",pose:"stand",flip}
+          :(r()<.2?{hair:"none",hat:"bascinet",face:pick(["determined","neutral"]),outfit:"knight_en",color:"#f4f2f7",prop:r()<banners?"stgeorge":"sword",pose:"stand",flip}
+                  :{hair:"short",hat:pick(["kettle","hood","none"]),face:pick(["closed","neutral","determined"]),outfit:"archer",color:pick(["#8a6a4a","#5b6b3a","#9a7f55"]),prop:"longbow",pose:"stand",flip});
+        s+=`<g transform="translate(${(x-100*sc).toFixed(1)} ${(gg-272*sc).toFixed(1)}) scale(${sc.toFixed(3)})">${character(cfg)}</g>`}}
+    return s},
+  // bold caption drawn into the frame (for infographic labels)
+  label:({x=240,y=60,text="",size=18,color="#fff",anchor="middle"})=>`<text x="${x}" y="${y}" font-family="Inter, DejaVu Sans, sans-serif" font-weight="900" font-size="${size}" text-anchor="${anchor}" fill="${color}" stroke="${INK}" stroke-width="${size/4}" paint-order="stroke" stroke-linejoin="round">${text}</text>`,
   // mud splashes around a point
   splash:({x=240,y=292,k=1})=>[[-18,-14,3],[-10,-24,2.4],[0,-28,2],[12,-20,2.6],[20,-10,3],[-24,-4,2]].map(([dx,dy,r])=>`<circle cx="${x+dx*k}" cy="${y+dy*k}" r="${r*k}" fill="#5e4a36" stroke="${INK}" stroke-width="1"/>`).join("")
 };

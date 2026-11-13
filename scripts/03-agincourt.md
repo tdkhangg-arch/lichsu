@@ -72,11 +72,11 @@ SON: Knights? Okay, now I'm interested.
 
 ### 0:40 – Hook
 
-[SCENE 7: Muddy field in the rain. Tired English archers and a knight with a St George banner, heads down. On screen: Northern France, 1415]
+[SCENE 7: Muddy field in the rain. Tired English archers and a knight with a St George banner, heads down; only a thin line of men behind them. On screen: Northern France, 1415]
 
 October 1415. Northern France. A small English army is trapped. The men are soaked, starving and sick. Many of them haven't had a proper meal in days.
 
-[SCENE 8: A wall of French knights in blue surcoats with fleur-de-lis banners, smug.]
+[SCENE 8: A wall of French knights in blue surcoats with fleur-de-lis banners, smug; behind them, rows upon rows of more knights filling the field.]
 
 In front of them, blocking the road home, is the army of France. Knights in shining armor, some of the finest warriors in Europe. And many, many more of them.
 
@@ -142,11 +142,11 @@ Then they reached the River Somme. Every bridge and every crossing was broken or
 
 So the English had to march inland, upstream, searching for a way across. Day after day, in the cold October rain. The eight days of food ran out. Men picked nuts and berries from the hedges to stay alive.
 
-[SCENE 23: Rain over the field; far away, small blue figures gathering.]
+[SCENE 23: Rain over the field; far away, a huge mass of small blue figures gathering.]
 
 It took them about two and a half weeks. And all the while, the French army was gathering behind the river, growing bigger every day.
 
-[SCENE 24: Henry and his knight see the French army blocking the road. On screen: Agincourt, 24 October]
+[SCENE 24: Henry, surprised, sees a vast French army filling the road ahead. On screen: Agincourt, 24 October]
 
 On the twenty-fourth of October, near a village called Agincourt, they finally saw them. The French army was right in front of them, blocking the road to Calais.
 
@@ -160,7 +160,7 @@ That night, it poured. The English camped in the open: wet, cold and hungry. Hen
 
 On the other side, according to some chroniclers, the French camp was noisy and confident. Some knights were said to be playing dice for the rich English prisoners they expected to capture the next day.
 
-[SCENE 27: Left: a few English soldiers. Right: many French knights. On screen: Outnumbered 3 or 4 to 1?]
+[SCENE 27: Parchment infographic: a small block of English soldiers on the left, a huge block of French knights on the right, labelled. On screen: Outnumbered 3 or 4 to 1?]
 
 How big were the armies? Henry had perhaps six to nine thousand men, and most of them, maybe five out of every six, were archers. The French are often said to have had three or four times as many. Some modern historians think the gap was smaller. But everyone agrees: the English were badly outnumbered, and in far worse shape.
 
@@ -188,7 +188,7 @@ Each archer also carried a long wooden stake, sharpened at both ends. Hammered i
 
 The morning of the twenty-fifth of October. Saint Crispin's Day. The battlefield was a freshly ploughed field between two woods. After a night of rain, it had turned into deep, sticky mud.
 
-[SCENE 33: French knights bunched together in the narrow middle of the field.]
+[SCENE 33: French knights crammed into the narrow middle of the field, rows and rows deep.]
 
 The woods on both sides squeezed the field narrower. Whatever the French did, they couldn't spread out and surround Henry's small army. They would have to come straight at him.
 
@@ -218,7 +218,7 @@ Panicking horses turned and galloped back, straight into their own soldiers who 
 
 Now the main French army walked forward. Thousands of men in heavy steel armor, trudging through deep mud while arrows rained down on them. By the time they reached the English line, many of them were already exhausted.
 
-[SCENE 40: French knights packed shoulder to shoulder in the mud; one has fallen face down in front of them, splash.]
+[SCENE 40: French knights packed shoulder to shoulder in the mud, more rows pressing from behind; one has fallen face down in front, splash.]
 
 And the field kept narrowing. The French were packed so tightly that many couldn't even raise their weapons. Men who slipped in the mud struggled to get back up.
 
