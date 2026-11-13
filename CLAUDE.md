@@ -40,7 +40,7 @@ Folder numbers are the order they were written; **upload order** is what viewers
 |---|---|---|---|
 | **1st** | `episodes/02-okehazama` | Battle of Okehazama (1560), "2,000 vs 25,000" | Channel opener. Intro written as the first meeting (son playing a samurai game). Script and frames done; render with ElevenLabs |
 | **2nd** | `episodes/01-47-ronin` | The 47 Ronin (1701–1703) | Final video done (Gemini voice, father/son intro and outro, 3 Shorts). Owner wants it kept as is; do not re-voice with ElevenLabs |
-| 3rd | `episodes/03-agincourt` | Battle of Agincourt (1415), first European episode | Script and frames done (intro refers back to Okehazama; ends teasing Joan of Arc). Not voiced yet; render with ElevenLabs. Music is still Japanese-style (koto/taiko); consider a medieval European palette first |
+| 3rd | `episodes/03-agincourt` | Battle of Agincourt (1415), first European episode | Script and frames done (intro refers back to Okehazama; ends teasing Joan of Arc). Not voiced yet; render with ElevenLabs. Music: medieval palette done (`music_palette: "medieval"`) |
 | later | (ideas) | Honnō-ji Incident (1582); Joan of Arc | Honnō-ji is mentioned in the Okehazama ending, Joan of Arc in the Agincourt ending |
 
 ## Pipeline (run from the repo root)
@@ -55,7 +55,10 @@ Folder numbers are the order they were written; **upload order** is what viewers
    at pauses, to fit the free tier; falls back to other TTS models on blocks or quota.
 6. `python3 tools/make-music.py episodes/<NN-name>` → `<NN-name>-music.mp4` (final video).
    Music stays at one fixed level, 18 dB under the voice (owner asked for no ducking).
-   Final loudness −14 LUFS.
+   Final loudness −14 LUFS. Palette from `music_palette` in shots.js: default Japanese (koto,
+   shakuhachi, taiko); `"medieval"` for European episodes (lute, recorder, hurdy-gurdy, war drum,
+   tabor, choir, church bell, horn; D Dorian). `--music-only` writes `build/music-preview.mp3`
+   from the estimated timing, before any voice exists.
 
 7. Shorts: `python3 tools/make-short.py episodes/<NN-name> --shots ... --title ... --out ...`
    (vertical 1080×1920 cut from the finished video; see `episodes/01-47-ronin/shorts.md`).

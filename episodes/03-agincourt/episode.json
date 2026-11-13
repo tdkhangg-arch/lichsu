@@ -27,6 +27,7 @@
     "What came next": "reflect",
     "Outro": "light"
   },
+  "music_palette": "medieval",
   "shots": [
     {
       "id": "intro-1",

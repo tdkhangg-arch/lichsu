@@ -49,6 +49,7 @@ module.exports = {
     tags: "agincourt, battle of agincourt, henry v, hundred years war, longbow, english longbow, medieval knights, medieval history, saint crispin's day, history animated, france, england",
     pinned: "Would you rather be an English archer or a French knight at Agincourt? Tell me below.",
   },
+  music_palette: "medieval",   // lute, recorder, hurdy-gurdy, war drums, choir (see tools/make-music.py)
   music_moods: {
     "Intro": "light",
     "Hook": "tense",

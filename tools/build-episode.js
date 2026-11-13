@@ -95,6 +95,7 @@ function frameSVG(shot) {
     total_duration: t,
     voiceover: { words_per_minute: WPM, file: "voiceover.txt" },
     music_moods: def.music_moods || null,
+    music_palette: def.music_palette || null,
     shots,
   };
   fs.writeFileSync(path.join(outDir, "episode.json"), JSON.stringify(episode, null, 2) + "\n");
