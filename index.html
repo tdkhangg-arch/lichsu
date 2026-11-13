@@ -144,6 +144,7 @@ const HAIR={
 /* ---------- Headwear ---------- */
 const HATS={
   none:{label:"Không",d:()=>""},
+  glasses:{label:"Kính",d:()=>`<circle cx="78" cy="73" r="10" fill="#dfe9f5" fill-opacity=".35" stroke="${INK}" stroke-width="3"/><circle cx="99" cy="72" r="10" fill="#dfe9f5" fill-opacity=".35" stroke="${INK}" stroke-width="3"/>`+ln(88,72,89,72,INK,3)+ln(109,72,138,66,INK,3)},
   nonla:{label:"Nón lá",d:()=>{let s=`<path d="M64,56 Q74,112 92,118 M136,56 Q126,112 108,118" fill="none" stroke="${INK}" stroke-width="1.8"/>`;
     s+=P("M24,54 L100,-14 L176,54 Q100,66 24,54Z","#e6d39e",3.5);for(const x of [52,76,124,148])s+=ln(100,-12,x,57,INK,1.4,'opacity=".55"');s+=`<path d="M40,40 Q100,48 160,40" fill="none" stroke="${INK}" stroke-width="1.4" opacity=".55"/>`;return s}},
   kabuto:{label:"Mũ giáp",d:()=>P("M126,52 L156,50 L168,92 L140,90 Z","#2e2b33",3)+ln(130,64,160,63,"#57525e",2)+ln(134,76,164,76,"#57525e",2)+P("M52,58 Q54,14 100,12 Q146,14 148,58 Z","#35313b",3.5)+ln(70,22,74,56,"#57525e",2)+ln(100,13,100,56,"#57525e",2)+ln(130,22,126,56,"#57525e",2)+P("M44,58 Q100,48 150,58 L148,64 Q100,56 46,66 Z","#2e2b33",3)+P("M100,16 L76,-16 L83,-17 L100,8 L117,-17 L124,-16 Z","#d8b75a",2.5)},
@@ -152,12 +153,30 @@ const HATS={
   mandarin:{label:"Mũ cánh chuồn",d:()=>`<ellipse cx="32" cy="34" rx="24" ry="7" fill="${INK}" transform="rotate(-8 32 34)"/><ellipse cx="168" cy="34" rx="24" ry="7" fill="${INK}" transform="rotate(8 168 34)"/>`+P("M56,48 Q58,16 100,14 Q142,16 144,48 Z",INK,3)+P("M76,22 Q78,-6 100,-8 Q122,-6 124,22 Z","#2a2830",3)+ln(60,44,140,44,"#c9a45a",2.5)},
   crown:{label:"Vương miện",d:()=>P("M56,40 L56,8 L72,24 L86,-2 L100,20 L114,-2 L128,24 L144,8 L144,40 Q100,48 56,40Z","#e2bd4f",3.2)+`<circle cx="86" cy="30" r="4" fill="#a8342c"/><circle cx="114" cy="30" r="4" fill="#2f4f7f"/><circle cx="100" cy="32" r="4.5" fill="#3c7a52"/>`},
   roman:{label:"Mũ La Mã",d:()=>`<path d="M58,6 Q100,-34 152,10 Q140,0 100,-10 Q74,-6 58,6Z" fill="#a8342c" stroke="${INK}" stroke-width="3"/>`+P("M54,52 Q56,8 100,6 Q144,8 146,52 Z","#b8bcc4",3.5)+P("M128,50 L152,50 L150,100 L132,92 Z","#a3a8b1",3)+P("M44,52 Q100,42 156,52 L154,58 Q100,50 46,58Z","#8e939c",3)+ln(100,8,100,48,"#8e939c",2)},
+  bascinet:{label:"Mũ hiệp sĩ",d:()=>P("M118,54 L152,58 L160,120 Q134,128 114,114 Z","#9ca1ab",3)+[66,78,90,102,114].map(y=>ln(126,y,154,y+2,INK,1.3,'stroke-dasharray="2 3" opacity=".6"')).join("")+P("M48,48 Q50,0 100,-14 Q150,6 152,64 Q104,40 48,48 Z","#b8bcc4",3.5)+`<path d="M64,48 Q66,14 98,0" fill="none" stroke="#e6e8ec" stroke-width="4" stroke-linecap="round"/>`+[[62,42],[82,40],[122,46],[140,54]].map(([x,y])=>`<circle cx="${x}" cy="${y}" r="2.4" fill="${INK}"/>`).join("")},
+  royalhelm:{label:"Mũ hiệp sĩ đội vương miện",d:()=>HATS.bascinet.d()+P("M56,38 L58,14 L70,28 L82,6 L94,26 L106,4 L118,26 L130,8 L140,30 L146,16 L148,42 Q100,32 56,38Z","#e2bd4f",3)+`<circle cx="82" cy="30" r="3.5" fill="#a8342c"/><circle cx="106" cy="28" r="3.5" fill="#2f4f7f"/><circle cx="130" cy="31" r="3.5" fill="#a8342c"/>`},
+  hood:{label:"Mũ trùm vải",d:()=>P("M54,58 Q50,4 100,0 Q152,6 152,72 L164,118 Q150,126 138,110 L130,62 Q100,44 54,58 Z","#7a5a3a",3.2)+`<path d="M60,54 Q100,40 128,58" fill="none" stroke="${dk("#7a5a3a")}" stroke-width="3"/>`},
+  kettle:{label:"Mũ sắt vành rộng",d:()=>P("M62,44 Q62,-2 100,-4 Q138,-2 138,44 Z","#9ca1ab",3.5)+`<path d="M74,34 Q76,10 98,4" fill="none" stroke="#d5d9e0" stroke-width="3.5" stroke-linecap="round"/>`+P("M24,46 Q100,30 176,46 Q100,58 24,46Z","#868b94",3)},
   tophat:{label:"Mũ chóp cao",d:()=>P("M68,30 L72,-28 L128,-28 L132,30 Z","#26242c",3.5)+`<rect x="70" y="14" width="60" height="9" fill="#a8342c"/>`+P("M40,34 Q100,22 160,34 Q100,42 40,34Z","#26242c",3.5)}
 };
+
+/* ---------- Heraldry helpers (European episodes) ---------- */
+const LYS=(x,y,k=1)=>`<g transform="translate(${x} ${y}) scale(${k})"><path d="M0,0 Q-5,-8 0,-15 Q5,-8 0,0Z M-1,-3 Q-9,-11 -11,-3 Q-8,-6 -3,-1Z M1,-3 Q9,-11 11,-3 Q8,-6 3,-1Z" fill="#e2bd4f" stroke="${INK}" stroke-width="1"/><rect x="-6" y="-1" width="12" height="3" fill="#e2bd4f" stroke="${INK}" stroke-width="1"/></g>`;
+const LION=(x,y,k=1)=>`<g transform="translate(${x} ${y}) scale(${k})"><path d="M-9,2 L-5,-3 L4,-3 L8,-7 L11,-4 L9,0 L10,4 L6,3 L4,0 L-4,0 L-6,4 L-9,4 Z" fill="#e2bd4f" stroke="${INK}" stroke-width="1"/></g>`;
+const MAIL=()=>{let s=`<rect x="73" y="128" width="54" height="98" rx="8" fill="#9ca1ab" stroke="${INK}" stroke-width="3"/>`;for(let y=134;y<224;y+=7)s+=`<line x1="75" y1="${y}" x2="125" y2="${y}" stroke="${INK}" stroke-width="1.2" stroke-dasharray="2 3" opacity=".5"/>`;return s};
+const SURCOAT="M76,130 L124,130 L134,246 L66,246 Z";
+const BELT=`<rect x="74" y="190" width="52" height="7" fill="#6b4a2e" stroke="${INK}" stroke-width="2"/><rect x="96" y="189" width="9" height="9" fill="#e2bd4f" stroke="${INK}" stroke-width="1.6"/>`;
+const PAULDRONS=(shine)=>P("M70,133 Q81,125 93,130 L92,142 Q81,138 71,143 Z","#b8bcc4",2.4)+P("M130,133 Q119,125 107,130 L108,142 Q119,138 129,143 Z","#b8bcc4",2.4)+(shine?`<path d="M74,134 Q81,129 88,131" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/><path d="M84,120 l2,-6 l2,6 l6,2 l-6,2 l-2,6 l-2,-6 l-6,-2Z" fill="#fff" stroke="${INK}" stroke-width="1"/>`:"");
+const MUDSPOTS=(pts)=>pts.map(([x,y,r])=>`<circle cx="${x}" cy="${y}" r="${r}" fill="#5e4a36" opacity=".85"/>`).join("");
+const SPLIT=`<path d="M100,206 L100,246" stroke="${INK}" stroke-width="2.4"/>`;
 
 /* ---------- Outfits ---------- */
 const OUTFITS={
   stick:{label:"Que trơn",body:()=>"",front:()=>"",sleeve:null,legs:[]},
+  tshirt:{label:"Áo phông",sleeve:c=>c,sleeveFrac:.32,legs:()=>[{to:.92,col:"#3d5a80",w:12}],
+    body:c=>P("M78,128 L122,128 L124,202 L76,202 Z",c,3)+`<path d="M90,128 Q100,138 110,128" fill="none" stroke="${INK}" stroke-width="2.4"/>`,front:()=>""},
+  hoodie:{label:"Áo hoodie",sleeve:c=>c,sleeveFrac:.88,sleeveW:15,legs:()=>[{to:.92,col:"#2f3a4f",w:12}],
+    body:c=>P("M76,128 L124,128 L127,206 L73,206 Z",c,3)+P("M84,184 L116,184 L119,200 L81,200 Z",dk(c),2.2)+P("M84,126 Q100,112 116,126 L112,136 Q100,128 88,136 Z",dk(c),2.4)+ln(95,134,94,152,"#f4f2f7",2)+ln(105,134,106,152,"#f4f2f7",2),front:()=>""},
   armor:{label:"Giáp samurai",sleeve:c=>dk(c),legs:c=>[{to:.72,col:dk(c),w:13}],
     body:c=>{let s=P("M74,192 L126,192 L135,238 L65,238 Z",c,3);s+=ln(100,192,100,238,INK,1.8,'opacity=".6"');for(const y of[206,222])s+=ln(70,y,130,y,INK,1.6,'opacity=".55"');
       s+=`<rect x="76" y="128" width="48" height="66" rx="9" fill="${c}" stroke="${INK}" stroke-width="3"/>`;for(const y of[146,158,170])s+=ln(78,y,122,y,INK,1.6,'opacity=".55"');
@@ -195,6 +214,23 @@ const OUTFITS={
   suit:{label:"Com-lê",sleeve:c=>c,legs:c=>[{to:.9,col:c,w:12}],
     body:c=>{let s=P("M76,128 L124,128 L127,214 L73,214 Z",c,3)+`<path d="M90,128 L100,160 L110,128 Z" fill="#f4f2f7" stroke="${INK}" stroke-width="2"/>`+P("M98,131 L102,131 L104,154 L100,160 L96,154 Z","#a8342c",1.8);
       s+=`<path d="M90,128 L95,166 L100,160 M110,128 L105,166 L100,160" fill="none" stroke="${INK}" stroke-width="2.4"/>`+`<circle cx="100" cy="180" r="2.6" fill="${INK}"/><circle cx="100" cy="194" r="2.6" fill="${INK}"/>`+ln(80,176,90,176,INK,2);return s},front:()=>""},
+  archer:{label:"Cung thủ Anh (áo chần rách, chữ thập đỏ)",sleeve:c=>c,sleeveFrac:.8,sleeveW:15,legs:()=>[{to:.86,col:"#4a3a2e",w:12},{from:.62,to:.86,col:"#6f5a43",w:12}],
+    body:c=>{const hem="M76,128 L124,128 L130,208 L126,216 L121,208 L116,218 L110,209 L104,216 L98,208 L92,218 L86,209 L80,216 L74,208 L70,212 Z";
+      let s=`<path d="M122,212 L136,146" stroke="${INK}" stroke-width="4"/><path d="M118,212 L130,144 M126,212 L142,150" stroke="#c9b48a" stroke-width="2.4"/>`+[[130,144],[136,146],[142,150]].map(([x,y])=>P(`M${x},${y} l-5,-9 l9,4 Z`,"#f4f2f7",1.4)).join("");
+      s+=P(hem,c,3);for(const x of[88,100,112])s+=ln(x,132,x+(x-100)*.15,206,INK,1.4,'opacity=".45"');for(const y of[150,172])s+=ln(75,y,125,y,INK,1.2,'opacity=".3"');
+      s+=P("M108,174 L120,172 L121,184 L109,186 Z",lt(c),1.6)+`<path d="M110,176 l2,2 M114,175 l2,2 M118,174 l1,2" stroke="${INK}" stroke-width="1"/>`+P("M80,152 L90,151 L90,160 L80,161 Z",dk(c),1.4);
+      s+=`<path d="M90,128 Q100,138 110,128" fill="none" stroke="${INK}" stroke-width="2.4"/>`+`<rect x="72" y="186" width="56" height="8" fill="#6b4a2e" stroke="${INK}" stroke-width="2.2"/>`+P("M112,192 L124,192 L123,206 L113,206 Z","#8a6a3a",2);
+      s+=`<rect x="88" y="140" width="24" height="24" fill="#e9e4d6" stroke="${INK}" stroke-width="2"/><rect x="97" y="140" width="6" height="24" fill="#c0392b"/><rect x="88" y="149" width="24" height="6" fill="#c0392b"/><rect x="88" y="140" width="24" height="24" fill="none" stroke="${INK}" stroke-width="2"/>`;
+      return s+MUDSPOTS([[78,204,3],[90,200,2.2],[118,206,2.6],[106,198,1.8]])},front:()=>""},
+  knight_en:{label:"Hiệp sĩ Anh (áo trắng chữ thập đỏ)",sleeve:()=>"#f4f2f7",sleeveFrac:.5,sleeveW:16,legs:()=>[{to:.9,col:"#9ca1ab",w:12},{from:.7,to:.9,col:"#6f5a43",w:12}],
+    body:()=>MAIL()+P(SURCOAT,"#f4f2f7",3)+`<rect x="93" y="132" width="14" height="112" fill="#c0392b"/><rect x="72" y="158" width="57" height="14" fill="#c0392b"/>`+P(SURCOAT,"none",3)+SPLIT+BELT+MUDSPOTS([[74,240,3.4],[86,236,2.4],[122,238,3],[112,242,2.2],[130,232,2]]),front:()=>PAULDRONS(false)},
+  knight_fr:{label:"Hiệp sĩ Pháp (áo xanh hoa bách hợp)",sleeve:()=>"#2f4f9f",sleeveFrac:.5,sleeveW:16,legs:()=>[{to:.9,col:"#b8bcc4",w:12}],
+    body:()=>MAIL()+P(SURCOAT,"#2a4592",3)+[[88,152],[112,152],[100,176],[84,214],[100,236],[116,214]].map(([x,y])=>LYS(x,y,1)).join("")+SPLIT+BELT,front:()=>PAULDRONS(true)},
+  knight_royal:{label:"Vua Anh (huy hiệu hoàng gia chia 4 ô)",sleeve:()=>"#c0392b",sleeveFrac:.5,sleeveW:16,legs:()=>[{to:.9,col:"#9ca1ab",w:12}],
+    body:()=>{const id="q"+(++uid);let s=MAIL()+`<defs><clipPath id="${id}"><path d="${SURCOAT}"/></clipPath></defs><g clip-path="url(#${id})">`;
+      s+=`<rect x="60" y="128" width="40" height="60" fill="#2a4592"/><rect x="100" y="128" width="40" height="60" fill="#c0392b"/><rect x="60" y="188" width="40" height="60" fill="#c0392b"/><rect x="100" y="188" width="40" height="60" fill="#2a4592"/>`;
+      s+=LYS(86,158,.85)+LYS(86,178,.75)+LION(113,148,.9)+LION(113,164,.9)+LION(113,180,.9)+LION(87,208,.85)+LION(87,224,.85)+LYS(114,214,.85)+LYS(114,236,.7)+`</g>`;
+      return s+P(SURCOAT,"none",3)+ln(100,130,100,246,INK,1.8)+ln(70,188,130,188,INK,1.8)+BELT},front:()=>PAULDRONS(false)},
   knight:{label:"Giáp hiệp sĩ",sleeve:()=>"#9ca1ab",legs:()=>[{to:.9,col:"#9ca1ab",w:12}],
     body:c=>{let s=`<rect x="73" y="128" width="54" height="98" rx="8" fill="#9ca1ab" stroke="${INK}" stroke-width="3"/>`;for(let y=134;y<224;y+=7)s+=`<line x1="75" y1="${y}" x2="125" y2="${y}" stroke="${INK}" stroke-width="1.2" stroke-dasharray="2 3" opacity=".5"/>`;
       s+=P("M80,134 L120,134 L125,224 L75,224 Z",c,3)+P("M87,172 L100,158 L113,172 L113,182 L100,168 L87,182 Z","#e2bd4f",2)+`<rect x="74" y="190" width="52" height="7" fill="#6b4a2e" stroke="${INK}" stroke-width="2"/>`;return s},front:()=>""}
@@ -203,6 +239,10 @@ const OUTFITS={
 /* ---------- Props ---------- */
 const PROPS={
   none:{label:"Không",hands:[[74,198],[126,198]],d:()=>""},
+  book:{label:"Sách",hands:[[84,186],[118,186]],over:true,
+    d:()=>P("M100,166 L78,158 L78,194 L100,202 L122,194 L122,158 Z","#8a3a2a",2.4)+P("M100,168 L81,161 L81,191 L100,198 Z","#f4efe2",2)+P("M100,168 L119,161 L119,191 L100,198 Z","#f4efe2",2)+[170,177,184].map(y=>ln(85,y-4,96,y,INK,1.1,'opacity=".45"')+ln(104,y,115,y-4,INK,1.1,'opacity=".45"')).join("")},
+  phone:{label:"Điện thoại",hands:[[88,188],[112,188]],over:true,
+    d:()=>`<rect x="89" y="166" width="22" height="34" rx="4" fill="#26242c" stroke="${INK}" stroke-width="2.4"/><rect x="92" y="170" width="16" height="26" rx="2" fill="#8fd3ff"/>`+ln(96,192,105,174,"#f4f2f7",2)+ln(94,186,100,188,"#e2bd4f",2)},
   katana:{label:"Kiếm katana",hands:[[88,186],[120,180]],
     d:()=>thick(64,234,124,194,"#2a2830",4.5)+thick(124,194,140,185,"#3b3742",4)+thick(42,232,122,182,"#2a2830",6)+thick(122,182,150,166,"#3b3742",5.5)+ln(124,181,148,167,"#e9e6ef",2.2,'stroke-dasharray="3 4"')+`<ellipse cx="122" cy="182" rx="3.6" ry="8" transform="rotate(-30 122 182)" fill="#c2a95e" stroke="${INK}" stroke-width="2"/>`},
   sword:{label:"Kiếm thẳng",hands:[[76,198],[124,184]],
@@ -215,19 +255,34 @@ const PROPS={
     d:()=>{const cx=118,cy=174,r=38,pt=a=>[cx+r*Math.cos(a*Math.PI/180),cy+r*Math.sin(a*Math.PI/180)];const a=pt(205),b=pt(335);
       let s=`<path d="M${cx},${cy} L${a[0].toFixed(1)},${a[1].toFixed(1)} A${r},${r} 0 0 1 ${b[0].toFixed(1)},${b[1].toFixed(1)} Z" fill="#cfb27a" stroke="${INK}" stroke-width="2.8" stroke-linejoin="round"/>`;
       for(let g=215;g<335;g+=12){const p=pt(g);s+=ln(cx,cy,p[0].toFixed(1),p[1].toFixed(1),"#7a5a30",1.4)}return s+`<circle cx="${cx}" cy="${cy}" r="4" fill="${INK}"/>`}},
+  longbow:{label:"Cung dài",hands:[[52,144],[110,192]],
+    d:()=>`<path d="M74,-14 Q30,144 74,302" fill="none" stroke="${INK}" stroke-width="9.5" stroke-linecap="round"/><path d="M74,-14 Q30,144 74,302" fill="none" stroke="#9a6a36" stroke-width="5.5" stroke-linecap="round"/>`+ln(74,-12,74,300,INK,1.3)+`<rect x="44" y="136" width="14" height="16" rx="3" fill="#6b4a2e" stroke="${INK}" stroke-width="1.6"/>`},
+  bowdraw:{label:"Giương cung",hands:[[27,135],[96,128]],
+    d:()=>`<path d="M50,-4 Q4,135 50,274" fill="none" stroke="${INK}" stroke-width="9.5" stroke-linecap="round"/><path d="M50,-4 Q4,135 50,274" fill="none" stroke="#9a6a36" stroke-width="5.5" stroke-linecap="round"/>`+ln(50,-2,96,128,INK,1.3)+ln(96,128,50,272,INK,1.3)+thick(96,128,-6,136,"#c9b48a",2)+P("M-6,136 L7,130 L6,141 Z","#d5d9e0",2)+P("M90,128 L99,121 L101,128 Z","#f4f2f7",1.5)},
+  bowup:{label:"Giương cung lên trời",hands:[[34,52],[78,100]],top:true,
+    d:()=>`<path d="M143.2,-18.3 Q19.1,35.8 -45.5,154.7" fill="none" stroke="${INK}" stroke-width="9.5" stroke-linecap="round"/><path d="M143.2,-18.3 Q19.1,35.8 -45.5,154.7" fill="none" stroke="#9a6a36" stroke-width="5.5" stroke-linecap="round"/>`+ln(143.2,-18.3,78.0,100.0,INK,1.3)+ln(78.0,100.0,-45.5,154.7,INK,1.3)+thick(78.0,100.0,2.9,18.1,"#c9b48a",2)+P("M2.9,18.1 L13.4,22.1 L6.0,28.8 Z","#d5d9e0",2)+P("M78.0,100.0 L85.7,101.0 L83.4,105.9 Z","#f4f2f7",1.5)},
+  stake:{label:"Cọc nhọn",hands:[[86,198],[118,172]],
+    d:()=>thick(54,254,142,118,"#a8834e",7)+P("M142,118 L160,96 L148,124 Z","#c9a46a",2.4)+P("M54,254 L40,276 L48,248 Z","#c9a46a",2.4)},
+  mallet:{label:"Búa gỗ",hands:[[78,198],[122,180]],
+    d:()=>thick(122,182,140,118,"#8a6a3a",4)+`<rect x="122" y="96" width="38" height="24" rx="4" fill="#9a7a4a" stroke="${INK}" stroke-width="3" transform="rotate(-18 141 108)"/>`},
+  stgeorge:{label:"Cờ thánh George",hands:[[120,196],[132,150]],
+    d:()=>thick(134,282,134,-14,"#8a6a3a",3.5)+`<rect x="134" y="-10" width="64" height="58" fill="#f4f2f7" stroke="${INK}" stroke-width="3"/><rect x="160" y="-10" width="12" height="58" fill="#c0392b"/><rect x="134" y="13" width="64" height="12" fill="#c0392b"/><rect x="134" y="-10" width="64" height="58" fill="none" stroke="${INK}" stroke-width="3"/>`},
+  fleur:{label:"Cờ hoa bách hợp",hands:[[120,196],[132,150]],
+    d:()=>{const lys=(x,y)=>LYS(x,y,1.2);
+      return thick(134,282,134,-14,"#8a6a3a",3.5)+`<rect x="134" y="-10" width="64" height="58" fill="#2f4f9f" stroke="${INK}" stroke-width="3"/>`+lys(152,14)+lys(180,14)+lys(166,40)}},
   scroll:{label:"Cuộn chiếu",hands:[[86,182],[116,182]],
     d:()=>`<rect x="88" y="158" width="26" height="42" fill="#efe6cc" stroke="${INK}" stroke-width="2.4"/>`+[166,174,182,190].map(y=>ln(93,y,109,y,INK,1.4,'opacity=".5"')).join("")+`<rect x="84" y="153" width="34" height="7" rx="3.5" fill="#7a4a2a" stroke="${INK}" stroke-width="2"/><rect x="84" y="198" width="34" height="7" rx="3.5" fill="#7a4a2a" stroke="${INK}" stroke-width="2"/>`}
 };
 
-const POSES={stand:{label:"Đứng"},walk:{label:"Bước đi"},bow:{label:"Cúi chào"}};
+const POSES={stand:{label:"Đứng"},walk:{label:"Bước đi"},bow:{label:"Cúi chào"},sit:{label:"Ngồi"}};
 const COLORS=[["#3a3640","Đen sắt"],["#8a6a4a","Nâu gỗ"],["#9a7f55","Kaki"],["#2f4f7f","Chàm"],["#a8342c","Đỏ son"],["#5b6b3a","Xanh rêu"],["#c2a77a","Lụa be"],["#6b4a7a","Tím"]];
 
 /* ---------- Character assembly ---------- */
 function character(cfg){
   const o=OUTFITS[cfg.outfit],c=cfg.color,pr=PROPS[cfg.prop],hr=HAIR[cfg.hair];
   const id="h"+(++uid);
-  const legs=cfg.pose==="walk"?[[[100,195],[86,232],[74,266]],[[100,195],[114,230],[128,262]]]:[[[100,195],[91,232],[86,268]],[[100,195],[109,232],[116,268]]];
-  let s=`<ellipse cx="100" cy="272" rx="46" ry="7" fill="#000" opacity=".16"/>`;
+  const legs=cfg.pose==="sit"?[[[100,195],[70,197],[68,236]],[[100,195],[76,202],[78,238]]]:cfg.pose==="walk"?[[[100,195],[86,232],[74,266]],[[100,195],[114,230],[128,262]]]:[[[100,195],[91,232],[86,268]],[[100,195],[109,232],[116,268]]];
+  let s=cfg.pose==="sit"?"":`<ellipse cx="100" cy="272" rx="46" ry="7" fill="#000" opacity=".16"/>`;
   // legs
   const layers=typeof o.legs==="function"?o.legs(c):o.legs;
   for(const L of legs){
@@ -246,10 +301,11 @@ function character(cfg){
     if(sleeve){const e=[a[0]+(b[0]-a[0])*sf,a[1]+(b[1]-a[1])*sf];u+=ln(a[0],a[1],e[0].toFixed(1),e[1].toFixed(1),INK,sw+5)+ln(a[0],a[1],e[0].toFixed(1),e[1].toFixed(1),sleeve,sw)}}
   u+=o.front(c);
   const handS=hands.map(h=>`<circle cx="${h[0]}" cy="${h[1]}" r="6.5" fill="${INK}"/>`).join("");
-  u+=pr.over?handS+pr.d():pr.d()+handS;
+  if(!pr.top)u+=pr.over?handS+pr.d():pr.d()+handS;   // top: props drawn in front of the head (e.g. a bow aimed at the sky)
   // head
   u+=`<defs><clipPath id="${id}"><circle cx="100" cy="70" r="46"/></clipPath></defs><circle cx="100" cy="70" r="46" fill="#cdc8da"/><circle cx="92" cy="67" r="45" fill="#fff" clip-path="url(#${id})"/><g clip-path="url(#${id})">${hr.clip()}</g><circle cx="100" cy="70" r="46" fill="none" stroke="${INK}" stroke-width="4.5"/>`;
-  u+=hr.front()+FACES[cfg.face].d()+HATS[cfg.hat].d();
+  u+=hr.front()+FACES[cfg.face].d()+(cfg.scar?`<path d="M107,80 Q111,87 114,95" fill="none" stroke="#b5676a" stroke-width="3.2" stroke-linecap="round"/><path d="M106,85 L112,83 M108,90 L114,88" stroke="#b5676a" stroke-width="1.8" stroke-linecap="round"/>`:"")+HATS[cfg.hat].d();
+  if(pr.top)u+=pr.d()+handS;
   if(cfg.pose==="bow")u=`<g transform="rotate(-26 100 196)">${u}</g>`;
   s+=u;
   return cfg.flip?`<g transform="translate(200 0) scale(-1 1)">${s}</g>`:s;
@@ -288,8 +344,134 @@ const SCENES={
     s+=`<path d="M340,176 L360,150 L372,160 L390,128 L420,150 L432,140 L450,176 Z" fill="#6b5a46" ${st}/><path d="M348,176 Q356,140 372,150 Q380,112 396,132 Q410,104 420,138 Q436,128 444,176Z" fill="#f29a3a" ${st}/><path d="M368,176 Q378,150 392,158 Q404,140 414,176Z" fill="#f6c453"/>`;
     s+=`<rect y="176" width="480" height="144" fill="#77735f"/><path d="M0,176 L480,176" ${st}/>`;
     s+=`<path d="M40,200 L200,196 L190,226 L20,232Z M220,196 L330,198 L340,226 L214,228Z" fill="#6a6653" ${st}/>`;
-    s+=`<path d="M60,176 L62,140 M62,152 L72,144 M440,190 L442,150 M150,176 L150,156" stroke="${INK}" stroke-width="3" fill="none"/>`+`<path d="M100,176 L110,162 L124,170 L130,160 L140,176Z" fill="#8a8574" ${st}/>`;return s}}
+    s+=`<path d="M60,176 L62,140 M62,152 L72,144 M440,190 L442,150 M150,176 L150,156" stroke="${INK}" stroke-width="3" fill="none"/>`+`<path d="M100,176 L110,162 L124,170 L130,160 L140,176Z" fill="#8a8574" ${st}/>`;return s}},
+  valley:{label:"Thung lũng",d:()=>{let s=`<rect width="480" height="320" fill="#b9cdb7"/>`+cloud(40,60,140,"#e8eee6")+cloud(300,44,120,"#e8eee6");
+    s+=`<path d="M0,120 Q90,90 170,150 Q200,175 230,190 L0,230 Z" fill="#5f7a55" ${st}/><path d="M480,110 Q380,96 300,160 Q270,180 250,192 L480,232 Z" fill="#56704d" ${st}/>`;
+    s+=`<path d="M0,190 Q240,176 480,192 L480,320 L0,320 Z" fill="#8fa66f" ${st}/><path d="M200,320 Q230,250 240,192 Q252,250 300,320 Z" fill="#b6a57c" ${st}/>`;
+    const tree=(x,y,r)=>`<line x1="${x}" y1="${y}" x2="${x}" y2="${y+r*1.3}" stroke="${INK}" stroke-width="3"/><circle cx="${x}" cy="${y}" r="${r}" fill="#3f5a3a" ${st}/>`;
+    for(const [x,y,r] of [[30,150,18],[70,140,14],[110,160,16],[20,200,22],[150,178,12],[350,150,14],[400,140,18],[445,150,16],[460,200,22],[330,176,12]])s+=tree(x,y,r);
+    return s}},
+  shrine:{label:"Đền thần đạo",d:()=>{let s=`<rect width="480" height="320" fill="#cfe3ef"/>`+cloud(60,54,120,"#fff");
+    s+=`<path d="M0,170 Q120,120 240,150 Q360,120 480,165 L480,320 L0,320Z" fill="#6f8a63" ${st}/><rect y="226" width="480" height="94" fill="#d8cfb6"/><path d="M0,226 L480,226" ${st}/>`;
+    s+=`<path d="M190,320 L222,226 L258,226 L290,320 Z" fill="#c4b99b" ${st}/>`;
+    s+=`<rect x="300" y="150" width="120" height="76" fill="#efe6d2" ${st}/><path d="M286,154 L360,112 L434,154 Z" fill="#5c524a" ${st}/><rect x="344" y="176" width="32" height="50" fill="#7a5a3a" ${st}/>`;
+    s+=`<rect x="120" y="92" width="12" height="150" fill="#d0452f" ${st}/><rect x="228" y="92" width="12" height="150" fill="#d0452f" ${st}/>`;
+    s+=`<path d="M96,84 Q180,96 264,84 L262,96 Q180,106 98,96 Z" fill="#d0452f" ${st}/><rect x="104" y="108" width="152" height="9" fill="#d0452f" ${st}/>`;
+    s+=`<path d="M94,82 Q180,94 266,82" fill="none" stroke="${INK}" stroke-width="6"/>`;
+    return s}},
+  field:{label:"Cánh đồng bùn (Agincourt)",d:()=>{let s=`<rect width="480" height="320" fill="#aeb6bb"/>`+cloud(20,72,170,"#c3c9cd")+cloud(270,52,190,"#c3c9cd")+cloud(170,96,90,"#b8bfc3");
+    s+=`<path d="M0,182 Q240,174 480,182 L480,320 L0,320Z" fill="#5e4a36" ${st}/>`;
+    for(let i=-14;i<=14;i++){const x0=240+i*11,x1=240+i*58;s+=`<path d="M${x0},181 L${x1-12},320 L${x1+12},320 Z" fill="#4a3a2a" opacity=".55"/>`+`<line x1="${x0+3}" y1="181" x2="${x1+16}" y2="320" stroke="#7a6248" stroke-width="2.4" opacity=".8"/>`+(i%3===0?`<line x1="${x0}" y1="190" x2="${x1}" y2="320" stroke="#a9b6c0" stroke-width="1.6" opacity=".5"/>`:"")}
+    for(const [x,y,rx] of [[200,300,44],[300,262,34],[250,212,22],[160,236,24],[330,226,18]])s+=`<ellipse cx="${x}" cy="${y}" rx="${rx}" ry="${(rx*.24).toFixed(1)}" fill="#8f9ea8" stroke="${INK}" stroke-width="1.6"/><path d="M${x-rx*.5},${y-1} L${x+rx*.2},${y-2}" stroke="#d6e0e6" stroke-width="2" stroke-linecap="round"/>`;
+    const tree=(x,y,r)=>`<line x1="${x}" y1="${y}" x2="${x}" y2="${y+r*1.4}" stroke="${INK}" stroke-width="3"/><circle cx="${x}" cy="${y}" r="${r}" fill="#344a30" ${st}/>`;
+    s+=`<path d="M0,100 Q70,92 120,120 L146,184 L104,320 L0,320Z" fill="#3b4f36" ${st}/><path d="M480,100 Q410,92 360,120 L334,184 L376,320 L480,320Z" fill="#3b4f36" ${st}/>`;
+    for(const [x,y,r] of [[14,108,18],[50,102,16],[86,112,15],[116,132,12],[134,162,11],[30,160,18],[78,158,14],[104,188,11],[22,222,18],[66,228,14],[90,270,12],
+      [466,108,18],[430,102,16],[394,112,15],[364,132,12],[346,162,11],[450,160,18],[402,158,14],[376,188,11],[458,222,18],[414,228,14],[390,270,12]])s+=tree(x,y,r);
+    return s}},
+  hall:{label:"Đại sảnh lâu đài",d:()=>{let s=`<rect width="480" height="320" fill="#cfc6b6"/>`;
+    for(let y=0;y<240;y+=18)for(let x=(y/18)%2?-20:0;x<480;x+=40)s+=`<rect x="${x}" y="${y}" width="40" height="18" fill="none" stroke="#b3a993" stroke-width="1.2"/>`;
+    s+=`<path d="M196,206 L196,96 Q240,36 284,96 L284,206 Z" fill="#bcd6ea" ${st}/><path d="M240,58 L240,206 M196,140 L284,140 M218,206 L218,90 M262,206 L262,90" stroke="${INK}" stroke-width="2"/>`;
+    s+=`<polygon points="196,206 284,206 340,320 140,320" fill="#fff8dc" opacity=".22"/>`;
+    const banner=(x,col)=>`<path d="M${x},20 L${x+54},20 L${x+54},150 L${x+27},134 L${x},150 Z" fill="${col}" ${st}/><rect x="${x-6}" y="14" width="66" height="7" fill="#7a5a3a" ${st}/>`;
+    s+=banner(110,"#2f4f9f")+LYS(124,62,1.3)+LYS(150,62,1.3)+LYS(137,96,1.3)+banner(316,"#c0392b")+LION(343,52,1.5)+LION(343,76,1.5)+LION(343,100,1.5);
+    for(const x of[20,426])s+=`<rect x="${x}" y="0" width="34" height="240" fill="#e4ddcf" ${st}/><rect x="${x-6}" y="20" width="46" height="12" fill="#d3cab8" ${st}/><rect x="${x-6}" y="228" width="46" height="14" fill="#d3cab8" ${st}/>`+[10,22].map(d=>`<line x1="${x+d}" y1="32" x2="${x+d}" y2="228" stroke="#b3a993" stroke-width="2"/>`).join("");
+    for(const x of[80,400])s+=`<rect x="${x-3}" y="110" width="6" height="26" fill="#6b4a2e" ${st}/><path d="M${x},84 Q${x-10},100 ${x-4},110 L${x+4},110 Q${x+10},100 ${x},84Z" fill="#f29a3a" ${st}/><path d="M${x},94 Q${x-4},104 ${x},110 Q${x+4},104 ${x},94Z" fill="#f5d95a"/><circle cx="${x}" cy="100" r="26" fill="#f5d95a" opacity=".15"/>`;
+    s+=`<rect y="240" width="480" height="80" fill="#a89c88"/><path d="M0,240 L480,240" ${st}/>`;
+    for(const x of[-120,-40,40,120,200,280,360,440,520,600])s+=`<line x1="${240+(x-240)*.5}" y1="240" x2="${x}" y2="320" stroke="#8d8270" stroke-width="1.5"/>`;
+    s+=`<path d="M205,240 L275,240 L330,320 L150,320 Z" fill="#a8342c" ${st}/><path d="M212,244 L268,244 L318,316 L162,316 Z" fill="none" stroke="#e2bd4f" stroke-width="3"/>`;
+    return s}},
+  siege:{label:"Vây thành (Harfleur)",d:()=>{let s=`<rect width="480" height="320" fill="#cdbfa8"/>`+cloud(300,60,150,"#8f8a82")+cloud(370,40,120,"#7d7871")+cloud(40,70,120,"#e2d9c8");
+    s+=`<rect y="196" width="480" height="124" fill="#8d8a5a"/><path d="M0,196 L480,196" ${st}/>`;
+    s+=`<path d="M236,196 L236,124 L330,124 L336,140 L352,132 L356,124 L480,124 L480,196 Z" fill="#b9ae98" ${st}/>`;
+    for(let x=236;x<480;x+=16)if(x<326||x>356)s+=`<rect x="${x}" y="114" width="9" height="10" fill="#b9ae98" ${st}/>`;
+    for(let y=140;y<196;y+=14)s+=`<line x1="238" y1="${y}" x2="478" y2="${y}" stroke="#9c917c" stroke-width="1.4"/>`;
+    for(const x of[256,430])s+=`<rect x="${x}" y="92" width="34" height="104" fill="#c4b9a2" ${st}/><path d="M${x-4},94 L${x+17},62 L${x+38},94 Z" fill="#6e655c" ${st}/><rect x="${x+12}" y="120" width="10" height="16" fill="${INK}"/>`;
+    s+=`<path d="M326,196 L330,170 L344,176 L352,160 L362,196 Z" fill="#9c917c" ${st}/>`;
+    const tent=(x,c)=>`<path d="M${x},198 L${x+26},158 L${x+52},198 Z" fill="#f4f2f7" ${st}/><path d="M${x+13},178 L${x+26},158 L${x+39},178 Z" fill="${c}"/><path d="M${x},198 L${x+26},158 L${x+52},198 Z" fill="none" ${st}/>`+ln(x+26,158,x+26,142,INK,2)+`<path d="M${x+26},142 L${x+40},147 L${x+26},152Z" fill="${c}" stroke="${INK}" stroke-width="1.5"/>`;
+    s+=tent(20,"#c0392b")+tent(96,"#c0392b")+tent(168,"#c0392b");
+    s+=`<rect x="150" y="242" width="56" height="18" rx="8" fill="#3b3742" ${st} transform="rotate(-12 178 251)"/><circle cx="168" cy="262" r="10" fill="#7a5a3a" ${st}/><circle cx="196" cy="258" r="10" fill="#7a5a3a" ${st}/>`;
+    return s}},
+  river:{label:"Sông Somme",d:()=>{let s=`<rect width="480" height="320" fill="#b8c6cf"/>`+cloud(40,70,150,"#d6dee3")+cloud(300,54,160,"#d6dee3");
+    s+=`<path d="M0,170 Q120,140 240,160 Q360,138 480,166 L480,320 L0,320Z" fill="#8d8a5a" ${st}/>`;
+    s+=`<path d="M0,196 Q160,206 300,200 Q400,196 480,210 L480,236 Q400,224 300,230 Q160,236 0,226 Z" fill="#7f98ab" ${st}/>`;
+    s+=`<path d="M40,212 L80,212 M200,218 L250,216 M360,214 L420,218" stroke="#c9d8e2" stroke-width="2"/>`;
+    s+=`<rect x="150" y="192" width="16" height="40" fill="#a59a86" ${st}/><rect x="210" y="190" width="16" height="42" fill="#a59a86" ${st}/><path d="M140,190 L172,190 L176,184 L138,186 Z M204,186 L236,188 L232,194 L206,192 Z" fill="#8a6a4a" ${st}/>`;
+    const tree=(x,y,r,c)=>`<line x1="${x}" y1="${y}" x2="${x}" y2="${y+r*1.4}" stroke="${INK}" stroke-width="3"/><circle cx="${x}" cy="${y}" r="${r}" fill="${c}" ${st}/>`;
+    for(const [x,y,r,c] of [[30,160,16,"#c9853a"],[70,152,12,"#a85f2a"],[330,150,14,"#c9853a"],[380,156,18,"#b7702f"],[440,150,14,"#a85f2a"]])s+=tree(x,y,r,c);
+    s+=`<rect y="250" width="480" height="70" fill="#7d7a4d"/><path d="M0,250 Q240,244 480,252" fill="none" ${st}/>`;
+    return s}},
+  camp:{label:"Doanh trại đêm",d:()=>{let s=`<rect width="480" height="320" fill="#2d2c46"/>`;
+    for(const [x,y] of [[40,40],[120,70],[200,36],[300,60],[380,30],[450,80],[90,110],[420,120]])s+=`<circle cx="${x}" cy="${y}" r="1.8" fill="#f4f2f7"/>`;
+    s+=`<circle cx="400" cy="56" r="18" fill="#e9e4c8" ${st}/>`;
+    s+=`<rect y="196" width="480" height="124" fill="#3e3a33"/><path d="M0,196 L480,196" ${st}/>`;
+    const tent=(x,c,w)=>`<path d="M${x},198 L${x+w/2},${198-w*.8} L${x+w},198 Z" fill="${c}" ${st}/><path d="M${x+w/2},${198-w*.8} L${x+w/2-6},198 L${x+w/2+6},198Z" fill="#1c1b22" opacity=".5"/>`+ln(x+w/2,198-w*.8,x+w/2,182-w*.8,INK,2)+`<path d="M${x+w/2},${182-w*.8} L${x+w/2+14},${187-w*.8} L${x+w/2},${192-w*.8}Z" fill="#e2bd4f" stroke="${INK}" stroke-width="1.5"/>`;
+    s+=tent(10,"#2f4f9f",60)+tent(84,"#e9e4c8",44)+tent(330,"#2f4f9f",64)+tent(410,"#e9e4c8",52);
+    s+=`<circle cx="240" cy="262" r="70" fill="#f29a3a" opacity=".16"/><path d="M216,276 L264,268 M218,268 L262,278" stroke="#6b4a2e" stroke-width="6" stroke-linecap="round"/><path d="M240,226 Q222,252 230,272 L250,272 Q258,252 240,226Z" fill="#f29a3a" ${st}/><path d="M240,244 Q232,260 238,272 L244,272 Q250,260 240,244Z" fill="#f5d95a"/>`;
+    return s}},
+  parchment:{label:"Giấy da cổ (bản đồ mờ)",d:()=>{let s=`<rect width="480" height="320" fill="#e6d4ab"/>`;
+    for(const [x,y,r] of [[60,80,60],[400,90,80],[250,250,90],[120,260,50],[430,260,60]])s+=`<ellipse cx="${x}" cy="${y}" rx="${r}" ry="${r*.6}" fill="#c9ad7a" opacity=".22"/>`;
+    s+=`<g fill="none" stroke="#9a7f55" stroke-width="2.2" opacity=".45"><path d="M0,104 Q40,96 70,108 Q110,96 150,106 Q190,92 230,104 Q260,96 290,84 Q320,70 340,50"/>`+
+       `<path d="M0,170 Q60,160 110,176 Q150,190 190,170 Q230,150 270,160 Q310,146 340,120 Q380,100 420,96 Q450,94 480,100"/></g>`;
+    s+=`<path d="M190,170 Q250,140 300,126 Q330,116 350,108" fill="none" stroke="#a8342c" stroke-width="2.4" stroke-dasharray="6 6" opacity=".35"/>`;
+    s+=`<g transform="translate(424 66)" opacity=".5"><circle r="20" fill="none" stroke="#7a5a3a" stroke-width="2"/><path d="M0,-26 L5,0 L0,26 L-5,0Z M-26,0 L0,5 L26,0 L0,-5Z" fill="#7a5a3a"/></g>`;
+    s+=`<rect x="8" y="34" width="464" height="262" fill="none" stroke="#7a5a3a" stroke-width="2.5" opacity=".55"/><path d="M0,284 L480,284" stroke="#b89c6a" stroke-width="2"/>`;
+    return s}},
+  livingroom:{label:"Phòng khách",d:()=>{let s=`<rect width="480" height="320" fill="#e9dcc8"/><rect y="276" width="480" height="44" fill="#b98d63"/><path d="M0,276 L480,276" ${st}/>`;
+    for(const x of [60,150,240,330,420])s+=`<line x1="${x}" y1="276" x2="${x-14}" y2="320" stroke="${INK}" stroke-width="1.5" opacity=".35"/>`;
+    s+=`<rect x="196" y="70" width="88" height="104" fill="#a9d8f0" ${st}/><path d="M240,70 L240,174 M196,122 L284,122" ${st}/><rect x="190" y="174" width="100" height="8" fill="#f4efe2" ${st}/>`;
+    s+=`<rect x="58" y="88" width="64" height="46" fill="#f4efe2" ${st}/><path d="M66,126 L82,104 L94,118 L104,108 L114,126 Z" fill="#7f9a76" ${st}/>`;
+    s+=`<line x1="456" y1="130" x2="456" y2="276" stroke="${INK}" stroke-width="4"/><path d="M436,130 L476,130 L466,104 L446,104 Z" fill="#f2d48a" ${st}/><ellipse cx="456" cy="276" rx="14" ry="4" fill="${INK}"/>`;
+    s+=`<ellipse cx="240" cy="292" rx="130" ry="11" fill="#d9c7a5" ${st}/>`;
+    const sofa=(x,w,col)=>`<rect x="${x}" y="198" width="${w}" height="54" rx="10" fill="${col}" ${st}/><rect x="${x-8}" y="230" width="${w+16}" height="38" rx="9" fill="${dk(col)}" ${st}/><rect x="${x-14}" y="218" width="22" height="50" rx="8" fill="${col}" ${st}/><rect x="${x+w-8}" y="218" width="22" height="50" rx="8" fill="${col}" ${st}/><rect x="${x}" y="268" width="8" height="10" fill="${INK}"/><rect x="${x+w-8}" y="268" width="8" height="10" fill="${INK}"/>`;
+    s+=sofa(30,150,"#6d8fa8")+sofa(300,150,"#c0745a");
+    return s}}
 };
+
+/* ---------- FX overlays for episode frames (shot.fx in shots.js) ---------- */
+function rng(seed){return ()=>((seed=(seed*16807)%2147483647)/2147483647)}
+const FX={
+  // row of sharpened stakes leaning toward the enemy (dir 1 = pointing right)
+  stakes:({x0=60,x1=200,y=292,dir=1,step=13})=>{let s="";for(let x=x0;x<=x1;x+=step){const tx=x+dir*28,ty=y-34;s+=thick(x,y,tx,ty,"#a8834e",4)+P(`M${tx},${ty} L${tx+dir*9},${ty-9} L${tx+dir*1},${ty+4} Z`,"#c9a46a",1.6)}return s},
+  // sky full of arrows flying toward dir, with a dark shadow on the ground under them
+  arrowstorm:({x0=0,x1=480,y0=40,y1=170,dir=1,n=90,shadowX0,shadowX1,seed=11})=>{const r=rng(seed);let s="";
+    if(shadowX0!=null)s+=`<ellipse cx="${(shadowX0+shadowX1)/2}" cy="296" rx="${(shadowX1-shadowX0)/2}" ry="26" fill="#1c1b22" opacity=".22"/>`;
+    for(let i=0;i<n;i++){const x=x0+r()*(x1-x0),y=y0+r()*(y1-y0),l=12+r()*6,a=0.35+r()*0.25,dx=dir*l*Math.cos(a),dy=l*Math.sin(a);
+      s+=ln(x.toFixed(1),y.toFixed(1),(x+dx).toFixed(1),(y+dy).toFixed(1),INK,1.6)+`<circle cx="${(x+dx).toFixed(1)}" cy="${(y+dy).toFixed(1)}" r="1.4" fill="${INK}"/>`+ln(x.toFixed(1),y.toFixed(1),(x-dir*3).toFixed(1),(y-2.5).toFixed(1),"#f4f2f7",1.6)}
+    return s},
+  // bundle of arrows stuck in the ground in front of an archer
+  groundarrows:({x=100,y=292,n=6})=>{let s="";for(let i=0;i<n;i++){const xx=x+i*4-n*2,t=(i-n/2)*1.6;s+=ln(xx,y,xx+t,y-26,"#c9b48a",1.8)+P(`M${xx+t},${y-26} l-3,-6 l6,0 Z`,"#f4f2f7",1)}return s+`<ellipse cx="${x}" cy="${y}" rx="${n*2.6}" ry="2.5" fill="#4a3a2a"/>`},
+  // small campfire; dying = embers and a thin wisp of smoke
+  campfire:({x=240,y=292,dying=false})=>dying?`<circle cx="${x}" cy="${y-4}" r="22" fill="#f29a3a" opacity=".1"/><path d="M${x-14},${y} L${x+14},${y-4} M${x-12},${y-5} L${x+12},${y}" stroke="#4a3a2e" stroke-width="5" stroke-linecap="round"/>`+[[-6,-6],[2,-7],[7,-4]].map(([dx,dy])=>`<circle cx="${x+dx}" cy="${y+dy}" r="2" fill="#f29a3a"/>`).join("")+`<path d="M${x},${y-10} q-6,-12 2,-22 q8,-10 0,-22" fill="none" stroke="#b8b4c4" stroke-width="2.4" opacity=".55"/>`
+    :`<circle cx="${x}" cy="${y-14}" r="40" fill="#f29a3a" opacity=".16"/><path d="M${x-14},${y} L${x+14},${y-4} M${x-12},${y-5} L${x+12},${y}" stroke="#6b4a2e" stroke-width="5" stroke-linecap="round"/><path d="M${x},${y-34} Q${x-12},${y-18} ${x-6},${y-4} L${x+6},${y-4} Q${x+12},${y-18} ${x},${y-34}Z" fill="#f29a3a" ${st}/><path d="M${x},${y-22} Q${x-5},${y-12} ${x-2},${y-4} L${x+2},${y-4} Q${x+5},${y-12} ${x},${y-22}Z" fill="#f5d95a"/>`,
+  // a crowd of small soldiers in rows (back rows smaller), to show army size at a glance.
+  // side "fr" = French knights with some fleur-de-lis banners; "en" = English archers with a few St George knights
+  // optional chaos: faces (list of face names), flee (share turned away and running), tilt (max lean in degrees), fall (share fallen over)
+  crowd:({side="fr",x0=260,x1=470,rows=4,gBack=200,gFront=260,scBack=.16,scFront=.32,perRow=9,flip=false,seed=3,banners=.2,faces=null,flee=0,tilt=0,fall=0})=>{
+    const r=rng(seed),pick=a=>a[Math.floor(r()*a.length)];let s="";
+    for(let k=0;k<rows;k++){const t=rows>1?k/(rows-1):1,g=gBack+(gFront-gBack)*t,sc0=scBack+(scFront-scBack)*t,n=Math.max(1,Math.round(perRow*(1+.45*(1-t))));
+      for(let i=0;i<n;i++){const sc=sc0*(.92+r()*.16),x=x0+(i+.5+(k%2?.35:0))*(x1-x0)/(n+.35)+(r()-.5)*5,gg=g+(r()-.5)*4;
+        const cfg=side==="fr"?{hair:"none",hat:"bascinet",face:pick(["smug","smug","neutral","determined"]),outfit:"knight_fr",color:"#2f4f9f",prop:r()<banners?"fleur":"sword",pose:"stand",flip}
+          :(r()<.2?{hair:"none",hat:"bascinet",face:pick(["determined","neutral"]),outfit:"knight_en",color:"#f4f2f7",prop:r()<banners?"stgeorge":"sword",pose:"stand",flip}
+                  :{hair:"short",hat:pick(["kettle","hood","none"]),face:pick(["closed","neutral","determined"]),outfit:"archer",color:pick(["#8a6a4a","#5b6b3a","#9a7f55"]),prop:"longbow",pose:"stand",flip});
+        if(faces)cfg.face=pick(faces);
+        let rot="";
+        if(flee||tilt||fall){const run=r()<flee;if(run){cfg.flip=!flip;cfg.pose="walk"}
+          const a=r()<fall?(cfg.flip?78:-78):(r()-.5)*2*tilt;if(a)rot=` rotate(${a.toFixed(1)} 100 268)`}
+        s+=`<g transform="translate(${(x-100*sc).toFixed(1)} ${(gg-272*sc).toFixed(1)}) scale(${sc.toFixed(3)})${rot}">${character(cfg)}</g>`}}
+    return s},
+  // bold caption drawn into the frame (for infographic labels)
+  label:({x=240,y=60,text="",size=18,color="#fff",anchor="middle"})=>`<text x="${x}" y="${y}" font-family="Inter, DejaVu Sans, sans-serif" font-weight="900" font-size="${size}" text-anchor="${anchor}" fill="${color}" stroke="${INK}" stroke-width="${size/4}" paint-order="stroke" stroke-linejoin="round">${text}</text>`,
+  // mud splashes around a point
+  splash:({x=240,y=292,k=1})=>[[-18,-14,3],[-10,-24,2.4],[0,-28,2],[12,-20,2.6],[20,-10,3],[-24,-4,2]].map(([dx,dy,r])=>`<circle cx="${x+dx*k}" cy="${y+dy*k}" r="${r*k}" fill="#5e4a36" stroke="${INK}" stroke-width="1"/>`).join("")
+};
+// mud around a character's feet (depth 0..1 of the lower leg) and shiver marks; used per character
+const MUDAT=(x,g,sc,depth)=>{const w=74*sc,h=(10+62*depth)*sc,top=g-h,y2=g+10;let wave="";for(let i=0;i<=8;i++){const xx=x-w+i*w/4,yy=top+(i%2?-3:3)*sc;wave+=(i?` Q${(xx-w/8).toFixed(1)},${(yy+(i%2?6:-6)*sc).toFixed(1)} `:"M")+`${xx.toFixed(1)},${yy.toFixed(1)}`;if(xx>=x+w)break}
+  const id="m"+(++uid),fade=c=>`<stop offset="0" stop-color="${c}" stop-opacity="0"/><stop offset=".22" stop-color="${c}"/><stop offset=".78" stop-color="${c}"/><stop offset="1" stop-color="${c}" stop-opacity="0"/>`;
+  let furrows="";for(let i=-3;i<=3;i++)furrows+=`<line x1="${(x+i*w/4).toFixed(1)}" y1="${(top+6*sc).toFixed(1)}" x2="${(x+i*w/3.2).toFixed(1)}" y2="${y2}" stroke="url(#${id}d)" stroke-width="2"/>`;
+  return `<defs><linearGradient id="${id}f">${fade("#5e4a36")}</linearGradient><linearGradient id="${id}s">${fade(INK)}</linearGradient><linearGradient id="${id}d">${fade("#4a3a2a")}</linearGradient></defs>`
+    +`<path d="${wave} L${x+w},${y2} L${x-w},${y2} Z" fill="url(#${id}f)"/>`+furrows+`<path d="${wave}" fill="none" stroke="url(#${id}s)" stroke-width="2.2"/>`};
+const SHIVER=(x,g,sc)=>{const z=(xx,yy)=>`<path d="M${xx},${yy} l3,-4 l3,4 l3,-4" fill="none" stroke="${INK}" stroke-width="2" stroke-linecap="round"/>`;const h=272*sc;
+  return z(x-50*sc,g-h*.62)+z(x+40*sc,g-h*.7)+z(x-56*sc,g-h*.42)+z(x+46*sc,g-h*.45)};
 
 /* ---------- State + UI ---------- */
 const PRESETS=[

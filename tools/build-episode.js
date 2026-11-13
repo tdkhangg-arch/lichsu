@@ -1,0 +1,105 @@
+// Builds a video production pack (JSON + 1920x1080 PNG frames + voiceover text)
+// from an episode definition, reusing the drawing code in index.html.
+// Usage: node tools/build-episode.js episodes/01-47-ronin/shots.js
+const fs = require("fs");
+const path = require("path");
+const vm = require("vm");
+const { chromium } = require("playwright");
+
+const root = path.join(__dirname, "..");
+const html = fs.readFileSync(path.join(root, "index.html"), "utf8");
+const script = html.split("<script>")[1].split("/* ---------- State + UI")[0];
+const ctx = {};
+vm.createContext(ctx);
+vm.runInContext(script + ";this.character=character;this.SCENES=SCENES;this.FX=FX;this.MUDAT=MUDAT;this.SHIVER=SHIVER;", ctx);
+
+const defPath = path.resolve(process.argv[2]);
+const def = require(defPath);
+const outDir = path.dirname(defPath);
+const imgDir = path.join(outDir, "images");
+fs.mkdirSync(imgDir, { recursive: true });
+
+const WPM = 145;
+const GROUND = 292; // feet line in a 480x270 frame (viewBox y 30..300)
+
+function frameSVG(shot) {
+  let s = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 30 480 270" width="1920" height="1080">`;
+  s += ctx.SCENES[shot.background].d();
+  if (shot.tint) s += `<rect x="0" y="0" width="480" height="320" fill="${shot.tint.color}" opacity="${shot.tint.opacity}"/>`;
+  // optional effects: shot.fx = [{ type: "stakes" | "arrowstorm" | "groundarrows" | "campfire" | "splash", front, ...params }]
+  const fx = (front) => (shot.fx || []).filter(f => !!f.front === front).map(f => ctx.FX[f.type](f)).join("");
+  s += fx(false);
+  for (const ch of shot.characters || []) {
+    const sc = ch.scale || 0.75;
+    const g = ch.ground || GROUND;
+    const y = g - 272 * sc;
+    // character art spans x 0..200; flipped art is mirrored inside the same box.
+    // rot tips the character over around its feet (e.g. 85 = fallen face down, facing left)
+    const rot = ch.rot ? ` rotate(${ch.rot} 100 268)` : "";
+    s += `<g transform="translate(${ch.x - 100 * sc} ${y}) scale(${sc})${rot}">${ctx.character(ch.cfg)}</g>`;
+    // for a fallen character the mud covers its face: the head ends up about 197 units from the feet
+    if (ch.mud) s += ch.rot ? ctx.MUDAT(ch.x + Math.sign(ch.rot) * 190 * sc, g, sc * 0.7, ch.mud) : ctx.MUDAT(ch.x, g, sc, ch.mud);
+    if (ch.shiver) s += ctx.SHIVER(ch.x, g, sc);
+  }
+  s += fx(true);
+  if (shot.rain) {
+    // heavy diagonal rain drawn over the scene (fixed pattern so frames are reproducible)
+    let seed = 7;
+    const rnd = () => ((seed = (seed * 16807) % 2147483647) / 2147483647);
+    s += `<rect x="0" y="0" width="480" height="320" fill="#2b3442" opacity="0.35"/>`;
+    for (let i = 0; i < 260; i++) {
+      const x = rnd() * 560 - 40, y = rnd() * 300 + 20, l = 10 + rnd() * 14;
+      s += `<line x1="${x.toFixed(1)}" y1="${y.toFixed(1)}" x2="${(x - l * 0.35).toFixed(1)}" y2="${(y + l).toFixed(1)}" stroke="#dfe7f2" stroke-width="1.3" opacity="0.7"/>`;
+    }
+  }
+  return s + "</svg>";
+}
+
+(async () => {
+  const browser = await chromium.launch();
+  const page = await browser.newPage({ viewport: { width: 1920, height: 1080 } });
+  let t = 0;
+  const shots = [];
+  let n = 0;
+  for (const shot of def.shots) {
+    // shots may carry their own id (e.g. "intro-1") so inserting them does not renumber the rest
+    const id = shot.id || `shot-${String(++n).padStart(2, "0")}`;
+    const file = `images/${id}.png`;
+    await page.setContent(`<html><body style="margin:0">${frameSVG(shot)}</body></html>`);
+    await page.screenshot({ path: path.join(outDir, file), clip: { x: 0, y: 0, width: 1920, height: 1080 } });
+    const words = shot.narration.split(/\s+/).filter(Boolean).length;
+    const duration = shot.duration || Math.round((words / WPM) * 60 + (shot.pause ?? 0.8));
+    shots.push({
+      id,
+      speaker: shot.speaker || null,
+      section: shot.section,
+      start: t,
+      duration,
+      image: file,
+      background: shot.background,
+      camera: shot.camera || "static",
+      characters: (shot.characters || []).map(c => ({ name: c.name, expression: c.cfg.face, pose: c.cfg.pose })),
+      on_screen_text: shot.text || null,
+      narration: shot.narration,
+      word_count: words,
+    });
+    t += duration;
+  }
+  await browser.close();
+
+  const episode = {
+    title: def.title,
+    language: "en",
+    resolution: { width: 1920, height: 1080 },
+    fps: 30,
+    total_duration: t,
+    voiceover: { words_per_minute: WPM, file: "voiceover.txt" },
+    music_moods: def.music_moods || null,
+    music_palette: def.music_palette || null,
+    shots,
+  };
+  fs.writeFileSync(path.join(outDir, "episode.json"), JSON.stringify(episode, null, 2) + "\n");
+  fs.writeFileSync(path.join(outDir, "voiceover.txt"), shots.map(s => (s.speaker ? `${s.speaker.toUpperCase()}: ` : "") + s.narration).join("\n\n") + "\n");
+  const m = Math.floor(t / 60), sec = t % 60;
+  console.log(`${shots.length} shots, ${m}:${String(sec).padStart(2, "0")} total`);
+})();

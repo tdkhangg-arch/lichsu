@@ -1,0 +1,385 @@
+#!/usr/bin/env python3
+"""Render a finished MP4 from an episode pack (episode.json + images/).
+
+Voiceover comes from Google AI Studio (Gemini TTS, default) or Google Cloud
+Text-to-Speech. For Gemini the key is read from the GEMINI_API_KEY or KEY environment
+variable; if neither is set, the session's network proxy is expected to add it.
+
+Usage:
+  python3 tools/make-video.py episodes/01-47-ronin                 # with voiceover
+  python3 tools/make-video.py episodes/01-47-ronin --silent        # draft, no voice
+  python3 tools/make-video.py episodes/01-47-ronin --voice Charon            # Gemini voice name
+  python3 tools/make-video.py episodes/01-47-ronin --engine cloud --voice en-US-Neural2-J
+"""
+import argparse, base64, json, os, re, subprocess, sys, time
+from pathlib import Path
+
+FPS = 30
+W, H = 1920, 1080
+FONT = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
+TAIL = 0.5          # silence after each shot's narration
+END_HOLD = 3.0      # extra hold on the last shot
+
+
+def run(cmd):
+    r = subprocess.run(cmd, capture_output=True, text=True)
+    if r.returncode != 0:
+        sys.exit(f"Command failed: {' '.join(cmd[:6])}...\n{r.stderr[-1500:]}")
+    return r.stdout
+
+
+def duration(path):
+    return float(run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", str(path)]).strip())
+
+
+def tts(text, out, voice, rate):
+    lang = "-".join(voice.split("-")[:2])
+    body = json.dumps({
+        "input": {"text": text},
+        "voice": {"languageCode": lang, "name": voice},
+        "audioConfig": {"audioEncoding": "MP3", "speakingRate": rate, "sampleRateHertz": 44100},
+    })
+    res = run(["curl", "-sS", "--fail-with-body", "-X", "POST",
+               "https://texttospeech.googleapis.com/v1/text:synthesize",
+               "-H", "Content-Type: application/json", "--data-binary", body])
+    data = json.loads(res)
+    if "audioContent" not in data:
+        sys.exit(f"Google TTS error: {res[:500]}")
+    out.write_bytes(base64.b64decode(data["audioContent"]))
+
+
+# Gemini reads any instruction text aloud, so only the narration is sent.
+STYLE = ""
+
+
+# Voices for dialogue shots ("speaker" in shots.js). The father is also the narrator.
+SPEAKERS = {"father": "Charon", "son": "Puck"}
+
+
+class TTSError(Exception):
+    pass
+
+
+FALLBACK_MODELS = ["gemini-3.1-flash-tts-preview", "gemini-2.5-flash-preview-tts", "gemini-3.8-flash-lite-tts"]
+
+
+def gemini_once(text, out, voice, model):
+    body = json.dumps({
+        "contents": [{"parts": [{"text": STYLE + text}]}],
+        "generationConfig": {
+            "responseModalities": ["AUDIO"],
+            "speechConfig": {"voiceConfig": {"prebuiltVoiceConfig": {"voiceName": voice}}},
+        },
+    })
+    key = os.environ.get("GEMINI_API_KEY") or os.environ.get("KEY")
+    auth = ["-H", f"x-goog-api-key: {key}"] if key else []  # otherwise the proxy adds it
+    for attempt in range(10):
+        res = run(["curl", "-sS", "-X", "POST",
+                   f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent",
+                   "-H", "Content-Type: application/json", *auth, "--data-binary", body])
+        data = json.loads(res)
+        err = data.get("error", {})
+        if err.get("code") not in (429, 500, 503):
+            break
+        m = re.search(r'"retryDelay":\s*"(\d+)', res)
+        wait = int(m.group(1)) + 2 if m else 30
+        if wait > 120:
+            raise TTSError(f"daily quota used up for {model}")
+        print(f"  busy ({err.get('code')}), waiting {wait}s", flush=True)
+        time.sleep(wait)
+    try:
+        pcm = base64.b64decode(data["candidates"][0]["content"]["parts"][0]["inlineData"]["data"])
+    except (KeyError, IndexError):
+        reason = (data.get("candidates") or [{}])[0].get("finishReason") or data.get("error", {}).get("message", "")
+        raise TTSError(f"{model}: {str(reason)[:200]}")
+    raw = out.with_suffix(".pcm")
+    raw.write_bytes(pcm)
+    run(["ffmpeg", "-y", "-loglevel", "error", "-f", "s16le", "-ar", "24000", "-ac", "1", "-i", str(raw),
+         "-af", "loudnorm=I=-16:TP=-1.5:LRA=11", "-ar", "44100", "-ar", "44100", "-b:a", "192k", str(out)])
+    raw.unlink()
+
+
+# ElevenLabs premade voices (override with --voice / ELEVEN_SPEAKERS below)
+ELEVEN_NARRATOR = "nPczCjzI2devNBz1zQrb"          # Brian: deep, calm American narrator
+ELEVEN_SPEAKERS = {"father": ELEVEN_NARRATOR,       # the father is also the narrator
+                   "son": "TX3LPaxmHKxFdv7VOQHJ"}   # Liam: young American male
+
+
+def eleven_tts(text, out, voice, model, prev_text="", next_text=""):
+    """ElevenLabs text-to-speech. Key from ELEVENLABS_API_KEY, or added by the network proxy."""
+    key = os.environ.get("ELEVENLABS_API_KEY")
+    auth = ["-H", f"xi-api-key: {key}"] if key else []
+    body = {"text": text, "model_id": model,
+            "voice_settings": {"stability": 0.5, "similarity_boost": 0.75, "style": 0.15, "use_speaker_boost": True}}
+    if prev_text:
+        body["previous_text"] = prev_text   # keeps intonation continuous across shots
+    if next_text:
+        body["next_text"] = next_text
+    for attempt in range(6):
+        r = subprocess.run(["curl", "-sS", "-X", "POST", "-o", str(out), "-w", "%{http_code}",
+                            f"https://api.elevenlabs.io/v1/text-to-speech/{voice}?output_format=mp3_44100_192",
+                            "-H", "Content-Type: application/json", *auth, "--data-binary", json.dumps(body)],
+                           capture_output=True, text=True)
+        code = r.stdout.strip()
+        if code == "200":
+            # normalize loudness like the Gemini path
+            tmp = out.with_suffix(".raw.mp3"); out.rename(tmp)
+            run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(tmp), "-af", "loudnorm=I=-16:TP=-1.5:LRA=11",
+                 "-ar", "44100", "-b:a", "192k", str(out)])
+            tmp.unlink()
+            return
+        msg = out.read_text(errors="ignore")[:400] if out.exists() else r.stderr[-400:]
+        out.unlink(missing_ok=True)
+        if code in ("429", "500", "502", "503"):
+            print(f"  ElevenLabs busy ({code}), retrying", flush=True)
+            time.sleep(5 * (attempt + 1))
+            continue
+        sys.exit(f"ElevenLabs error {code}: {msg}")
+    sys.exit("ElevenLabs kept failing; try again later")
+
+
+def gemini_tts(text, out, voice, model):
+    """Try the chosen model, then the fallbacks; a blocked or failed reply is retried once per model."""
+    errors = []
+    for m in [model] + [x for x in FALLBACK_MODELS if x != model]:
+        for _ in range(2):
+            try:
+                gemini_once(text, out, voice, m)
+                if m != model:
+                    print(f"  used fallback model {m}", flush=True)
+                return
+            except TTSError as e:
+                errors.append(str(e))
+                if "quota" in str(e):
+                    break
+    raise TTSError("; ".join(errors))
+
+
+def silences(path):
+    log = subprocess.run(["ffmpeg", "-i", str(path), "-af", "silencedetect=n=-38dB:d=0.25", "-f", "null", "-"],
+                         capture_output=True, text=True).stderr
+    starts = [float(x) for x in re.findall(r"silence_start: ([\d.]+)", log)]
+    ends = [float(x) for x in re.findall(r"silence_end: ([\d.]+)", log)]
+    return list(zip(starts, ends))
+
+
+def best_cuts(total, words, gaps):
+    """Pick one pause per shot boundary so every shot's speaking rate is as close as possible
+    to the section average (dynamic programming over all pauses, in order). Longer pauses are
+    preferred because paragraph breaks between shots produce longer silences."""
+    k = len(words)
+    rate = total / sum(words)
+    pts = [((a + b) / 2, b - a) for a, b in gaps if 0.5 < (a + b) / 2 < total - 0.5]
+    INF = float("inf")
+    # best[j][i]: cost of placing the first j cuts with the j-th cut at pause i
+    best = [[INF] * len(pts) for _ in range(k)]
+    prev = [[-1] * len(pts) for _ in range(k)]
+    def cost(t0, t1, w, gap):
+        exp = w * rate
+        return ((t1 - t0) - exp) ** 2 / exp - 2.0 * gap
+    for i, (t, g) in enumerate(pts):
+        best[1][i] = cost(0, t, words[0], g) if k > 1 else INF
+    for j in range(2, k):
+        for i, (t, g) in enumerate(pts):
+            for h in range(i):
+                if best[j - 1][h] < INF:
+                    c = best[j - 1][h] + cost(pts[h][0], t, words[j - 1], g)
+                    if c < best[j][i]:
+                        best[j][i], prev[j][i] = c, h
+    if k == 1:
+        return [0.0, total]
+    last = min(range(len(pts)), key=lambda i: best[k - 1][i] + cost(pts[i][0], total, words[-1], 0)
+               if best[k - 1][i] < INF else INF, default=None)
+    if last is None or best[k - 1][last] == INF:
+        return None
+    chain, j, i = [], k - 1, last
+    while j >= 1:
+        chain.append(pts[i][0]); i = prev[j][i]; j -= 1
+    return [0.0] + chain[::-1] + [total]
+
+
+def batch_voice(shots, build, voice, model):
+    """One Gemini request per section; split the audio into shots at the pauses nearest
+    to where each shot should end (by word count). Returns {shot id: mp3 path}."""
+    out, sections = {}, []
+    for s in shots:
+        if s.get("speaker"):
+            continue  # dialogue lines are voiced one by one with the speaker's own voice
+        if not sections or sections[-1][0] != s["section"]:
+            sections.append((s["section"], []))
+        sections[-1][1].append(s)
+    for n, (name, group) in enumerate(sections, 1):
+        paths = [build / "audio" / f"{s['id']}-{voice}-{model}.mp3" for s in group]
+        if all(p.exists() for p in paths):
+            out.update({s["id"]: p for s, p in zip(group, paths)})
+            continue
+        whole = build / "audio" / f"section-{n:02d}-{voice}-{model}.mp3"
+        if not whole.exists():
+            print(f"voice section {n}: {name} ({len(group)} shots)", flush=True)
+            try:
+                gemini_tts("\n\n".join(s["narration"] for s in group), whole, voice, model)
+            except TTSError as e:
+                print(f"  section blocked or failed ({e}); voicing its shots one by one", flush=True)
+                for s, p in zip(group, paths):
+                    if not p.exists():
+                        gemini_tts(s["narration"], p, voice, model)
+                out.update({s["id"]: p for s, p in zip(group, paths)})
+                continue
+        total = duration(whole)
+        words = [len(s["narration"].split()) for s in group]
+        gaps = silences(whole)
+        cuts = best_cuts(total, words, gaps)
+        if cuts is None:
+            sys.exit(f"Could not find pauses to split section {n}")
+        for s, p, a0, a1 in zip(group, paths, cuts, cuts[1:]):
+            run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(whole), "-ss", f"{a0:.3f}", "-to", f"{a1:.3f}",
+                 "-af", "silenceremove=start_periods=1:start_threshold=-45dB,areverse,silenceremove=start_periods=1:start_threshold=-45dB,areverse,loudnorm=I=-16:TP=-1.5:LRA=11", "-ar", "44100",
+                 "-b:a", "192k", str(p)])
+            print(f"  {s['id']}: {a1 - a0:.1f}s for {len(s['narration'].split())} words", flush=True)
+        out.update({s["id"]: p for s, p in zip(group, paths)})
+    return out
+
+
+def camera_filter(cam, frames):
+    d = max(frames - 1, 1)
+    cx, cy = "iw/2-(iw/zoom/2)", "ih/2-(ih/zoom/2)"
+    if cam == "slow zoom in":
+        z, x, y = f"1+0.12*on/{d}", cx, cy
+    elif cam == "slow zoom out":
+        z, x, y = f"1.12-0.12*on/{d}", cx, cy
+    elif cam == "quick push in":
+        z, x, y = f"1+0.18*min(on/({d}*0.25),1)", cx, cy
+    elif cam in ("track left", "slow pan left"):
+        z, x, y = "1.12", f"(iw-iw/zoom)*(1-on/{d})", cy
+    elif cam in ("slow pan right",):
+        z, x, y = "1.12", f"(iw-iw/zoom)*on/{d}", cy
+    elif cam == "shake":
+        z, x, y = "1.08", f"{cx}+18*sin(on*1.7)", f"{cy}+12*cos(on*2.3)"
+    else:
+        z, x, y = "1.0001", cx, cy
+    return (f"scale=2880:1620,zoompan=z='{z}':x='{x}':y='{y}':d={frames}:s={W}x{H}:fps={FPS}")
+
+
+def caption_filter(text):
+    if not text:
+        return ""
+    safe = text.replace("\\", "\\\\").replace(":", "\\:").replace("'", "’").replace("%", "\\%")
+    return (f",drawtext=fontfile={FONT}:text='{safe}':fontsize=60:fontcolor=0x1c1b22"
+            f":box=1:boxcolor=white@0.92:boxborderw=24:x=80:y=80"
+            f":alpha='if(lt(t,0.4),t/0.4,1)'")
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("episode_dir")
+    ap.add_argument("--engine", choices=["gemini", "cloud", "elevenlabs", "files"], default="gemini",
+                    help="files = use ready-made build/audio/<shot id>.mp3 (e.g. downloaded from the ElevenLabs connector)")
+    ap.add_argument("--model", default="gemini-3.8-flash-tts")
+    ap.add_argument("--voice", help="Gemini: Charon, Orus, Puck... Cloud: en-US-Neural2-J...")
+    ap.add_argument("--dialogue-model", default="gemini-3.8-flash-tts",
+                    help="model for shots with a speaker (kept separate to spread the free quota)")
+    ap.add_argument("--rate", type=float, default=0.95)
+    ap.add_argument("--silent", action="store_true")
+    ap.add_argument("--per-shot", action="store_true", help="one TTS request per shot (needs a paid quota)")
+    ap.add_argument("--only", type=int, help="render only the first N shots (preview)")
+    a = ap.parse_args()
+
+    a.voice = a.voice or {"gemini": "Charon", "cloud": "en-US-Neural2-J", "elevenlabs": ELEVEN_NARRATOR, "files": "files"}[a.engine]
+    if a.engine == "elevenlabs" and a.model.startswith("gemini"):
+        a.model = "eleven_multilingual_v2"
+    ep_dir = Path(a.episode_dir).resolve()
+    ep = json.loads((ep_dir / "episode.json").read_text())
+    shots = ep["shots"][: a.only] if a.only else ep["shots"]
+    build = ep_dir / "build"
+    (build / "audio").mkdir(parents=True, exist_ok=True)
+    (build / "video").mkdir(parents=True, exist_ok=True)
+
+    batched = {}
+    if not a.silent and a.engine == "gemini" and not a.per_shot:
+        batched = batch_voice(shots, build, a.voice, a.model)
+    timed, t = [], 0.0
+    for i, s in enumerate(shots):
+        last = i == len(shots) - 1
+        audio = None
+        if a.silent:
+            dur = float(s["duration"])
+        else:
+            if a.engine == "files":
+                audio = build / "audio" / f"{s['id']}.mp3"
+                if not audio.exists():
+                    sys.exit(f"Missing voice file {audio} (generate it first)")
+                dur = duration(audio) + TAIL + (END_HOLD if last else 0)
+                dur = round(dur, 2)
+                frames = round(dur * FPS)
+                seg = build / "video" / f"{s['id']}.mp4"
+                print(f"render {s['id']} {dur:.1f}s {s['camera']}", flush=True)
+                vf = camera_filter(s["camera"], frames) + caption_filter(s.get("on_screen_text"))
+                run(["ffmpeg", "-y", "-loglevel", "error", "-loop", "1", "-i", str(ep_dir / s["image"]),
+                     "-i", str(audio), "-af", f"loudnorm=I=-16:TP=-1.5:LRA=11,aresample=44100,apad,atrim=0:{dur}",
+                     "-vf", vf, "-frames:v", str(frames), "-t", str(dur),
+                     "-c:v", "libx264", "-preset", "medium", "-crf", "20", "-pix_fmt", "yuv420p",
+                     "-c:a", "aac", "-b:a", "192k", "-ar", "44100", "-ac", "2", str(seg)])
+                timed.append({**s, "start": round(t, 2), "duration": dur})
+                t += dur
+                continue
+            voice, model = a.voice, a.model
+            if s.get("speaker"):
+                if a.engine == "elevenlabs":
+                    voice = ELEVEN_SPEAKERS.get(s["speaker"], a.voice)
+                else:
+                    voice = SPEAKERS.get(s["speaker"], a.voice)
+                    model = a.dialogue_model
+            audio = batched.get(s["id"]) or build / "audio" / f"{s['id']}-{voice}-{model}.mp3"
+            if not audio.exists():
+                print(f"voice {s['id']}", flush=True)
+                if a.engine == "elevenlabs":
+                    prev_t = shots[i - 1]["narration"] if i > 0 and not s.get("speaker") and not shots[i - 1].get("speaker") else ""
+                    next_t = shots[i + 1]["narration"] if i + 1 < len(shots) and not s.get("speaker") and not shots[i + 1].get("speaker") else ""
+                    eleven_tts(s["narration"], audio, voice, model, prev_t, next_t)
+                elif a.engine == "gemini":
+                    words = len(s["narration"].split())
+                    for attempt in range(3):
+                        gemini_tts(s["narration"], audio, voice, model)
+                        if duration(audio) <= words * 0.6 + 3:  # longer means extra or garbled speech
+                            break
+                        print(f"  {s['id']} too long ({duration(audio):.1f}s for {words} words), retrying", flush=True)
+                else:
+                    tts(s["narration"], audio, a.voice, a.rate)
+            dur = duration(audio) + TAIL
+        if last:
+            dur += END_HOLD
+        dur = round(dur, 2)
+        frames = round(dur * FPS)
+        seg = build / "video" / f"{s['id']}.mp4"
+        print(f"render {s['id']} {dur:.1f}s {s['camera']}", flush=True)
+        vf = camera_filter(s["camera"], frames) + caption_filter(s.get("on_screen_text"))
+        cmd = ["ffmpeg", "-y", "-loglevel", "error", "-loop", "1", "-i", str(ep_dir / s["image"])]
+        if audio:
+            cmd += ["-i", str(audio), "-af", f"apad,atrim=0:{dur}"]
+        else:
+            cmd += ["-f", "lavfi", "-i", "anullsrc=r=44100:cl=stereo"]
+        cmd += ["-vf", vf, "-frames:v", str(frames), "-t", str(dur),
+                "-c:v", "libx264", "-preset", "medium", "-crf", "20", "-pix_fmt", "yuv420p",
+                "-c:a", "aac", "-b:a", "192k", "-ar", "44100", "-ac", "2", str(seg)]
+        run(cmd)
+        timed.append({**s, "start": round(t, 2), "duration": dur})
+        t += dur
+
+    lst = build / "segments.txt"
+    lst.write_text("".join(f"file 'video/{s['id']}.mp4'\n" for s in shots))
+    name = "47-ronin" if "ronin" in ep_dir.name else ep_dir.name
+    out = ep_dir / f"{name}{'-draft' if a.silent else ''}.mp4"
+    total = t
+    run(["ffmpeg", "-y", "-loglevel", "error", "-f", "concat", "-safe", "0", "-i", str(lst),
+         "-vf", f"fade=t=in:st=0:d=0.8,fade=t=out:st={total-1.2:.2f}:d=1.2",
+         "-af", f"afade=t=out:st={total-1.2:.2f}:d=1.2",
+         "-c:v", "libx264", "-preset", "medium", "-crf", "20", "-pix_fmt", "yuv420p",
+         "-c:a", "aac", "-b:a", "192k", "-movflags", "+faststart", str(out)])
+    (ep_dir / ("episode.timed.json" if not a.silent else "episode.draft-timed.json")).write_text(
+        json.dumps({**ep, "total_duration": round(total, 2), "shots": timed}, indent=2, ensure_ascii=False) + "\n")
+    m, sec = divmod(round(total), 60)
+    print(f"done: {out.name} {m}:{sec:02d}")
+
+
+if __name__ == "__main__":
+    main()
