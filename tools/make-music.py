@@ -390,6 +390,29 @@ def compose_medieval(mood, dur, rng):
             place(buf, recorder(S(pos), min(L, dur - t), 0.75), t, 0.1)
             t += L + rng.choice([0.3, 0.8])
 
+    elif mood == "triumph":                   # heroic return: march drums, horn calls, choir, ends on D major
+        beat = 60 / 100
+        chords = [(0, 2, 4), (6, 8, 10), (3, 5, 7), (4, 6, 8)]
+        t, k = 0.0, 0
+        while t < dur - 6:
+            c = chords[(k // 8) % 4]
+            if k % 8 == 0:
+                place(buf, choir([S(c[0]), S(c[1]), S(c[2])], min(8 * beat / 2 * 2 + 0.5, dur - t), 0.7), t, 0)
+                place(buf, drum(0.9), t, -0.1)
+            if k % 4 == 2:
+                place(buf, drum(0.6), t, -0.1)
+            if k % 2 == 1:
+                place(buf, drum(0.35, "tabor"), t, 0.3)
+            place(buf, lute(S(c[k % 3] + 7), 1.2, 0.45), t, -0.25)
+            if k % 32 == 4:
+                for j, (deg, L) in enumerate(((7, 1.0), (11, 0.6), (14, 2.2))):
+                    place(buf, horn(S(deg), beat * L * 1.6, 0.65), t + beat * [0, 1.6, 2.6][j], 0.15)
+            t += beat / 2; k += 1
+        major = [146.83, 146.83 * 2 ** (4 / 12), 146.83 * 2 ** (7 / 12)]   # D F# A: bright final chord
+        place(buf, choir(major, 6, 0.8), dur - 6, 0)
+        place(buf, horn(major[0] * 2, 3, 0.6), dur - 6, 0.1)
+        place(buf, drum(1.0), dur - 6, -0.1)
+
     elif mood == "reflect":
         beat = 60 / 72
         arp = [0, 2, 4, 7, 4, 2]
@@ -461,10 +484,20 @@ def main():
         rng = np.random.default_rng(1703 + i)
         np.random.seed(1703 + i)
         dur = (b - a) + (XF if i + 1 < len(bounds) else 0)
+        next_mood = None
+        if i + 1 < len(bounds):
+            nn = bounds[i + 1][0]
+            next_mood = (ep.get("music_moods") or {}).get(nn) or MOODS.get(nn, "light")
+        if mood == "silence":                     # a full stop in the score (e.g. the darkest moment)
+            print(f"{a:6.1f}s  silence  {name}", flush=True)
+            continue
+        if next_mood == "silence":                # end cleanly at the boundary instead of crossfading into it
+            dur = b - a
         seg = reverb(compose_fn(mood, dur, rng), seconds=2.8 if palette == "medieval" else 2.2, rng=rng)
         seg *= 0.05 / (np.sqrt(np.mean(seg ** 2)) + 1e-9)   # same average level in every section
         n = seg.shape[1]; fade = np.ones(n); k = int(XF * SR)
         if i > 0: fade[:k] = np.linspace(0, 1, k)
+        if next_mood == "silence": k = int(1.5 * SR)
         if i + 1 < len(bounds): fade[-k:] = np.linspace(1, 0, k)
         seg *= fade
         j = int(a * SR)

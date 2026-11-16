@@ -1,6 +1,6 @@
 # How a Teenage Farm Girl Turned the Hundred Years' War (Joan of Arc)
 
-**Target length:** about 10 minutes (1298 spoken words at 145 words per minute)
+**Target length:** about 12 minutes (1582 spoken words at 145 words per minute)
 **Audience:** US, UK, Canada, Australia
 
 ---
@@ -18,18 +18,18 @@
 > In 1429, France was losing the Hundred Years' War. The English held Paris, the French heir had never been crowned, and the city of Orléans was about to fall. Then a 17-year-old peasant girl who could not read walked into the royal court and said God had sent her to save France.
 >
 > 0:00 Intro
-> 0:33 Hook
-> 1:12 France on the brink
-> 2:09 The girl from Domrémy
-> 3:18 The road to Chinon
-> 4:15 Orléans
-> 5:06 The tide turns
-> 5:37 The crown at Reims
-> 6:10 Captured
-> 6:43 The trial
-> 7:46 The darkest day
-> 8:11 What came next
-> 8:59 Outro
+> 0:42 Hook
+> 1:23 France on the brink
+> 2:22 The girl from Domrémy
+> 3:35 The road to Chinon
+> 4:47 Orléans
+> 5:57 The tide turns
+> 6:36 The crown at Reims
+> 7:18 Captured
+> 8:02 The trial
+> 9:23 The darkest day
+> 9:50 What came next
+> 10:42 Outro
 
 Chapter times are estimates; update them from episode.timed.json after the voiceover is recorded.
 
@@ -47,231 +47,231 @@ Scene notes in [brackets]. Characters and backgrounds come from Xưởng Nhân V
 
 [SCENE 1: Living room. Son jumps onto the blue sofa next to his father.]
 
-SON: Okay, I've been waiting all week. Who was that farm girl?
+SON: Dad, I've been waiting all week for this. Who was that farm girl you mentioned?
 
 [SCENE 2: Father closes his book, a quiz in his voice. On screen: What could she do?]
 
-FATHER: Her name was Joan. But first, a question. What could a seventeen-year-old girl do against the English army?
+FATHER: Her name was Joan. Joan of Arc. But before I tell you her story, answer me this: what could a seventeen-year-old peasant girl possibly do against the most feared army in Europe?
 
 [SCENE 3: Son shrugs.]
 
-SON: Honestly? Nothing. They'd laugh her out of the room.
+SON: Honestly? Nothing. They'd laugh her right out of the room.
 
 [SCENE 4: Father, a little mysterious.]
 
-FATHER: They did. More than once. And then she turned around a war that grown men had been losing for years.
+FATHER: Oh, they did. More than once. And then she went out and reversed a war that grown men had been losing for decades.
 
 [SCENE 5: Son sits up, amazed.]
 
-SON: Wait, seventeen? That's one year older than me. Okay, tell me everything.
+SON: Wait—seventeen? That's barely older than me! Okay, stop teasing. Tell me everything.
 
-### 0:33 – Hook
+### 0:42 – Hook
 
 [SCENE 6: The walls of Orléans at dusk; English soldiers and an archer camped outside. On screen: Orléans, spring 1429]
 
-Spring 1429. The city of Orléans has been surrounded by the English for six months. If it falls, the road into the heart of France lies open. And France is running out of hope.
+Spring, 1429. For six grueling months, the English army has strangled the French city of Orléans. If Orléans falls, the road into the heart of France lies wide open—and the kingdom is finished.
 
 [SCENE 7: The uncrowned Dauphin alone in a dim castle hall, worried.]
 
-Its future king hides in a castle far to the south, short of money and short of friends. He hasn't even been crowned. Some days, he isn't sure he deserves to be.
+Meanwhile, France's future king is hiding out in a castle far to the south. He's broke, out of allies, and hasn't even been officially crowned. Some days, he isn't even sure he's the rightful heir.
 
 [SCENE 8: A teenage peasant girl in a red dress, determined, looking toward the viewer.]
 
-And then, out of nowhere, a teenage peasant girl appears and says that God has sent her to fix all of it.
+Hope is dead. Until, out of nowhere, an illiterate teenage farm girl shows up at the gates, claiming God sent her to save the entire country.
 
-### 1:12 – France on the brink
+### 1:23 – France on the brink
 
 [SCENE 9: Parchment: an English knight standing over a small French knight. On screen: Treaty of Troyes, 1420]
 
-Remember the treaty after Agincourt? It made the English king the heir to France. And when Henry the Fifth and the French king both died in 1422, the English declared Henry's baby son king of both countries.
+Remember the brutal English victory at Agincourt? The treaty that followed basically handed the French crown to England. When both kings died in 1422, the English declared King Henry's infant son ruler of both nations.
 
 [SCENE 10: Parchment: English and Burgundian knights on the left, the Dauphin with a few French knights on the right.]
 
-The English and their powerful allies, the Dukes of Burgundy, held Paris and most of the north. The French king's son, Charles, held the south. People called him the Dauphin, the heir, because he still hadn't been crowned.
+With their powerful allies, the Dukes of Burgundy, England controlled Paris and almost all of northern France. Down south sat Charles, the French king's son. People called him the Dauphin—the heir—because he still hadn't been crowned.
 
 [SCENE 11: Empty Reims Cathedral, light through the rose window. On screen: Reims]
 
-French kings were crowned in the cathedral of Reims. But Reims was deep in enemy territory. And without a coronation, many people simply didn't see Charles as a real king.
+By tradition, French kings had to be crowned in the cathedral of Reims. The problem? Reims was buried deep inside enemy territory. Without that crown, half the country didn't even see Charles as a real king.
 
 [SCENE 12: English tents, a cannon and soldiers in front of the walls of Orléans.]
 
-In October 1428, the English laid siege to Orléans, the last great city guarding the road south. Month after month, it held on. Barely.
+In October 1428, the English tightened the noose, laying siege to Orléans—the last major fortress blocking their path south. Month after month, the city held on. Barely.
 
-### 2:09 – The girl from Domrémy
+### 2:22 – The girl from Domrémy
 
 [SCENE 13: Village: young Joan in a red dress with her family. On screen: Domrémy, around 1412]
 
-Far to the east, in a village called Domrémy, lived a peasant girl named Jeanne. In English, Joan. Her family farmed, kept animals and went to church. She never learned to read or write.
+Far to the east, in a quiet village called Domrémy, lived a peasant girl named Jeanne—known in English as Joan. She spent her days farming, herding sheep, and praying. She couldn't read. She couldn't write. She had never held a sword.
 
 [SCENE 14: Joan alone in the field at dusk, looking up into soft rays of light.]
 
-When she was about thirteen, Joan said she began to hear voices. She believed they came from saints, sent by God. At first, they simply told her to be good and to go to church.
+Around age thirteen, Joan claimed she began hearing voices—saints sent directly by God. At first, the voices just told her to be kind and go to church.
 
 [SCENE 15: Close-up: Joan, eyes wide, determined.]
 
-Then, she said, the message changed. The voices told her to leave home, drive the English out of France, and take the Dauphin to Reims to be crowned.
+Then, the message changed. They commanded her to leave home, drive the English out of France, and march the Dauphin to Reims to claim his crown.
 
 [SCENE 16: A garrison captain laughing at Joan, who stands firm. On screen: Robert de Baudricourt]
 
-At sixteen, she walked to the nearest garrison town and asked its captain, Robert de Baudricourt, for an escort to the Dauphin. He laughed, and told her family to take her home.
+At sixteen, she walked to a nearby garrison and asked the local commander, Robert de Baudricourt, for an armed escort to see the prince. He laughed in her face and told her family to take her home and slap some sense into her.
 
 [SCENE 17: Joan back again; the captain now surprised.]
 
-She came back. And kept coming back. Eventually, the captain gave in. According to one story, she had predicted a French defeat before the news of it even arrived.
+She came back. And kept coming back. Finally, the commander relented—rumor has it, after Joan accurately predicted a major French defeat days before the messenger even arrived.
 
-### 3:18 – The road to Chinon
+### 3:35 – The road to Chinon
 
 [SCENE 18: Joan, now with short hair and men's clothes, walking with two soldiers in the rain. On screen: 11 days through enemy land]
 
-In February 1429, Joan cut her hair short, put on men's clothes, and rode for eleven days through enemy territory with a handful of soldiers.
+In February 1429, Joan cut her hair short, put on men's riding clothes, and rode for eleven dangerous days straight through enemy-held territory with just a handful of guards.
 
 [SCENE 19: Courtiers in a row; the Dauphin hiding among them in plain clothes; Joan kneeling in front of him. On screen: Chinon]
 
-At the castle of Chinon, the story goes, Charles tested her. He hid among his courtiers while someone else took his place. Joan walked straight past the impostor and knelt in front of the real Dauphin.
+When she reached the castle of Chinon, legend says Charles decided to test her. He disguised himself in plain clothes and hid among his nobles while someone else sat on the throne. Joan walked right past the decoy, straight into the crowd, and knelt before the real Dauphin.
 
 [SCENE 20: Two churchmen with scrolls questioning Joan; Joan calm.]
 
-But Charles wasn't going to bet his kingdom on a story. For weeks, churchmen questioned Joan. They found nothing bad to say about her. And frankly, Charles was out of options.
+Still, Charles wasn't about to bet his kingdom on a miracle. For weeks, top churchmen interrogated Joan, looking for any sign of heresy or madness. They found nothing—only fierce devotion. And frankly, Charles had nothing left to lose.
 
 [SCENE 21: Joan in shining white armor with her white banner. On screen: "Forty times more than my sword"]
 
-So he gave her armor, a horse and a place with an army heading for Orléans. She carried a white banner covered in lilies. She later said she loved that banner forty times more than her sword.
+So he gave her a suit of white armor, a warhorse, and a spot in the relief army marching to Orléans. Instead of leading with a weapon, Joan carried a white banner covered in golden lilies. She later admitted she loved that banner forty times more than her sword.
 
-### 4:15 – Orléans
+### 4:47 – Orléans
 
 [SCENE 22: Joan riding into Orléans; townspeople cheering. On screen: 29 April 1429]
 
-Joan reached Orléans at the end of April. People crowded the streets just to see her.
+Joan rode into Orléans at the end of April. Starving, desperate citizens flooded the streets just to touch her armor.
 
 [SCENE 23: French commanders planning without her, looking annoyed; Joan pointing forward.]
 
-The French commanders didn't take her very seriously. They made their plans without her. So she charged in anyway, banner in hand, and the soldiers followed her.
+The seasoned French generals, however, treated her like a mascot. They locked her out of war councils and launched attacks without telling her. So Joan simply grabbed her banner, rode straight to the front lines, and the common soldiers followed her into hell.
 
 [SCENE 24: Joan struck by an arrow near her shoulder, falling back; a French knight rushing to her. On screen: 7 May 1429]
 
-On the seventh of May, during the attack on a fortress at the bridge, an arrow struck Joan between her neck and her shoulder. She was carried out of the fight.
+On May 7th, while storming a heavily fortified English stronghold, an arrow pierced Joan right between her neck and shoulder. Badly wounded, she was dragged away from the battle.
 
 [SCENE 25: Joan back on her feet, waving the banner; French knights charging past her.]
 
-Hours later, she was back, waving her banner. The French stormed the fortress.
+Hours later, against all medical logic, she pulled the arrow out, got back on her horse, and charged back into the smoke waving her banner. Seeing her alive terrified the English—and electrified the French. They took the fortress.
 
 [SCENE 26: English soldiers marching away from the walls; Joan watching. On screen: Siege broken in 9 days]
 
-The next morning, the English army packed up and marched away. A siege that had lasted more than six months had been broken in nine days.
+The very next morning, the English army packed up and retreated. A siege that had choked Orléans for over six months was shattered in just nine days.
 
-### 5:06 – The tide turns
+### 5:57 – The tide turns
 
 [SCENE 27: French cavalry charging English archers who haven't planted their stakes yet. On screen: Patay, 18 June 1429]
 
-Now the French went on the attack. In June, they caught an English army near a village called Patay.
+Suddenly, the hunters became the hunted. In June, the French caught a retreating English force near a village called Patay.
 
 [SCENE 28: English archers fleeing, stakes dropped in the mud.]
 
-Remember the longbow? This time, the French cavalry charged before the English archers had time to hammer in their stakes. The men who had won Agincourt were swept away.
+Remember those devastating English longbowmen from Agincourt? They needed time to hammer wooden stakes into the ground to stop a cavalry charge. This time, they didn't get it. French knights slammed into their lines before the archers were even set.
 
 [SCENE 29: Parchment: a proud French knight and a defeated English archer. On screen: Agincourt in reverse]
 
-This time, the English lost thousands of men, and the French lost very few. It was Agincourt in reverse.
+The elite army that had crushed France at Agincourt was completely wiped out. Thousands of English soldiers fell, while the French lost barely a hundred. It was Agincourt in reverse.
 
-### 5:37 – The crown at Reims
+### 6:36 – The crown at Reims
 
 [SCENE 30: Joan leading Charles and the French army along the road.]
 
-Joan pushed Charles to do what had seemed impossible: march straight through enemy land to Reims. Town after town opened its gates.
+With the English on the run, Joan convinced Charles to attempt the unthinkable: march straight through enemy territory to Reims. Miraculously, city after city opened its gates without a fight.
 
 [SCENE 31: Charles crowned at the altar; Joan beside him with her banner. On screen: Reims, 17 July 1429]
 
-On the seventeenth of July 1429, Charles was crowned King of France in Reims Cathedral. Joan stood near the altar, holding her banner.
+On July 17, 1429, Charles was finally crowned King Charles VII of France inside Reims Cathedral. Standing right beside the high altar was Joan, holding her white banner high.
 
 [SCENE 32: Close-up of Joan with her banner, calm and proud. On screen: "It had borne the burden"]
 
-Later, someone asked why her banner deserved a place at the ceremony. She answered: it had borne the burden, so it was right that it should have the honor.
+When critics later asked why her battle flag was allowed at such a sacred ceremony, Joan gave a simple answer: "It had borne the burden, so it was only right that it should share the honor."
 
-### 6:10 – Captured
+### 7:18 – Captured
 
 [SCENE 33: King Charles turning away from Joan, more interested in a scroll.]
 
-But after the coronation, Charles lost his appetite for fighting. He preferred to negotiate. An attack on Paris failed, and Joan was wounded again.
+Joan had kept her promise. She wanted to keep pushing and take back Paris—but King Charles had lost his nerve. Now that he had his crown, he preferred slow diplomacy over war. An attack on Paris stalled, and Joan was wounded once again.
 
 [SCENE 34: Burgundian knights surrounding Joan, who has lost her banner. On screen: Compiègne, May 1430]
 
-In May 1430, while defending the town of Compiègne, Joan was pulled from her horse and captured by Burgundian soldiers.
+In May 1430, while fighting a rearguard action to defend the town of Compiègne, Joan was dragged off her horse and captured by Burgundian troops.
 
 [SCENE 35: A Burgundian knight handing a bag of money to an English knight; King Charles small in the background, looking away.]
 
-The Burgundians sold her to the English for a huge sum of money. And King Charles, the man she had led to his crown, did nothing to get her back.
+They sold her to the English for a king's ransom. And King Charles—the man who owed his throne to this teenage girl—didn't pay a single coin to save her. He didn't even try.
 
-### 6:43 – The trial
+### 8:02 – The trial
 
 [SCENE 36: English knights watching; Joan alone in the courtroom. On screen: Rouen, 1431]
 
-The English wanted more than a prisoner. They wanted to prove that her victories had come from the devil, not from God. Because if Joan was a fraud, then Charles had been crowned by a fraud.
+The English didn't just want Joan dead; they wanted her ruined. If they could prove she was a witch or a heretic, then Charles had been crowned by the devil—making his kingship worthless.
 
 [SCENE 37: Bishop Cauchon behind the judges' bench, stern, with churchmen. On screen: Bishop Pierre Cauchon]
 
-So in 1431, in the city of Rouen, she was put on trial by a church court led by Bishop Pierre Cauchon, a strong supporter of the English.
+In 1431, in the English-held city of Rouen, Joan was dragged before a rigged church court led by Bishop Pierre Cauchon, an English loyalist.
 
 [SCENE 38: Cauchon pointing at Joan, a scroll in his hand; Joan thinking.]
 
-For months, educated men tried to trap a nineteen-year-old who couldn't read. One asked her if she was in God's grace. It was a trick. If she said yes, she was arrogant. If she said no, she was admitting guilt.
+For months, dozens of highly educated scholars fired complex theological traps at an illiterate nineteen-year-old girl. During one session, a judge asked if she knew she was in God's grace. It was a deadly trap: according to church doctrine, no one could know that for sure. Say yes, and she was guilty of heresy; say no, and she confessed to being a sinner.
 
 [SCENE 39: Close-up of Joan, calm and gentle; the churchmen stunned. On screen: "If I am not, may God put me there"]
 
-Joan answered: If I am not, may God put me there. And if I am, may God keep me there. The room went quiet.
+Joan didn't blink. She replied: "If I am not, may God put me there; and if I am, may God so keep me." The courtroom went dead silent. The scribes didn't even know what to write down.
 
 [SCENE 40: Cauchon reading the verdict from a scroll; Joan with her eyes closed.]
 
-In the end, she was found guilty anyway. Among the charges: heresy, and wearing men's clothing.
+Still, the verdict had been decided before the trial even began. She was found guilty of heresy—and of refusing to stop wearing men's clothing in prison.
 
-### 7:46 – The darkest day
+### 9:23 – The darkest day
 
 [SCENE 41: Joan alone, eyes closed, praying in a beam of light. Nothing graphic. On screen: 30 May 1431]
 
-On the thirtieth of May 1431, in the market square of Rouen, Joan was put to death. She was nineteen years old.
+On May 30, 1431, in the old market square of Rouen, Joan was executed. She was just nineteen years old.
 
 [SCENE 42: Townspeople and an English soldier with their heads bowed, some in tears.]
 
-Witnesses said many in the crowd were in tears, English soldiers among them. One of the English king's own secretaries is said to have walked away saying they had just condemned a saint.
+Eyewitnesses wrote that the entire square wept—even battle-hardened English soldiers. One of the English king's own secretaries reportedly walked away in horror, muttering, "We are lost. We have burned a saint."
 
-### 8:11 – What came next
+### 9:50 – What came next
 
 [SCENE 43: Parchment: French knights with banners; one English knight walking away. On screen: 1453: the war ends]
 
-Joan didn't live to see it, but the war had turned. Over the next twenty years, the English lost almost everything they held in France except the port of Calais. In 1453, the Hundred Years' War was finally over.
+Joan never lived to see the final victory, but she had lit a fire England couldn't put out. Over the next two decades, the French steadily drove the English out of almost every inch of France. By 1453, the Hundred Years' War was finally over.
 
 [SCENE 44: A new court: a churchman reading a scroll, gentle. On screen: 1456: declared innocent]
 
-In 1456, a new church court reviewed her case and declared the first trial unjust. Joan was officially innocent, twenty-five years too late.
+Three years later, in 1456, a new church court investigated her trial, exposed the corruption, and declared her completely innocent. Justice had arrived—twenty-five years too late.
 
 [SCENE 45: Joan in armor with her banner, in light, in front of the rose window. On screen: Saint Joan, 1920]
 
-In 1920, the Catholic Church declared her a saint. Today she is one of the patron saints of France, and statues of Joan on horseback stand in towns all over the country.
+In 1920, the Catholic Church officially canonized her as Saint Joan of Arc. Today, she is a patron saint of France, and bronze statues of her riding into battle stand in towns across the country.
 
 [SCENE 46: Baudricourt, surprised, scratching his head.]
 
-Not bad for a farm girl that a captain once told to go home.
+Not bad for a farm girl who was told to go home.
 
-### 8:59 – Outro
+### 10:42 – Outro
 
 [SCENE 47: Living room. Son thinking hard.]
 
-SON: So England wins at Agincourt, and then a teenager turns the whole war around?
+SON: So England dominates at Agincourt, and then a teenager flips the entire war on its head?
 
 [SCENE 48: Father, thoughtful. On screen: Voices or courage? Comment below]
 
-FATHER: Pretty much. History loves a comeback. So tell me: was Joan really guided by voices, or was she just incredibly brave?
+FATHER: Pretty much. History loves an underdog. Now I'm curious what you guys think: was Joan truly guided by divine voices, or was she just braver than every general in France? Drop your thoughts in the comments.
 
 [SCENE 49: Son, sure of himself.]
 
-SON: I think she was just braver than everyone else in the room.
+SON: Honestly? Sounds like she just had more guts than everyone else in the room.
 
-[SCENE 50: Father leans in with a mysterious smile.]
+[SCENE 50: Father leans in with a mysterious smile. Next episode: Alexander the Great at Gaugamela. On screen: Next: Alexander the Great]
 
-FATHER: Good answer. Next time, we're going back to Japan. Remember Nobunaga, the Great Fool of Owari? One night, in a temple called Honnō-ji, everything changed.
+FATHER: Good answer. Next time, we're going way back, more than two thousand years. A twenty-five-year-old king named Alexander leads his army across the world, straight into the biggest empire on Earth. On a dusty plain called Gaugamela, he'll face an army that might be twice the size of his own.
 
 [SCENE 51: Son, excited.]
 
-SON: Wait, what happened to him?
+SON: Wait, Alexander the Great? I've heard of him! So what happened?
 
 [SCENE 52: Father smiles at the viewer. On screen: Like & Subscribe]
 

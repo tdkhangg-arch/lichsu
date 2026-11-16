@@ -68,10 +68,11 @@ function frameSVG(shot) {
     await page.setContent(`<html><body style="margin:0">${frameSVG(shot)}</body></html>`);
     await page.screenshot({ path: path.join(outDir, file), clip: { x: 0, y: 0, width: 1920, height: 1080 } });
     const words = shot.narration.split(/\s+/).filter(Boolean).length;
-    const duration = shot.duration || Math.round((words / WPM) * 60 + (shot.pause ?? 0.8));
+    const duration = shot.duration || Math.round((words / WPM) * 60 + (shot.pause ?? 0.8) + (shot.lead || 0));
     shots.push({
       id,
       speaker: shot.speaker || null,
+      ...(shot.lead ? { lead: shot.lead } : {}),
       section: shot.section,
       start: t,
       duration,

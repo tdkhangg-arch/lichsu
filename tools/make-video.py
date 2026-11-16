@@ -308,14 +308,15 @@ def main():
                 audio = build / "audio" / f"{s['id']}.mp3"
                 if not audio.exists():
                     sys.exit(f"Missing voice file {audio} (generate it first)")
-                dur = duration(audio) + TAIL + (END_HOLD if last else 0)
+                lead = float(s.get("lead") or 0)   # seconds of silence before the line (dramatic pause)
+                dur = lead + duration(audio) + TAIL + (END_HOLD if last else 0)
                 dur = round(dur, 2)
                 frames = round(dur * FPS)
                 seg = build / "video" / f"{s['id']}.mp4"
                 print(f"render {s['id']} {dur:.1f}s {s['camera']}", flush=True)
                 vf = camera_filter(s["camera"], frames) + caption_filter(s.get("on_screen_text"))
                 run(["ffmpeg", "-y", "-loglevel", "error", "-loop", "1", "-i", str(ep_dir / s["image"]),
-                     "-i", str(audio), "-af", f"loudnorm=I=-16:TP=-1.5:LRA=11,aresample=44100,apad,atrim=0:{dur}",
+                     "-i", str(audio), "-af", f"loudnorm=I=-16:TP=-1.5:LRA=11,aresample=44100,adelay={int(lead * 1000)}:all=1,apad,atrim=0:{dur}",
                      "-vf", vf, "-frames:v", str(frames), "-t", str(dur),
                      "-c:v", "libx264", "-preset", "medium", "-crf", "20", "-pix_fmt", "yuv420p",
                      "-c:a", "aac", "-b:a", "192k", "-ar", "44100", "-ac", "2", str(seg)])
@@ -345,7 +346,8 @@ def main():
                         print(f"  {s['id']} too long ({duration(audio):.1f}s for {words} words), retrying", flush=True)
                 else:
                     tts(s["narration"], audio, a.voice, a.rate)
-            dur = duration(audio) + TAIL
+            lead = float(s.get("lead") or 0)
+            dur = lead + duration(audio) + TAIL
         if last:
             dur += END_HOLD
         dur = round(dur, 2)
@@ -355,7 +357,7 @@ def main():
         vf = camera_filter(s["camera"], frames) + caption_filter(s.get("on_screen_text"))
         cmd = ["ffmpeg", "-y", "-loglevel", "error", "-loop", "1", "-i", str(ep_dir / s["image"])]
         if audio:
-            cmd += ["-i", str(audio), "-af", f"apad,atrim=0:{dur}"]
+            cmd += ["-i", str(audio), "-af", f"adelay={int(lead * 1000)}:all=1,apad,atrim=0:{dur}"]
         else:
             cmd += ["-f", "lavfi", "-i", "anullsrc=r=44100:cl=stereo"]
         cmd += ["-vf", vf, "-frames:v", str(frames), "-t", str(dur),

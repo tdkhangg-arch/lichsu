@@ -41,8 +41,9 @@ Folder numbers are the order they were written; **upload order** is what viewers
 | **1st** | `episodes/02-okehazama` | Battle of Okehazama (1560), "2,000 vs 25,000" | Channel opener. Intro written as the first meeting (son playing a samurai game). Script and frames done; render with ElevenLabs |
 | **2nd** | `episodes/01-47-ronin` | The 47 Ronin (1701–1703) | Final video done (Gemini voice, father/son intro and outro, 3 Shorts). Owner wants it kept as is; do not re-voice with ElevenLabs |
 | 3rd | `episodes/03-agincourt` | Battle of Agincourt (1415), first European episode | Video done (10:21, ElevenLabs voice, medieval music). Intro refers back to Okehazama; ends teasing Joan of Arc |
-| 4th | `episodes/04-joan-of-arc` | Joan of Arc (1429–1431), continues Agincourt | Script and frames done. Intro picks up the "farm girl" question; outro teases Honnō-ji. Not voiced yet (ElevenLabs, one take per shot) |
-| later | (ideas) | Honnō-ji Incident (1582) | Teased in the Okehazama ending and the Joan of Arc outro |
+| 4th | `episodes/04-joan-of-arc` | Joan of Arc (1429–1431), continues Agincourt | Script (owner's rewrite) and frames done. Intro picks up the "farm girl" question; outro teases Alexander the Great at Gaugamela. Music stops for the darkest day. Not voiced yet (ElevenLabs, one take per shot) |
+| 5th | (next) | Alexander the Great, Battle of Gaugamela (331 BC) | Teased at the end of Joan of Arc |
+| later | (ideas) | Honnō-ji Incident (1582) | Mentioned in the Okehazama ending |
 
 ## Pipeline (run from the repo root)
 1. Write `episodes/<NN-name>/shots.js` (narration, scene notes, characters, YouTube package,
@@ -59,7 +60,9 @@ Folder numbers are the order they were written; **upload order** is what viewers
    Final loudness −14 LUFS. Palette from `music_palette` in shots.js: default Japanese (koto,
    shakuhachi, taiko); `"medieval"` for European episodes (lute, recorder, hurdy-gurdy, war drum,
    tabor, choir, church bell, horn; D Dorian). `--music-only` writes `build/music-preview.mp3`
-   from the estimated timing, before any voice exists.
+   from the estimated timing, before any voice exists. Mood `"silence"` stops the music for a section
+   (the previous section fades out at the boundary); medieval mood `"triumph"` is a heroic return
+   ending on a D major chord. A shot's `lead: 2.5` adds seconds of silence before its narration.
 
 7. Shorts: `python3 tools/make-short.py episodes/<NN-name> --shots ... --title ... --out ...`
    (vertical 1080×1920 cut from the finished video; see `episodes/01-47-ronin/shorts.md`).
