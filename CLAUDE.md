@@ -47,8 +47,8 @@ Folder numbers are the order they were written; **upload order** is what viewers
 | **2nd** | `episodes/01-47-ronin` | The 47 Ronin (1701–1703) | Final video done (Gemini voice, father/son intro and outro, 3 Shorts). Owner wants it kept as is; do not re-voice with ElevenLabs |
 | 3rd | `episodes/03-agincourt` | Battle of Agincourt (1415), first European episode | Video done (10:21, ElevenLabs voice, medieval music). Intro refers back to Okehazama; ends teasing Joan of Arc |
 | 4th | `episodes/04-joan-of-arc` | Joan of Arc (1429–1431), continues Agincourt | Script (owner's rewrite) and frames done. Intro picks up the "farm girl" question; outro teases Alexander the Great at Gaugamela. Music stops for the darkest day (2.5 s lead). Video done (12:11, ElevenLabs voice, one take per shot) |
-| 5th | (next) | Alexander the Great, Battle of Gaugamela (331 BC) | Teased at the end of Joan of Arc |
-| later | (ideas) | Honnō-ji Incident (1582) | Mentioned in the Okehazama ending |
+| 5th | `episodes/05-gaugamela` | Alexander the Great, Battle of Gaugamela (331 BC) | Owner's Vietnamese script adapted to English with father/son framing. Video done (10:06, ElevenLabs, one take per shot, `ancient` music palette). Evidence: campaign map, battle maps, Babylonian clay tablet, Pompeii mosaic. Outro teases the Honnō-ji Incident |
+| 6th | (next) | Honnō-ji Incident (1582) | Mentioned in the Okehazama ending; teased at the end of Gaugamela |
 
 ## Pipeline (run from the repo root)
 1. Write `episodes/<NN-name>/shots.js` (narration, scene notes, characters, YouTube package,
@@ -65,7 +65,7 @@ Folder numbers are the order they were written; **upload order** is what viewers
    The voice is extracted with `aresample=async` so it cannot drift ahead of the picture (fixed Nov 2026;
    episodes 2–4 were re-mixed).
    Final loudness −14 LUFS. Palette from `music_palette` in shots.js: default Japanese (koto,
-   shakuhachi, taiko); `"medieval"` for European episodes (lute, recorder, hurdy-gurdy, war drum,
+   shakuhachi, taiko); `"medieval"` for European episodes, `"ancient"` (same instruments on the Hijaz scale) for the ancient Near East (lute, recorder, hurdy-gurdy, war drum,
    tabor, choir, church bell, horn; D Dorian). `--music-only` writes `build/music-preview.mp3`
    from the estimated timing, before any voice exists. Mood `"silence"` stops the music for a section
    (the previous section fades out at the boundary); medieval mood `"triumph"` is a heroic return
