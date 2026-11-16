@@ -137,6 +137,8 @@ const HAIR={
     front:()=>`<path d="M108,8 Q96,-6 90,-3 Q99,-11 101,-17 Q108,-7 112,-19 Q115,-7 126,-11 Q119,0 108,8Z" fill="${INK}"/>`+thick(103,26,108,6,"#e9e6ef",4.5)+ln(104.5,20,107,18,INK,1.6)+ln(105.5,14,108,12,INK,1.6)},
   bun:{label:"Búi tó",back:()=>"",clip:()=>`<ellipse cx="104" cy="24" rx="58" ry="26" fill="${INK}"/><ellipse cx="146" cy="72" rx="15" ry="30" fill="${INK}"/>`,
     front:()=>`<circle cx="134" cy="24" r="13" fill="${INK}"/>`+ln(120,14,152,30,"#c9a45a",3)},
+  bob:{label:"Tóc ngắn ngang cằm",back:()=>"",clip:()=>`<ellipse cx="110" cy="34" rx="58" ry="28" fill="${INK}"/><ellipse cx="146" cy="80" rx="19" ry="38" fill="${INK}"/>`,
+    front:()=>`<path d="M56,52 Q62,20 104,18 Q92,30 88,44 Q74,38 56,52Z" fill="${INK}"/>`},
   long:{label:"Tóc dài",back:()=>`<path d="M58,60 Q46,140 60,214 L84,214 Q76,150 80,96 Z" fill="${INK}"/><path d="M118,30 Q166,60 156,214 L118,214 Q126,150 124,96 Z" fill="${INK}"/>`,
     clip:()=>`<ellipse cx="108" cy="18" rx="66" ry="30" fill="${INK}"/><ellipse cx="148" cy="76" rx="18" ry="40" fill="${INK}"/>`,front:()=>""}
 };
@@ -155,6 +157,7 @@ const HATS={
   roman:{label:"Mũ La Mã",d:()=>`<path d="M58,6 Q100,-34 152,10 Q140,0 100,-10 Q74,-6 58,6Z" fill="#a8342c" stroke="${INK}" stroke-width="3"/>`+P("M54,52 Q56,8 100,6 Q144,8 146,52 Z","#b8bcc4",3.5)+P("M128,50 L152,50 L150,100 L132,92 Z","#a3a8b1",3)+P("M44,52 Q100,42 156,52 L154,58 Q100,50 46,58Z","#8e939c",3)+ln(100,8,100,48,"#8e939c",2)},
   bascinet:{label:"Mũ hiệp sĩ",d:()=>P("M118,54 L152,58 L160,120 Q134,128 114,114 Z","#9ca1ab",3)+[66,78,90,102,114].map(y=>ln(126,y,154,y+2,INK,1.3,'stroke-dasharray="2 3" opacity=".6"')).join("")+P("M48,48 Q50,0 100,-14 Q150,6 152,64 Q104,40 48,48 Z","#b8bcc4",3.5)+`<path d="M64,48 Q66,14 98,0" fill="none" stroke="#e6e8ec" stroke-width="4" stroke-linecap="round"/>`+[[62,42],[82,40],[122,46],[140,54]].map(([x,y])=>`<circle cx="${x}" cy="${y}" r="2.4" fill="${INK}"/>`).join("")},
   royalhelm:{label:"Mũ hiệp sĩ đội vương miện",d:()=>HATS.bascinet.d()+P("M56,38 L58,14 L70,28 L82,6 L94,26 L106,4 L118,26 L130,8 L140,30 L146,16 L148,42 Q100,32 56,38Z","#e2bd4f",3)+`<circle cx="82" cy="30" r="3.5" fill="#a8342c"/><circle cx="106" cy="28" r="3.5" fill="#2f4f7f"/><circle cx="130" cy="31" r="3.5" fill="#a8342c"/>`},
+  mitre:{label:"Mũ giám mục",d:()=>P("M64,42 Q66,-6 100,-36 Q134,-6 136,42 Q100,32 64,42Z","#f4efe4",3.2)+`<path d="M100,-34 L100,38" stroke="#c9a24a" stroke-width="7"/><path d="M66,36 Q100,26 134,36" fill="none" stroke="#c9a24a" stroke-width="6"/>`+P("M96,2 L104,2 L104,8 L110,8 L110,14 L104,14 L104,24 L96,24 L96,14 L90,14 L90,8 L96,8Z","#c9a24a",1.4)},
   hood:{label:"Mũ trùm vải",d:()=>P("M54,58 Q50,4 100,0 Q152,6 152,72 L164,118 Q150,126 138,110 L130,62 Q100,44 54,58 Z","#7a5a3a",3.2)+`<path d="M60,54 Q100,40 128,58" fill="none" stroke="${dk("#7a5a3a")}" stroke-width="3"/>`},
   kettle:{label:"Mũ sắt vành rộng",d:()=>P("M62,44 Q62,-2 100,-4 Q138,-2 138,44 Z","#9ca1ab",3.5)+`<path d="M74,34 Q76,10 98,4" fill="none" stroke="#d5d9e0" stroke-width="3.5" stroke-linecap="round"/>`+P("M24,46 Q100,30 176,46 Q100,58 24,46Z","#868b94",3)},
   tophat:{label:"Mũ chóp cao",d:()=>P("M68,30 L72,-28 L128,-28 L132,30 Z","#26242c",3.5)+`<rect x="70" y="14" width="60" height="9" fill="#a8342c"/>`+P("M40,34 Q100,22 160,34 Q100,42 40,34Z","#26242c",3.5)}
@@ -231,6 +234,15 @@ const OUTFITS={
       s+=`<rect x="60" y="128" width="40" height="60" fill="#2a4592"/><rect x="100" y="128" width="40" height="60" fill="#c0392b"/><rect x="60" y="188" width="40" height="60" fill="#c0392b"/><rect x="100" y="188" width="40" height="60" fill="#2a4592"/>`;
       s+=LYS(86,158,.85)+LYS(86,178,.75)+LION(113,148,.9)+LION(113,164,.9)+LION(113,180,.9)+LION(87,208,.85)+LION(87,224,.85)+LYS(114,214,.85)+LYS(114,236,.7)+`</g>`;
       return s+P(SURCOAT,"none",3)+ln(100,130,100,246,INK,1.8)+ln(70,188,130,188,INK,1.8)+BELT},front:()=>PAULDRONS(false)},
+  dress:{label:"Váy nông dân",sleeve:c=>c,sleeveFrac:.85,sleeveW:15,legs:[],
+    body:c=>P("M80,128 L120,128 Q128,190 140,256 L60,256 Q72,190 80,128Z",c,3)+`<path d="M90,128 Q100,138 110,128" fill="none" stroke="${INK}" stroke-width="2.4"/>`
+      +P("M86,162 L114,162 L121,238 L79,238Z","#efe9da",2.4)+`<path d="M78,162 L122,162" stroke="${INK}" stroke-width="3"/><path d="M84,248 Q100,252 116,248" fill="none" stroke="${dk(c)}" stroke-width="3"/>`,front:()=>""},
+  joan_armor:{label:"Giáp trắng của Joan",sleeve:()=>"#c5cad2",sleeveFrac:.9,sleeveW:14,legs:()=>[{to:.9,col:"#c5cad2",w:12}],
+    body:()=>{let s=P("M74,128 L126,128 L128,194 L72,194 Z","#e3e6ea",3)+`<path d="M82,138 Q100,130 118,138" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round"/>`+ln(100,134,100,192,INK,1.6,'opacity=".45"');
+      for(let i=0;i<4;i++){const y=194+i*11;s+=P(`M${72-i*2},${y} L${128+i*2},${y} L${129+i*2},${y+11} L${71-i*2},${y+11} Z`,"#d3d8de",2.4)}
+      return s+BELT+`<path d="M108,146 l2,-6 l2,6 l6,2 l-6,2 l-2,6 l-2,-6 l-6,-2Z" fill="#fff" stroke="${INK}" stroke-width="1"/>`},front:()=>PAULDRONS(true)},
+  knight_bur:{label:"Hiệp sĩ Burgundy (chữ X đỏ)",sleeve:()=>"#f4f2f7",sleeveFrac:.5,sleeveW:16,legs:()=>[{to:.9,col:"#9ca1ab",w:12}],
+    body:()=>{const id="b"+(++uid);return MAIL()+P(SURCOAT,"#f4f2f7",3)+`<defs><clipPath id="${id}"><path d="${SURCOAT}"/></clipPath></defs><g clip-path="url(#${id})"><path d="M66,132 L134,246 M134,132 L66,246" stroke="#c0392b" stroke-width="13"/></g>`+P(SURCOAT,"none",3)+SPLIT+BELT},front:()=>PAULDRONS(false)},
   knight:{label:"Giáp hiệp sĩ",sleeve:()=>"#9ca1ab",legs:()=>[{to:.9,col:"#9ca1ab",w:12}],
     body:c=>{let s=`<rect x="73" y="128" width="54" height="98" rx="8" fill="#9ca1ab" stroke="${INK}" stroke-width="3"/>`;for(let y=134;y<224;y+=7)s+=`<line x1="75" y1="${y}" x2="125" y2="${y}" stroke="${INK}" stroke-width="1.2" stroke-dasharray="2 3" opacity=".5"/>`;
       s+=P("M80,134 L120,134 L125,224 L75,224 Z",c,3)+P("M87,172 L100,158 L113,172 L113,182 L100,168 L87,182 Z","#e2bd4f",2)+`<rect x="74" y="190" width="52" height="7" fill="#6b4a2e" stroke="${INK}" stroke-width="2"/>`;return s},front:()=>""}
@@ -267,6 +279,9 @@ const PROPS={
     d:()=>thick(122,182,140,118,"#8a6a3a",4)+`<rect x="122" y="96" width="38" height="24" rx="4" fill="#9a7a4a" stroke="${INK}" stroke-width="3" transform="rotate(-18 141 108)"/>`},
   stgeorge:{label:"Cờ thánh George",hands:[[120,196],[132,150]],
     d:()=>thick(134,282,134,-14,"#8a6a3a",3.5)+`<rect x="134" y="-10" width="64" height="58" fill="#f4f2f7" stroke="${INK}" stroke-width="3"/><rect x="160" y="-10" width="12" height="58" fill="#c0392b"/><rect x="134" y="13" width="64" height="12" fill="#c0392b"/><rect x="134" y="-10" width="64" height="58" fill="none" stroke="${INK}" stroke-width="3"/>`},
+  joanbanner:{label:"Cờ trắng của Joan",hands:[[120,196],[132,150]],
+    d:()=>thick(134,282,134,-24,"#8a6a3a",3.5)+`<path d="M134,-20 L210,-14 L204,14 L210,44 L134,48 Z" fill="#f7f4ea" stroke="${INK}" stroke-width="3" stroke-linejoin="round"/>`
+      +LYS(156,10,1)+LYS(184,14,1)+LYS(170,38,1)+`<path d="M136,48 L208,44" stroke="#e2bd4f" stroke-width="3" stroke-dasharray="3 3"/>`},
   fleur:{label:"Cờ hoa bách hợp",hands:[[120,196],[132,150]],
     d:()=>{const lys=(x,y)=>LYS(x,y,1.2);
       return thick(134,282,134,-14,"#8a6a3a",3.5)+`<rect x="134" y="-10" width="64" height="58" fill="#2f4f9f" stroke="${INK}" stroke-width="3"/>`+lys(152,14)+lys(180,14)+lys(166,40)}},
@@ -416,6 +431,22 @@ const SCENES={
     s+=`<g transform="translate(424 66)" opacity=".5"><circle r="20" fill="none" stroke="#7a5a3a" stroke-width="2"/><path d="M0,-26 L5,0 L0,26 L-5,0Z M-26,0 L0,5 L26,0 L0,-5Z" fill="#7a5a3a"/></g>`;
     s+=`<rect x="8" y="34" width="464" height="262" fill="none" stroke="#7a5a3a" stroke-width="2.5" opacity=".55"/><path d="M0,284 L480,284" stroke="#b89c6a" stroke-width="2"/>`;
     return s}},
+  cathedral:{label:"Nhà thờ lớn (Reims)",d:()=>{let s=`<rect width="480" height="320" fill="#b9b1a3"/>`;
+    for(const x of[30,130,350,450])s+=`<path d="M${x-26},250 L${x-26},90 Q${x},30 ${x+26},90 L${x+26},250Z" fill="#a39a8a" ${st}/>`;
+    s+=`<circle cx="240" cy="92" r="58" fill="#2f4f9f" ${st}/>`;const cols=["#c0392b","#e2bd4f","#3f7a5a","#7a4a8a"];
+    for(let i=0;i<12;i++){const a=i*Math.PI/6;s+=`<circle cx="${(240+38*Math.cos(a)).toFixed(1)}" cy="${(92+38*Math.sin(a)).toFixed(1)}" r="11" fill="${cols[i%4]}" stroke="${INK}" stroke-width="2"/>`}
+    s+=`<circle cx="240" cy="92" r="16" fill="#e2bd4f" ${st}/><polygon points="200,150 280,150 330,320 150,320" fill="#fff4cf" opacity=".18"/>`;
+    for(const x of[80,180,300,400])s+=`<rect x="${x-9}" y="40" width="18" height="214" fill="#d8d0c0" ${st}/>`;
+    s+=`<rect y="250" width="480" height="70" fill="#8f8574"/><path d="M0,250 L480,250" ${st}/>`;
+    s+=`<rect x="196" y="212" width="88" height="40" fill="#c9a24a" ${st}/><rect x="204" y="220" width="72" height="24" fill="#a8342c" ${st}/>`;
+    for(const x of[204,276])s+=`<rect x="${x-3}" y="194" width="6" height="18" fill="#f4efe4" ${st}/><path d="M${x},184 q-4,6 0,10 q4,-4 0,-10Z" fill="#f5d95a"/>`;
+    s+=`<path d="M210,250 L270,250 L320,320 L160,320Z" fill="#a8342c" ${st}/>`;return s}},
+  court:{label:"Phòng xử án (Rouen)",d:()=>{let s=`<rect width="480" height="320" fill="#6f7480"/>`;
+    for(let y=0;y<230;y+=20)for(let x=(y/20)%2?-24:0;x<480;x+=48)s+=`<rect x="${x}" y="${y}" width="48" height="20" fill="none" stroke="#5c616c" stroke-width="1.4"/>`;
+    s+=`<rect x="300" y="40" width="60" height="80" fill="#c7d3df" ${st}/>`+[315,330,345].map(x=>`<line x1="${x}" y1="40" x2="${x}" y2="120" stroke="${INK}" stroke-width="3"/>`).join("");
+    s+=`<polygon points="300,120 360,120 300,320 160,320" fill="#e9f0f7" opacity=".14"/>`;
+    s+=`<rect x="40" y="150" width="400" height="28" fill="#5a4030" ${st}/><rect x="40" y="178" width="400" height="56" fill="#4a3426" ${st}/>`;
+    s+=`<rect y="234" width="480" height="86" fill="#585c66"/><path d="M0,234 L480,234" ${st}/>`;return s}},
   livingroom:{label:"Phòng khách",d:()=>{let s=`<rect width="480" height="320" fill="#e9dcc8"/><rect y="276" width="480" height="44" fill="#b98d63"/><path d="M0,276 L480,276" ${st}/>`;
     for(const x of [60,150,240,330,420])s+=`<line x1="${x}" y1="276" x2="${x-14}" y2="320" stroke="${INK}" stroke-width="1.5" opacity=".35"/>`;
     s+=`<rect x="196" y="70" width="88" height="104" fill="#a9d8f0" ${st}/><path d="M240,70 L240,174 M196,122 L284,122" ${st}/><rect x="190" y="174" width="100" height="8" fill="#f4efe2" ${st}/>`;
@@ -461,6 +492,9 @@ const FX={
     return s},
   // bold caption drawn into the frame (for infographic labels)
   label:({x=240,y=60,text="",size=18,color="#fff",anchor="middle"})=>`<text x="${x}" y="${y}" font-family="Inter, DejaVu Sans, sans-serif" font-weight="900" font-size="${size}" text-anchor="${anchor}" fill="${color}" stroke="${INK}" stroke-width="${size/4}" paint-order="stroke" stroke-linejoin="round">${text}</text>`,
+  // soft rays of light from above (used for Joan's voices)
+  rays:({x=240,y=20,spread=160,n=5,color="#fff4cf",opacity=.35})=>{let s="";for(let i=0;i<n;i++){const a=-spread/2+i*spread/(n-1),w=14;
+    s+=`<polygon points="${x-6},${y} ${x+6},${y} ${(x+a+w).toFixed(1)},320 ${(x+a-w).toFixed(1)},320" fill="${color}" opacity="${opacity}"/>`}return s+`<circle cx="${x}" cy="${y}" r="26" fill="${color}" opacity=".5"/>`},
   // mud splashes around a point
   splash:({x=240,y=292,k=1})=>[[-18,-14,3],[-10,-24,2.4],[0,-28,2],[12,-20,2.6],[20,-10,3],[-24,-4,2]].map(([dx,dy,r])=>`<circle cx="${x+dx*k}" cy="${y+dy*k}" r="${r*k}" fill="#5e4a36" stroke="${INK}" stroke-width="1"/>`).join("")
 };
