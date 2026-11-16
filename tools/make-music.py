@@ -6,6 +6,8 @@ free of third-party copyright. Two palettes, picked by `music_palette` in shots.
   "japanese" (default): koto plucks, shakuhachi-style flute, taiko, drones, miyako-bushi scale.
   "medieval": lute, recorder, hurdy-gurdy drone, war drum and tabor, choir pad, church bell and
               horn calls, on the D Dorian mode (for European episodes).
+  "ancient": the same instruments and moods on the D Phrygian dominant (Hijaz) scale, for the
+              ancient Near East (Alexander at Gaugamela).
 
 Usage: python3 tools/make-music.py episodes/01-47-ronin
        python3 tools/make-music.py episodes/03-agincourt --music-only   (score only, no video needed;
@@ -24,6 +26,7 @@ SR = 44100
 # D miyako-bushi: D Eb G A Bb, over several octaves
 STEPS = [0, 1, 5, 7, 8]
 DORIAN = [0, 2, 3, 5, 7, 9, 10]   # D E F G A B C
+HIJAZ = [0, 1, 4, 5, 7, 8, 10]    # D Eb F# G A Bb C (Phrygian dominant: ancient Near East flavor)
 def scale_freq(i, base=146.83, steps=STEPS):  # i = scale degree index, 0 = D3
     octave, deg = divmod(int(i), len(steps))
     return base * 2 ** (octave + steps[deg] / 12)
@@ -283,9 +286,9 @@ def horn(f, dur, vel=1.0):
     return out * env * vel * 0.12
 
 
-def compose_medieval(mood, dur, rng):
+def compose_medieval(mood, dur, rng, steps=DORIAN):
     buf = np.zeros((2, int(dur * SR)))
-    S = lambda i: scale_freq(i, base=146.83, steps=DORIAN)     # 0 = D3, 7 = D4
+    S = lambda i: scale_freq(i, base=146.83, steps=steps)     # 0 = D3, 7 = D4
     D2, A2 = 73.42, 110.0
     if mood in ("tense", "mystery", "raid", "solemn", "quiet", "sad", "reflect"):
         level = {"quiet": 0.7, "sad": 0.8, "raid": 1.0, "reflect": 0.7}.get(mood, 0.9)
@@ -468,7 +471,9 @@ def main():
         sys.exit("episode.timed.json not found: run make-video.py first (or use --music-only)")
     ep = json.loads((timed if timed.exists() else ep_dir / "episode.json").read_text())
     palette = ep.get("music_palette") or "japanese"
-    compose_fn = compose_medieval if palette == "medieval" else compose
+    compose_fn = (compose_medieval if palette == "medieval"
+                  else (lambda m, d, r: compose_medieval(m, d, r, steps=HIJAZ)) if palette == "ancient"
+                  else compose)
     print(f"palette: {palette}", flush=True)
     total = ep["total_duration"]
     sections = []
@@ -493,7 +498,7 @@ def main():
             continue
         if next_mood == "silence":                # end cleanly at the boundary instead of crossfading into it
             dur = b - a
-        seg = reverb(compose_fn(mood, dur, rng), seconds=2.8 if palette == "medieval" else 2.2, rng=rng)
+        seg = reverb(compose_fn(mood, dur, rng), seconds=2.8 if palette in ("medieval", "ancient") else 2.2, rng=rng)
         seg *= 0.05 / (np.sqrt(np.mean(seg ** 2)) + 1e-9)   # same average level in every section
         n = seg.shape[1]; fade = np.ones(n); k = int(XF * SR)
         if i > 0: fade[:k] = np.linspace(0, 1, k)

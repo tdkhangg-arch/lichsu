@@ -470,6 +470,12 @@ const SCENES={
     return s}}
 };
 
+// crowd fillers for the ancient armies: pikes = "up" | "down" (sarissas lowered for the charge)
+const CROWD_SIDES={
+  mac:(r,pick,flip,banners,pikes)=>({hair:"short",hat:"macehelm",face:pick(["determined","determined","neutral","smug"]),outfit:"phalanx",color:pick(["#a8342c","#a8342c","#8a2a24"]),prop:pikes==="down"?"sarissa_down":"sarissa",pose:"stand",flip}),
+  per:(r,pick,flip)=>{const imm=r()<.3;return {hair:"persian",hat:imm?"none":"persiancap",face:pick(["neutral","determined","closed","smug"]),outfit:imm?"immortal":"persian",color:pick(["#5a3a7a","#c98a2e","#2a6a6a","#8a3a2a","#6b4a7a"]),prop:"pomspear",pose:"stand",flip}}
+};
+
 /* ---------- FX overlays for episode frames (shot.fx in shots.js) ---------- */
 function rng(seed){return ()=>((seed=(seed*16807)%2147483647)/2147483647)}
 const FX={
@@ -489,11 +495,11 @@ const FX={
   // a crowd of small soldiers in rows (back rows smaller), to show army size at a glance.
   // side "fr" = French knights with some fleur-de-lis banners; "en" = English archers with a few St George knights
   // optional chaos: faces (list of face names), flee (share turned away and running), tilt (max lean in degrees), fall (share fallen over)
-  crowd:({side="fr",x0=260,x1=470,rows=4,gBack=200,gFront=260,scBack=.16,scFront=.32,perRow=9,flip=false,seed=3,banners=.2,faces=null,flee=0,tilt=0,fall=0})=>{
+  crowd:({pikes="up",side="fr",x0=260,x1=470,rows=4,gBack=200,gFront=260,scBack=.16,scFront=.32,perRow=9,flip=false,seed=3,banners=.2,faces=null,flee=0,tilt=0,fall=0})=>{
     const r=rng(seed),pick=a=>a[Math.floor(r()*a.length)];let s="";
     for(let k=0;k<rows;k++){const t=rows>1?k/(rows-1):1,g=gBack+(gFront-gBack)*t,sc0=scBack+(scFront-scBack)*t,n=Math.max(1,Math.round(perRow*(1+.45*(1-t))));
       for(let i=0;i<n;i++){const sc=sc0*(.92+r()*.16),x=x0+(i+.5+(k%2?.35:0))*(x1-x0)/(n+.35)+(r()-.5)*5,gg=g+(r()-.5)*4;
-        const cfg=side==="fr"?{hair:"none",hat:"bascinet",face:pick(["smug","smug","neutral","determined"]),outfit:"knight_fr",color:"#2f4f9f",prop:r()<banners?"fleur":"sword",pose:"stand",flip}
+        const cfg=CROWD_SIDES[side]?CROWD_SIDES[side](r,pick,flip,banners,pikes):side==="fr"?{hair:"none",hat:"bascinet",face:pick(["smug","smug","neutral","determined"]),outfit:"knight_fr",color:"#2f4f9f",prop:r()<banners?"fleur":"sword",pose:"stand",flip}
           :(r()<.2?{hair:"none",hat:"bascinet",face:pick(["determined","neutral"]),outfit:"knight_en",color:"#f4f2f7",prop:r()<banners?"stgeorge":"sword",pose:"stand",flip}
                   :{hair:"short",hat:pick(["kettle","hood","none"]),face:pick(["closed","neutral","determined"]),outfit:"archer",color:pick(["#8a6a4a","#5b6b3a","#9a7f55"]),prop:"longbow",pose:"stand",flip});
         if(faces)cfg.face=pick(faces);
@@ -545,6 +551,220 @@ const FX={
   // mud splashes around a point
   splash:({x=240,y=292,k=1})=>[[-18,-14,3],[-10,-24,2.4],[0,-28,2],[12,-20,2.6],[20,-10,3],[-24,-4,2]].map(([dx,dy,r])=>`<circle cx="${x+dx*k}" cy="${y+dy*k}" r="${r*k}" fill="#5e4a36" stroke="${INK}" stroke-width="1"/>`).join("")
 };
+/* ---------- Ancient world parts (episode 5: Alexander at Gaugamela, 331 BC) ----------
+   Macedonians = bronze and crimson (Vergina sun shields, long sarissa pikes);
+   Persians = purple, saffron and teal robes and trousers, soft caps, curly beards.
+   Alexander = silver helmet with white plumes, crimson cape, black horse Bucephalus with a white star.
+   Darius III = tall gold tiara, purple robe with a white middle stripe, golden chariot. */
+const FONT=`font-family="Inter, DejaVu Sans, sans-serif"`;
+const BRONZE="#c9963e",PURPLE="#5a3a7a";
+const VERGINA=(cx,cy,r)=>{let s=`<circle cx="${cx}" cy="${cy}" r="${r}" fill="${BRONZE}" stroke="${INK}" stroke-width="3"/><circle cx="${cx}" cy="${cy}" r="${r*.8}" fill="none" stroke="${dk(BRONZE)}" stroke-width="1.6"/>`;
+  for(let i=0;i<16;i++){const a=i*Math.PI/8,l=i%2?r*.42:r*.66;s+=ln(cx,cy,(cx+l*Math.cos(a)).toFixed(1),(cy+l*Math.sin(a)).toFixed(1),"#f2d48a",i%2?1.6:2.4)}
+  return s+`<circle cx="${cx}" cy="${cy}" r="${r*.14}" fill="#f2d48a" stroke="${INK}" stroke-width="1.2"/><path d="M${cx-r*.55},${cy-r*.62} Q${cx-r*.2},${cy-r*.9} ${cx+r*.25},${cy-r*.8}" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" opacity=".7"/>`};
+const PTERUGES=(y,col="#efe6cc")=>{let s="";for(let x=72;x<128;x+=8)s+=`<rect x="${x}" y="${y}" width="7" height="26" rx="1.5" fill="${col}" stroke="${INK}" stroke-width="1.6"/>`;return s};
+const ROSETTES=(pts,col="#e2bd4f")=>pts.map(([x,y])=>`<circle cx="${x}" cy="${y}" r="3" fill="${col}" stroke="${INK}" stroke-width="1"/>`).join("");
+
+Object.assign(HAIR,{
+  persian:{label:"Tóc xoăn + râu Ba Tư",back:()=>"",
+    clip:()=>`<ellipse cx="114" cy="30" rx="56" ry="24" fill="${INK}"/><ellipse cx="146" cy="78" rx="18" ry="34" fill="${INK}"/>`,
+    front:()=>`<path d="M66,104 Q64,140 96,146 Q126,142 130,102 Q112,114 98,112 Q82,114 66,104Z" fill="${INK}"/>`+[[80,128],[96,134],[112,126]].map(([x,y])=>`<path d="M${x-5},${y} q5,-5 10,0" fill="none" stroke="#57525e" stroke-width="1.6"/>`).join("")+
+      [[150,112],[156,98],[142,120]].map(([x,y])=>`<circle cx="${x}" cy="${y}" r="7" fill="${INK}"/>`).join("")}
+});
+
+Object.assign(HATS,{
+  macehelm:{label:"Mũ đồng Macedonia",d:()=>P("M50,54 Q46,8 92,-2 Q72,-14 54,-8 Q76,-30 116,-18 Q152,-2 152,58 Q104,42 50,54Z",BRONZE,3.5)+`<path d="M62,46 Q64,14 92,4" fill="none" stroke="#f2d48a" stroke-width="3.5" stroke-linecap="round"/>`+P("M46,54 Q100,40 154,56 L152,63 Q100,50 48,62Z",dk(BRONZE),2.6)+`<path d="M58,-12 Q100,-40 146,4" fill="none" stroke="${INK}" stroke-width="12" stroke-linecap="round"/><path d="M58,-12 Q100,-40 146,4" fill="none" stroke="#a8342c" stroke-width="7" stroke-linecap="round"/>`},
+  alexhelm:{label:"Mũ bạc chỏm lông trắng (Alexander)",d:()=>`<path d="M60,-4 Q96,-60 156,-14 Q176,8 170,44" fill="none" stroke="${INK}" stroke-width="20" stroke-linecap="round"/><path d="M60,-4 Q96,-60 156,-14 Q176,8 170,44" fill="none" stroke="#fff" stroke-width="14" stroke-linecap="round"/>`+[[80,-30],[104,-40],[128,-36],[150,-20],[164,4],[168,28]].map(([x,y])=>`<path d="M${x},${y} l6,-6" stroke="#c9c5d6" stroke-width="1.8"/>`).join("")+P("M52,52 Q54,4 100,2 Q146,4 148,52 Z","#d5d9e0",3.5)+`<path d="M64,42 Q66,14 96,8" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/>`+P("M40,54 Q100,40 160,54 Q100,64 40,54Z","#b8bcc4",3)+`<path d="M58,40 Q100,30 142,40" fill="none" stroke="#e2bd4f" stroke-width="4"/>`+[70,86,114,130].map(x=>`<path d="M${x},37 q4,-6 8,-2" fill="none" stroke="#5b8a3a" stroke-width="2.4"/>`).join("")},
+  tiara:{label:"Vương miện cao Ba Tư (Darius)",d:()=>P("M60,44 L64,-44 L136,-44 L140,44 Q100,52 60,44Z","#e2bd4f",3.2)+P("M64,-44 L64,-56 L76,-56 L76,-48 L88,-48 L88,-58 L100,-58 L100,-48 L112,-48 L112,-58 L124,-58 L124,-48 L136,-48 L136,-44 Z","#e2bd4f",2.6)+
+    `<rect x="62" y="8" width="76" height="14" fill="#2a4592" stroke="${INK}" stroke-width="2.4"/>`+[70,84,100,116,130].map(x=>`<circle cx="${x}" cy="15" r="3" fill="#fff"/>`).join("")+[[80,-20],[100,-26],[120,-20]].map(([x,y])=>`<path d="M${x},${y-8} l3,6 l6,2 l-6,2 l-3,6 l-3,-6 l-6,-2 l6,-2Z" fill="#a8342c" stroke="${INK}" stroke-width="1"/>`).join("")},
+  persiancap:{label:"Mũ phớt mềm Ba Tư",d:()=>P("M50,58 Q44,4 100,0 Q150,4 152,60 L160,116 Q146,126 136,110 L132,64 Q100,48 50,58Z","#e6dcc4",3.2)+`<path d="M56,52 Q100,38 132,58" fill="none" stroke="#a8342c" stroke-width="4"/><path d="M70,20 Q96,8 124,16" fill="none" stroke="#c9bd9e" stroke-width="2.4"/>`}
+});
+
+Object.assign(OUTFITS,{
+  phalanx:{label:"Lính giáo Macedonia (khiên mặt trời Vergina)",sleeve:c=>c,sleeveFrac:.3,legs:()=>[{from:.5,to:.92,col:BRONZE,w:11}],
+    body:c=>P("M74,190 L126,190 L134,226 L66,226Z",c,3)+PTERUGES(188)+P("M74,128 L126,128 L127,192 L73,192 Z","#efe6cc",3)+P("M74,128 L90,128 L88,150 L74,150Z","#e3d7b8",2)+P("M126,128 L110,128 L112,150 L126,150Z","#e3d7b8",2)+
+      `<rect x="74" y="160" width="52" height="12" fill="${BRONZE}" stroke="${INK}" stroke-width="2"/>`+[80,88,96,104,112,120].map(x=>`<path d="M${x},162 q3,5 6,0" fill="none" stroke="${INK}" stroke-width="1" opacity=".6"/>`).join("")+`<rect x="73" y="182" width="54" height="8" fill="${c}" stroke="${INK}" stroke-width="2"/>`,
+    front:()=>VERGINA(84,170,30)},
+  companion:{label:"Kỵ binh Chiến hữu (giáp đồng, áo choàng)",sleeve:c=>c,sleeveFrac:.32,legs:()=>[{from:.68,to:.92,col:"#6b4a2e",w:11}],
+    body:c=>P("M110,126 Q156,148 160,252 Q138,266 116,244 Q118,190 104,136Z",c,3)+`<path d="M122,150 Q140,190 140,246" fill="none" stroke="${dk(c)}" stroke-width="2.4"/>`+P("M74,192 L126,192 L132,226 L68,226Z",c,3)+PTERUGES(190)+
+      P("M74,128 L126,128 L128,194 L72,194 Z","#d6a64e",3)+`<path d="M80,146 Q90,156 100,146 Q110,156 120,146 M88,168 Q100,174 112,168 M90,180 Q100,186 110,180 M100,150 L100,188" fill="none" stroke="${dk("#d6a64e")}" stroke-width="2.2" stroke-linecap="round"/><path d="M80,134 Q88,130 96,133" fill="none" stroke="#f6dc94" stroke-width="2.6" stroke-linecap="round"/>`,front:()=>""},
+  alexander:{label:"Alexander (giáp vàng, áo choàng đỏ)",sleeve:()=>"#a8342c",sleeveFrac:.32,legs:()=>[{from:.68,to:.92,col:"#6b4a2e",w:11}],
+    body:()=>OUTFITS.companion.body("#a8342c")+`<circle cx="100" cy="152" r="9" fill="#e2bd4f" stroke="${INK}" stroke-width="2"/><circle cx="97" cy="150" r="1.6" fill="${INK}"/><circle cx="103" cy="150" r="1.6" fill="${INK}"/><path d="M92,145 q-4,-4 -2,-8 M108,145 q4,-4 2,-8 M91,154 q-5,2 -6,6 M109,154 q5,2 6,6" fill="none" stroke="${INK}" stroke-width="1.4"/>`+`<rect x="72" y="186" width="56" height="7" fill="#e2bd4f" stroke="${INK}" stroke-width="2"/>`,front:()=>""},
+  persian:{label:"Lính Ba Tư (áo dài tay, quần ống)",sleeve:c=>c,sleeveFrac:.9,sleeveW:15,legs:c=>[{to:.9,col:mix(c,.45,"#e2bd4f"),w:13}],
+    body:c=>P("M76,128 L124,128 L132,216 L68,216 Z",c,3)+`<path d="M70,206 L130,206" stroke="#e2bd4f" stroke-width="5"/><path d="M70,206 L130,206" stroke="${INK}" stroke-width="1" stroke-dasharray="3 4"/>`+`<path d="M90,128 Q100,140 110,128" fill="none" stroke="${INK}" stroke-width="2.4"/>`+
+      `<rect x="73" y="178" width="54" height="8" fill="${dk(c)}" stroke="${INK}" stroke-width="2"/>`+ROSETTES([[88,150],[112,150],[100,164],[86,196],[114,196]]),front:()=>""},
+  immortal:{label:"Cận vệ Bất tử (áo bào thêu hoa)",sleeve:c=>c,sleeveW:22,legs:[],
+    body:c=>P("M138,132 L150,136 L146,214 L134,212Z","#8a6a3a",2.4)+[140,146].map(x=>P(`M${x},132 l-3,-10 l6,0Z`,"#f4f2f7",1.2)).join("")+P("M80,128 L120,128 Q132,200 144,270 Q100,278 56,270 Q68,200 80,128 Z",c,3)+`<path d="M60,260 Q100,268 140,260" fill="none" stroke="#e2bd4f" stroke-width="5"/>`+
+      `<path d="M90,128 L100,146 L110,128" fill="#f4f2f7" stroke="${INK}" stroke-width="2.2"/>`+`<rect x="80" y="170" width="40" height="8" fill="#e2bd4f" stroke="${INK}" stroke-width="2"/>`+ROSETTES([[90,154],[110,154],[78,204],[100,198],[122,204],[70,236],[92,232],[112,232],[130,236]],"#f2d48a"),front:()=>""},
+  darius:{label:"Darius III (áo bào tím sọc trắng)",sleeve:()=>PURPLE,sleeveW:24,legs:[],
+    body:()=>P("M80,128 L120,128 Q134,200 148,272 Q100,280 52,272 Q66,200 80,128 Z",PURPLE,3)+P("M94,128 L106,128 L110,276 L90,276Z","#f4f2f7",2)+`<path d="M56,262 Q100,270 144,262" fill="none" stroke="#e2bd4f" stroke-width="6"/>`+
+      `<path d="M88,128 L100,146 L112,128" fill="#e2bd4f" stroke="${INK}" stroke-width="2.2"/>`+`<rect x="78" y="170" width="44" height="9" fill="#e2bd4f" stroke="${INK}" stroke-width="2"/>`+ROSETTES([[74,214],[126,214],[66,244],[134,244],[80,190],[120,190]]),front:()=>""}
+});
+
+Object.assign(PROPS,{
+  sarissa:{label:"Giáo dài sarissa (dựng)",hands:[[118,206],[122,168]],
+    d:()=>thick(132,292,62,-330,"#8a6a3a",3.2)+P("M58,-362 L68,-334 L60,-326 L54,-334Z","#d5d9e0",2.2)+P("M132,292 l4,14 l-6,0Z",BRONZE,1.6)},
+  sarissa_down:{label:"Giáo dài sarissa (hạ ngang)",hands:[[76,194],[120,190]],
+    d:()=>thick(176,198,-320,176,"#8a6a3a",3.2)+P("M-352,175 L-322,168 L-316,176 L-322,184Z","#d5d9e0",2.2)},
+  lance:{label:"Giáo kỵ binh",hands:[[80,190],[124,176]],
+    d:()=>thick(168,162,-110,222,"#8a6a3a",3)+P("M-134,227 L-110,214 L-106,222 L-110,230Z","#d5d9e0",2.2)},
+  pomspear:{label:"Giáo chuôi lựu vàng (Ba Tư)",hands:[[133,210],[131,170]],
+    d:()=>thick(136,276,126,40,"#8a6a3a",3.5)+P("M125,2 L133,30 L126,44 L119,30 Z","#d5d9e0",2.6)+`<circle cx="136" cy="278" r="8" fill="#e2bd4f" stroke="${INK}" stroke-width="2.2"/><path d="M132,270 l4,-6 l4,6" fill="#e2bd4f" stroke="${INK}" stroke-width="1.6"/>`}
+});
+
+Object.assign(SCENES,{
+  plain:{label:"Bình nguyên Gaugamela",d:()=>{let s=`<defs><linearGradient id="plainsky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e9cf98"/><stop offset="1" stop-color="#f3e2bb"/></linearGradient></defs><rect width="480" height="320" fill="url(#plainsky)"/>`;
+    s+=`<circle cx="380" cy="70" r="26" fill="#fbeec6" opacity=".9"/><circle cx="380" cy="70" r="44" fill="#fbeec6" opacity=".3"/>`+cloud(40,70,140,"#f6e8c8")+cloud(250,52,110,"#f6e8c8");
+    s+=`<path d="M0,196 Q50,170 110,184 Q160,164 220,182 Q290,170 340,186 Q400,172 480,188 L480,214 L0,214Z" fill="#c4a26e" ${st}/><path d="M0,204 Q120,192 240,200 Q360,192 480,202 L480,214 L0,214Z" fill="#b8955f" opacity=".7"/>`;
+    s+=`<rect y="212" width="480" height="108" fill="#d9bd85"/><path d="M0,212 L480,212" ${st}/>`;
+    for(const [x,y,w] of [[60,240,90],[300,232,120],[180,270,140],[420,262,80],[40,292,110]])s+=`<ellipse cx="${x}" cy="${y}" rx="${w}" ry="${w*.06}" fill="#c9a86e" opacity=".5"/>`;
+    for(const [x,y] of [[30,226],[150,222],[330,226],[450,230],[96,250],[260,246],[400,248]])s+=`<path d="M${x-6},${y} q3,-7 6,0 q3,-8 6,0" fill="none" stroke="#8f7a46" stroke-width="1.8" stroke-linecap="round"/>`;
+    s+=`<rect y="150" width="480" height="70" fill="#f3e2bb" opacity=".25"/>`;
+    return s}},
+  plainnight:{label:"Đêm trước trận (lửa trại Ba Tư)",d:()=>{let s=`<rect width="480" height="320" fill="#1f2236"/>`;
+    for(const [x,y] of [[30,40],[90,70],[150,44],[220,62],[280,36],[350,74],[410,48],[460,90],[120,110],[330,120],[200,100]])s+=`<circle cx="${x}" cy="${y}" r="1.7" fill="#f4f2f7"/>`;
+    s+=`<circle cx="70" cy="60" r="16" fill="#e9e4c8" ${st}/><circle cx="64" cy="55" r="14" fill="#1f2236"/>`;
+    s+=`<path d="M0,190 Q80,176 160,186 Q260,174 340,186 Q420,178 480,188 L480,212 L0,212Z" fill="#2c2a3a" ${st}/>`;
+    s+=`<rect y="210" width="480" height="110" fill="#3b3428"/><path d="M0,210 L480,210" ${st}/>`;
+    s+=FX.fires({x0:150,x1:480,y0:204,y1:238,n:120,seed:5});
+    return s}},
+  tent:{label:"Lều chỉ huy Macedonia",d:()=>{let s=`<rect width="480" height="320" fill="#cdb48a"/>`;
+    for(let x=0;x<=480;x+=40)s+=`<path d="M${x},30 Q${x+20},170 ${x},280" fill="none" stroke="#b39a70" stroke-width="2"/>`;
+    s+=`<path d="M0,30 L240,-20 L480,30 L480,60 Q240,10 0,60Z" fill="#a8342c" ${st}/>`+[60,120,180,300,360,420].map(x=>`<path d="M${x},${x<240?60-x/12:40+x/24} q10,14 20,0" fill="none" stroke="#7a2620" stroke-width="2"/>`).join("");
+    s+=`<path d="M10,280 L10,110 Q40,90 90,104 L104,280Z" fill="#141626" ${st}/>`+FX.fires({x0:16,x1:96,y0:196,y1:226,n:28,seed:9})+`<path d="M10,110 Q40,90 90,104 L104,280 L118,280 L100,100 Q50,80 0,104Z" fill="#b39a70" ${st}/>`;
+    s+=`<rect x="228" y="30" width="10" height="250" fill="#7a5a3a" ${st}/>`;
+    s+=`<rect y="276" width="480" height="44" fill="#8a5a3a"/><path d="M0,276 L480,276" ${st}/><rect x="150" y="282" width="190" height="24" fill="#a8342c" opacity=".55"/>`;
+    s+=`<circle cx="380" cy="190" r="70" fill="#f5c46a" opacity=".22"/>`;
+    s+=`<rect x="300" y="226" width="160" height="12" fill="#7a4a2a" ${st}/><path d="M316,238 L310,280 M444,238 L450,280" stroke="${INK}" stroke-width="6"/><path d="M316,238 L310,280 M444,238 L450,280" stroke="#7a4a2a" stroke-width="3"/>`;
+    s+=`<path d="M318,224 L428,220 L432,228 L322,232Z" fill="#efe1bd" ${st}/><path d="M340,226 Q360,222 380,226 M390,224 L410,222" stroke="#a8342c" stroke-width="2" fill="none"/><path d="M350,228 l4,-3 M396,226 l5,-2" stroke="#2f4f7f" stroke-width="2"/>`;
+    s+=`<path d="M380,206 Q372,214 376,222 L392,222 Q396,214 386,206Z" fill="#c9963e" ${st}/><path d="M384,206 Q378,194 384,184 Q392,196 384,206Z" fill="#f5d95a" stroke="#f29a3a" stroke-width="1.6"/>`;
+    return s}},
+  babylon:{label:"Cổng Ishtar (Babylon)",d:()=>{let s=`<rect width="480" height="320" fill="#a9d8f0"/><circle cx="420" cy="60" r="24" fill="#f5d95a" ${st}/>`+cloud(40,60,120,"#fff");
+    const palm=(x,y)=>thick(x,y,x+6,y-90,"#8a6a3a",5)+[[-36,10],[-28,-12],[30,-10],[38,12],[0,-26]].map(([dx,dy])=>`<path d="M${x+6},${y-90} Q${x+6+dx*.5},${y-104+dy*.3} ${x+6+dx},${y-84+dy}" fill="none" stroke="${INK}" stroke-width="7" stroke-linecap="round"/><path d="M${x+6},${y-90} Q${x+6+dx*.5},${y-104+dy*.3} ${x+6+dx},${y-84+dy}" fill="none" stroke="#5b8a3a" stroke-width="4" stroke-linecap="round"/>`).join("");
+    s+=palm(30,250)+palm(440,250);
+    s+=`<rect x="90" y="70" width="300" height="190" fill="#2f5fa8" ${st}/>`;
+    for(let x=96;x<384;x+=24)s+=`<rect x="${x}" y="52" width="14" height="20" fill="#2f5fa8" ${st}/>`;
+    for(let y=82;y<260;y+=10)s+=`<line x1="90" y1="${y}" x2="390" y2="${y}" stroke="#244a85" stroke-width="1"/>`;
+    s+=`<path d="M200,260 L200,150 Q240,104 280,150 L280,260Z" fill="#2a2540" ${st}/><path d="M188,262 L188,148 Q240,88 292,148 L292,262" fill="none" stroke="#e2bd4f" stroke-width="5"/>`;
+    const beast=(x,y,k)=>`<g transform="translate(${x} ${y}) scale(${k})"><path d="M-20,0 L-16,-14 Q-6,-20 10,-16 L18,-24 L22,-20 L20,-12 L24,-8 L18,-6 L16,0 L12,0 L10,-8 L-10,-8 L-12,0 Z" fill="#e9c75a" stroke="${INK}" stroke-width="1.4"/><path d="M18,-24 L20,-32 M20,-24 L26,-30" stroke="#fff" stroke-width="1.6"/></g>`;
+    for(const y of[104,160,216])for(const x of[130,166,314,350])s+=beast(x,y,1.1);
+    s+=[100,124].map(y=>`<path d="M96,${y+150} L184,${y+150}" stroke="#f2e6c0" stroke-width="2" stroke-dasharray="4 6"/>`).join("")+`<path d="M90,96 L390,96" stroke="#e2bd4f" stroke-width="3"/><path d="M90,244 L390,244" stroke="#e2bd4f" stroke-width="3"/>`;
+    s+=`<rect y="258" width="480" height="62" fill="#d9bd85"/><path d="M0,258 L480,258" ${st}/><path d="M210,258 L170,320 L310,320 L270,258Z" fill="#c9a86e"/>`;
+    return s}},
+  mapalex:{label:"Bản đồ chiến dịch Alexander",d:()=>{let s=SCENES.parchment.d();
+    s+=`<rect x="10" y="36" width="460" height="258" fill="#e9dbb5"/>`;
+    s+=`<path d="M70,104 L100,92 L150,90 L200,82 L250,40 L300,40 L380,60 L440,92 L462,150 L456,232 L404,264 L322,254 L300,264 L250,212 L204,232 L172,266 L134,244 L100,232 L100,190 L150,190 L156,140 L96,134 Z" fill="#c7a0c8" opacity=".75" ${st}/>`;
+    const sea=d=>`<path d="${d}" fill="#9ec3d6" ${st}/>`;
+    s+=sea("M10,150 L45,148 L52,140 L58,128 L62,112 L70,104 L82,98 L92,104 L90,116 L96,130 L120,138 L150,136 L160,136 L156,150 L152,172 L148,186 L130,190 L105,192 L80,196 L50,200 L10,205Z");
+    s+=sea("M100,92 L120,86 L150,88 L180,84 L196,74 L190,56 L160,54 L130,60 L104,70 L98,82Z")+sea("M250,40 L262,40 L268,80 L290,110 L292,132 L275,138 L262,120 L258,90 L248,70Z");
+    s+=sea("M248,200 L265,210 L290,228 L318,236 L322,252 L300,262 L282,252 L262,236 L246,214Z")+sea("M132,204 L140,210 L172,290 L164,292 L130,214Z")+sea("M322,252 L360,262 L400,264 L430,282 L470,296 L470,296 L320,296 Z");
+    s+=`<g fill="none" stroke="#5f86a0" stroke-width="2.2" stroke-linecap="round"><path d="M190,108 Q210,140 224,170 Q238,190 250,206"/><path d="M176,116 Q196,150 214,180 Q232,198 250,206"/><path d="M124,192 Q128,240 136,296"/><path d="M430,120 Q438,180 402,262"/></g>`;
+    const city=(x,y,n,dx=6,dy=-5,a="start")=>`<circle cx="${x}" cy="${y}" r="4" fill="${INK}" stroke="#fff" stroke-width="1.5"/><text x="${x+dx}" y="${y+dy}" ${FONT} font-weight="800" font-size="10" fill="${INK}" text-anchor="${a}" stroke="#f4efe2" stroke-width="3" paint-order="stroke">${n}</text>`;
+    s+=city(55,94,"Macedonia",0,14,"middle")+city(92,100,"Granicus",0,-8,"middle")+city(160,134,"Issus",6,-4)+city(152,172,"Tyre",-6,0,"end")+city(116,198,"Egypt",-6,12,"end")+city(215,139,"Gaugamela",6,-4)+city(223,180,"Babylon",-6,10,"end")+city(253,183,"Susa",6,-2)+city(289,207,"Persepolis",6,4)+city(442,168,"India",-6,-8,"end");
+    s+=`<text x="340" y="150" ${FONT} font-weight="900" font-size="15" fill="#5a3a7a" text-anchor="middle" opacity=".8">PERSIAN EMPIRE</text>`;
+    s+=`<rect x="20" y="262" width="12" height="10" fill="#c7a0c8" stroke="${INK}" stroke-width="1.5"/><text x="37" y="271" ${FONT} font-weight="800" font-size="10" fill="${INK}">Persian Empire, 334 BC</text>`;
+    return s}},
+  battlemap:{label:"Sơ đồ trận Gaugamela (nhìn từ trên)",d:()=>{let s=SCENES.parchment.d();
+    s+=`<rect x="10" y="36" width="460" height="258" fill="#e3cd9c"/>`;
+    for(let x=10;x<=470;x+=23)s+=`<line x1="${x}" y1="36" x2="${x}" y2="294" stroke="#c9ad7a" stroke-width="1" opacity=".6"/>`;
+    for(let y=36;y<=294;y+=23)s+=`<line x1="10" y1="${y}" x2="470" y2="${y}" stroke="#c9ad7a" stroke-width="1" opacity=".6"/>`;
+    s+=`<g fill="none" stroke="#a88a5a" stroke-width="1.8" opacity=".7"><path d="M10,60 Q40,50 60,70 Q50,92 10,96"/><path d="M10,72 Q30,66 40,76 Q34,86 10,86"/><path d="M470,250 Q440,240 430,262 Q444,286 470,288"/></g>`;
+    s+=`<g transform="translate(446 70)"><path d="M0,-20 L6,0 L0,-4 L-6,0Z" fill="${INK}"/><text y="14" ${FONT} font-weight="900" font-size="11" text-anchor="middle" fill="${INK}">N</text></g>`;
+    s+=`<rect x="8" y="34" width="464" height="262" fill="none" stroke="#7a5a3a" stroke-width="2.5"/>`;
+    return s}}
+});
+
+Object.assign(FX,{
+  // a sea of enemy campfires toward the horizon (far = small, near = bigger)
+  fires:({x0=0,x1=480,y0=200,y1=240,n=80,seed=5})=>{const r=rng(seed);let s="";for(let i=0;i<n;i++){const t=r(),y=y0+(y1-y0)*t*t,x=x0+(x1-x0)*r(),k=.6+t*1.8;
+      s+=`<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${(4.5*k).toFixed(1)}" fill="#f29a3a" opacity=".25"/><circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${(1.3*k).toFixed(1)}" fill="#ffd27a"/>`}return s},
+  // drifting dust clouds of a cavalry charge
+  dust:({x=240,y=260,w=200,h=50,opacity=.5,seed=4,color="#e8d2a2"})=>{const r=rng(seed);let s="";for(let i=0;i<16;i++){const cx=x-w/2+r()*w,cy=y-r()*h,rr=8+r()*h*.5;s+=`<circle cx="${cx.toFixed(1)}" cy="${cy.toFixed(1)}" r="${rr.toFixed(1)}" fill="${color}" opacity="${(opacity*(.5+r()*.5)).toFixed(2)}"/>`}return s},
+  // a stick horse, optionally with a rider (rider = character cfg; drawn sitting on its back). Faces left unless flip.
+  horse:({x=240,g=292,sc=.5,flip=false,color="#8a5a3a",rider=null,gallop=false,star=false,cloth="#a8342c",head=true})=>{
+    const L=c=>c;let s="";const mane=dk(color),out=(pts,w,col)=>poly(pts,INK,w+4.5)+poly(pts,col,w);
+    const legs=gallop?[[[64,-84],[36,-48],[14,-34]],[[80,-84],[58,-40],[44,-14]],[[132,-82],[164,-50],[186,-30]],[[146,-84],[170,-36],[184,-8]]]
+                     :[[[62,-84],[60,-40],[58,0]],[[80,-84],[78,-40],[78,0]],[[130,-84],[134,-40],[132,0]],[[146,-84],[150,-40],[152,0]]];
+    let back="",front="";legs.forEach((l,i)=>{const t=out(l,8,i%2?color:dk(color))+`<rect x="${l[2][0]-6}" y="${l[2][1]-4}" width="12" height="7" rx="2" fill="${INK}"/>`;if(i%2)front+=t;else back+=t});
+    s+=back+`<path d="M164,-112 Q196,-96 186,-40 Q176,-60 170,-92Z" fill="${mane}" stroke="${INK}" stroke-width="3"/>`;
+    s+=`<ellipse cx="104" cy="-104" rx="70" ry="30" fill="${color}" stroke="${INK}" stroke-width="4"/>`;
+    s+=P("M50,-112 Q32,-142 22,-178 L46,-190 Q60,-152 84,-122 Z",color,4)+P("M20,-192 Q34,-200 48,-190 L44,-170 Q22,-150 -6,-146 Q-18,-148 -14,-160 Q0,-172 20,-192Z",color,4);
+    s+=`<path d="M46,-190 Q56,-160 66,-140 Q74,-128 86,-122" fill="none" stroke="${INK}" stroke-width="9" stroke-linecap="round"/><path d="M46,-190 Q56,-160 66,-140 Q74,-128 86,-122" fill="none" stroke="${mane}" stroke-width="5" stroke-linecap="round"/>`;
+    s+=P("M36,-194 L40,-210 L46,-192Z",color,2.4)+`<circle cx="24" cy="-176" r="3" fill="${INK}"/><circle cx="-8" cy="-153" r="2" fill="${INK}"/>`+ln(-10,-150,30,-168,INK,1.8)+ln(30,-168,40,-186,INK,1.8);
+    if(star)s+=`<path d="M14,-184 l2,5 l5,1 l-4,3 l1,5 l-4,-3 l-4,3 l1,-5 l-4,-3 l5,-1Z" fill="#fff" stroke="${INK}" stroke-width="1"/>`;
+    if(cloth)s+=P("M78,-132 L132,-132 L136,-90 L74,-90Z",cloth,2.6)+`<path d="M76,-96 L134,-96" stroke="#e2bd4f" stroke-width="3"/>`;
+    s+=front;
+    if(rider)s+=`<g transform="translate(34 -263) scale(.7)">${character({...rider,pose:"sit",flip:false})}</g>`;
+    const tr=flip?`translate(${(x+100*sc).toFixed(1)} ${g}) scale(${-sc} ${sc})`:`translate(${(x-100*sc).toFixed(1)} ${g}) scale(${sc})`;
+    return `<g transform="${tr}">${s}</g>`},
+  // Persian scythed chariot pulled by two horses; driver/passenger are character cfgs standing in the box
+  chariot:({x=240,g=292,sc=.4,flip=false,driver=null,passenger=null,royal=false,gallop=true,blades=true,color="#8a5a3a"})=>{
+    const cl=royal?"#5a3a7a":null;
+    let s=FX.horse({x:-24,g:-6,sc:1.2,color:dk(color),cloth:cl,gallop}).replace("<g transform","<g opacity=\".85\" transform")+FX.horse({x:0,g:0,sc:1.2,color,cloth:cl,gallop});
+    s+=thick(150,-96,40,-128,"#7a4a2a",4);
+    const box=royal?"#e2bd4f":"#9a6a3a";
+    const stand=(cfg,fx,k)=>`<g transform="translate(${fx-100*k} ${-52-268*k}) scale(${k})">${character({...cfg,pose:"stand",flip:false})}</g>`;
+    if(passenger)s+=stand(passenger,226,.9);
+    if(driver)s+=stand(driver,170,.72);
+    s+=P("M148,-150 L246,-150 L252,-40 L144,-40Z",box,3.5)+P("M148,-150 L246,-150 L246,-138 L148,-138Z",dk(box),2.2)+(royal?ROSETTES([[166,-112],[194,-112],[222,-112],[180,-76],[208,-76]],"#a8342c"):ln(156,-100,238,-100,dk(box),2));
+    const wc=[198,-42],R=40;let w=`<circle cx="${wc[0]}" cy="${wc[1]}" r="${R}" fill="none" stroke="${INK}" stroke-width="9"/><circle cx="${wc[0]}" cy="${wc[1]}" r="${R}" fill="none" stroke="#7a4a2a" stroke-width="5"/>`;
+    for(let i=0;i<8;i++){const a=i*Math.PI/4;w+=ln(wc[0],wc[1],(wc[0]+R*Math.cos(a)).toFixed(1),(wc[1]+R*Math.sin(a)).toFixed(1),"#7a4a2a",3)}
+    s+=w+`<circle cx="${wc[0]}" cy="${wc[1]}" r="8" fill="${BRONZE}" stroke="${INK}" stroke-width="2.4"/>`;
+    if(blades)s+=P(`M${wc[0]+6},${wc[1]-4} L${wc[0]+96},${wc[1]+6} Q${wc[0]+70},${wc[1]+14} ${wc[0]+6},${wc[1]+6}Z`,"#d5d9e0",2.4)+P(`M144,-46 L74,-30 Q94,-22 144,-36Z`,"#d5d9e0",2.2);
+    const tr=flip?`translate(${(x+60*sc).toFixed(1)} ${g}) scale(${-sc} ${sc})`:`translate(${(x-60*sc).toFixed(1)} ${g}) scale(${sc})`;
+    return `<g transform="${tr}">${s}</g>`},
+  // war elephant with a small rider on its neck
+  elephant:({x=240,g=292,sc=.4,flip=false,rider=null,color="#9aa0a8"})=>{
+    let s=[[150,-84],[196,-84]].map(([lx,ly])=>`<rect x="${lx-15}" y="${ly}" width="30" height="${-ly}" rx="6" fill="${dk(color)}" stroke="${INK}" stroke-width="3.5"/>`).join("");
+    s+=`<path d="M214,-130 Q236,-110 230,-70" fill="none" stroke="${INK}" stroke-width="4"/>`+`<ellipse cx="130" cy="-130" rx="96" ry="64" fill="${color}" stroke="${INK}" stroke-width="4"/>`;
+    s+=P("M86,-190 L176,-190 L186,-120 L80,-120Z","#a8342c",2.6)+`<path d="M82,-130 L184,-130" stroke="#e2bd4f" stroke-width="4"/>`;
+    s+=[[60,-84],[106,-84]].map(([lx,ly])=>`<rect x="${lx-16}" y="${ly}" width="32" height="${-ly}" rx="6" fill="${color}" stroke="${INK}" stroke-width="3.5"/>`).join("");
+    s+=`<circle cx="44" cy="-160" r="50" fill="${color}" stroke="${INK}" stroke-width="4"/>`+`<ellipse cx="74" cy="-160" rx="28" ry="40" fill="${dk(color)}" stroke="${INK}" stroke-width="3"/>`;
+    s+=`<path d="M12,-140 Q-14,-90 -2,-30 Q2,-20 12,-26" fill="none" stroke="${INK}" stroke-width="22" stroke-linecap="round"/><path d="M12,-140 Q-14,-90 -2,-30 Q2,-20 12,-26" fill="none" stroke="${color}" stroke-width="15" stroke-linecap="round"/>`;
+    s+=P("M18,-122 Q-6,-112 -20,-96 Q-2,-102 24,-112Z","#f4f2f7",2.4)+`<circle cx="28" cy="-170" r="3.5" fill="${INK}"/>`;
+    if(rider)s+=`<g transform="translate(10 -330) scale(.7)">${character({...rider,pose:"sit",flip:false})}</g>`;
+    const tr=flip?`translate(${(x+120*sc).toFixed(1)} ${g}) scale(${-sc} ${sc})`:`translate(${(x-120*sc).toFixed(1)} ${g}) scale(${sc})`;
+    return `<g transform="${tr}">${s}</g>`},
+  // block of troops on the battle map (top-down): rect, wedge or chariot row
+  unit:({x=240,y=160,w=60,h=18,color="#a8342c",label="",lx=0,ly=0,rot=0,shape="rect",size=10,lcolor})=>{
+    let s="";const dots=()=>{let d="";for(let yy=-h/2+4;yy<h/2-2;yy+=5)for(let xx=-w/2+4;xx<w/2-2;xx+=5)d+=`<circle cx="${xx}" cy="${yy}" r="1" fill="${INK}" opacity=".35"/>`;return d};
+    if(shape==="wedge")s+=`<path d="M0,${-h/2} L${w/2},${h/2} L${-w/2},${h/2}Z" fill="${color}" stroke="${INK}" stroke-width="2.4" stroke-linejoin="round"/>`;
+    else if(shape==="chariots"){for(let xx=-w/2+6;xx<w/2;xx+=12)s+=`<rect x="${xx-4}" y="-4" width="8" height="8" fill="${color}" stroke="${INK}" stroke-width="1.6"/><path d="M${xx-7},2 L${xx+7},2" stroke="${INK}" stroke-width="1.4"/>`}
+    else if(shape==="elephants"){for(let xx=-w/2+7;xx<w/2;xx+=14)s+=`<circle cx="${xx}" cy="0" r="5" fill="${color}" stroke="${INK}" stroke-width="1.6"/>`}
+    else s+=`<rect x="${-w/2}" y="${-h/2}" width="${w}" height="${h}" rx="2" fill="${color}" stroke="${INK}" stroke-width="2.4"/>`+dots();
+    let t=label?`<text x="${x+lx}" y="${y+ly+(ly?0:h/2+12)}" ${FONT} font-weight="900" font-size="${size}" text-anchor="middle" fill="${lcolor||dk(color)}" stroke="#f4efe2" stroke-width="3" paint-order="stroke">${label}</text>`:"";
+    return `<g transform="translate(${x} ${y}) rotate(${rot})">${s}</g>`+t},
+  // bold movement arrow for battle maps, optional glow
+  arrow:({pts=[],color="#a8342c",w=6,glow=false,dash=false})=>{const d="M"+pts.map(p=>p.join(",")).join(" L");const [a,b]=pts.slice(-2);const ang=Math.atan2(b[1]-a[1],b[0]-a[0]);
+    const h=(k,o)=>`${(b[0]-k*Math.cos(ang+o)).toFixed(1)},${(b[1]-k*Math.sin(ang+o)).toFixed(1)}`;const k=w*2.6;
+    let s=glow?`<path d="${d}" fill="none" stroke="${color}" stroke-width="${w+14}" stroke-linecap="round" stroke-linejoin="round" opacity=".25"/>`:"";
+    s+=`<path d="${d}" fill="none" stroke="${INK}" stroke-width="${w+4}" stroke-linecap="round" stroke-linejoin="round" ${dash?`stroke-dasharray="${w*2} ${w*1.4}"`:""}/><path d="${d}" fill="none" stroke="${color}" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round" ${dash?`stroke-dasharray="${w*2} ${w*1.4}"`:""}/>`;
+    return s+`<path d="M${b[0]+Math.cos(ang)*k*.5},${b[1]+Math.sin(ang)*k*.5} L${h(k,.55)} L${h(k,-.55)} Z" fill="${color}" stroke="${INK}" stroke-width="2"/>`},
+  // clay tablet with cuneiform wedges (e.g. the Babylonian Astronomical Diary), title, translated quote and caption
+  tablet:({x=120,y=50,w=240,h=200,title="",quote=[],caption="",quoteSize=13,seed=8})=>{const r=rng(seed);
+    let s=`<rect x="${x+6}" y="${y+8}" width="${w}" height="${h}" rx="22" fill="#000" opacity=".25"/><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="22" fill="#b98d63" stroke="${INK}" stroke-width="3.5"/><rect x="${x+10}" y="${y+10}" width="${w-20}" height="${h-20}" rx="16" fill="none" stroke="#9a7048" stroke-width="2"/>`;
+    for(let yy=y+24;yy<y+h-16;yy+=14){s+=`<line x1="${x+14}" y1="${yy+6}" x2="${x+w-14}" y2="${yy+6}" stroke="#9a7048" stroke-width="1"/>`;for(let xx=x+18;xx<x+w-20;xx+=6+r()*8){const k=r();
+      s+=k<.5?`<path d="M${xx.toFixed(1)},${yy} l4,2 l-4,2Z" fill="#5e4430"/>`:k<.8?`<path d="M${xx.toFixed(1)},${yy-1} l2,0 l-1,6Z" fill="#5e4430"/>`:`<path d="M${xx.toFixed(1)},${yy+2} l5,0 M${xx.toFixed(1)},${yy+2} l2,-2 l0,4Z" stroke="#5e4430" stroke-width="1" fill="#5e4430"/>`}}
+    for(const [cx,cy,rr] of [[x+w*.8,y+h*.2,16],[x+w*.15,y+h*.75,12]])s+=`<path d="M${cx-rr},${cy} Q${cx},${cy-rr*.6} ${cx+rr},${cy} Q${cx},${cy+rr*.8} ${cx-rr},${cy}Z" fill="#8a6a4a" opacity=".55"/>`;
+    if(title)s+=`<text x="${x+w/2}" y="${y-12}" ${FONT} font-weight="900" font-size="15" text-anchor="middle" fill="#fff" stroke="${INK}" stroke-width="4.5" paint-order="stroke">${title}</text>`;
+    if(quote.length){const qh=quote.length*(quoteSize+5)+16,qy=y+h/2-qh/2;s+=`<rect x="${x+16}" y="${qy}" width="${w-32}" height="${qh}" rx="6" fill="#f4efe2" opacity=".93" stroke="${INK}" stroke-width="2"/>`;
+      quote.forEach((q,i)=>s+=`<text x="${x+w/2}" y="${qy+12+quoteSize+i*(quoteSize+5)}" font-family="Georgia, DejaVu Serif, serif" font-style="italic" font-weight="700" font-size="${quoteSize}" text-anchor="middle" fill="${INK}">${q}</text>`)}
+    if(caption)s+=`<text x="${x+w/2}" y="${y+h+24}" ${FONT} font-weight="900" font-size="12" text-anchor="middle" fill="#fff" stroke="${INK}" stroke-width="4" paint-order="stroke">${caption}</text>`;
+    return s},
+  // the Alexander Mosaic (Pompeii, about 100 BC) redrawn in our style: tiled frame, Alexander charging, Darius turning to flee
+  mosaic:({x=70,y=48,w=340,h=200,caption="The Alexander Mosaic, Pompeii (about 100 BC)"})=>{const id="mz"+(++uid);
+    let s=`<rect x="${x-10}" y="${y-10}" width="${w+20}" height="${h+20}" fill="#3a3640" stroke="${INK}" stroke-width="3"/>`;
+    for(let i=0;i<(w+20)/10;i++)for(const yy of[y-10,y+h])s+=`<rect x="${x-10+i*10}" y="${yy}" width="10" height="10" fill="${i%2?"#c9a86e":"#7a4a2a"}" opacity=".9"/>`;
+    for(let j=0;j<h/10;j++)for(const xx of[x-10,x+w])s+=`<rect x="${xx}" y="${y+j*10}" width="10" height="10" fill="${j%2?"#c9a86e":"#7a4a2a"}" opacity=".9"/>`;
+    s+=`<defs><clipPath id="${id}"><rect x="${x}" y="${y}" width="${w}" height="${h}"/></clipPath></defs><g clip-path="url(#${id})"><rect x="${x}" y="${y}" width="${w}" height="${h}" fill="#dcc79a"/><rect x="${x}" y="${y+h*.72}" width="${w}" height="${h*.28}" fill="#c4a26e"/>`;
+    s+=thick(x+w*.62,y+h*.72,x+w*.72,y+6,"#8a6a3a",2.4)+thick(x+w*.7,y+h*.72,x+w*.86,y+10,"#8a6a3a",2.4);
+    s+=FX.horse({x:x+w*.26,g:y+h*.94,sc:h/520,flip:true,color:"#2e2b33",star:true,gallop:true,rider:{hair:"short",hat:"none",face:"determined",outfit:"alexander",color:"#a8342c",prop:"lance"}});
+    s+=FX.chariot({x:x+w*.74,g:y+h*.96,sc:h/700,flip:true,royal:true,blades:false,gallop:true,color:"#6f5a43",passenger:{hair:"persian",hat:"tiara",face:"surprised",outfit:"darius",color:PURPLE,prop:"none",flip:true},driver:{hair:"persian",hat:"persiancap",face:"surprised",outfit:"persian",color:"#2a6a6a",prop:"none"}});
+    for(let xx=x;xx<x+w;xx+=6)s+=`<line x1="${xx}" y1="${y}" x2="${xx}" y2="${y+h}" stroke="#000" stroke-width=".6" opacity=".12"/>`;for(let yy=y;yy<y+h;yy+=6)s+=`<line x1="${x}" y1="${yy}" x2="${x+w}" y2="${yy}" stroke="#000" stroke-width=".6" opacity=".12"/>`;
+    s+=`</g>`;
+    if(caption)s+=`<text x="${x+w/2}" y="${y+h+30}" ${FONT} font-weight="900" font-size="13" text-anchor="middle" fill="#fff" stroke="${INK}" stroke-width="4" paint-order="stroke">${caption}</text>`;
+    return s}
+});
+
 // mud around a character's feet (depth 0..1 of the lower leg) and shiver marks; used per character
 const MUDAT=(x,g,sc,depth)=>{const w=74*sc,h=(10+62*depth)*sc,top=g-h,y2=g+10;let wave="";for(let i=0;i<=8;i++){const xx=x-w+i*w/4,yy=top+(i%2?-3:3)*sc;wave+=(i?` Q${(xx-w/8).toFixed(1)},${(yy+(i%2?6:-6)*sc).toFixed(1)} `:"M")+`${xx.toFixed(1)},${yy.toFixed(1)}`;if(xx>=x+w)break}
   const id="m"+(++uid),fade=c=>`<stop offset="0" stop-color="${c}" stop-opacity="0"/><stop offset=".22" stop-color="${c}"/><stop offset=".78" stop-color="${c}"/><stop offset="1" stop-color="${c}" stop-opacity="0"/>`;
