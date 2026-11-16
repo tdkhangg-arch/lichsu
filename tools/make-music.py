@@ -518,7 +518,9 @@ def main():
     name = "47-ronin" if "ronin" in ep_dir.name else ep_dir.name
     src, out = ep_dir / f"{name}.mp4", ep_dir / f"{name}-music.mp4"
     voice_wav = build / "voice.wav"
-    ff(["-i", str(src), "-vn", "-ac", "2", "-ar", str(SR), str(voice_wav)])
+    # aresample=async fills the tiny gaps between concatenated shot clips with silence;
+    # without it the extracted voice runs short and drifts ahead of the picture and the music.
+    ff(["-i", str(src), "-vn", "-af", "aresample=async=1:first_pts=0", "-ac", "2", "-ar", str(SR), str(voice_wav)])
     # Fixed gains only (no ducking, no automatic leveling), so the music stays at one
     # steady level whether or not someone is talking.
     music_gain = (lufs(voice_wav) - VOICE_TO_MUSIC_DB) - lufs(wav)

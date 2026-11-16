@@ -308,7 +308,7 @@ def main():
                 audio = build / "audio" / f"{s['id']}.mp3"
                 if not audio.exists():
                     sys.exit(f"Missing voice file {audio} (generate it first)")
-                lead = float(s.get("lead") or 0)   # seconds of silence before the line (dramatic pause)
+                lead = float(s.get("lead") or 0)   # seconds of silence before the line (dramatic pause); delay goes before loudnorm, which drops it otherwise
                 dur = lead + duration(audio) + TAIL + (END_HOLD if last else 0)
                 dur = round(dur, 2)
                 frames = round(dur * FPS)
@@ -316,7 +316,7 @@ def main():
                 print(f"render {s['id']} {dur:.1f}s {s['camera']}", flush=True)
                 vf = camera_filter(s["camera"], frames) + caption_filter(s.get("on_screen_text"))
                 run(["ffmpeg", "-y", "-loglevel", "error", "-loop", "1", "-i", str(ep_dir / s["image"]),
-                     "-i", str(audio), "-af", f"loudnorm=I=-16:TP=-1.5:LRA=11,aresample=44100,adelay={int(lead * 1000)}:all=1,apad,atrim=0:{dur}",
+                     "-i", str(audio), "-af", f"aresample=44100,adelay={int(lead * 1000)}:all=1,loudnorm=I=-16:TP=-1.5:LRA=11,aresample=44100,apad,atrim=0:{dur}",
                      "-vf", vf, "-frames:v", str(frames), "-t", str(dur),
                      "-c:v", "libx264", "-preset", "medium", "-crf", "20", "-pix_fmt", "yuv420p",
                      "-c:a", "aac", "-b:a", "192k", "-ar", "44100", "-ac", "2", str(seg)])

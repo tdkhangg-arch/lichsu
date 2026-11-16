@@ -46,7 +46,7 @@ Folder numbers are the order they were written; **upload order** is what viewers
 | **1st** | `episodes/02-okehazama` | Battle of Okehazama (1560), "2,000 vs 25,000" | Channel opener. Intro written as the first meeting (son playing a samurai game). Script and frames done; render with ElevenLabs |
 | **2nd** | `episodes/01-47-ronin` | The 47 Ronin (1701–1703) | Final video done (Gemini voice, father/son intro and outro, 3 Shorts). Owner wants it kept as is; do not re-voice with ElevenLabs |
 | 3rd | `episodes/03-agincourt` | Battle of Agincourt (1415), first European episode | Video done (10:21, ElevenLabs voice, medieval music). Intro refers back to Okehazama; ends teasing Joan of Arc |
-| 4th | `episodes/04-joan-of-arc` | Joan of Arc (1429–1431), continues Agincourt | Script (owner's rewrite) and frames done. Intro picks up the "farm girl" question; outro teases Alexander the Great at Gaugamela. Music stops for the darkest day. Not voiced yet (ElevenLabs, one take per shot) |
+| 4th | `episodes/04-joan-of-arc` | Joan of Arc (1429–1431), continues Agincourt | Script (owner's rewrite) and frames done. Intro picks up the "farm girl" question; outro teases Alexander the Great at Gaugamela. Music stops for the darkest day (2.5 s lead). Video done (12:11, ElevenLabs voice, one take per shot) |
 | 5th | (next) | Alexander the Great, Battle of Gaugamela (331 BC) | Teased at the end of Joan of Arc |
 | later | (ideas) | Honnō-ji Incident (1582) | Mentioned in the Okehazama ending |
 
@@ -62,6 +62,8 @@ Folder numbers are the order they were written; **upload order** is what viewers
    at pauses, to fit the free tier; falls back to other TTS models on blocks or quota.
 6. `python3 tools/make-music.py episodes/<NN-name>` → `<NN-name>-music.mp4` (final video).
    Music stays at one fixed level, 18 dB under the voice (owner asked for no ducking).
+   The voice is extracted with `aresample=async` so it cannot drift ahead of the picture (fixed Nov 2026;
+   episodes 2–4 were re-mixed).
    Final loudness −14 LUFS. Palette from `music_palette` in shots.js: default Japanese (koto,
    shakuhachi, taiko); `"medieval"` for European episodes (lute, recorder, hurdy-gurdy, war drum,
    tabor, choir, church bell, horn; D Dorian). `--music-only` writes `build/music-preview.mp3`
