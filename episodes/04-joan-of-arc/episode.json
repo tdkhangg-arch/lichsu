@@ -6,7 +6,7 @@
     "height": 1080
   },
   "fps": 30,
-  "total_duration": 706,
+  "total_duration": 856,
   "voiceover": {
     "words_per_minute": 145,
     "file": "voiceover.txt"
@@ -250,31 +250,10 @@
       "start": 98,
       "duration": 16,
       "image": "images/shot-05.png",
-      "background": "parchment",
+      "background": "map1429",
       "camera": "slow zoom in",
-      "characters": [
-        {
-          "name": "English knight",
-          "expression": "smug",
-          "pose": "stand"
-        },
-        {
-          "name": "Burgundian knight",
-          "expression": "smug",
-          "pose": "stand"
-        },
-        {
-          "name": "Charles",
-          "expression": "surprised",
-          "pose": "stand"
-        },
-        {
-          "name": "French knight",
-          "expression": "determined",
-          "pose": "stand"
-        }
-      ],
-      "on_screen_text": null,
+      "characters": [],
+      "on_screen_text": "France, 1429",
       "narration": "With their powerful allies, the Dukes of Burgundy, England controlled Paris and almost all of northern France. Down south sat Charles, the French king's son. People called him the Dauphin—the heir—because he still hadn't been crowned.",
       "word_count": 36
     },
@@ -285,8 +264,8 @@
       "start": 114,
       "duration": 16,
       "image": "images/shot-06.png",
-      "background": "cathedral",
-      "camera": "slow zoom in",
+      "background": "map1429",
+      "camera": "quick push in",
       "characters": [],
       "on_screen_text": "Reims",
       "narration": "By tradition, French kings had to be crowned in the cathedral of Reims. The problem? Reims was buried deep inside enemy territory. Without that crown, half the country didn't even see Charles as a real king.",
@@ -433,25 +412,9 @@
       "start": 215,
       "duration": 13,
       "image": "images/shot-13.png",
-      "background": "river",
-      "camera": "track left",
-      "characters": [
-        {
-          "name": "Soldier",
-          "expression": "determined",
-          "pose": "walk"
-        },
-        {
-          "name": "Joan",
-          "expression": "determined",
-          "pose": "walk"
-        },
-        {
-          "name": "Soldier",
-          "expression": "determined",
-          "pose": "walk"
-        }
-      ],
+      "background": "map1429",
+      "camera": "slow zoom in",
+      "characters": [],
       "on_screen_text": "11 days through enemy land",
       "narration": "In February 1429, Joan cut her hair short, put on men's riding clothes, and rode for eleven dangerous days straight through enemy-held territory with just a handful of guards.",
       "word_count": 29
@@ -492,10 +455,90 @@
       "word_count": 48
     },
     {
+      "id": "talk-chinon-1",
+      "speaker": "son",
+      "section": "The road to Chinon",
+      "start": 249,
+      "duration": 7,
+      "image": "images/talk-chinon-1.png",
+      "background": "hall",
+      "camera": "static",
+      "characters": [
+        {
+          "name": "Joan",
+          "expression": "gentle",
+          "pose": "bow"
+        },
+        {
+          "name": "Charles",
+          "expression": "surprised",
+          "pose": "stand"
+        },
+        {
+          "name": "Courtier",
+          "expression": "smug",
+          "pose": "stand"
+        },
+        {
+          "name": "Father",
+          "expression": "neutral",
+          "pose": "stand"
+        },
+        {
+          "name": "Son",
+          "expression": "surprised",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "Okay, how did she pick him out of a crowd? She'd never even seen him!",
+      "word_count": 15
+    },
+    {
+      "id": "talk-chinon-2",
+      "speaker": "father",
+      "section": "The road to Chinon",
+      "start": 256,
+      "duration": 19,
+      "image": "images/talk-chinon-2.png",
+      "background": "hall",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Joan",
+          "expression": "gentle",
+          "pose": "bow"
+        },
+        {
+          "name": "Charles",
+          "expression": "surprised",
+          "pose": "stand"
+        },
+        {
+          "name": "Courtier",
+          "expression": "smug",
+          "pose": "stand"
+        },
+        {
+          "name": "Father",
+          "expression": "gentle",
+          "pose": "stand"
+        },
+        {
+          "name": "Son",
+          "expression": "neutral",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "That's the legend, and historians aren't sure it happened exactly like that. But think about it. Everyone gossiped about the Dauphin, so a sharp girl could have heard what he looked like. Either way, the story spread. And stories were her secret weapon.",
+      "word_count": 43
+    },
+    {
       "id": "shot-15",
       "speaker": null,
       "section": "The road to Chinon",
-      "start": 249,
+      "start": 275,
       "duration": 17,
       "image": "images/shot-15.png",
       "background": "hall",
@@ -525,7 +568,7 @@
       "id": "shot-16",
       "speaker": null,
       "section": "The road to Chinon",
-      "start": 266,
+      "start": 292,
       "duration": 21,
       "image": "images/shot-16.png",
       "background": "hall",
@@ -545,7 +588,7 @@
       "id": "shot-17",
       "speaker": null,
       "section": "Orléans",
-      "start": 287,
+      "start": 313,
       "duration": 9,
       "image": "images/shot-17.png",
       "background": "siege",
@@ -575,7 +618,7 @@
       "id": "shot-18",
       "speaker": null,
       "section": "Orléans",
-      "start": 296,
+      "start": 322,
       "duration": 19,
       "image": "images/shot-18.png",
       "background": "siege",
@@ -605,7 +648,7 @@
       "id": "shot-19",
       "speaker": null,
       "section": "Orléans",
-      "start": 315,
+      "start": 341,
       "duration": 13,
       "image": "images/shot-19.png",
       "background": "siege",
@@ -630,7 +673,7 @@
       "id": "shot-20",
       "speaker": null,
       "section": "Orléans",
-      "start": 328,
+      "start": 354,
       "duration": 17,
       "image": "images/shot-20.png",
       "background": "siege",
@@ -657,10 +700,80 @@
       "word_count": 38
     },
     {
+      "id": "talk-orleans-1",
+      "speaker": "son",
+      "section": "Orléans",
+      "start": 371,
+      "duration": 7,
+      "image": "images/talk-orleans-1.png",
+      "background": "siege",
+      "camera": "static",
+      "characters": [
+        {
+          "name": "Joan",
+          "expression": "angry",
+          "pose": "stand"
+        },
+        {
+          "name": "French knight",
+          "expression": "angry",
+          "pose": "walk"
+        },
+        {
+          "name": "Father",
+          "expression": "neutral",
+          "pose": "stand"
+        },
+        {
+          "name": "Son",
+          "expression": "surprised",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "She pulled an arrow out of her own shoulder and went back in? That's insane.",
+      "word_count": 15
+    },
+    {
+      "id": "talk-orleans-2",
+      "speaker": "father",
+      "section": "Orléans",
+      "start": 378,
+      "duration": 13,
+      "image": "images/talk-orleans-2.png",
+      "background": "siege",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Joan",
+          "expression": "angry",
+          "pose": "stand"
+        },
+        {
+          "name": "French knight",
+          "expression": "angry",
+          "pose": "walk"
+        },
+        {
+          "name": "Father",
+          "expression": "determined",
+          "pose": "stand"
+        },
+        {
+          "name": "Son",
+          "expression": "neutral",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "That's exactly why it worked. The generals had plans. Joan had courage, and the soldiers could see it. Men will follow someone who takes the same risks they do.",
+      "word_count": 29
+    },
+    {
       "id": "shot-21",
       "speaker": null,
       "section": "Orléans",
-      "start": 345,
+      "start": 391,
       "duration": 12,
       "image": "images/shot-21.png",
       "background": "siege",
@@ -689,10 +802,24 @@
     {
       "id": "shot-22",
       "speaker": null,
-      "section": "The tide turns",
-      "start": 357,
-      "duration": 9,
+      "section": "Orléans",
+      "start": 403,
+      "duration": 18,
       "image": "images/shot-22.png",
+      "background": "parchment",
+      "camera": "slow zoom in",
+      "characters": [],
+      "on_screen_text": "Paris, 10 May 1429",
+      "narration": "News of Orléans spread fast. In Paris, a court clerk who had never even seen Joan doodled her in the margin of his register: long hair, a banner and a sword. It's the only picture of Joan made during her lifetime.",
+      "word_count": 41
+    },
+    {
+      "id": "shot-23",
+      "speaker": null,
+      "section": "The tide turns",
+      "start": 421,
+      "duration": 9,
+      "image": "images/shot-23.png",
       "background": "field",
       "camera": "slow pan right",
       "characters": [
@@ -712,12 +839,12 @@
       "word_count": 20
     },
     {
-      "id": "shot-23",
+      "id": "shot-24",
       "speaker": null,
       "section": "The tide turns",
-      "start": 366,
+      "start": 430,
       "duration": 17,
-      "image": "images/shot-23.png",
+      "image": "images/shot-24.png",
       "background": "field",
       "camera": "shake",
       "characters": [
@@ -742,12 +869,12 @@
       "word_count": 40
     },
     {
-      "id": "shot-24",
+      "id": "shot-25",
       "speaker": null,
       "section": "The tide turns",
-      "start": 383,
+      "start": 447,
       "duration": 13,
-      "image": "images/shot-24.png",
+      "image": "images/shot-25.png",
       "background": "parchment",
       "camera": "static",
       "characters": [
@@ -767,42 +894,96 @@
       "word_count": 30
     },
     {
-      "id": "shot-25",
-      "speaker": null,
-      "section": "The crown at Reims",
-      "start": 396,
-      "duration": 13,
-      "image": "images/shot-25.png",
-      "background": "river",
-      "camera": "track left",
+      "id": "talk-patay-1",
+      "speaker": "son",
+      "section": "The tide turns",
+      "start": 460,
+      "duration": 5,
+      "image": "images/talk-patay-1.png",
+      "background": "field",
+      "camera": "static",
       "characters": [
         {
-          "name": "Joan",
-          "expression": "determined",
-          "pose": "walk"
-        },
-        {
-          "name": "Charles",
-          "expression": "neutral",
-          "pose": "walk"
+          "name": "Archer",
+          "expression": "surprised",
+          "pose": "stand"
         },
         {
           "name": "French knight",
-          "expression": "determined",
+          "expression": "angry",
           "pose": "walk"
+        },
+        {
+          "name": "Father",
+          "expression": "neutral",
+          "pose": "stand"
+        },
+        {
+          "name": "Son",
+          "expression": "surprised",
+          "pose": "stand"
         }
       ],
       "on_screen_text": null,
-      "narration": "With the English on the run, Joan convinced Charles to attempt the unthinkable: march straight through enemy territory to Reims. Miraculously, city after city opened its gates without a fight.",
-      "word_count": 30
+      "narration": "Wait, so the longbow wasn't some unbeatable super weapon?",
+      "word_count": 9
+    },
+    {
+      "id": "talk-patay-2",
+      "speaker": "father",
+      "section": "The tide turns",
+      "start": 465,
+      "duration": 12,
+      "image": "images/talk-patay-2.png",
+      "background": "field",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Archer",
+          "expression": "surprised",
+          "pose": "stand"
+        },
+        {
+          "name": "French knight",
+          "expression": "angry",
+          "pose": "walk"
+        },
+        {
+          "name": "Father",
+          "expression": "smug",
+          "pose": "stand"
+        },
+        {
+          "name": "Son",
+          "expression": "neutral",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "No weapon is. At Agincourt, the archers had time, mud and woods on their side. At Patay, they had none of that. Same weapon, different situation, opposite result.",
+      "word_count": 28
     },
     {
       "id": "shot-26",
       "speaker": null,
       "section": "The crown at Reims",
-      "start": 409,
+      "start": 477,
       "duration": 13,
       "image": "images/shot-26.png",
+      "background": "map1429",
+      "camera": "slow zoom in",
+      "characters": [],
+      "on_screen_text": "The march to Reims, July 1429",
+      "narration": "With the English on the run, Joan convinced Charles to attempt the unthinkable: march straight through enemy territory to Reims. Miraculously, city after city opened its gates without a fight.",
+      "word_count": 30
+    },
+    {
+      "id": "shot-27",
+      "speaker": null,
+      "section": "The crown at Reims",
+      "start": 490,
+      "duration": 13,
+      "image": "images/shot-27.png",
       "background": "cathedral",
       "camera": "slow zoom in",
       "characters": [
@@ -822,12 +1003,12 @@
       "word_count": 29
     },
     {
-      "id": "shot-27",
+      "id": "shot-28",
       "speaker": null,
       "section": "The crown at Reims",
-      "start": 422,
+      "start": 503,
       "duration": 16,
-      "image": "images/shot-27.png",
+      "image": "images/shot-28.png",
       "background": "cathedral",
       "camera": "quick push in",
       "characters": [
@@ -842,12 +1023,82 @@
       "word_count": 36
     },
     {
-      "id": "shot-28",
+      "id": "talk-reims-1",
+      "speaker": "son",
+      "section": "The crown at Reims",
+      "start": 519,
+      "duration": 6,
+      "image": "images/talk-reims-1.png",
+      "background": "cathedral",
+      "camera": "static",
+      "characters": [
+        {
+          "name": "Charles",
+          "expression": "smug",
+          "pose": "stand"
+        },
+        {
+          "name": "Joan",
+          "expression": "gentle",
+          "pose": "stand"
+        },
+        {
+          "name": "Father",
+          "expression": "neutral",
+          "pose": "stand"
+        },
+        {
+          "name": "Son",
+          "expression": "neutral",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "Why was the coronation such a big deal? Charles was already the heir.",
+      "word_count": 13
+    },
+    {
+      "id": "talk-reims-2",
+      "speaker": "father",
+      "section": "The crown at Reims",
+      "start": 525,
+      "duration": 16,
+      "image": "images/talk-reims-2.png",
+      "background": "cathedral",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Charles",
+          "expression": "smug",
+          "pose": "stand"
+        },
+        {
+          "name": "Joan",
+          "expression": "gentle",
+          "pose": "stand"
+        },
+        {
+          "name": "Father",
+          "expression": "gentle",
+          "pose": "stand"
+        },
+        {
+          "name": "Son",
+          "expression": "neutral",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "In the Middle Ages, being crowned at Reims made a king real in people's eyes. After that day, fighting Charles meant fighting a king blessed by the Church. That one ceremony was worth more than a battle.",
+      "word_count": 37
+    },
+    {
+      "id": "shot-29",
       "speaker": null,
       "section": "Captured",
-      "start": 438,
+      "start": 541,
       "duration": 19,
-      "image": "images/shot-28.png",
+      "image": "images/shot-29.png",
       "background": "hall",
       "camera": "static",
       "characters": [
@@ -867,12 +1118,12 @@
       "word_count": 43
     },
     {
-      "id": "shot-29",
+      "id": "shot-30",
       "speaker": null,
       "section": "Captured",
-      "start": 457,
+      "start": 560,
       "duration": 11,
-      "image": "images/shot-29.png",
+      "image": "images/shot-30.png",
       "background": "field",
       "camera": "shake",
       "characters": [
@@ -897,12 +1148,12 @@
       "word_count": 25
     },
     {
-      "id": "shot-30",
+      "id": "shot-31",
       "speaker": null,
       "section": "Captured",
-      "start": 468,
+      "start": 571,
       "duration": 14,
-      "image": "images/shot-30.png",
+      "image": "images/shot-31.png",
       "background": "hall",
       "camera": "slow zoom in",
       "characters": [
@@ -927,12 +1178,72 @@
       "word_count": 33
     },
     {
-      "id": "shot-31",
+      "id": "talk-charles-1",
+      "speaker": "son",
+      "section": "Captured",
+      "start": 585,
+      "duration": 6,
+      "image": "images/talk-charles-1.png",
+      "background": "hall",
+      "camera": "static",
+      "characters": [
+        {
+          "name": "King",
+          "expression": "closed",
+          "pose": "stand"
+        },
+        {
+          "name": "Father",
+          "expression": "neutral",
+          "pose": "stand"
+        },
+        {
+          "name": "Son",
+          "expression": "angry",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "He didn't even try to save her? After everything she did for him?",
+      "word_count": 13
+    },
+    {
+      "id": "talk-charles-2",
+      "speaker": "father",
+      "section": "Captured",
+      "start": 591,
+      "duration": 18,
+      "image": "images/talk-charles-2.png",
+      "background": "hall",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "King",
+          "expression": "closed",
+          "pose": "stand"
+        },
+        {
+          "name": "Father",
+          "expression": "closed",
+          "pose": "stand"
+        },
+        {
+          "name": "Son",
+          "expression": "neutral",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "It's one of the ugliest parts of the story. Maybe he thought she'd become too popular. Maybe he didn't want to owe his crown to a peasant girl. Historians still argue about it, and none of the answers make him look good.",
+      "word_count": 42
+    },
+    {
+      "id": "shot-32",
       "speaker": null,
       "section": "The trial",
-      "start": 482,
+      "start": 609,
       "duration": 14,
-      "image": "images/shot-31.png",
+      "image": "images/shot-32.png",
       "background": "court",
       "camera": "slow zoom in",
       "characters": [
@@ -952,12 +1263,12 @@
       "word_count": 33
     },
     {
-      "id": "shot-32",
+      "id": "shot-33",
       "speaker": null,
       "section": "The trial",
-      "start": 496,
+      "start": 623,
       "duration": 11,
-      "image": "images/shot-32.png",
+      "image": "images/shot-33.png",
       "background": "court",
       "camera": "static",
       "characters": [
@@ -982,12 +1293,12 @@
       "word_count": 24
     },
     {
-      "id": "shot-33",
+      "id": "shot-34",
       "speaker": null,
       "section": "The trial",
-      "start": 507,
+      "start": 634,
       "duration": 27,
-      "image": "images/shot-33.png",
+      "image": "images/shot-34.png",
       "background": "court",
       "camera": "slow zoom in",
       "characters": [
@@ -1007,32 +1318,96 @@
       "word_count": 63
     },
     {
-      "id": "shot-34",
+      "id": "shot-35",
       "speaker": null,
       "section": "The trial",
-      "start": 534,
+      "start": 661,
       "duration": 17,
-      "image": "images/shot-34.png",
+      "image": "images/shot-35.png",
       "background": "court",
       "camera": "quick push in",
+      "characters": [],
+      "on_screen_text": null,
+      "narration": "Joan didn't blink. She replied: \"If I am not, may God put me there; and if I am, may God so keep me.\" The courtroom went dead silent. The scribes didn't even know what to write down.",
+      "word_count": 37
+    },
+    {
+      "id": "talk-trial-1",
+      "speaker": "son",
+      "section": "The trial",
+      "start": 678,
+      "duration": 6,
+      "image": "images/talk-trial-1.png",
+      "background": "court",
+      "camera": "static",
       "characters": [
         {
           "name": "Joan",
           "expression": "gentle",
           "pose": "stand"
+        },
+        {
+          "name": "Cauchon",
+          "expression": "surprised",
+          "pose": "stand"
+        },
+        {
+          "name": "Father",
+          "expression": "neutral",
+          "pose": "stand"
+        },
+        {
+          "name": "Son",
+          "expression": "surprised",
+          "pose": "stand"
         }
       ],
-      "on_screen_text": "\"If I am not, may God put me there\"",
-      "narration": "Joan didn't blink. She replied: \"If I am not, may God put me there; and if I am, may God so keep me.\" The courtroom went dead silent. The scribes didn't even know what to write down.",
-      "word_count": 37
+      "on_screen_text": null,
+      "narration": "Wait, that answer is genius. How did she come up with that?",
+      "word_count": 12
     },
     {
-      "id": "shot-35",
+      "id": "talk-trial-2",
+      "speaker": "father",
+      "section": "The trial",
+      "start": 684,
+      "duration": 17,
+      "image": "images/talk-trial-2.png",
+      "background": "court",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Joan",
+          "expression": "gentle",
+          "pose": "stand"
+        },
+        {
+          "name": "Cauchon",
+          "expression": "surprised",
+          "pose": "stand"
+        },
+        {
+          "name": "Father",
+          "expression": "gentle",
+          "pose": "stand"
+        },
+        {
+          "name": "Son",
+          "expression": "neutral",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "Nobody knows. No education, against dozens of trained scholars. Some people see it as proof of something divine. Others think she was just incredibly sharp. Either way, it's written right there in the trial record. Those are her actual words.",
+      "word_count": 40
+    },
+    {
+      "id": "shot-36",
       "speaker": null,
       "section": "The trial",
-      "start": 551,
+      "start": 701,
       "duration": 12,
-      "image": "images/shot-35.png",
+      "image": "images/shot-36.png",
       "background": "court",
       "camera": "static",
       "characters": [
@@ -1052,13 +1427,13 @@
       "word_count": 26
     },
     {
-      "id": "shot-36",
+      "id": "shot-37",
       "speaker": null,
       "lead": 2.5,
       "section": "The darkest day",
-      "start": 563,
+      "start": 713,
       "duration": 13,
-      "image": "images/shot-36.png",
+      "image": "images/shot-37.png",
       "background": "court",
       "camera": "slow zoom in",
       "characters": [
@@ -1073,12 +1448,12 @@
       "word_count": 20
     },
     {
-      "id": "shot-37",
+      "id": "shot-38",
       "speaker": null,
       "section": "The darkest day",
-      "start": 576,
+      "start": 726,
       "duration": 14,
-      "image": "images/shot-37.png",
+      "image": "images/shot-38.png",
       "background": "village",
       "camera": "slow pan right",
       "characters": [
@@ -1103,42 +1478,26 @@
       "word_count": 31
     },
     {
-      "id": "shot-38",
+      "id": "shot-39",
       "speaker": null,
       "section": "What came next",
-      "start": 590,
+      "start": 740,
       "duration": 19,
-      "image": "images/shot-38.png",
+      "image": "images/shot-39.png",
       "background": "parchment",
       "camera": "static",
-      "characters": [
-        {
-          "name": "French knight",
-          "expression": "determined",
-          "pose": "stand"
-        },
-        {
-          "name": "French knight",
-          "expression": "determined",
-          "pose": "stand"
-        },
-        {
-          "name": "English knight",
-          "expression": "closed",
-          "pose": "walk"
-        }
-      ],
-      "on_screen_text": "1453: the war ends",
+      "characters": [],
+      "on_screen_text": null,
       "narration": "Joan never lived to see the final victory, but she had lit a fire England couldn't put out. Over the next two decades, the French steadily drove the English out of almost every inch of France. By 1453, the Hundred Years' War was finally over.",
       "word_count": 45
     },
     {
-      "id": "shot-39",
+      "id": "shot-40",
       "speaker": null,
       "section": "What came next",
-      "start": 609,
+      "start": 759,
       "duration": 12,
-      "image": "images/shot-39.png",
+      "image": "images/shot-40.png",
       "background": "court",
       "camera": "slow zoom in",
       "characters": [
@@ -1153,12 +1512,12 @@
       "word_count": 26
     },
     {
-      "id": "shot-40",
+      "id": "shot-41",
       "speaker": null,
       "section": "What came next",
-      "start": 621,
+      "start": 771,
       "duration": 15,
-      "image": "images/shot-40.png",
+      "image": "images/shot-41.png",
       "background": "cathedral",
       "camera": "slow zoom in",
       "characters": [
@@ -1173,12 +1532,12 @@
       "word_count": 35
     },
     {
-      "id": "shot-41",
+      "id": "shot-42",
       "speaker": null,
       "section": "What came next",
-      "start": 636,
+      "start": 786,
       "duration": 6,
-      "image": "images/shot-41.png",
+      "image": "images/shot-42.png",
       "background": "hall",
       "camera": "quick push in",
       "characters": [
@@ -1196,7 +1555,7 @@
       "id": "outro-1",
       "speaker": "son",
       "section": "Outro",
-      "start": 642,
+      "start": 792,
       "duration": 7,
       "image": "images/outro-1.png",
       "background": "livingroom",
@@ -1221,7 +1580,7 @@
       "id": "outro-2",
       "speaker": "father",
       "section": "Outro",
-      "start": 649,
+      "start": 799,
       "duration": 16,
       "image": "images/outro-2.png",
       "background": "livingroom",
@@ -1246,7 +1605,7 @@
       "id": "outro-3",
       "speaker": "son",
       "section": "Outro",
-      "start": 665,
+      "start": 815,
       "duration": 7,
       "image": "images/outro-3.png",
       "background": "livingroom",
@@ -1271,7 +1630,7 @@
       "id": "outro-4",
       "speaker": "father",
       "section": "Outro",
-      "start": 672,
+      "start": 822,
       "duration": 21,
       "image": "images/outro-4.png",
       "background": "livingroom",
@@ -1296,7 +1655,7 @@
       "id": "outro-5",
       "speaker": "son",
       "section": "Outro",
-      "start": 693,
+      "start": 843,
       "duration": 5,
       "image": "images/outro-5.png",
       "background": "livingroom",
@@ -1321,7 +1680,7 @@
       "id": "outro-6",
       "speaker": "father",
       "section": "Outro",
-      "start": 698,
+      "start": 848,
       "duration": 8,
       "image": "images/outro-6.png",
       "background": "livingroom",

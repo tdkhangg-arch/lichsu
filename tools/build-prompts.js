@@ -31,6 +31,7 @@ const BACKGROUNDS = {
   parchment: "aged parchment paper with a faint old map of the English Channel coast, compass rose and border",
   cathedral: "interior of Reims Cathedral, gothic arches and columns, blue rose window with colored glass, golden altar, red carpet",
   court: "dim medieval stone courtroom in Rouen, barred window with a beam of light, long wooden judges' bench",
+  map1429: "old parchment map of France in 1429, the English and Burgundian north shaded red, the Dauphin's south shaded blue, cities marked",
   camp: "medieval French army camp at night, blue and white tents with gold pennants, campfire, stars and moon",
 };
 const OUTFITS = {

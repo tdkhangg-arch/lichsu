@@ -19,7 +19,8 @@ From episode 2 on, the father can mention the channel name in the outro.
   English archers look ragged and muddy, French knights shiny. Henry V has `scar: true` (Shrewsbury
   arrow, 1403). Scenes: `field`, `hall`, `siege`, `river`, `camp`, `parchment` (use it instead of
   `paper` for infographics). Effects: `shot.fx` (`stakes`, `arrowstorm`, `groundarrows`, `campfire`,
-  `splash`, `rays` for Joan's voices, `crowd` for army size, `label` for infographic captions) and per character `mud` (0..1), `shiver`, `rot` (-84 = fallen face down). Owner chose the original wide-shot style
+  `splash`, `rays` for Joan's voices, evidence visuals `route`/`pin` (on `map1429`, pass `dy: 16`),
+  `doc` (old document card: title, quote, seal, the clerk's sketch of Joan), `timeline`, `crowd` for army size, `label` for infographic captions) and per character `mud` (0..1), `shiver`, `rot` (-84 = fallen face down). Owner chose the original wide-shot style
   (not the close-up test in `episodes/03-agincourt/style-test-closeup.png`).
 - Narration voice: calm documentary narrator, light dry humor, serious at sad moments.
 - Framing (since episode 1 revision): a modern-day father tells the story to his 16-year-old
@@ -28,6 +29,10 @@ From episode 2 on, the father can mention the channel name in the outro.
   if he wants the next story and tells viewers to like and subscribe. Dialogue shots have
   `id` ("intro-1"…), `speaker` ("father" = Charon, also the narrator; "son" = Puck) and use
   the `livingroom` scene, `tshirt`/`hoodie` outfits, `glasses`, `book`, `phone`, `sit` pose.
+- From episode 4 on (owner's request): at the big dramatic moments father and son also step into the
+  historical scene (ids `talk-<place>-1/2`, standing in the foreground) and discuss it: the son asks,
+  the father gives a concrete opinion or analysis. Back up key facts with evidence visuals (maps,
+  routes, documents, timelines), all drawn by our code.
 - YouTube safety: no graphic violence or crude words. Avoid "kill", "murder", "head" (as a
   trophy), "blood", "suicide" described graphically. Use "fell", "struck down", "was gone".
 - Copyright: scripts are original; images are drawn by our code; music is synthesized by
