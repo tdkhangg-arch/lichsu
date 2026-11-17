@@ -473,6 +473,7 @@ const SCENES={
 // crowd fillers for the ancient armies: pikes = "up" | "down" (sarissas lowered for the charge)
 const CROWD_SIDES={
   mac:(r,pick,flip,banners,pikes)=>({hair:"short",hat:"macehelm",face:pick(["determined","determined","neutral","smug"]),outfit:"phalanx",color:pick(["#a8342c","#a8342c","#8a2a24"]),prop:pikes==="down"?"sarissa_down":"sarissa",pose:"stand",flip}),
+  tyr:(r,pick,flip)=>({hair:"persian",hat:"tyrianhelm",face:pick(["smug","smug","neutral","determined"]),outfit:"tyrian",color:TPURPLE,prop:pick(["pomspear","spear","none"]),pose:"stand",flip}),
   per:(r,pick,flip)=>{const imm=r()<.3;return {hair:"persian",hat:imm?"none":"persiancap",face:pick(["neutral","determined","closed","smug"]),outfit:imm?"immortal":"persian",color:pick(["#5a3a7a","#c98a2e","#2a6a6a","#8a3a2a","#6b4a7a"]),prop:"pomspear",pose:"stand",flip}}
 };
 
@@ -763,6 +764,116 @@ Object.assign(FX,{
     s+=`</g>`;
     if(caption)s+=`<text x="${x+w/2}" y="${y+h+30}" ${FONT} font-weight="900" font-size="13" text-anchor="middle" fill="#fff" stroke="${INK}" stroke-width="4" paint-order="stroke">${caption}</text>`;
     return s}
+});
+
+/* ---------- Siege of Tyre parts (special episode, 332 BC) ----------
+   Tyrians = Tyrian purple tunics with bronze scales and conical bronze helmets, curly beards.
+   Macedonians reuse the Gaugamela parts. Scenes: the sea crossing seen from the side (tyresea), the top
+   of Tyre's wall looking back at the mainland (tyrewall) and a top-down map (tyremap); the causeway
+   ("mole") grows with FX.mole({p}) / FX.causeway({p}). */
+const TPURPLE="#6a2a5a";
+Object.assign(HATS,{
+  tyrianhelm:{label:"Mũ đồng chóp nhọn (Tyre)",d:()=>P("M54,52 Q58,10 100,-30 Q142,10 146,52 Z",BRONZE,3.5)+`<path d="M70,40 Q76,8 98,-14" fill="none" stroke="#f2d48a" stroke-width="3.5" stroke-linecap="round"/>`+P("M44,54 Q100,42 156,54 L154,62 Q100,52 46,62Z",dk(BRONZE),2.6)+`<circle cx="100" cy="-30" r="6" fill="${BRONZE}" stroke="${INK}" stroke-width="2.4"/>`}
+});
+Object.assign(OUTFITS,{
+  tyrian:{label:"Lính Tyre (áo tím Tyre, giáp vảy đồng)",sleeve:()=>TPURPLE,sleeveFrac:.4,legs:()=>[{to:.9,col:"#4a3a2e",w:11}],
+    body:()=>{let s=P("M76,128 L124,128 L130,214 L70,214 Z",TPURPLE,3)+`<path d="M72,206 L128,206" stroke="#e2bd4f" stroke-width="4"/>`;
+      s+=P("M78,132 L122,132 L124,180 L76,180 Z",BRONZE,2.6);for(let y=138;y<178;y+=7)for(let x=80+(y%14?3:0);x<121;x+=7)s+=`<path d="M${x},${y} q3.5,5 7,0" fill="none" stroke="${dk(BRONZE)}" stroke-width="1.3"/>`;
+      return s+`<rect x="74" y="180" width="52" height="8" fill="#6b4a2e" stroke="${INK}" stroke-width="2"/>`},front:()=>""}
+});
+Object.assign(PROPS,{
+  grapes:{label:"Chùm nho",hands:[[84,176],[114,150]],over:true,
+    d:()=>{let s=ln(114,150,116,138,"#5b6b3a",2.4)+P("M116,140 q10,-8 16,-2 q-8,6 -16,2Z","#5b8a3a",1.6);for(const [x,y] of [[108,156],[118,156],[113,165],[103,165],[123,165],[108,174],[118,174],[113,183]])s+=`<circle cx="${x}" cy="${y}" r="5.2" fill="#6a3a8a" stroke="${INK}" stroke-width="1.6"/>`;return s}},
+  rock:{label:"Tảng đá",hands:[[80,150],[120,150]],over:true,
+    d:()=>P("M78,150 Q76,124 100,120 Q126,120 124,148 Q112,162 92,160 Q80,158 78,150Z","#9a958a",2.8)+`<path d="M90,132 l8,6 M106,128 l6,10" stroke="#7a756a" stroke-width="2"/>`}
+});
+const SEA=(y0,col="#4f8fb8")=>{let s=`<rect y="${y0}" width="480" height="${320-y0}" fill="${col}"/>`;for(let k=0;k<6;k++){const y=y0+12+k*22;for(let x=(k%2)*30;x<480;x+=60)s+=`<path d="M${x},${y} q8,-5 16,0 q8,5 16,0" fill="none" stroke="#fff" stroke-width="1.6" opacity=".35"/>`}return s};
+const TYRECITY=(x,yb,k=1)=>{let s=`<g transform="translate(${x} ${yb}) scale(${k})">`;
+  // houses and a temple roof behind the wall
+  for(const [hx,hw,hh] of [[10,30,24],[44,26,34],[74,34,20],[112,28,30],[144,30,22]])s+=`<rect x="${hx}" y="${-82-hh}" width="${hw}" height="${hh}" fill="#e3d2b0" ${st}/>`+`<rect x="${hx+6}" y="${-76-hh}" width="6" height="6" fill="#5b4a3a"/>`;
+  s+=P("M84,-112 L120,-112 L120,-90 L84,-90Z","#efe6cc",2.4)+P("M80,-112 L102,-126 L124,-112Z","#c9963e",2.4)+[88,96,104,112].map(cx=>ln(cx,-110,cx,-92,"#c9bd9e",2)).join("");
+  // the great wall standing in the sea
+  s+=`<rect x="0" y="-84" width="180" height="84" fill="#c9b48a" ${st}/>`;for(let mx=2;mx<180;mx+=14)s+=`<rect x="${mx}" y="-94" width="9" height="11" fill="#c9b48a" ${st}/>`;
+  for(let ry=-74;ry<0;ry+=12)for(let rx=(ry%24?0:10);rx<180;rx+=20)s+=`<rect x="${rx}" y="${ry}" width="20" height="12" fill="none" stroke="#a8946a" stroke-width="1"/>`;
+  for(const tx of [-6,84,170])s+=`<rect x="${tx}" y="-104" width="20" height="104" fill="#bfa97c" ${st}/>`+`<rect x="${tx+6}" y="-90" width="8" height="12" fill="#3a3640"/>`;
+  return s+`<rect x="-10" y="-4" width="200" height="8" fill="#3d7aa3" opacity=".5"/></g>`};
+Object.assign(SCENES,{
+  tyresea:{label:"Biển trước thành Tyre (nhìn ngang)",d:()=>{let s=`<defs><linearGradient id="tsky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9fd0ec"/><stop offset="1" stop-color="#d9eef7"/></linearGradient></defs><rect width="480" height="320" fill="url(#tsky)"/>`;
+    s+=`<circle cx="410" cy="64" r="22" fill="#f5d95a" ${st}/>`+cloud(60,70,130,"#fff")+cloud(250,52,100,"#fff");
+    s+=`<path d="M0,170 Q60,150 120,166 L130,206 L0,206Z" fill="#9fae86" ${st}/>`;
+    s+=SEA(196);
+    s+=TYRECITY(296,214,0.95);
+    s+=`<path d="M0,214 Q60,206 112,214 L124,232 Q80,250 0,252Z" fill="#d9bd85" ${st}/><path d="M0,252 L124,232 L130,320 L0,320Z" fill="#d9bd85"/>`;
+    return s}},
+  tyrewall:{label:"Trên tường thành Tyre",d:()=>{let s=`<rect width="480" height="320" fill="#a9d8f0"/>`+cloud(40,70,120,"#fff")+cloud(320,50,140,"#fff");
+    s+=`<path d="M0,150 Q90,126 190,142 Q300,124 400,140 Q450,134 480,142 L480,176 L0,176Z" fill="#8fa47a" ${st}/><path d="M0,166 L480,166 L480,182 L0,182Z" fill="#d9bd85"/>`;
+    for(const [x,y] of [[60,170],[110,172],[150,169],[200,171]])s+=`<path d="M${x},${y} l6,-8 l6,8Z" fill="#efe1bd" stroke="${INK}" stroke-width="1.2"/>`;
+    s+=SEA(178);
+    return s}},
+  tyremap:{label:"Bản đồ Tyre (nhìn từ trên)",d:()=>{let s=`<rect width="480" height="320" fill="#9ec3d6"/>`;
+    for(let k=0;k<8;k++){const y=50+k*32;for(let x=(k%2)*40;x<300;x+=80)s+=`<path d="M${x},${y} q10,-5 20,0 q10,5 20,0" fill="none" stroke="#fff" stroke-width="1.4" opacity=".35"/>`}
+    s+=`<path d="M300,30 Q290,90 310,140 Q296,200 306,250 Q300,290 310,320 L480,320 L480,30Z" fill="#e3cd9c" ${st}/>`;
+    s+=`<path d="M330,60 Q360,100 340,150 M350,190 Q380,230 360,290" fill="none" stroke="#c9ad7a" stroke-width="2" opacity=".7"/>`;
+    s+=`<path d="M156,128 Q170,112 196,114 Q222,118 226,140 Q228,166 206,180 Q178,188 160,172 Q146,154 156,128Z" fill="#e3cd9c" ${st}/>`;
+    for(let x=166;x<218;x+=9)for(let y=126;y<176;y+=9)if(((x-191)**2/700+(y-150)**2/500)<1)s+=`<rect x="${x}" y="${y}" width="6" height="6" fill="#c9b48a" stroke="#a8946a" stroke-width=".8"/>`;
+    s+=`<path d="M156,128 Q170,112 196,114 Q222,118 226,140 Q228,166 206,180 Q178,188 160,172 Q146,154 156,128Z" fill="none" stroke="#7a5a3a" stroke-width="3" stroke-dasharray="4 2"/>`;
+    s+=`<g transform="translate(440 64)"><path d="M0,-18 L5,0 L0,-4 L-5,0Z" fill="${INK}"/><text y="13" ${FONT} font-weight="900" font-size="10" text-anchor="middle" fill="${INK}">N</text></g>`;
+    s+=`<text x="191" y="104" ${FONT} font-weight="900" font-size="13" text-anchor="middle" fill="${INK}" stroke="#f4efe2" stroke-width="3" paint-order="stroke">TYRE</text><text x="400" y="200" ${FONT} font-weight="900" font-size="12" text-anchor="middle" fill="#7a5a3a" stroke="#f4efe2" stroke-width="3" paint-order="stroke">MAINLAND</text>`;
+    return s}}
+});
+Object.assign(FX,{
+  // causeway in the side view (tyresea): p = how far it reaches from the beach (0..1) toward the island wall
+  mole:({p=.5,wide=false})=>{const x0=112,x1=x0+p*(290-x0),top=wide?200:204;
+    let s=`<path d="M${x0},${top} L${x1},${top} L${x1+6},218 L${x0},230Z" fill="#b8a888" ${st}/>`;
+    for(let x=x0+6;x<x1-4;x+=11)s+=`<path d="M${x},${top+3} q4,-3 8,0 q-4,4 -8,0Z" fill="#9a958a"/>`;
+    for(let x=x0+14;x<x1;x+=18)s+=ln(x,top-6,x,top+10,"#7a5a3a",2.4);
+    s+=`<path d="M${x1},${top} L${x1+6},218" stroke="#fff" stroke-width="2" opacity=".6"/>`;return s},
+  // the causeway seen from the top of Tyre's wall (tyrewall): it starts at the far beach and grows toward the viewer
+  molefar:({p=.5,x=150})=>{const y0=180,y1=y0+p*120,w0=10,w1=10+p*70;
+    let s=`<path d="M${x-w0},${y0} L${x+w0},${y0} L${x+w1},${y1} L${x-w1},${y1}Z" fill="#b8a888" ${st}/>`;
+    for(let t=.15;t<1;t+=.2){const yy=y0+t*(y1-y0),ww=w0+t*(w1-w0);s+=ln(x-ww+3,yy,x+ww-3,yy,"#9a958a",1.6)}
+    return s+`<path d="M${x-w1},${y1} L${x+w1},${y1}" stroke="#fff" stroke-width="2" opacity=".7"/>`},
+  // the causeway on the top-down map (tyremap); now=true shows today's silted-up isthmus and the modern town
+  causeway:({p=1,now=false,label=""})=>{let s="";
+    if(now){s+=`<path d="M200,112 Q236,96 300,70 L306,250 Q240,200 206,182 Q232,150 226,130Z" fill="#e3cd9c"/>`;
+      s+=`<path d="M226,118 Q262,98 300,84 M226,172 Q264,196 304,228" fill="none" stroke="${INK}" stroke-width="2.5"/>`;
+      for(let x=170;x<300;x+=12)for(let y=110;y<220;y+=12){const inP=(x>226&&y>(118-(x-226)*.45)&&y<(172+(x-226)*.75))||((x-191)**2/900+(y-150)**2/650<1);if(inP)s+=`<rect x="${x}" y="${y}" width="9" height="9" fill="#f4efe2" stroke="#b8a888" stroke-width=".8"/>`}
+      s+=`<path d="M232,146 L302,146" stroke="#e2bd4f" stroke-width="3"/>`;}
+    const x1=302-p*(302-226);
+    s+=`<path d="M302,140 L${x1},140 L${x1},156 L302,156Z" fill="${now?"#d9bd85":"#b8a888"}" stroke="#a8342c" stroke-width="2.6" stroke-dasharray="${now?"5 3":"0"}"/>`;
+    if(label)s+=`<text x="${now?250:264}" y="${now?268:178}" ${FONT} font-weight="900" font-size="11" text-anchor="middle" fill="#a8342c" stroke="#f4efe2" stroke-width="3" paint-order="stroke">${label}</text>`;
+    return s},
+  // the parapet of Tyre's wall in front of the characters (front:true)
+  parapet:({y=246})=>{let s=`<rect x="0" y="${y}" width="480" height="${320-y}" fill="#c9b48a" ${st}/>`;for(let x=0;x<480;x+=60)s+=`<rect x="${x+8}" y="${y-26}" width="34" height="28" fill="#c9b48a" ${st}/>`;
+    for(let ry=y+12;ry<320;ry+=14)for(let rx=(ry%28?0:14);rx<480;rx+=28)s+=`<rect x="${rx}" y="${ry}" width="28" height="14" fill="none" stroke="#a8946a" stroke-width="1"/>`;return s},
+  // tall wooden siege tower covered with hides; burning=true sets it on fire
+  tower:({x=240,g=292,sc=.5,burning=false})=>{let s=`<g transform="translate(${x-60*sc} ${g}) scale(${sc})">`;
+    s+=P("M10,0 L18,-300 L102,-300 L110,0Z","#8a6a4a",3.5);for(let y=-40;y>-300;y-=40)s+=ln(14,y,106,y,"#5e4a36",3);
+    s+=P("M18,-300 L102,-300 L102,-260 L18,-260Z","#c9b48a",2.6)+[30,52,74,94].map(xx=>`<rect x="${xx-5}" y="-292" width="10" height="16" fill="#3a3640"/>`).join("");
+    for(let y=-250;y<-20;y+=60)s+=`<path d="M22,${y} Q60,${y+18} 98,${y} L98,${y+34} Q60,${y+48} 22,${y+34}Z" fill="#b8956a" stroke="${INK}" stroke-width="2"/>`;
+    for(const wx of [24,96])s+=`<circle cx="${wx}" cy="-6" r="14" fill="#7a5a3a" stroke="${INK}" stroke-width="3"/>`;
+    s+=`</g>`;if(burning)s+=FX.flames({x,y:g-120*sc,w:150*sc,h:220*sc,seed:x|0});return s},
+  // fire and smoke (seeded)
+  flames:({x=240,y=200,w=80,h=120,seed=3})=>{const r=rng(seed);let s="";
+    for(let i=0;i<5;i++)s+=`<circle cx="${(x-w/2+r()*w).toFixed(1)}" cy="${(y-h*.9-r()*h*.5).toFixed(1)}" r="${(w*.25+r()*w*.25).toFixed(1)}" fill="#4a4448" opacity=".45"/>`;
+    for(let i=0;i<7;i++){const fx=x-w/2+r()*w,fh=h*(.4+r()*.6),fw=w*(.18+r()*.14);
+      s+=`<path d="M${(fx-fw).toFixed(1)},${y+h*.3} Q${(fx-fw*.6).toFixed(1)},${(y-fh*.5).toFixed(1)} ${fx.toFixed(1)},${(y-fh).toFixed(1)} Q${(fx+fw*.6).toFixed(1)},${(y-fh*.5).toFixed(1)} ${(fx+fw).toFixed(1)},${y+h*.3}Z" fill="#f29a3a" stroke="${INK}" stroke-width="1.6" opacity=".95"/>`+
+        `<path d="M${(fx-fw*.5).toFixed(1)},${y+h*.3} Q${fx.toFixed(1)},${(y-fh*.45).toFixed(1)} ${(fx+fw*.5).toFixed(1)},${y+h*.3}Z" fill="#f5d95a"/>`}
+    return s},
+  // ancient warship (side view): ram at the bow, oars, square sail; fire=true makes it the Tyrian fire ship
+  ship:({x=240,y=230,sc=.5,flip=false,color="#7a4a2a",sail="#efe1bd",fire=false,ram=true,crew=null})=>{let s="";
+    s+=P("M-120,-10 L120,-10 Q110,26 70,30 L-90,30 Q-118,20 -120,-10Z",color,3.5)+`<path d="M-114,0 L116,0" stroke="${lt(color)}" stroke-width="3"/>`;
+    if(ram)s+=P("M-120,14 L-150,22 L-118,28Z",BRONZE,2.4);
+    s+=P("M110,-10 Q132,-34 118,-48 Q124,-28 100,-10Z",color,2.6)+`<circle cx="-96" cy="6" r="6" fill="#fff" stroke="${INK}" stroke-width="2"/><circle cx="-95" cy="6" r="2.6" fill="${INK}"/>`;
+    for(let ox=-80;ox<100;ox+=20)s+=ln(ox,14,ox-12,46,"#5e4a36",2.4);
+    if(!fire){s+=thick(0,-10,0,-150,"#7a4a2a",3)+P("M-46,-140 L46,-140 L52,-56 L-52,-56Z",sail,3)+ln(-50,-140,50,-140,"#7a4a2a",4);}
+    else{s+=thick(-20,-10,-20,-90,"#5e4a36",3)+thick(30,-10,30,-90,"#5e4a36",3);for(const [bx,by] of [[-60,-20],[-20,-24],[20,-20],[60,-24]])s+=P(`M${bx-18},${by+12} L${bx+18},${by+12} L${bx+14},${by-6} L${bx-14},${by-6}Z`,"#4a3a2e",2);}
+    if(crew)s+=crew.map((c,i)=>`<g transform="translate(${-40+i*40} -140) scale(.5)">${character({...c,flip:false})}</g>`).join("");
+    s=`<g transform="translate(${x} ${y}) scale(${flip?-sc:sc} ${sc})">${s}</g>`;
+    if(fire)s+=FX.flames({x,y:y-70*sc,w:170*sc,h:170*sc,seed:7});
+    return s},
+  // red-hot sand pouring down from the wall
+  hotsand:({x=240,y0=40,y1=260,w=60,n=80,seed=5})=>{const r=rng(seed);let s="";for(let i=0;i<n;i++){const t=r();s+=`<circle cx="${(x-w/2+r()*w+t*20).toFixed(1)}" cy="${(y0+t*(y1-y0)).toFixed(1)}" r="${(1.2+r()*2).toFixed(1)}" fill="${r()<.5?"#f29a3a":"#e8603a"}"/>`}return s}
 });
 
 // mud around a character's feet (depth 0..1 of the lower leg) and shiver marks; used per character
