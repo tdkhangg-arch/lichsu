@@ -6,7 +6,7 @@
     "height": 1080
   },
   "fps": 30,
-  "total_duration": 478,
+  "total_duration": 712,
   "voiceover": {
     "words_per_minute": 145,
     "file": "voiceover.txt"
@@ -14,6 +14,7 @@
   "music_moods": {
     "Intro": "light",
     "The island city": "tense",
+    "Why Tyre mattered": "mystery",
     "A road across the sea": "mystery",
     "The engineers' war": "court",
     "Fire and storm": "raid",
@@ -272,10 +273,108 @@
       "word_count": 24
     },
     {
+      "id": "why-1",
+      "speaker": null,
+      "section": "Why Tyre mattered",
+      "start": 120,
+      "duration": 14,
+      "image": "images/why-1.png",
+      "background": "mapalex",
+      "camera": "slow zoom in",
+      "characters": [],
+      "on_screen_text": "The Persian navy",
+      "narration": "Here's what most people miss. Alexander could have simply marched past Tyre. But the Persian king still had a powerful navy, and most of its ships came from Phoenician cities like Tyre.",
+      "word_count": 32
+    },
+    {
+      "id": "why-2",
+      "speaker": null,
+      "section": "Why Tyre mattered",
+      "start": 134,
+      "duration": 18,
+      "image": "images/why-2.png",
+      "background": "mapalex",
+      "camera": "static",
+      "characters": [],
+      "on_screen_text": "The danger behind him",
+      "narration": "If Alexander marched on to Egypt with Tyre still standing, that fleet could sail around behind him, raid Greece, and stir up revolt back home. His logic was simple: take the ports, and the Persian navy has nowhere left to go.",
+      "word_count": 41
+    },
+    {
+      "id": "talk-strategy-1",
+      "speaker": "son",
+      "section": "Why Tyre mattered",
+      "start": 152,
+      "duration": 6,
+      "image": "images/talk-strategy-1.png",
+      "background": "tyresea",
+      "camera": "static",
+      "characters": [
+        {
+          "name": "Father",
+          "expression": "neutral",
+          "pose": "stand"
+        },
+        {
+          "name": "Son",
+          "expression": "surprised",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "Wait, so it wasn't just his ego? He actually had a reason?",
+      "word_count": 12
+    },
+    {
+      "id": "talk-strategy-2",
+      "speaker": "father",
+      "section": "Why Tyre mattered",
+      "start": 158,
+      "duration": 18,
+      "image": "images/talk-strategy-2.png",
+      "background": "tyresea",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Father",
+          "expression": "determined",
+          "pose": "stand"
+        },
+        {
+          "name": "Son",
+          "expression": "neutral",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "A very good one. Other generals looked at Tyre and saw an island. Alexander saw the key to the whole sea. Win the coast, and you beat a navy without ever fighting it on the water. He was thinking two moves ahead.",
+      "word_count": 42
+    },
+    {
+      "id": "dream",
+      "speaker": null,
+      "section": "Why Tyre mattered",
+      "start": 176,
+      "duration": 24,
+      "image": "images/dream.png",
+      "background": "tent",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Alexander",
+          "expression": "closed",
+          "pose": "sit"
+        }
+      ],
+      "on_screen_text": "Plutarch, Life of Alexander",
+      "narration": "There was faith involved too. Alexander claimed descent from the hero Heracles, whom the Tyrians worshipped as their god Melqart. One night, he dreamed that Heracles reached out from the walls of Tyre and took his hand. His seer said it meant the city would fall, but only after great labor. He was right on both counts.",
+      "word_count": 57
+    },
+    {
       "id": "shot-06",
       "speaker": null,
       "section": "A road across the sea",
-      "start": 120,
+      "start": 200,
       "duration": 9,
       "image": "images/shot-06.png",
       "background": "tyresea",
@@ -300,7 +399,7 @@
       "id": "shot-07",
       "speaker": null,
       "section": "A road across the sea",
-      "start": 129,
+      "start": 209,
       "duration": 13,
       "image": "images/shot-07.png",
       "background": "tyresea",
@@ -325,7 +424,7 @@
       "id": "talk-beach-1",
       "speaker": "son",
       "section": "A road across the sea",
-      "start": 142,
+      "start": 222,
       "duration": 8,
       "image": "images/talk-beach-1.png",
       "background": "tyresea",
@@ -350,7 +449,7 @@
       "id": "talk-beach-2",
       "speaker": "father",
       "section": "A road across the sea",
-      "start": 150,
+      "start": 230,
       "duration": 12,
       "image": "images/talk-beach-2.png",
       "background": "tyresea",
@@ -374,8 +473,15 @@
     {
       "id": "shot-08",
       "speaker": null,
+      "sfx": [
+        {
+          "type": "hammer",
+          "every": 0.55,
+          "gain": 0.8
+        }
+      ],
       "section": "The engineers' war",
-      "start": 162,
+      "start": 242,
       "duration": 17,
       "image": "images/shot-08.png",
       "background": "tyresea",
@@ -397,10 +503,42 @@
       "word_count": 38
     },
     {
+      "id": "diades",
+      "speaker": null,
+      "sfx": [
+        {
+          "type": "hammer",
+          "every": 0.7,
+          "gain": 0.5
+        }
+      ],
+      "section": "The engineers' war",
+      "start": 259,
+      "duration": 22,
+      "image": "images/diades.png",
+      "background": "tyresea",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Diades",
+          "expression": "determined",
+          "pose": "stand"
+        },
+        {
+          "name": "Alexander",
+          "expression": "smug",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": "Diades, chief engineer",
+      "narration": "He put the right man in charge: Diades of Thessaly, his chief siege engineer and one of the best in the Greek world. And Alexander didn't watch from a tent. Ancient writers say he was on the site again and again, explaining the plan and rewarding the men who worked hardest.",
+      "word_count": 51
+    },
+    {
       "id": "shot-09",
       "speaker": null,
       "section": "The engineers' war",
-      "start": 179,
+      "start": 281,
       "duration": 11,
       "image": "images/shot-09.png",
       "background": "tyresea",
@@ -414,7 +552,7 @@
       "id": "shot-10",
       "speaker": null,
       "section": "The engineers' war",
-      "start": 190,
+      "start": 292,
       "duration": 10,
       "image": "images/shot-10.png",
       "background": "tyrewall",
@@ -439,7 +577,7 @@
       "id": "shot-11",
       "speaker": null,
       "section": "The engineers' war",
-      "start": 200,
+      "start": 302,
       "duration": 15,
       "image": "images/shot-11.png",
       "background": "tyresea",
@@ -452,8 +590,15 @@
     {
       "id": "shot-12",
       "speaker": null,
+      "sfx": [
+        {
+          "type": "fire",
+          "at": 0.45,
+          "gain": 0.7
+        }
+      ],
       "section": "Fire and storm",
-      "start": 215,
+      "start": 317,
       "duration": 16,
       "image": "images/shot-12.png",
       "background": "tyresea",
@@ -466,8 +611,19 @@
     {
       "id": "shot-13",
       "speaker": null,
+      "sfx": [
+        {
+          "type": "boom",
+          "at": 0
+        },
+        {
+          "type": "fire",
+          "at": 0.1,
+          "gain": 0.8
+        }
+      ],
       "section": "Fire and storm",
-      "start": 231,
+      "start": 333,
       "duration": 13,
       "image": "images/shot-13.png",
       "background": "tyresea",
@@ -480,8 +636,19 @@
     {
       "id": "shot-14",
       "speaker": null,
+      "sfx": [
+        {
+          "type": "thunder",
+          "at": 0.05
+        },
+        {
+          "type": "thunder",
+          "at": 0.6,
+          "gain": 0.7
+        }
+      ],
       "section": "Fire and storm",
-      "start": 244,
+      "start": 346,
       "duration": 9,
       "image": "images/shot-14.png",
       "background": "tyresea",
@@ -495,7 +662,7 @@
       "id": "shot-15",
       "speaker": null,
       "section": "Start again, bigger",
-      "start": 253,
+      "start": 355,
       "duration": 10,
       "image": "images/shot-15.png",
       "background": "tyresea",
@@ -515,7 +682,7 @@
       "id": "shot-16",
       "speaker": null,
       "section": "Start again, bigger",
-      "start": 263,
+      "start": 365,
       "duration": 10,
       "image": "images/shot-16.png",
       "background": "tyresea",
@@ -532,10 +699,24 @@
       "word_count": 23
     },
     {
+      "id": "lebanon",
+      "speaker": null,
+      "section": "Start again, bigger",
+      "start": 375,
+      "duration": 17,
+      "image": "images/lebanon.png",
+      "background": "valley",
+      "camera": "slow pan right",
+      "characters": [],
+      "on_screen_text": "Lebanon mountains",
+      "narration": "And he didn't sit still while he waited. Hill tribes in the Lebanon mountains kept attacking his timber cutters, so Alexander took a small force up into the mountains himself, dealt with them, and was back in about ten days.",
+      "word_count": 40
+    },
+    {
       "id": "shot-17",
       "speaker": null,
       "section": "Start again, bigger",
-      "start": 273,
+      "start": 392,
       "duration": 13,
       "image": "images/shot-17.png",
       "background": "tyresea",
@@ -549,7 +730,7 @@
       "id": "talk-ships-1",
       "speaker": "son",
       "section": "Start again, bigger",
-      "start": 286,
+      "start": 405,
       "duration": 5,
       "image": "images/talk-ships-1.png",
       "background": "tyresea",
@@ -574,7 +755,7 @@
       "id": "talk-ships-2",
       "speaker": "father",
       "section": "Start again, bigger",
-      "start": 291,
+      "start": 410,
       "duration": 15,
       "image": "images/talk-ships-2.png",
       "background": "tyresea",
@@ -599,7 +780,7 @@
       "id": "shot-18",
       "speaker": null,
       "section": "Start again, bigger",
-      "start": 306,
+      "start": 425,
       "duration": 16,
       "image": "images/shot-18.png",
       "background": "tyresea",
@@ -624,7 +805,7 @@
       "id": "shot-19",
       "speaker": null,
       "section": "Start again, bigger",
-      "start": 322,
+      "start": 441,
       "duration": 11,
       "image": "images/shot-19.png",
       "background": "tyresea",
@@ -635,10 +816,102 @@
       "word_count": 24
     },
     {
+      "id": "cranes",
+      "speaker": null,
+      "section": "Start again, bigger",
+      "start": 452,
+      "duration": 23,
+      "image": "images/cranes.png",
+      "background": "tyresea",
+      "camera": "slow zoom in",
+      "characters": [],
+      "on_screen_text": "Cranes on ships",
+      "narration": "The Tyrians had dumped huge boulders into the water at the foot of their walls, so no ship could get close. Alexander's answer: ships fitted with cranes that hauled the boulders out, one by one. Then he lashed ships together in pairs to carry battering rams, turning the sea itself into a siege platform.",
+      "word_count": 54
+    },
+    {
+      "id": "talk-boulders-1",
+      "speaker": "son",
+      "section": "Start again, bigger",
+      "start": 475,
+      "duration": 5,
+      "image": "images/talk-boulders-1.png",
+      "background": "tyresea",
+      "camera": "static",
+      "characters": [
+        {
+          "name": "Father",
+          "expression": "neutral",
+          "pose": "stand"
+        },
+        {
+          "name": "Son",
+          "expression": "surprised",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "Every time they blocked him, he just invented something new!",
+      "word_count": 10
+    },
+    {
+      "id": "talk-boulders-2",
+      "speaker": "father",
+      "section": "Start again, bigger",
+      "start": 480,
+      "duration": 12,
+      "image": "images/talk-boulders-2.png",
+      "background": "tyresea",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Father",
+          "expression": "smug",
+          "pose": "stand"
+        },
+        {
+          "name": "Son",
+          "expression": "neutral",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "That's the genius part, for me. Plenty of commanders are brave. Alexander was brave and creative, and he decided fast. He never let a problem sit for long.",
+      "word_count": 28
+    },
+    {
+      "id": "sortie",
+      "speaker": null,
+      "section": "Start again, bigger",
+      "start": 492,
+      "duration": 22,
+      "image": "images/sortie.png",
+      "background": "tyresea",
+      "camera": "slow pan left",
+      "characters": [],
+      "on_screen_text": "The midday breakout",
+      "narration": "The Tyrians tried one last surprise. At midday, while Alexander's sailors were resting, their ships slipped out of the harbor and attacked. Alexander saw it, grabbed every ship that was ready, and sailed straight around the island to cut them off. The breakout was crushed almost as soon as it began.",
+      "word_count": 51
+    },
+    {
       "id": "shot-20",
       "speaker": null,
+      "sfx": [
+        {
+          "type": "hammer",
+          "at": 0.6,
+          "every": 0.45,
+          "until": 0.8,
+          "gain": 0.9
+        },
+        {
+          "type": "boom",
+          "at": 0.8,
+          "gain": 0.6
+        }
+      ],
       "section": "The fall of Tyre",
-      "start": 333,
+      "start": 514,
       "duration": 14,
       "image": "images/shot-20.png",
       "background": "tyresea",
@@ -649,10 +922,24 @@
       "word_count": 32
     },
     {
+      "id": "assault",
+      "speaker": null,
+      "section": "The fall of Tyre",
+      "start": 528,
+      "duration": 15,
+      "image": "images/assault.png",
+      "background": "tyremap",
+      "camera": "slow zoom in",
+      "characters": [],
+      "on_screen_text": "Attack everywhere at once",
+      "narration": "Alexander's final plan was simple and relentless: hit everywhere at once. His ships attacked all around the island, so the defenders couldn't rush to one spot, while his fleets broke into both of Tyre's harbors.",
+      "word_count": 35
+    },
+    {
       "id": "shot-21",
       "speaker": null,
       "section": "The fall of Tyre",
-      "start": 347,
+      "start": 543,
       "duration": 9,
       "image": "images/shot-21.png",
       "background": "tyrewall",
@@ -682,7 +969,7 @@
       "id": "shot-22",
       "speaker": null,
       "section": "The fall of Tyre",
-      "start": 356,
+      "start": 552,
       "duration": 15,
       "image": "images/shot-22.png",
       "background": "parchment",
@@ -693,10 +980,40 @@
       "word_count": 32
     },
     {
+      "id": "temple",
+      "speaker": null,
+      "section": "The fall of Tyre",
+      "start": 567,
+      "duration": 16,
+      "image": "images/temple.png",
+      "background": "temple",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Alexander",
+          "expression": "closed",
+          "pose": "stand"
+        },
+        {
+          "name": "King of Tyre",
+          "expression": "surprised",
+          "pose": "stand"
+        },
+        {
+          "name": "Tyrian",
+          "expression": "neutral",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": "Temple of Heracles",
+      "narration": "Afterwards, Alexander finally made his sacrifice at the temple of Heracles, the very thing the Tyrians had refused him seven months earlier. Those who had taken shelter inside the temple, including the king of Tyre, were spared.",
+      "word_count": 37
+    },
+    {
       "id": "shot-23",
       "speaker": null,
       "section": "A new map",
-      "start": 371,
+      "start": 583,
       "duration": 5,
       "image": "images/shot-23.png",
       "background": "tyremap",
@@ -709,8 +1026,14 @@
     {
       "id": "shot-24",
       "speaker": null,
+      "sfx": [
+        {
+          "type": "whoosh",
+          "at": 0
+        }
+      ],
       "section": "A new map",
-      "start": 376,
+      "start": 588,
       "duration": 20,
       "image": "images/shot-24.png",
       "background": "tyremap",
@@ -724,7 +1047,7 @@
       "id": "shot-25",
       "speaker": null,
       "section": "A new map",
-      "start": 396,
+      "start": 608,
       "duration": 7,
       "image": "images/shot-25.png",
       "background": "tyresea",
@@ -741,10 +1064,60 @@
       "word_count": 14
     },
     {
+      "id": "talk-lesson-1",
+      "speaker": "son",
+      "section": "A new map",
+      "start": 615,
+      "duration": 4,
+      "image": "images/talk-lesson-1.png",
+      "background": "tyresea",
+      "camera": "static",
+      "characters": [
+        {
+          "name": "Father",
+          "expression": "neutral",
+          "pose": "stand"
+        },
+        {
+          "name": "Son",
+          "expression": "determined",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "Okay, so what actually made him that good?",
+      "word_count": 8
+    },
+    {
+      "id": "talk-lesson-2",
+      "speaker": "father",
+      "section": "A new map",
+      "start": 619,
+      "duration": 18,
+      "image": "images/talk-lesson-2.png",
+      "background": "tyresea",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Father",
+          "expression": "smug",
+          "pose": "stand"
+        },
+        {
+          "name": "Son",
+          "expression": "neutral",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "Three things. He saw the big picture: why Tyre mattered when others saw just a stubborn island. He answered every setback with a new idea. And when a chance appeared, he took it instantly. Vision, imagination and speed, all in one person.",
+      "word_count": 42
+    },
+    {
       "id": "outro-1",
       "speaker": "son",
       "section": "Outro",
-      "start": 403,
+      "start": 637,
       "duration": 8,
       "image": "images/outro-1.png",
       "background": "livingroom",
@@ -769,7 +1142,7 @@
       "id": "outro-2",
       "speaker": "father",
       "section": "Outro",
-      "start": 411,
+      "start": 645,
       "duration": 9,
       "image": "images/outro-2.png",
       "background": "livingroom",
@@ -794,7 +1167,7 @@
       "id": "outro-3",
       "speaker": "son",
       "section": "Outro",
-      "start": 420,
+      "start": 654,
       "duration": 3,
       "image": "images/outro-3.png",
       "background": "livingroom",
@@ -819,7 +1192,7 @@
       "id": "outro-4",
       "speaker": "father",
       "section": "Outro",
-      "start": 423,
+      "start": 657,
       "duration": 12,
       "image": "images/outro-4.png",
       "background": "livingroom",
@@ -844,7 +1217,7 @@
       "id": "outro-5",
       "speaker": "son",
       "section": "Outro",
-      "start": 435,
+      "start": 669,
       "duration": 8,
       "image": "images/outro-5.png",
       "background": "livingroom",
@@ -869,7 +1242,7 @@
       "id": "outro-6",
       "speaker": "father",
       "section": "Outro",
-      "start": 443,
+      "start": 677,
       "duration": 18,
       "image": "images/outro-6.png",
       "background": "livingroom",
@@ -894,7 +1267,7 @@
       "id": "outro-7",
       "speaker": "son",
       "section": "Outro",
-      "start": 461,
+      "start": 695,
       "duration": 7,
       "image": "images/outro-7.png",
       "background": "livingroom",
@@ -919,7 +1292,7 @@
       "id": "outro-8",
       "speaker": "father",
       "section": "Outro",
-      "start": 468,
+      "start": 702,
       "duration": 10,
       "image": "images/outro-8.png",
       "background": "livingroom",
