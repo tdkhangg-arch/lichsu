@@ -4,3 +4,4 @@ episodes/*/episode.draft-timed.json
 __pycache__/
 episodes/*/*.mp4
 episodes/*/episode.timed.json
+node_modules/

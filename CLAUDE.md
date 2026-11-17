@@ -76,6 +76,16 @@ Folder numbers are the order they were written; **upload order** is what viewers
 
 Rendered videos and `build/` are git-ignored; send finished videos to the owner as files.
 
+## Animation toolkit (optional, installed Nov 2026 at the owner's request)
+- Agent skills in `.claude/skills/`: official Remotion skills (`remotion-*`, from remotion-dev/skills) and
+  GSAP skills (`gsap-*`, from greensock/gsap-skills, MIT).
+- npm libraries in `tools/motion/` (own package.json; run `npm ci --prefix tools/motion` in a fresh container):
+  SVGO, Satori (SVG); GSAP, Anime.js, Motion, dotLottie (animation); Remotion, Motion Canvas (video);
+  Three.js, React Three Fiber, Drei, Rapier, Postprocessing (3D). The main pipeline (build-episode,
+  make-video, make-music) does not depend on them. Remotion is free for individuals and companies of up
+  to 3 people; larger teams need a company license.
+- Keep the channel style: characters and scenes still come from `index.html`; these tools only animate them.
+
 ## Environment notes
 - Voice engines:
   - **ElevenLabs connector (preferred from episode 2; owner has a paid plan).** Run in a session on
