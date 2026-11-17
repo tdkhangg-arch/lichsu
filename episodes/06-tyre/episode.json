@@ -485,7 +485,7 @@
       "duration": 17,
       "image": "images/shot-08.png",
       "background": "tyresea",
-      "camera": "slow pan right",
+      "camera": "static",
       "characters": [
         {
           "name": "Worker",
@@ -809,7 +809,7 @@
       "duration": 11,
       "image": "images/shot-19.png",
       "background": "tyresea",
-      "camera": "slow pan right",
+      "camera": "static",
       "characters": [],
       "on_screen_text": null,
       "narration": "Tyrian divers swam out and cut the anchor ropes of Alexander's ships, so he switched to iron chains. Every trick only slowed him down.",
@@ -823,7 +823,7 @@
       "duration": 23,
       "image": "images/cranes.png",
       "background": "tyresea",
-      "camera": "slow zoom in",
+      "camera": "static",
       "characters": [],
       "on_screen_text": "Cranes on ships",
       "narration": "The Tyrians had dumped huge boulders into the water at the foot of their walls, so no ship could get close. Alexander's answer: ships fitted with cranes that hauled the boulders out, one by one. Then he lashed ships together in pairs to carry battering rams, turning the sea itself into a siege platform.",

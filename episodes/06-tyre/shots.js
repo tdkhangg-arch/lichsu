@@ -176,7 +176,7 @@ module.exports = {
     // The engineers' war
     { sfx: [{ type: "hammer", every: 0.55, gain: 0.8 }],
       anim: (t, sec) => t > 0.45 ? { fx: [{ type: "blueprint", mode: "piles", p: ease(seg(t, 0.47, 0.95)), title: "How the causeway was built" }], characters: [] } : ({ fx: [{ type: "mole", p: 0.12 + 0.13 * t }, workers(116, 140 + 30 * t, { perRow: 3 }), { type: "splash", x: 132 + 28 * t, y: 214, k: 0.5 + 0.3 * Math.abs(Math.sin(sec * 2)) }], characters: [ch("Worker", { ...C.worker, flip: true }, 20 + 50 * t, { scale: 0.48, ground: 300 }), ch("Worker", { ...C.worker, flip: true, face: "neutral" }, 70 + 45 * t, { scale: 0.46, ground: 296 })] }),
-      section: "The engineers' war", background: "tyresea", camera: "slow pan right", text: "Building the causeway",
+      section: "The engineers' war", background: "tyresea", camera: "static", text: "Building the causeway",
       fx: [{ type: "mole", p: 0.2 }, workers(116, 150, { perRow: 3 })],
       characters: [ch("Worker", { ...C.worker, flip: true }, 40, { scale: 0.48, ground: 300 }), ch("Worker", { ...C.worker, flip: true, face: "neutral" }, 95, { scale: 0.46, ground: 296 })],
       note: "Soldiers carry stones down the beach and dump them into the sea; the causeway starts to grow.",
@@ -268,14 +268,14 @@ module.exports = {
       characters: [ch("Soldier", { ...C.phalanx, prop: "none", face: "surprised", pose: "walk", flip: true }, 290, { scale: 0.3, ground: 204, shiver: true }), ch("Soldier", { ...C.phalanx, prop: "none", face: "surprised", pose: "walk" }, 236, { scale: 0.28, ground: 204, shiver: true })],
       note: "Tyrians pour glowing sand from the walls; a Macedonian soldier hops about, shaking it out of his armor (cartoon gag, nothing graphic).",
       narration: "The Tyrians grew desperate, and creative. They heated sand in bronze shields until it glowed, then poured it down on the attackers. It slipped under armor, and men tore off their gear just to get it out." },
-    { section: "Start again, bigger", background: "tyresea", camera: "slow pan right",
+    { section: "Start again, bigger", background: "tyresea", camera: "static",
       fx: [{ type: "mole", p: 0.9, wide: true }, { type: "ship", x: 360, y: 266, sc: 0.28, color: "#5a4a3a" }, onWall()],
       note: "Ships anchored by the walls; Tyrian divers in the water cut the anchor ropes.",
       characters: [],
       anim: t => t > 0.3 ? { fx: [{ type: "blueprint", mode: "chains", title: "Rope vs iron chain" }] } : {},
       narration: "Tyrian divers swam out and cut the anchor ropes of Alexander's ships, so he switched to iron chains. Every trick only slowed him down." },
 
-    { id: "cranes", section: "Start again, bigger", background: "tyresea", camera: "slow zoom in", text: "Cranes on ships",
+    { id: "cranes", section: "Start again, bigger", background: "tyresea", camera: "static", text: "Cranes on ships",
       anim: t => t < 0.25 ? { fx: [{ type: "mole", p: 0.9, wide: true }, onWall({ faces: ["surprised"] }), { type: "craneship", x: 360, y: 252, sc: 0.3, lift: ease(seg(t, 0.02, 0.25)) }] }
         : t < 0.58 ? { fx: [{ type: "blueprint", mode: "crane", p: ease(seg(t, 0.28, 0.55)), title: "Clearing the boulders" }] }
         : { fx: [{ type: "mole", p: 0.9, wide: true }, onWall({ faces: ["surprised"] }), { type: "ramship", x: 420 - 30 * ease(seg(t, 0.55, 1)), y: 250, sc: 0.32, push: Math.abs(Math.sin(t * 30)) }] },

@@ -945,13 +945,13 @@ Object.assign(FX,{
         s+=`<rect x="${x-4}" y="${top}" width="8" height="${(bot-top).toFixed(1)}" fill="none" stroke="${W}" stroke-width="1.6"/>`;if(depth>0&&depth<1)s+=L(x-10,top-14,x+10,top-14,4)+L(x,top-14,x,top-4,2)}
       const fill=Math.max(0,p*1.4-.4);if(fill>0){const fy=bed-fill*(bed-sea+6);s+=`<path d="M110,${bed} L110,${fy} L370,${fy} L370,${bed}Z" fill="none" stroke="${W}" stroke-width="1.4" stroke-dasharray="3 3"/>`;for(let i=0;i<30;i++){const cx=116+((i*53)%250),cy=bed-6-((i*37)%Math.max(6,(bed-fy-8)));s+=`<circle cx="${cx}" cy="${cy}" r="4" fill="none" stroke="${W}" stroke-width="1.2"/>`}}
       s+=L(110,270,370,270,1.4)+L(110,264,110,276,1.4)+L(370,264,370,276,1.4)+T(240,288,"about 200 ft wide",11);
-      s+=T(80,150,"Cedar piles",11,"end")+T(80,164,"from Lebanon",10,"end")+L(84,155,118,160,1,"3 2")+T(398,200,"Stones from",11,"start")+T(398,214,"Old Tyre",10,"start")+L(396,204,372,210,1,"3 2");}
+      s+=T(98,150,"Cedar piles",11,"end")+T(98,164,"from Lebanon",10,"end")+L(84,155,118,160,1,"3 2")+T(398,200,"Stones from",11,"start")+T(398,214,"Old Tyre",10,"start")+L(396,204,372,210,1,"3 2");}
     if(mode==="crane"){const sea=150,bed=270;s+=wave(sea)+L(20,bed,460,bed,2.5);
       s+=`<path d="M120,${sea-6} L300,${sea-6} Q290,${sea+24} 260,${sea+28} L150,${sea+28} Q124,${sea+20} 120,${sea-6}Z" fill="none" stroke="${W}" stroke-width="2"/>`;
-      s+=L(220,sea-6,330,60,3)+L(220,sea-6,220,90,2.5)+L(220,90,330,60,1.4);
-      const ry=bed-16-p*(bed-16-110);s+=L(330,60,330,ry-14,1.4)+`<path d="M312,${ry} Q312,${ry-16} 330,${ry-18} Q350,${ry-16} 348,${ry} Q330,${ry+12} 312,${ry}Z" fill="none" stroke="${W}" stroke-width="2"/>`;
+      s+=L(220,sea-6,330,86,3)+L(220,sea-6,220,104,2.5)+L(220,104,330,86,1.4);
+      const ry=bed-16-p*(bed-16-122);s+=L(330,86,330,ry-14,1.4)+`<path d="M312,${ry} Q312,${ry-16} 330,${ry-18} Q350,${ry-16} 348,${ry} Q330,${ry+12} 312,${ry}Z" fill="none" stroke="${W}" stroke-width="2"/>`;
       for(const bx of[380,410,440])s+=`<path d="M${bx-14},${bed} Q${bx-14},${bed-18} ${bx},${bed-20} Q${bx+14},${bed-18} ${bx+14},${bed}Z" fill="none" stroke="${W}" stroke-width="1.6"/>`;
-      s+=T(120,90,"Crane on a ship",12,"start")+T(410,bed-46,"Boulders dropped",10)+T(410,bed-33,"by the Tyrians",10)+T(322,70,"rope + pulley",10,"end");}
+      s+=T(110,104,"Crane on a ship",12,"start")+T(410,bed-46,"Boulders dropped",10)+T(410,bed-33,"by the Tyrians",10)+T(340,100,"rope + pulley",10,"start");}
     if(mode==="chains"){const sea=110,bed=250;s+=wave(sea)+L(20,bed,460,bed,2.5)+L(240,70,240,290,1.4,"6 4");
       for(const [cx,lab,ok] of [[130,"Rope: divers cut it",false],[350,"Iron chain: can't be cut",true]]){
         s+=`<path d="M${cx-60},${sea-4} L${cx+60},${sea-4} Q${cx+50},${sea+16} ${cx+30},${sea+18} L${cx-40},${sea+18} Q${cx-58},${sea+12} ${cx-60},${sea-4}Z" fill="none" stroke="${W}" stroke-width="2"/>`;
