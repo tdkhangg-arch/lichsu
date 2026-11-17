@@ -512,7 +512,7 @@ const FX={
   // bold caption drawn into the frame (for infographic labels)
   label:({x=240,y=60,text="",size=18,color="#fff",anchor="middle"})=>`<text x="${x}" y="${y}" font-family="Inter, DejaVu Sans, sans-serif" font-weight="900" font-size="${size}" text-anchor="${anchor}" fill="${color}" stroke="${INK}" stroke-width="${size/4}" paint-order="stroke" stroke-linejoin="round">${text}</text>`,
   // dashed travel route on a map: pts = [[x,y],...], arrowhead at the end, optional label at the midpoint
-  route:({pts=[],color="#a8342c",label="",lx,ly,dy=0})=>{pts=pts.map(([x,y])=>[x,y+dy]);ly+=dy;const d="M"+pts.map(p=>p.join(",")).join(" L");const [a,b]=pts.slice(-2);const ang=Math.atan2(b[1]-a[1],b[0]-a[0]);
+  route:({pts=[],color="#a8342c",label="",lx,ly,dy=0,p=1})=>{pts=pts.map(([x,y])=>[x,y+dy]);if(p<=0)return "";if(p<1)pts=partial(pts,p);if(pts.length<2)return "";ly+=dy;const d="M"+pts.map(p=>p.join(",")).join(" L");const [a,b]=pts.slice(-2);const ang=Math.atan2(b[1]-a[1],b[0]-a[0]);
     const h=(k,o)=>`${(b[0]-k*Math.cos(ang+o)).toFixed(1)},${(b[1]-k*Math.sin(ang+o)).toFixed(1)}`;
     let s=`<path d="${d}" fill="none" stroke="#f4efe2" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><path d="${d}" fill="none" stroke="${color}" stroke-width="3.5" stroke-dasharray="8 5" stroke-linecap="round" stroke-linejoin="round"/>`+`<path d="M${b.join(",")} L${h(11,.45)} L${h(11,-.45)} Z" fill="${color}" stroke="${INK}" stroke-width="1.2"/>`;
     if(label)s+=`<text x="${lx}" y="${ly}" font-family="Inter, DejaVu Sans, sans-serif" font-weight="900" font-size="13" fill="${color}" text-anchor="middle" stroke="#f4efe2" stroke-width="4" paint-order="stroke">${label}</text>`;return s},
@@ -735,7 +735,7 @@ Object.assign(FX,{
     let t=label?`<text x="${x+lx}" y="${y+ly+(ly?0:h/2+12)}" ${FONT} font-weight="900" font-size="${size}" text-anchor="middle" fill="${lcolor||dk(color)}" stroke="#f4efe2" stroke-width="3" paint-order="stroke">${label}</text>`:"";
     return `<g transform="translate(${x} ${y}) rotate(${rot})">${s}</g>`+t},
   // bold movement arrow for battle maps, optional glow
-  arrow:({pts=[],color="#a8342c",w=6,glow=false,dash=false})=>{const d="M"+pts.map(p=>p.join(",")).join(" L");const [a,b]=pts.slice(-2);const ang=Math.atan2(b[1]-a[1],b[0]-a[0]);
+  arrow:({pts=[],color="#a8342c",w=6,glow=false,dash=false,p=1})=>{if(p<=0)return "";if(p<1)pts=partial(pts,p);if(pts.length<2||Math.hypot(pts[1][0]-pts[0][0],pts[1][1]-pts[0][1])<.5&&pts.length===2)return "";const d="M"+pts.map(p=>p.join(",")).join(" L");const [a,b]=pts.slice(-2);const ang=Math.atan2(b[1]-a[1],b[0]-a[0]);
     const h=(k,o)=>`${(b[0]-k*Math.cos(ang+o)).toFixed(1)},${(b[1]-k*Math.sin(ang+o)).toFixed(1)}`;const k=w*2.6;
     let s=glow?`<path d="${d}" fill="none" stroke="${color}" stroke-width="${w+14}" stroke-linecap="round" stroke-linejoin="round" opacity=".25"/>`:"";
     s+=`<path d="${d}" fill="none" stroke="${INK}" stroke-width="${w+4}" stroke-linecap="round" stroke-linejoin="round" ${dash?`stroke-dasharray="${w*2} ${w*1.4}"`:""}/><path d="${d}" fill="none" stroke="${color}" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round" ${dash?`stroke-dasharray="${w*2} ${w*1.4}"`:""}/>`;
@@ -771,6 +771,8 @@ Object.assign(FX,{
    Macedonians reuse the Gaugamela parts. Scenes: the sea crossing seen from the side (tyresea), the top
    of Tyre's wall looking back at the mainland (tyrewall) and a top-down map (tyremap); the causeway
    ("mole") grows with FX.mole({p}) / FX.causeway({p}). */
+var ANIM=null;   // {t, sec} while tools/build-anim.js renders frames; null for stills and in this page
+const ASEC=()=>ANIM?ANIM.sec:0;
 const TPURPLE="#6a2a5a";
 Object.assign(HATS,{
   tyrianhelm:{label:"Mũ đồng chóp nhọn (Tyre)",d:()=>P("M54,52 Q58,10 100,-30 Q142,10 146,52 Z",BRONZE,3.5)+`<path d="M70,40 Q76,8 98,-14" fill="none" stroke="#f2d48a" stroke-width="3.5" stroke-linecap="round"/>`+P("M44,54 Q100,42 156,54 L154,62 Q100,52 46,62Z",dk(BRONZE),2.6)+`<circle cx="100" cy="-30" r="6" fill="${BRONZE}" stroke="${INK}" stroke-width="2.4"/>`}
@@ -787,7 +789,7 @@ Object.assign(PROPS,{
   rock:{label:"Tảng đá",hands:[[80,150],[120,150]],over:true,
     d:()=>P("M78,150 Q76,124 100,120 Q126,120 124,148 Q112,162 92,160 Q80,158 78,150Z","#9a958a",2.8)+`<path d="M90,132 l8,6 M106,128 l6,10" stroke="#7a756a" stroke-width="2"/>`}
 });
-const SEA=(y0,col="#4f8fb8")=>{let s=`<rect y="${y0}" width="480" height="${320-y0}" fill="${col}"/>`;for(let k=0;k<6;k++){const y=y0+12+k*22;for(let x=(k%2)*30;x<480;x+=60)s+=`<path d="M${x},${y} q8,-5 16,0 q8,5 16,0" fill="none" stroke="#fff" stroke-width="1.6" opacity=".35"/>`}return s};
+const SEA=(y0,col="#4f8fb8")=>{let s=`<rect y="${y0}" width="480" height="${320-y0}" fill="${col}"/>`;for(let k=0;k<6;k++){const y=y0+12+k*22,dx=(ASEC()*(10+k*3))%60;for(let x=(k%2)*30-60+dx;x<480;x+=60)s+=`<path d="M${x},${y} q8,-5 16,0 q8,5 16,0" fill="none" stroke="#fff" stroke-width="1.6" opacity=".35"/>`}return s};
 const TYRECITY=(x,yb,k=1)=>{let s=`<g transform="translate(${x} ${yb}) scale(${k})">`;
   // houses and a temple roof behind the wall
   for(const [hx,hw,hh] of [[10,30,24],[44,26,34],[74,34,20],[112,28,30],[144,30,22]])s+=`<rect x="${hx}" y="${-82-hh}" width="${hw}" height="${hh}" fill="#e3d2b0" ${st}/>`+`<rect x="${hx+6}" y="${-76-hh}" width="6" height="6" fill="#5b4a3a"/>`;
@@ -834,8 +836,10 @@ Object.assign(FX,{
     for(let t=.15;t<1;t+=.2){const yy=y0+t*(y1-y0),ww=w0+t*(w1-w0);s+=ln(x-ww+3,yy,x+ww-3,yy,"#9a958a",1.6)}
     return s+`<path d="M${x-w1},${y1} L${x+w1},${y1}" stroke="#fff" stroke-width="2" opacity=".7"/>`},
   // the causeway on the top-down map (tyremap); now=true shows today's silted-up isthmus and the modern town
-  causeway:({p=1,now=false,label=""})=>{let s="";
-    if(now){s+=`<path d="M200,112 Q236,96 300,70 L306,250 Q240,200 206,182 Q232,150 226,130Z" fill="#e3cd9c"/>`;
+  causeway:({p=1,now=false,label="",grow=1})=>{let s="";
+    if(now&&grow<=0)now=false;
+    if(now){s+=`<g transform="translate(266 148) scale(${(.25+.75*grow).toFixed(3)} ${(.12+.88*grow).toFixed(3)}) translate(-266 -148)"><path d="M200,112 Q236,96 300,70 L306,250 Q240,200 206,182 Q232,150 226,130Z" fill="#e3cd9c"/></g>`;
+      if(grow<.8){s+=`<path d="M302,140 L226,140 L226,156 L302,156Z" fill="#b8a888" stroke="#a8342c" stroke-width="2.6"/>`;if(label)s+=`<text x="250" y="268" ${FONT} font-weight="900" font-size="11" text-anchor="middle" fill="#a8342c" stroke="#f4efe2" stroke-width="3" paint-order="stroke">${label}</text>`;return s}
       s+=`<path d="M226,118 Q262,98 300,84 M226,172 Q264,196 304,228" fill="none" stroke="${INK}" stroke-width="2.5"/>`;
       for(let x=170;x<300;x+=12)for(let y=110;y<220;y+=12){const inP=(x>226&&y>(118-(x-226)*.45)&&y<(172+(x-226)*.75))||((x-191)**2/900+(y-150)**2/650<1);if(inP)s+=`<rect x="${x}" y="${y}" width="9" height="9" fill="#f4efe2" stroke="#b8a888" stroke-width=".8"/>`}
       s+=`<path d="M232,146 L302,146" stroke="#e2bd4f" stroke-width="3"/>`;}
@@ -854,7 +858,7 @@ Object.assign(FX,{
     for(const wx of [24,96])s+=`<circle cx="${wx}" cy="-6" r="14" fill="#7a5a3a" stroke="${INK}" stroke-width="3"/>`;
     s+=`</g>`;if(burning)s+=FX.flames({x,y:g-120*sc,w:150*sc,h:220*sc,seed:x|0});return s},
   // fire and smoke (seeded)
-  flames:({x=240,y=200,w=80,h=120,seed=3})=>{const r=rng(seed);let s="";
+  flames:({x=240,y=200,w=80,h=120,seed=3})=>{const r=rng(seed+Math.floor(ASEC()*8));let s="";
     for(let i=0;i<5;i++)s+=`<circle cx="${(x-w/2+r()*w).toFixed(1)}" cy="${(y-h*.9-r()*h*.5).toFixed(1)}" r="${(w*.25+r()*w*.25).toFixed(1)}" fill="#4a4448" opacity=".45"/>`;
     for(let i=0;i<7;i++){const fx=x-w/2+r()*w,fh=h*(.4+r()*.6),fw=w*(.18+r()*.14);
       s+=`<path d="M${(fx-fw).toFixed(1)},${y+h*.3} Q${(fx-fw*.6).toFixed(1)},${(y-fh*.5).toFixed(1)} ${fx.toFixed(1)},${(y-fh).toFixed(1)} Q${(fx+fw*.6).toFixed(1)},${(y-fh*.5).toFixed(1)} ${(fx+fw).toFixed(1)},${y+h*.3}Z" fill="#f29a3a" stroke="${INK}" stroke-width="1.6" opacity=".95"/>`+
@@ -869,11 +873,50 @@ Object.assign(FX,{
     if(!fire){s+=thick(0,-10,0,-150,"#7a4a2a",3)+P("M-46,-140 L46,-140 L52,-56 L-52,-56Z",sail,3)+ln(-50,-140,50,-140,"#7a4a2a",4);}
     else{s+=thick(-20,-10,-20,-90,"#5e4a36",3)+thick(30,-10,30,-90,"#5e4a36",3);for(const [bx,by] of [[-60,-20],[-20,-24],[20,-20],[60,-24]])s+=P(`M${bx-18},${by+12} L${bx+18},${by+12} L${bx+14},${by-6} L${bx-14},${by-6}Z`,"#4a3a2e",2);}
     if(crew)s+=crew.map((c,i)=>`<g transform="translate(${-40+i*40} -140) scale(.5)">${character({...c,flip:false})}</g>`).join("");
-    s=`<g transform="translate(${x} ${y}) scale(${flip?-sc:sc} ${sc})">${s}</g>`;
+    const yb=y+(ANIM?2.2*Math.sin(ASEC()*2.1+x*.05):0);
+    s=`<g transform="translate(${x} ${yb.toFixed(2)}) rotate(${ANIM?(1.2*Math.sin(ASEC()*1.7+x*.03)).toFixed(2):0}) scale(${flip?-sc:sc} ${sc})">${s}</g>`;
     if(fire)s+=FX.flames({x,y:y-70*sc,w:170*sc,h:170*sc,seed:7});
     return s},
+  // arrows flying in arcs from one area to another; they move with the animation clock
+  volley:({x0=300,y0=110,x1=180,y1=210,n=14,spread=40,h=40,seed=4,speed=.9})=>{const r=rng(seed);let s="";
+    for(let i=0;i<n;i++){const ox=(r()-.5)*spread,oy=(r()-.5)*spread*.4,ex=(r()-.5)*spread,ph=(r()+ASEC()*speed)%1;
+      const P=u=>[x0+ox+(x1+ex-x0-ox)*u,y0+oy+(y1-y0-oy)*u-h*4*u*(1-u)];const [ax,ay]=P(ph),[bx,by]=P(Math.min(ph+.04,1));const a=Math.atan2(by-ay,bx-ax),L=9;
+      s+=ln((ax-L*Math.cos(a)).toFixed(1),(ay-L*Math.sin(a)).toFixed(1),ax.toFixed(1),ay.toFixed(1),"#3a3640",1.4)+`<path d="M${ax.toFixed(1)},${ay.toFixed(1)} l${(-4*Math.cos(a-.5)).toFixed(1)},${(-4*Math.sin(a-.5)).toFixed(1)} l${(4*Math.cos(a-.5)-4*Math.cos(a+.5)).toFixed(1)},${(4*Math.sin(a-.5)-4*Math.sin(a+.5)).toFixed(1)}Z" fill="#3a3640"/>`}
+    return s},
+  // evidence: height of Tyre's wall compared with a person and a 15-storey building (p = growth 0..1)
+  heightcompare:({p=1})=>{const g=262,k=1.25,H=v=>v*k*p;let s=`<line x1="40" y1="${g}" x2="440" y2="${g}" stroke="${INK}" stroke-width="3"/>`;
+    const hb=H(150);s+=`<rect x="200" y="${g-hb}" width="70" height="${hb}" fill="#c9cfd8" ${st}/>`;for(let fl=1;fl<15;fl++){const yy=g-fl*10*k*p;if(yy>g-hb+3)for(const wx of[208,226,244])s+=`<rect x="${wx}" y="${yy-6*p}" width="10" height="${5*p}" fill="#7fa6c8"/>`}
+    const hw=H(150);s+=`<rect x="320" y="${g-hw}" width="90" height="${hw}" fill="#c9b48a" ${st}/>`;for(let mx=322;mx<410;mx+=14)s+=`<rect x="${mx}" y="${g-hw-9}" width="9" height="9" fill="#c9b48a" ${st}/>`;
+    for(let ry=g-12;ry>g-hw;ry-=12)s+=ln(320,ry,410,ry,"#a8946a",1);
+    s+=`<g transform="translate(${100-100*.06} ${g-272*.06}) scale(.06)">${character({hair:"short",hat:"none",face:"neutral",outfit:"tshirt",color:"#5b6b3a",prop:"none",pose:"stand",flip:false})}</g>`;
+    const T=(x,y,t,c="#fff",z=12)=>`<text x="${x}" y="${y}" ${FONT} font-weight="900" font-size="${z}" text-anchor="middle" fill="${c}" stroke="${INK}" stroke-width="${z/3.5}" paint-order="stroke">${t}</text>`;
+    s+=T(100,g+18,"You (6 ft)",undefined,10)+T(235,g+18,"15-storey building",undefined,10)+T(365,g+30,"Tyre's wall (ancient claim)","#f2d48a",10);
+    if(p>.95)s+=T(365,g-hw-18,"~150 ft","#f2d48a",16)+T(235,g-hb-8,"~150 ft","#fff",12);return s},
+  // evidence: the murex sea snail that gave Tyrian purple
+  murex:({x=150,y=170,k=1.4})=>{let s=`<g transform="translate(${x} ${y}) scale(${k})">`;
+    for(const sd of[-1,1])for(const [yy,l] of[[-26,16],[-10,20],[6,18],[22,13]])s+=P(`M${sd*24*(1-(yy+30)/90)},${yy} l${sd*l},${-6} l${-sd*l*.4},${10}Z`,"#d8c4a4",1.8);
+    s+=P("M0,-44 Q30,-36 30,-8 Q28,22 6,44 L3,78 L-3,78 L-6,44 Q-28,22 -30,-8 Q-30,-36 0,-44Z","#e8d8c0",3);
+    s+=`<path d="M-26,-20 Q0,-30 26,-20 M-28,0 Q0,-10 28,0 M-22,20 Q0,12 22,20" fill="none" stroke="#b89c78" stroke-width="2.4"/><path d="M-10,-6 Q0,6 10,-6" fill="none" stroke="#6a2a5a" stroke-width="4" stroke-linecap="round"/>`;
+    const drop=ANIM?(ASEC()*.8)%1:.5;s+=`<path d="M0,${84+drop*30} q-7,11 0,16 q7,-5 0,-16Z" fill="#6a2a5a" stroke="${INK}" stroke-width="1.4" opacity="${(1-drop).toFixed(2)}"/>`;
+    return s+`</g>`},
+  // evidence: geology cross-section of Tyre's isthmus with a drill core going down (p = 0..1)
+  coresection:({x=250,y=60,w=210,h=190,p=1})=>{const id="cs"+(++uid);let s=`<rect x="${x-6}" y="${y-6}" width="${w+12}" height="${h+12}" rx="8" fill="#f4efe2" stroke="${INK}" stroke-width="3"/>`;
+    s+=`<defs><clipPath id="${id}"><rect x="${x}" y="${y}" width="${w}" height="${h}"/></clipPath></defs><g clip-path="url(#${id})">`;
+    s+=`<rect x="${x}" y="${y}" width="${w}" height="${h*.25}" fill="#cfe6f3"/><rect x="${x}" y="${y+h*.25}" width="${w}" height="${h*.3}" fill="#e3cd9c"/>`;
+    for(let i=0;i<40;i++){const px=x+((i*37)%w),py=y+h*.27+((i*53)%(h*.26|0));s+=`<circle cx="${px}" cy="${py}" r="1.3" fill="#c9ad7a"/>`}
+    s+=`<path d="M${x+w*.22},${y+h*.55} L${x+w*.3},${y+h*.4} L${x+w*.7},${y+h*.4} L${x+w*.78},${y+h*.55}Z" fill="#9a958a" ${st}/>`;for(let i=0;i<9;i++)s+=`<circle cx="${x+w*(.32+i*.045)}" cy="${y+h*(.44+(i%2)*.06)}" r="5" fill="#b8b2a4" stroke="${INK}" stroke-width="1.2"/>`;
+    s+=`<rect x="${x}" y="${y+h*.55}" width="${w}" height="${h*.45}" fill="#8a7a5a"/>`;
+    const dx=x+w*.5,depth=h*.25+p*h*.6;s+=`<rect x="${dx-8}" y="${y+h*.05}" width="16" height="${depth-h*.05}" fill="none" stroke="#a8342c" stroke-width="3"/><path d="M${dx-14},${y+h*.05} L${dx},${y-2} L${dx+14},${y+h*.05}Z" fill="#a8342c" stroke="${INK}" stroke-width="2"/></g>`;
+    const T=(tx,ty,t,c=INK,z=10)=>`<text x="${tx}" y="${ty}" ${FONT} font-weight="800" font-size="${z}" fill="${c}" stroke="#f4efe2" stroke-width="3" paint-order="stroke">${t}</text>`;
+    s+=T(x+6,y+h*.33,"Sand piled up over 2,000 years")+T(x+6,y+h*.62,"Alexander's causeway, 332 BC","#a8342c")+T(x+6,y+h*.85,"Old seabed","#f4efe2");
+    s+=`<text x="${x+w/2}" y="${y+h+24}" ${FONT} font-weight="900" font-size="10" text-anchor="middle" fill="#fff" stroke="${INK}" stroke-width="3.5" paint-order="stroke">Drill cores from Tyre's isthmus (PNAS, 2007)</text>`;
+    return s},
+  // a hole knocked in a wall with a dust cloud (side view)
+  breach:({x=330,y=180,r=18,p=1})=>{if(p<=0)return "";const R=r*p;let s=`<path d="M${x-R},${y+R*.8} L${x-R*.7},${y-R*.5} L${x-R*.2},${y-R} L${x+R*.5},${y-R*.7} L${x+R},${y-R*.1} L${x+R*.8},${y+R*.8}Z" fill="#3a3640" ${st}/>`;
+    for(const [a,b] of [[-1.2,.9],[1.1,.8],[-.4,1],[.5,1.05]])s+=`<rect x="${x+a*R}" y="${y+b*R}" width="${R*.35}" height="${R*.25}" fill="#bfa97c" ${st} transform="rotate(${a*30} ${x+a*R} ${y+b*R})"/>`;
+    return s+FX.dust({x,y:y+R,w:R*4,h:R*1.6,opacity:.55,seed:9})},
   // red-hot sand pouring down from the wall
-  hotsand:({x=240,y0=40,y1=260,w=60,n=80,seed=5})=>{const r=rng(seed);let s="";for(let i=0;i<n;i++){const t=r();s+=`<circle cx="${(x-w/2+r()*w+t*20).toFixed(1)}" cy="${(y0+t*(y1-y0)).toFixed(1)}" r="${(1.2+r()*2).toFixed(1)}" fill="${r()<.5?"#f29a3a":"#e8603a"}"/>`}return s}
+  hotsand:({x=240,y0=40,y1=260,w=60,n=80,seed=5})=>{const r=rng(seed);let s="";for(let i=0;i<n;i++){const t=(r()+ASEC()*.9)%1;s+=`<circle cx="${(x-w/2+r()*w+t*20).toFixed(1)}" cy="${(y0+t*(y1-y0)).toFixed(1)}" r="${(1.2+r()*2).toFixed(1)}" fill="${r()<.5?"#f29a3a":"#e8603a"}"/>`}return s}
 });
 
 // mud around a character's feet (depth 0..1 of the lower leg) and shiver marks; used per character

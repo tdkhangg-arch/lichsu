@@ -240,7 +240,18 @@ def batch_voice(shots, build, voice, model):
     return out
 
 
-def camera_filter(cam, frames):
+def picture_input(ep_dir, s):
+    """ffmpeg input args for a shot's picture: the animated frames in build/anim/<id>/ when
+    tools/build-anim.js made them, else the still image looped."""
+    anim = ep_dir / "build" / "anim" / s["id"]
+    fps_file = ep_dir / "build" / "anim" / "fps.txt"
+    if anim.is_dir() and any(anim.glob("*.jpg")) and fps_file.exists():
+        return ["-framerate", fps_file.read_text().strip(), "-i", str(anim / "%05d.jpg")], True
+    return ["-loop", "1", "-i", str(ep_dir / s["image"])], False
+
+
+def camera_filter(cam, frames, seq=False):
+    """seq=True: the input is an animated frame sequence (one zoompan step per frame, last frame held)."""
     d = max(frames - 1, 1)
     cx, cy = "iw/2-(iw/zoom/2)", "ih/2-(ih/zoom/2)"
     if cam == "slow zoom in":
@@ -257,6 +268,9 @@ def camera_filter(cam, frames):
         z, x, y = "1.08", f"{cx}+18*sin(on*1.7)", f"{cy}+12*cos(on*2.3)"
     else:
         z, x, y = "1.0001", cx, cy
+    if seq:
+        return (f"fps={FPS},tpad=stop_mode=clone:stop_duration=30,scale=2880:1620,"
+                f"zoompan=z='{z}':x='{x}':y='{y}':d=1:s={W}x{H}:fps={FPS}")
     return (f"scale=2880:1620,zoompan=z='{z}':x='{x}':y='{y}':d={frames}:s={W}x{H}:fps={FPS}")
 
 
@@ -314,8 +328,9 @@ def main():
                 frames = round(dur * FPS)
                 seg = build / "video" / f"{s['id']}.mp4"
                 print(f"render {s['id']} {dur:.1f}s {s['camera']}", flush=True)
-                vf = camera_filter(s["camera"], frames) + caption_filter(s.get("on_screen_text"))
-                run(["ffmpeg", "-y", "-loglevel", "error", "-loop", "1", "-i", str(ep_dir / s["image"]),
+                pic, seq = picture_input(ep_dir, s)
+                vf = camera_filter(s["camera"], frames, seq) + caption_filter(s.get("on_screen_text"))
+                run(["ffmpeg", "-y", "-loglevel", "error", *pic,
                      "-i", str(audio), "-af", f"aresample=44100,adelay={int(lead * 1000)}:all=1,loudnorm=I=-16:TP=-1.5:LRA=11,aresample=44100,apad,atrim=0:{dur}",
                      "-vf", vf, "-frames:v", str(frames), "-t", str(dur),
                      "-c:v", "libx264", "-preset", "medium", "-crf", "20", "-pix_fmt", "yuv420p",
@@ -354,8 +369,9 @@ def main():
         frames = round(dur * FPS)
         seg = build / "video" / f"{s['id']}.mp4"
         print(f"render {s['id']} {dur:.1f}s {s['camera']}", flush=True)
-        vf = camera_filter(s["camera"], frames) + caption_filter(s.get("on_screen_text"))
-        cmd = ["ffmpeg", "-y", "-loglevel", "error", "-loop", "1", "-i", str(ep_dir / s["image"])]
+        pic, seq = picture_input(ep_dir, s)
+        vf = camera_filter(s["camera"], frames, seq) + caption_filter(s.get("on_screen_text"))
+        cmd = ["ffmpeg", "-y", "-loglevel", "error", *pic]
         if audio:
             cmd += ["-i", str(audio), "-af", f"adelay={int(lead * 1000)}:all=1,apad,atrim=0:{dur}"]
         else:

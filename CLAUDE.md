@@ -48,7 +48,9 @@ Folder numbers are the order they were written; **upload order** is what viewers
 | 3rd | `episodes/03-agincourt` | Battle of Agincourt (1415), first European episode | Video done (10:21, ElevenLabs voice, medieval music). Intro refers back to Okehazama; ends teasing Joan of Arc |
 | 4th | `episodes/04-joan-of-arc` | Joan of Arc (1429–1431), continues Agincourt | Script (owner's rewrite) and frames done. Intro picks up the "farm girl" question; outro teases Alexander the Great at Gaugamela. Music stops for the darkest day (2.5 s lead). Video done (12:11, ElevenLabs voice, one take per shot) |
 | 5th | `episodes/05-gaugamela` | Alexander the Great, Battle of Gaugamela (331 BC) | Owner's Vietnamese script adapted to English with father/son framing. Video done (10:06, ElevenLabs, one take per shot, `ancient` music palette). Evidence: campaign map, battle maps, Babylonian clay tablet, Pompeii mosaic. Outro teases the Honnō-ji Incident |
-| 6th | (next) | Honnō-ji Incident (1582) | Mentioned in the Okehazama ending; teased at the end of Gaugamela |
+| 6th (special) | `episodes/06-tyre` | Alexander and the Siege of Tyre (332 BC) | Owner's Vietnamese script adapted to English. First episode with real animation (tools/build-anim.js) and more evidence visuals (Arrian quote, wall height comparison, murex dye snail, siege timeline, causeway map then/now, PNAS 2007 drill-core section). ElevenLabs, `ancient` music. Outro teases the Empty Fort Strategy (Three Kingdoms legend) and promises Japan later |
+| 7th | (next) | Empty Fort Strategy (Zhuge Liang, legend from Romance of the Three Kingdoms) | Teased at the end of Tyre; treat as legend, say how much is true |
+| later | (ideas) | Honnō-ji Incident (1582) | Mentioned in the Okehazama ending; teased at the end of Gaugamela |
 
 ## Pipeline (run from the repo root)
 1. Write `episodes/<NN-name>/shots.js` (narration, scene notes, characters, YouTube package,
@@ -70,6 +72,14 @@ Folder numbers are the order they were written; **upload order** is what viewers
    from the estimated timing, before any voice exists. Mood `"silence"` stops the music for a section
    (the previous section fades out at the boundary); medieval mood `"triumph"` is a heroic return
    ending on a D major chord. A shot's `lead: 2.5` adds seconds of silence before its narration.
+
+6b. Animation (from the Tyre episode on): a shot can define `anim: (t, sec) => ({ fx, characters, background, ... })`
+   for t = 0..1 over the shot. `node tools/build-anim.js episodes/<NN-name> --fps 15` renders frames to
+   `build/anim/<id>/` (needs `episode.timed.json`, so run make-video once first); make-video.py then uses
+   them instead of the still. Every shot also gets ambient motion: drifting waves, flickering flames,
+   bobbing ships, falling rain and sand, breathing characters. Drawing code reads the clock as `ANIM`/`ASEC()`.
+   Useful animated FX: `route`/`arrow` with `p` (draw themselves), `mole`/`causeway` growth, `volley`
+   (arrows in flight), `breach`, and evidence cards `heightcompare`, `murex`, `coresection`, `doc`, `timeline`.
 
 7. Shorts: `python3 tools/make-short.py episodes/<NN-name> --shots ... --title ... --out ...`
    (vertical 1080×1920 cut from the finished video; see `episodes/01-47-ronin/shorts.md`).
