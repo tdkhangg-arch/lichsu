@@ -1,6 +1,6 @@
 // Thumbnail for episode 5 (1280x720), drawn with the character code in index.html.
 // Usage: node episodes/05-gaugamela/thumbnail.js
-// Idea: "47,000 vs 100,000+": Alexander charging on Bucephalus, a sea of panicking Persians, Darius's golden chariot turning to flee.
+// Idea (owner's wording): "47,000 vs 100,000 / A Tactical Masterpiece / Alexander the Great's Glorious Victory": Alexander charging on Bucephalus, a sea of panicking Persians, Darius's golden chariot turning to flee.
 const fs = require("fs"), path = require("path"), vm = require("vm");
 const { chromium } = require("playwright");
 const root = path.join(__dirname, "../..");
@@ -33,12 +33,14 @@ s += `<ellipse cx="350" cy="170" rx="180" ry="100" fill="url(#flash)"/>`;
 s += ctx.FX.crowd({ side: "per", x0: 250, x1: 486, rows: 6, gBack: 196, gFront: 284, scBack: 0.1, scFront: 0.3, perRow: 9, seed: 21, faces: ["panic", "panic", "surprised"], flee: 0.55, tilt: 18 });
 s += ctx.FX.chariot({ x: 400, g: 300, sc: 0.4, royal: true, blades: false, flip: true, driver: mk({ hair: "persian", hat: "persiancap", outfit: "persian", color: "#2a6a6a", face: "panic" }), passenger: mk({ hair: "persian", hat: "tiara", outfit: "darius", color: "#5a3a7a", face: "panic", flip: true }) });
 s += ctx.FX.dust({ x: 120, y: 300, w: 260, h: 70, opacity: 0.6, seed: 3 });
-s += ctx.FX.horse({ x: 150, g: 330, sc: 0.78, color: "#2e2b33", star: true, gallop: true, flip: true, rider: mk({ hair: "short", hat: "alexhelm", outfit: "alexander", color: "#a8342c", prop: "lance", face: "fierce" }) });
+s += ctx.FX.horse({ x: 150, g: 352, sc: 0.78, color: "#2e2b33", star: true, gallop: true, flip: true, rider: mk({ hair: "short", hat: "alexhelm", outfit: "alexander", color: "#a8342c", prop: "lance", face: "fierce" }) });
 // text
 const T = (x, y, size, fill, txt, sw = 9) =>
   `<text x="${x}" y="${y}" font-family="Inter" font-weight="900" font-size="${size}" text-anchor="middle" fill="${fill}" stroke="#1c1b22" stroke-width="${sw}" paint-order="stroke" stroke-linejoin="round">${txt}</text>`;
-s += T(330, 68, 28, "#ffffff", "47,000 vs 100,000+", 7);
-s += T(330, 102, 22, "#ffd75a", "HOW DID HE WIN?", 6);
+s += `<rect x="40" y="40" width="400" height="88" fill="#1c1b22" opacity="0.35" rx="8"/>`;
+s += T(240, 70, 30, "#ffffff", "47,000 vs 100,000", 7);
+s += T(240, 98, 21, "#ffd75a", "A TACTICAL MASTERPIECE", 6);
+s += T(240, 121, 15, "#ffffff", "ALEXANDER THE GREAT'S GLORIOUS VICTORY", 5);
 s += "</svg>";
 
 (async () => {

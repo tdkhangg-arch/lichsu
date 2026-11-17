@@ -36,4 +36,4 @@ alexander the great, battle of gaugamela, darius iii, persian empire, macedonia,
 Pure genius, or did Darius beat himself? What do you think won Gaugamela? Tell me below.
 
 ## Thumbnail
-`thumbnail.png`: "47,000 vs 100,000+ / HOW DID HE WIN?" (Alexander on Bucephalus charging, Darius's golden chariot turning to flee).
+`thumbnail.png`: "47,000 vs 100,000 / A TACTICAL MASTERPIECE / ALEXANDER THE GREAT'S GLORIOUS VICTORY" (Alexander on Bucephalus charging, Darius's golden chariot turning to flee).
