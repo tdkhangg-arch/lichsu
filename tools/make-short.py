@@ -31,12 +31,19 @@ def esc(t):
 def chunks(text, size=4):
     """Split narration into short subtitle lines, keeping sentence ends as breaks."""
     out = []
+    text = text.replace("\u2014", "\u2014 ")   # let a line break after an em dash ("English—and" is too long for one line)
     for sent in re.split(r"(?<=[.?!])\s+", text.strip()):
         words = sent.split()
         n = max(1, round(len(words) / size))
         step = len(words) / n
         out += [" ".join(words[round(i * step): round((i + 1) * step)]) for i in range(n)]
-    return [c for c in out if c]
+    fit = []   # a 60px bold line holds about 28 characters across 1080 px; split longer ones
+    for c in out:
+        while len(c) > 28 and " " in c:
+            w = c.split(); k = max(1, len(w) // 2)
+            fit.append(" ".join(w[:k])); c = " ".join(w[k:])
+        fit.append(c)
+    return [c for c in fit if c]
 
 
 def text_lines(lines, y0, size, step, color="white", box=None, enable=None):
@@ -58,6 +65,8 @@ def main():
     ap.add_argument("--title", required=True, help="use | for a line break")
     ap.add_argument("--end", default="Full story on our channel", help="end card text, | for line breaks")
     ap.add_argument("--out", required=True)
+    ap.add_argument("--cover", help="optional vertical cover image shown first (also a good Shorts thumbnail frame)")
+    ap.add_argument("--cover-dur", type=float, default=1.2, help="seconds the cover stays on screen")
     a = ap.parse_args()
 
     ep_dir = Path(a.episode_dir).resolve()
@@ -115,6 +124,20 @@ def main():
          "-map", "[v]", "-map", "[a]", "-t", f"{total:.2f}",
          "-c:v", "libx264", "-preset", "medium", "-crf", "20", "-pix_fmt", "yuv420p",
          "-c:a", "aac", "-b:a", "192k", "-movflags", "+faststart", str(out)])
+    if a.cover:
+        # prepend the cover: the image filled to 1080x1920 with a short silent hold, then the Short itself
+        body = build / f"{a.out}-body.mp4"
+        out.replace(body)
+        cov = build / f"{a.out}-cover.mp4"
+        run(["ffmpeg", "-y", "-loglevel", "error", "-loop", "1", "-t", f"{a.cover_dur}", "-i", str(Path(a.cover).resolve()),
+             "-f", "lavfi", "-t", f"{a.cover_dur}", "-i", "anullsrc=r=44100:cl=stereo",
+             "-vf", f"scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},fps=30,format=yuv420p",
+             "-c:v", "libx264", "-preset", "medium", "-crf", "18", "-c:a", "aac", "-b:a", "192k", "-shortest", str(cov)])
+        run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(cov), "-i", str(body), "-filter_complex",
+             "[0:v][0:a][1:v][1:a]concat=n=2:v=1:a=1[v][a]", "-map", "[v]", "-map", "[a]",
+             "-c:v", "libx264", "-preset", "medium", "-crf", "20", "-pix_fmt", "yuv420p",
+             "-c:a", "aac", "-b:a", "192k", "-movflags", "+faststart", str(out)])
+        total += a.cover_dur
     print(f"done: {out.name} {total:.1f}s")
 
 
