@@ -1,0 +1,1705 @@
+{
+  "title": "How a Teenage Farm Girl Turned the Hundred Years' War (Joan of Arc)",
+  "language": "en",
+  "resolution": {
+    "width": 1920,
+    "height": 1080
+  },
+  "fps": 30,
+  "total_duration": 856,
+  "voiceover": {
+    "words_per_minute": 145,
+    "file": "voiceover.txt"
+  },
+  "music_moods": {
+    "Intro": "light",
+    "Hook": "tense",
+    "France on the brink": "mystery",
+    "The girl from Domrémy": "quiet",
+    "The road to Chinon": "court",
+    "Orléans": "raid",
+    "The tide turns": "tense",
+    "The crown at Reims": "solemn",
+    "Captured": "sad",
+    "The trial": "mystery",
+    "The darkest day": "silence",
+    "What came next": "triumph",
+    "Outro": "light"
+  },
+  "music_palette": "medieval",
+  "shots": [
+    {
+      "id": "intro-1",
+      "speaker": "son",
+      "section": "Intro",
+      "start": 0,
+      "duration": 7,
+      "image": "images/intro-1.png",
+      "background": "livingroom",
+      "camera": "static",
+      "characters": [
+        {
+          "name": "Father",
+          "expression": "smug",
+          "pose": "sit"
+        },
+        {
+          "name": "Son",
+          "expression": "surprised",
+          "pose": "sit"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "Dad, I've been waiting all week for this. Who was that farm girl you mentioned?",
+      "word_count": 15
+    },
+    {
+      "id": "intro-2",
+      "speaker": "father",
+      "section": "Intro",
+      "start": 7,
+      "duration": 14,
+      "image": "images/intro-2.png",
+      "background": "livingroom",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Father",
+          "expression": "smug",
+          "pose": "sit"
+        },
+        {
+          "name": "Son",
+          "expression": "neutral",
+          "pose": "sit"
+        }
+      ],
+      "on_screen_text": "What could she do?",
+      "narration": "Her name was Joan. Joan of Arc. But before I tell you her story, answer me this: what could a seventeen-year-old peasant girl possibly do against the most feared army in Europe?",
+      "word_count": 32
+    },
+    {
+      "id": "intro-3",
+      "speaker": "son",
+      "section": "Intro",
+      "start": 21,
+      "duration": 5,
+      "image": "images/intro-3.png",
+      "background": "livingroom",
+      "camera": "static",
+      "characters": [
+        {
+          "name": "Father",
+          "expression": "gentle",
+          "pose": "sit"
+        },
+        {
+          "name": "Son",
+          "expression": "smug",
+          "pose": "sit"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "Honestly? Nothing. They'd laugh her right out of the room.",
+      "word_count": 10
+    },
+    {
+      "id": "intro-4",
+      "speaker": "father",
+      "section": "Intro",
+      "start": 26,
+      "duration": 10,
+      "image": "images/intro-4.png",
+      "background": "livingroom",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Father",
+          "expression": "gentle",
+          "pose": "sit"
+        },
+        {
+          "name": "Son",
+          "expression": "surprised",
+          "pose": "sit"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "Oh, they did. More than once. And then she went out and reversed a war that grown men had been losing for decades.",
+      "word_count": 23
+    },
+    {
+      "id": "intro-5",
+      "speaker": "son",
+      "section": "Intro",
+      "start": 36,
+      "duration": 6,
+      "image": "images/intro-5.png",
+      "background": "livingroom",
+      "camera": "quick push in",
+      "characters": [
+        {
+          "name": "Father",
+          "expression": "gentle",
+          "pose": "sit"
+        },
+        {
+          "name": "Son",
+          "expression": "determined",
+          "pose": "sit"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "Wait—seventeen? That's barely older than me! Okay, stop teasing. Tell me everything.",
+      "word_count": 12
+    },
+    {
+      "id": "shot-01",
+      "speaker": null,
+      "section": "Hook",
+      "start": 42,
+      "duration": 14,
+      "image": "images/shot-01.png",
+      "background": "siege",
+      "camera": "slow pan right",
+      "characters": [
+        {
+          "name": "English knight",
+          "expression": "smug",
+          "pose": "stand"
+        },
+        {
+          "name": "Archer",
+          "expression": "neutral",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": "Orléans, spring 1429",
+      "narration": "Spring, 1429. For six grueling months, the English army has strangled the French city of Orléans. If Orléans falls, the road into the heart of France lies wide open—and the kingdom is finished.",
+      "word_count": 33
+    },
+    {
+      "id": "shot-02",
+      "speaker": null,
+      "section": "Hook",
+      "start": 56,
+      "duration": 15,
+      "image": "images/shot-02.png",
+      "background": "hall",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Charles",
+          "expression": "closed",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "Meanwhile, France's future king is hiding out in a castle far to the south. He's broke, out of allies, and hasn't even been officially crowned. Some days, he isn't even sure he's the rightful heir.",
+      "word_count": 35
+    },
+    {
+      "id": "shot-03",
+      "speaker": null,
+      "section": "Hook",
+      "start": 71,
+      "duration": 12,
+      "image": "images/shot-03.png",
+      "background": "village",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Joan",
+          "expression": "determined",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "Hope is dead. Until, out of nowhere, an illiterate teenage farm girl shows up at the gates, claiming God sent her to save the entire country.",
+      "word_count": 26
+    },
+    {
+      "id": "shot-04",
+      "speaker": null,
+      "section": "France on the brink",
+      "start": 83,
+      "duration": 15,
+      "image": "images/shot-04.png",
+      "background": "parchment",
+      "camera": "static",
+      "characters": [
+        {
+          "name": "English knight",
+          "expression": "smug",
+          "pose": "stand"
+        },
+        {
+          "name": "French knight",
+          "expression": "surprised",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": "Treaty of Troyes, 1420",
+      "narration": "Remember the brutal English victory at Agincourt? The treaty that followed basically handed the French crown to England. When both kings died in 1422, the English declared King Henry's infant son ruler of both nations.",
+      "word_count": 35
+    },
+    {
+      "id": "shot-05",
+      "speaker": null,
+      "section": "France on the brink",
+      "start": 98,
+      "duration": 16,
+      "image": "images/shot-05.png",
+      "background": "map1429",
+      "camera": "slow zoom in",
+      "characters": [],
+      "on_screen_text": "France, 1429",
+      "narration": "With their powerful allies, the Dukes of Burgundy, England controlled Paris and almost all of northern France. Down south sat Charles, the French king's son. People called him the Dauphin—the heir—because he still hadn't been crowned.",
+      "word_count": 36
+    },
+    {
+      "id": "shot-06",
+      "speaker": null,
+      "section": "France on the brink",
+      "start": 114,
+      "duration": 16,
+      "image": "images/shot-06.png",
+      "background": "map1429",
+      "camera": "quick push in",
+      "characters": [],
+      "on_screen_text": "Reims",
+      "narration": "By tradition, French kings had to be crowned in the cathedral of Reims. The problem? Reims was buried deep inside enemy territory. Without that crown, half the country didn't even see Charles as a real king.",
+      "word_count": 36
+    },
+    {
+      "id": "shot-07",
+      "speaker": null,
+      "section": "France on the brink",
+      "start": 130,
+      "duration": 12,
+      "image": "images/shot-07.png",
+      "background": "siege",
+      "camera": "slow pan left",
+      "characters": [],
+      "on_screen_text": null,
+      "narration": "In October 1428, the English tightened the noose, laying siege to Orléans—the last major fortress blocking their path south. Month after month, the city held on. Barely.",
+      "word_count": 27
+    },
+    {
+      "id": "shot-08",
+      "speaker": null,
+      "section": "The girl from Domrémy",
+      "start": 142,
+      "duration": 18,
+      "image": "images/shot-08.png",
+      "background": "village",
+      "camera": "slow pan right",
+      "characters": [
+        {
+          "name": "Father",
+          "expression": "gentle",
+          "pose": "stand"
+        },
+        {
+          "name": "Joan",
+          "expression": "gentle",
+          "pose": "stand"
+        },
+        {
+          "name": "Mother",
+          "expression": "gentle",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": "Domrémy, around 1412",
+      "narration": "Far to the east, in a quiet village called Domrémy, lived a peasant girl named Jeanne—known in English as Joan. She spent her days farming, herding sheep, and praying. She couldn't read. She couldn't write. She had never held a sword.",
+      "word_count": 41
+    },
+    {
+      "id": "shot-09",
+      "speaker": null,
+      "section": "The girl from Domrémy",
+      "start": 160,
+      "duration": 12,
+      "image": "images/shot-09.png",
+      "background": "village",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Joan",
+          "expression": "surprised",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "Around age thirteen, Joan claimed she began hearing voices—saints sent directly by God. At first, the voices just told her to be kind and go to church.",
+      "word_count": 27
+    },
+    {
+      "id": "shot-10",
+      "speaker": null,
+      "section": "The girl from Domrémy",
+      "start": 172,
+      "duration": 12,
+      "image": "images/shot-10.png",
+      "background": "village",
+      "camera": "quick push in",
+      "characters": [
+        {
+          "name": "Joan",
+          "expression": "determined",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "Then, the message changed. They commanded her to leave home, drive the English out of France, and march the Dauphin to Reims to claim his crown.",
+      "word_count": 26
+    },
+    {
+      "id": "shot-11",
+      "speaker": null,
+      "section": "The girl from Domrémy",
+      "start": 184,
+      "duration": 19,
+      "image": "images/shot-11.png",
+      "background": "hall",
+      "camera": "static",
+      "characters": [
+        {
+          "name": "Joan",
+          "expression": "gentle",
+          "pose": "stand"
+        },
+        {
+          "name": "Baudricourt",
+          "expression": "smug",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": "Robert de Baudricourt",
+      "narration": "At sixteen, she walked to a nearby garrison and asked the local commander, Robert de Baudricourt, for an armed escort to see the prince. He laughed in her face and told her family to take her home and slap some sense into her.",
+      "word_count": 43
+    },
+    {
+      "id": "shot-12",
+      "speaker": null,
+      "section": "The girl from Domrémy",
+      "start": 203,
+      "duration": 12,
+      "image": "images/shot-12.png",
+      "background": "hall",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Joan",
+          "expression": "determined",
+          "pose": "stand"
+        },
+        {
+          "name": "Baudricourt",
+          "expression": "surprised",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "She came back. And kept coming back. Finally, the commander relented—rumor has it, after Joan accurately predicted a major French defeat days before the messenger even arrived.",
+      "word_count": 27
+    },
+    {
+      "id": "shot-13",
+      "speaker": null,
+      "section": "The road to Chinon",
+      "start": 215,
+      "duration": 13,
+      "image": "images/shot-13.png",
+      "background": "map1429",
+      "camera": "slow zoom in",
+      "characters": [],
+      "on_screen_text": "11 days through enemy land",
+      "narration": "In February 1429, Joan cut her hair short, put on men's riding clothes, and rode for eleven dangerous days straight through enemy-held territory with just a handful of guards.",
+      "word_count": 29
+    },
+    {
+      "id": "shot-14",
+      "speaker": null,
+      "section": "The road to Chinon",
+      "start": 228,
+      "duration": 21,
+      "image": "images/shot-14.png",
+      "background": "hall",
+      "camera": "slow pan right",
+      "characters": [
+        {
+          "name": "Courtier",
+          "expression": "smug",
+          "pose": "stand"
+        },
+        {
+          "name": "Charles",
+          "expression": "surprised",
+          "pose": "stand"
+        },
+        {
+          "name": "Joan",
+          "expression": "gentle",
+          "pose": "bow"
+        },
+        {
+          "name": "Courtier",
+          "expression": "smug",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": "Chinon",
+      "narration": "When she reached the castle of Chinon, legend says Charles decided to test her. He disguised himself in plain clothes and hid among his nobles while someone else sat on the throne. Joan walked right past the decoy, straight into the crowd, and knelt before the real Dauphin.",
+      "word_count": 48
+    },
+    {
+      "id": "talk-chinon-1",
+      "speaker": "son",
+      "section": "The road to Chinon",
+      "start": 249,
+      "duration": 7,
+      "image": "images/talk-chinon-1.png",
+      "background": "hall",
+      "camera": "static",
+      "characters": [
+        {
+          "name": "Joan",
+          "expression": "gentle",
+          "pose": "bow"
+        },
+        {
+          "name": "Charles",
+          "expression": "surprised",
+          "pose": "stand"
+        },
+        {
+          "name": "Courtier",
+          "expression": "smug",
+          "pose": "stand"
+        },
+        {
+          "name": "Father",
+          "expression": "neutral",
+          "pose": "stand"
+        },
+        {
+          "name": "Son",
+          "expression": "surprised",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "Okay, how did she pick him out of a crowd? She'd never even seen him!",
+      "word_count": 15
+    },
+    {
+      "id": "talk-chinon-2",
+      "speaker": "father",
+      "section": "The road to Chinon",
+      "start": 256,
+      "duration": 19,
+      "image": "images/talk-chinon-2.png",
+      "background": "hall",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Joan",
+          "expression": "gentle",
+          "pose": "bow"
+        },
+        {
+          "name": "Charles",
+          "expression": "surprised",
+          "pose": "stand"
+        },
+        {
+          "name": "Courtier",
+          "expression": "smug",
+          "pose": "stand"
+        },
+        {
+          "name": "Father",
+          "expression": "gentle",
+          "pose": "stand"
+        },
+        {
+          "name": "Son",
+          "expression": "neutral",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "That's the legend, and historians aren't sure it happened exactly like that. But think about it. Everyone gossiped about the Dauphin, so a sharp girl could have heard what he looked like. Either way, the story spread. And stories were her secret weapon.",
+      "word_count": 43
+    },
+    {
+      "id": "shot-15",
+      "speaker": null,
+      "section": "The road to Chinon",
+      "start": 275,
+      "duration": 17,
+      "image": "images/shot-15.png",
+      "background": "hall",
+      "camera": "static",
+      "characters": [
+        {
+          "name": "Churchman",
+          "expression": "neutral",
+          "pose": "stand"
+        },
+        {
+          "name": "Churchman",
+          "expression": "neutral",
+          "pose": "stand"
+        },
+        {
+          "name": "Joan",
+          "expression": "gentle",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "Still, Charles wasn't about to bet his kingdom on a miracle. For weeks, top churchmen interrogated Joan, looking for any sign of heresy or madness. They found nothing—only fierce devotion. And frankly, Charles had nothing left to lose.",
+      "word_count": 38
+    },
+    {
+      "id": "shot-16",
+      "speaker": null,
+      "section": "The road to Chinon",
+      "start": 292,
+      "duration": 21,
+      "image": "images/shot-16.png",
+      "background": "hall",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Joan",
+          "expression": "determined",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": "\"Forty times more than my sword\"",
+      "narration": "So he gave her a suit of white armor, a warhorse, and a spot in the relief army marching to Orléans. Instead of leading with a weapon, Joan carried a white banner covered in golden lilies. She later admitted she loved that banner forty times more than her sword.",
+      "word_count": 49
+    },
+    {
+      "id": "shot-17",
+      "speaker": null,
+      "section": "Orléans",
+      "start": 313,
+      "duration": 9,
+      "image": "images/shot-17.png",
+      "background": "siege",
+      "camera": "slow pan left",
+      "characters": [
+        {
+          "name": "Townsman",
+          "expression": "gentle",
+          "pose": "stand"
+        },
+        {
+          "name": "Townsman",
+          "expression": "gentle",
+          "pose": "stand"
+        },
+        {
+          "name": "Joan",
+          "expression": "gentle",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": "29 April 1429",
+      "narration": "Joan rode into Orléans at the end of April. Starving, desperate citizens flooded the streets just to touch her armor.",
+      "word_count": 20
+    },
+    {
+      "id": "shot-18",
+      "speaker": null,
+      "section": "Orléans",
+      "start": 322,
+      "duration": 19,
+      "image": "images/shot-18.png",
+      "background": "siege",
+      "camera": "static",
+      "characters": [
+        {
+          "name": "Commander",
+          "expression": "smug",
+          "pose": "stand"
+        },
+        {
+          "name": "Commander",
+          "expression": "angry",
+          "pose": "stand"
+        },
+        {
+          "name": "Joan",
+          "expression": "determined",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "The seasoned French generals, however, treated her like a mascot. They locked her out of war councils and launched attacks without telling her. So Joan simply grabbed her banner, rode straight to the front lines, and the common soldiers followed her into hell.",
+      "word_count": 43
+    },
+    {
+      "id": "shot-19",
+      "speaker": null,
+      "section": "Orléans",
+      "start": 341,
+      "duration": 13,
+      "image": "images/shot-19.png",
+      "background": "siege",
+      "camera": "shake",
+      "characters": [
+        {
+          "name": "Joan",
+          "expression": "closed",
+          "pose": "stand"
+        },
+        {
+          "name": "French knight",
+          "expression": "surprised",
+          "pose": "walk"
+        }
+      ],
+      "on_screen_text": "7 May 1429",
+      "narration": "On May 7th, while storming a heavily fortified English stronghold, an arrow pierced Joan right between her neck and shoulder. Badly wounded, she was dragged away from the battle.",
+      "word_count": 29
+    },
+    {
+      "id": "shot-20",
+      "speaker": null,
+      "section": "Orléans",
+      "start": 354,
+      "duration": 17,
+      "image": "images/shot-20.png",
+      "background": "siege",
+      "camera": "quick push in",
+      "characters": [
+        {
+          "name": "Joan",
+          "expression": "angry",
+          "pose": "stand"
+        },
+        {
+          "name": "French knight",
+          "expression": "angry",
+          "pose": "walk"
+        },
+        {
+          "name": "French knight",
+          "expression": "angry",
+          "pose": "walk"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "Hours later, against all medical logic, she pulled the arrow out, got back on her horse, and charged back into the smoke waving her banner. Seeing her alive terrified the English—and electrified the French. They took the fortress.",
+      "word_count": 38
+    },
+    {
+      "id": "talk-orleans-1",
+      "speaker": "son",
+      "section": "Orléans",
+      "start": 371,
+      "duration": 7,
+      "image": "images/talk-orleans-1.png",
+      "background": "siege",
+      "camera": "static",
+      "characters": [
+        {
+          "name": "Joan",
+          "expression": "angry",
+          "pose": "stand"
+        },
+        {
+          "name": "French knight",
+          "expression": "angry",
+          "pose": "walk"
+        },
+        {
+          "name": "Father",
+          "expression": "neutral",
+          "pose": "stand"
+        },
+        {
+          "name": "Son",
+          "expression": "surprised",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "She pulled an arrow out of her own shoulder and went back in? That's insane.",
+      "word_count": 15
+    },
+    {
+      "id": "talk-orleans-2",
+      "speaker": "father",
+      "section": "Orléans",
+      "start": 378,
+      "duration": 13,
+      "image": "images/talk-orleans-2.png",
+      "background": "siege",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Joan",
+          "expression": "angry",
+          "pose": "stand"
+        },
+        {
+          "name": "French knight",
+          "expression": "angry",
+          "pose": "walk"
+        },
+        {
+          "name": "Father",
+          "expression": "determined",
+          "pose": "stand"
+        },
+        {
+          "name": "Son",
+          "expression": "neutral",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "That's exactly why it worked. The generals had plans. Joan had courage, and the soldiers could see it. Men will follow someone who takes the same risks they do.",
+      "word_count": 29
+    },
+    {
+      "id": "shot-21",
+      "speaker": null,
+      "section": "Orléans",
+      "start": 391,
+      "duration": 12,
+      "image": "images/shot-21.png",
+      "background": "siege",
+      "camera": "slow zoom out",
+      "characters": [
+        {
+          "name": "English knight",
+          "expression": "closed",
+          "pose": "walk"
+        },
+        {
+          "name": "Archer",
+          "expression": "closed",
+          "pose": "walk"
+        },
+        {
+          "name": "Joan",
+          "expression": "gentle",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": "Siege broken in 9 days",
+      "narration": "The very next morning, the English army packed up and retreated. A siege that had choked Orléans for over six months was shattered in just nine days.",
+      "word_count": 27
+    },
+    {
+      "id": "shot-22",
+      "speaker": null,
+      "section": "Orléans",
+      "start": 403,
+      "duration": 18,
+      "image": "images/shot-22.png",
+      "background": "parchment",
+      "camera": "slow zoom in",
+      "characters": [],
+      "on_screen_text": "Paris, 10 May 1429",
+      "narration": "News of Orléans spread fast. In Paris, a court clerk who had never even seen Joan doodled her in the margin of his register: long hair, a banner and a sword. It's the only picture of Joan made during her lifetime.",
+      "word_count": 41
+    },
+    {
+      "id": "shot-23",
+      "speaker": null,
+      "section": "The tide turns",
+      "start": 421,
+      "duration": 9,
+      "image": "images/shot-23.png",
+      "background": "field",
+      "camera": "slow pan right",
+      "characters": [
+        {
+          "name": "Archer",
+          "expression": "surprised",
+          "pose": "stand"
+        },
+        {
+          "name": "Archer",
+          "expression": "surprised",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": "Patay, 18 June 1429",
+      "narration": "Suddenly, the hunters became the hunted. In June, the French caught a retreating English force near a village called Patay.",
+      "word_count": 20
+    },
+    {
+      "id": "shot-24",
+      "speaker": null,
+      "section": "The tide turns",
+      "start": 430,
+      "duration": 17,
+      "image": "images/shot-24.png",
+      "background": "field",
+      "camera": "shake",
+      "characters": [
+        {
+          "name": "Archer",
+          "expression": "surprised",
+          "pose": "walk"
+        },
+        {
+          "name": "Archer",
+          "expression": "surprised",
+          "pose": "walk"
+        },
+        {
+          "name": "French knight",
+          "expression": "angry",
+          "pose": "walk"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "Remember those devastating English longbowmen from Agincourt? They needed time to hammer wooden stakes into the ground to stop a cavalry charge. This time, they didn't get it. French knights slammed into their lines before the archers were even set.",
+      "word_count": 40
+    },
+    {
+      "id": "shot-25",
+      "speaker": null,
+      "section": "The tide turns",
+      "start": 447,
+      "duration": 13,
+      "image": "images/shot-25.png",
+      "background": "parchment",
+      "camera": "static",
+      "characters": [
+        {
+          "name": "French knight",
+          "expression": "smug",
+          "pose": "stand"
+        },
+        {
+          "name": "Archer",
+          "expression": "closed",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": "Agincourt in reverse",
+      "narration": "The elite army that had crushed France at Agincourt was completely wiped out. Thousands of English soldiers fell, while the French lost barely a hundred. It was Agincourt in reverse.",
+      "word_count": 30
+    },
+    {
+      "id": "talk-patay-1",
+      "speaker": "son",
+      "section": "The tide turns",
+      "start": 460,
+      "duration": 5,
+      "image": "images/talk-patay-1.png",
+      "background": "field",
+      "camera": "static",
+      "characters": [
+        {
+          "name": "Archer",
+          "expression": "surprised",
+          "pose": "stand"
+        },
+        {
+          "name": "French knight",
+          "expression": "angry",
+          "pose": "walk"
+        },
+        {
+          "name": "Father",
+          "expression": "neutral",
+          "pose": "stand"
+        },
+        {
+          "name": "Son",
+          "expression": "surprised",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "Wait, so the longbow wasn't some unbeatable super weapon?",
+      "word_count": 9
+    },
+    {
+      "id": "talk-patay-2",
+      "speaker": "father",
+      "section": "The tide turns",
+      "start": 465,
+      "duration": 12,
+      "image": "images/talk-patay-2.png",
+      "background": "field",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Archer",
+          "expression": "surprised",
+          "pose": "stand"
+        },
+        {
+          "name": "French knight",
+          "expression": "angry",
+          "pose": "walk"
+        },
+        {
+          "name": "Father",
+          "expression": "smug",
+          "pose": "stand"
+        },
+        {
+          "name": "Son",
+          "expression": "neutral",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "No weapon is. At Agincourt, the archers had time, mud and woods on their side. At Patay, they had none of that. Same weapon, different situation, opposite result.",
+      "word_count": 28
+    },
+    {
+      "id": "shot-26",
+      "speaker": null,
+      "section": "The crown at Reims",
+      "start": 477,
+      "duration": 13,
+      "image": "images/shot-26.png",
+      "background": "map1429",
+      "camera": "slow zoom in",
+      "characters": [],
+      "on_screen_text": "The march to Reims, July 1429",
+      "narration": "With the English on the run, Joan convinced Charles to attempt the unthinkable: march straight through enemy territory to Reims. Miraculously, city after city opened its gates without a fight.",
+      "word_count": 30
+    },
+    {
+      "id": "shot-27",
+      "speaker": null,
+      "section": "The crown at Reims",
+      "start": 490,
+      "duration": 13,
+      "image": "images/shot-27.png",
+      "background": "cathedral",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Charles",
+          "expression": "smug",
+          "pose": "stand"
+        },
+        {
+          "name": "Joan",
+          "expression": "gentle",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": "Reims, 17 July 1429",
+      "narration": "On July 17, 1429, Charles was finally crowned King Charles VII of France inside Reims Cathedral. Standing right beside the high altar was Joan, holding her white banner high.",
+      "word_count": 29
+    },
+    {
+      "id": "shot-28",
+      "speaker": null,
+      "section": "The crown at Reims",
+      "start": 503,
+      "duration": 16,
+      "image": "images/shot-28.png",
+      "background": "cathedral",
+      "camera": "quick push in",
+      "characters": [
+        {
+          "name": "Joan",
+          "expression": "gentle",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": "\"It had borne the burden\"",
+      "narration": "When critics later asked why her battle flag was allowed at such a sacred ceremony, Joan gave a simple answer: \"It had borne the burden, so it was only right that it should share the honor.\"",
+      "word_count": 36
+    },
+    {
+      "id": "talk-reims-1",
+      "speaker": "son",
+      "section": "The crown at Reims",
+      "start": 519,
+      "duration": 6,
+      "image": "images/talk-reims-1.png",
+      "background": "cathedral",
+      "camera": "static",
+      "characters": [
+        {
+          "name": "Charles",
+          "expression": "smug",
+          "pose": "stand"
+        },
+        {
+          "name": "Joan",
+          "expression": "gentle",
+          "pose": "stand"
+        },
+        {
+          "name": "Father",
+          "expression": "neutral",
+          "pose": "stand"
+        },
+        {
+          "name": "Son",
+          "expression": "neutral",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "Why was the coronation such a big deal? Charles was already the heir.",
+      "word_count": 13
+    },
+    {
+      "id": "talk-reims-2",
+      "speaker": "father",
+      "section": "The crown at Reims",
+      "start": 525,
+      "duration": 16,
+      "image": "images/talk-reims-2.png",
+      "background": "cathedral",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Charles",
+          "expression": "smug",
+          "pose": "stand"
+        },
+        {
+          "name": "Joan",
+          "expression": "gentle",
+          "pose": "stand"
+        },
+        {
+          "name": "Father",
+          "expression": "gentle",
+          "pose": "stand"
+        },
+        {
+          "name": "Son",
+          "expression": "neutral",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "In the Middle Ages, being crowned at Reims made a king real in people's eyes. After that day, fighting Charles meant fighting a king blessed by the Church. That one ceremony was worth more than a battle.",
+      "word_count": 37
+    },
+    {
+      "id": "shot-29",
+      "speaker": null,
+      "section": "Captured",
+      "start": 541,
+      "duration": 19,
+      "image": "images/shot-29.png",
+      "background": "hall",
+      "camera": "static",
+      "characters": [
+        {
+          "name": "Joan",
+          "expression": "surprised",
+          "pose": "stand"
+        },
+        {
+          "name": "King",
+          "expression": "closed",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "Joan had kept her promise. She wanted to keep pushing and take back Paris—but King Charles had lost his nerve. Now that he had his crown, he preferred slow diplomacy over war. An attack on Paris stalled, and Joan was wounded once again.",
+      "word_count": 43
+    },
+    {
+      "id": "shot-30",
+      "speaker": null,
+      "section": "Captured",
+      "start": 560,
+      "duration": 11,
+      "image": "images/shot-30.png",
+      "background": "field",
+      "camera": "shake",
+      "characters": [
+        {
+          "name": "Burgundian knight",
+          "expression": "smug",
+          "pose": "stand"
+        },
+        {
+          "name": "Joan",
+          "expression": "surprised",
+          "pose": "stand"
+        },
+        {
+          "name": "Burgundian knight",
+          "expression": "angry",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": "Compiègne, May 1430",
+      "narration": "In May 1430, while fighting a rearguard action to defend the town of Compiègne, Joan was dragged off her horse and captured by Burgundian troops.",
+      "word_count": 25
+    },
+    {
+      "id": "shot-31",
+      "speaker": null,
+      "section": "Captured",
+      "start": 571,
+      "duration": 14,
+      "image": "images/shot-31.png",
+      "background": "hall",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Burgundian knight",
+          "expression": "smug",
+          "pose": "stand"
+        },
+        {
+          "name": "English knight",
+          "expression": "smug",
+          "pose": "stand"
+        },
+        {
+          "name": "King",
+          "expression": "closed",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "They sold her to the English for a king's ransom. And King Charles—the man who owed his throne to this teenage girl—didn't pay a single coin to save her. He didn't even try.",
+      "word_count": 33
+    },
+    {
+      "id": "talk-charles-1",
+      "speaker": "son",
+      "section": "Captured",
+      "start": 585,
+      "duration": 6,
+      "image": "images/talk-charles-1.png",
+      "background": "hall",
+      "camera": "static",
+      "characters": [
+        {
+          "name": "King",
+          "expression": "closed",
+          "pose": "stand"
+        },
+        {
+          "name": "Father",
+          "expression": "neutral",
+          "pose": "stand"
+        },
+        {
+          "name": "Son",
+          "expression": "angry",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "He didn't even try to save her? After everything she did for him?",
+      "word_count": 13
+    },
+    {
+      "id": "talk-charles-2",
+      "speaker": "father",
+      "section": "Captured",
+      "start": 591,
+      "duration": 18,
+      "image": "images/talk-charles-2.png",
+      "background": "hall",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "King",
+          "expression": "closed",
+          "pose": "stand"
+        },
+        {
+          "name": "Father",
+          "expression": "closed",
+          "pose": "stand"
+        },
+        {
+          "name": "Son",
+          "expression": "neutral",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "It's one of the ugliest parts of the story. Maybe he thought she'd become too popular. Maybe he didn't want to owe his crown to a peasant girl. Historians still argue about it, and none of the answers make him look good.",
+      "word_count": 42
+    },
+    {
+      "id": "shot-32",
+      "speaker": null,
+      "section": "The trial",
+      "start": 609,
+      "duration": 14,
+      "image": "images/shot-32.png",
+      "background": "court",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "English knight",
+          "expression": "smug",
+          "pose": "stand"
+        },
+        {
+          "name": "Joan",
+          "expression": "neutral",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": "Rouen, 1431",
+      "narration": "The English didn't just want Joan dead; they wanted her ruined. If they could prove she was a witch or a heretic, then Charles had been crowned by the devil—making his kingship worthless.",
+      "word_count": 33
+    },
+    {
+      "id": "shot-33",
+      "speaker": null,
+      "section": "The trial",
+      "start": 623,
+      "duration": 11,
+      "image": "images/shot-33.png",
+      "background": "court",
+      "camera": "static",
+      "characters": [
+        {
+          "name": "Churchman",
+          "expression": "neutral",
+          "pose": "stand"
+        },
+        {
+          "name": "Cauchon",
+          "expression": "angry",
+          "pose": "stand"
+        },
+        {
+          "name": "Churchman",
+          "expression": "neutral",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": "Bishop Pierre Cauchon",
+      "narration": "In 1431, in the English-held city of Rouen, Joan was dragged before a rigged church court led by Bishop Pierre Cauchon, an English loyalist.",
+      "word_count": 24
+    },
+    {
+      "id": "shot-34",
+      "speaker": null,
+      "section": "The trial",
+      "start": 634,
+      "duration": 27,
+      "image": "images/shot-34.png",
+      "background": "court",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Cauchon",
+          "expression": "smug",
+          "pose": "stand"
+        },
+        {
+          "name": "Joan",
+          "expression": "neutral",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "For months, dozens of highly educated scholars fired complex theological traps at an illiterate nineteen-year-old girl. During one session, a judge asked if she knew she was in God's grace. It was a deadly trap: according to church doctrine, no one could know that for sure. Say yes, and she was guilty of heresy; say no, and she confessed to being a sinner.",
+      "word_count": 63
+    },
+    {
+      "id": "shot-35",
+      "speaker": null,
+      "section": "The trial",
+      "start": 661,
+      "duration": 17,
+      "image": "images/shot-35.png",
+      "background": "court",
+      "camera": "quick push in",
+      "characters": [],
+      "on_screen_text": null,
+      "narration": "Joan didn't blink. She replied: \"If I am not, may God put me there; and if I am, may God so keep me.\" The courtroom went dead silent. The scribes didn't even know what to write down.",
+      "word_count": 37
+    },
+    {
+      "id": "talk-trial-1",
+      "speaker": "son",
+      "section": "The trial",
+      "start": 678,
+      "duration": 6,
+      "image": "images/talk-trial-1.png",
+      "background": "court",
+      "camera": "static",
+      "characters": [
+        {
+          "name": "Joan",
+          "expression": "gentle",
+          "pose": "stand"
+        },
+        {
+          "name": "Cauchon",
+          "expression": "surprised",
+          "pose": "stand"
+        },
+        {
+          "name": "Father",
+          "expression": "neutral",
+          "pose": "stand"
+        },
+        {
+          "name": "Son",
+          "expression": "surprised",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "Wait, that answer is genius. How did she come up with that?",
+      "word_count": 12
+    },
+    {
+      "id": "talk-trial-2",
+      "speaker": "father",
+      "section": "The trial",
+      "start": 684,
+      "duration": 17,
+      "image": "images/talk-trial-2.png",
+      "background": "court",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Joan",
+          "expression": "gentle",
+          "pose": "stand"
+        },
+        {
+          "name": "Cauchon",
+          "expression": "surprised",
+          "pose": "stand"
+        },
+        {
+          "name": "Father",
+          "expression": "gentle",
+          "pose": "stand"
+        },
+        {
+          "name": "Son",
+          "expression": "neutral",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "Nobody knows. No education, against dozens of trained scholars. Some people see it as proof of something divine. Others think she was just incredibly sharp. Either way, it's written right there in the trial record. Those are her actual words.",
+      "word_count": 40
+    },
+    {
+      "id": "shot-36",
+      "speaker": null,
+      "section": "The trial",
+      "start": 701,
+      "duration": 12,
+      "image": "images/shot-36.png",
+      "background": "court",
+      "camera": "static",
+      "characters": [
+        {
+          "name": "Cauchon",
+          "expression": "angry",
+          "pose": "stand"
+        },
+        {
+          "name": "Joan",
+          "expression": "closed",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "Still, the verdict had been decided before the trial even began. She was found guilty of heresy—and of refusing to stop wearing men's clothing in prison.",
+      "word_count": 26
+    },
+    {
+      "id": "shot-37",
+      "speaker": null,
+      "lead": 2.5,
+      "section": "The darkest day",
+      "start": 713,
+      "duration": 13,
+      "image": "images/shot-37.png",
+      "background": "court",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Joan",
+          "expression": "closed",
+          "pose": "bow"
+        }
+      ],
+      "on_screen_text": "30 May 1431",
+      "narration": "On May 30, 1431, in the old market square of Rouen, Joan was executed. She was just nineteen years old.",
+      "word_count": 20
+    },
+    {
+      "id": "shot-38",
+      "speaker": null,
+      "section": "The darkest day",
+      "start": 726,
+      "duration": 14,
+      "image": "images/shot-38.png",
+      "background": "village",
+      "camera": "slow pan right",
+      "characters": [
+        {
+          "name": "Townsman",
+          "expression": "closed",
+          "pose": "stand"
+        },
+        {
+          "name": "English knight",
+          "expression": "closed",
+          "pose": "stand"
+        },
+        {
+          "name": "Townsman",
+          "expression": "closed",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "Eyewitnesses wrote that the entire square wept—even battle-hardened English soldiers. One of the English king's own secretaries reportedly walked away in horror, muttering, \"We are lost. We have burned a saint.\"",
+      "word_count": 31
+    },
+    {
+      "id": "shot-39",
+      "speaker": null,
+      "section": "What came next",
+      "start": 740,
+      "duration": 19,
+      "image": "images/shot-39.png",
+      "background": "parchment",
+      "camera": "static",
+      "characters": [],
+      "on_screen_text": null,
+      "narration": "Joan never lived to see the final victory, but she had lit a fire England couldn't put out. Over the next two decades, the French steadily drove the English out of almost every inch of France. By 1453, the Hundred Years' War was finally over.",
+      "word_count": 45
+    },
+    {
+      "id": "shot-40",
+      "speaker": null,
+      "section": "What came next",
+      "start": 759,
+      "duration": 12,
+      "image": "images/shot-40.png",
+      "background": "court",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Churchman",
+          "expression": "gentle",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": "1456: declared innocent",
+      "narration": "Three years later, in 1456, a new church court investigated her trial, exposed the corruption, and declared her completely innocent. Justice had arrived—twenty-five years too late.",
+      "word_count": 26
+    },
+    {
+      "id": "shot-41",
+      "speaker": null,
+      "section": "What came next",
+      "start": 771,
+      "duration": 15,
+      "image": "images/shot-41.png",
+      "background": "cathedral",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Joan",
+          "expression": "determined",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": "Saint Joan, 1920",
+      "narration": "In 1920, the Catholic Church officially canonized her as Saint Joan of Arc. Today, she is a patron saint of France, and bronze statues of her riding into battle stand in towns across the country.",
+      "word_count": 35
+    },
+    {
+      "id": "shot-42",
+      "speaker": null,
+      "section": "What came next",
+      "start": 786,
+      "duration": 6,
+      "image": "images/shot-42.png",
+      "background": "hall",
+      "camera": "quick push in",
+      "characters": [
+        {
+          "name": "Baudricourt",
+          "expression": "surprised",
+          "pose": "stand"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "Not bad for a farm girl who was told to go home.",
+      "word_count": 12
+    },
+    {
+      "id": "outro-1",
+      "speaker": "son",
+      "section": "Outro",
+      "start": 792,
+      "duration": 7,
+      "image": "images/outro-1.png",
+      "background": "livingroom",
+      "camera": "static",
+      "characters": [
+        {
+          "name": "Father",
+          "expression": "gentle",
+          "pose": "sit"
+        },
+        {
+          "name": "Son",
+          "expression": "surprised",
+          "pose": "sit"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "So England dominates at Agincourt, and then a teenager flips the entire war on its head?",
+      "word_count": 16
+    },
+    {
+      "id": "outro-2",
+      "speaker": "father",
+      "section": "Outro",
+      "start": 799,
+      "duration": 16,
+      "image": "images/outro-2.png",
+      "background": "livingroom",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Father",
+          "expression": "smug",
+          "pose": "sit"
+        },
+        {
+          "name": "Son",
+          "expression": "neutral",
+          "pose": "sit"
+        }
+      ],
+      "on_screen_text": "Voices or courage? Comment below",
+      "narration": "Pretty much. History loves an underdog. Now I'm curious what you guys think: was Joan truly guided by divine voices, or was she just braver than every general in France? Drop your thoughts in the comments.",
+      "word_count": 36
+    },
+    {
+      "id": "outro-3",
+      "speaker": "son",
+      "section": "Outro",
+      "start": 815,
+      "duration": 7,
+      "image": "images/outro-3.png",
+      "background": "livingroom",
+      "camera": "quick push in",
+      "characters": [
+        {
+          "name": "Father",
+          "expression": "gentle",
+          "pose": "sit"
+        },
+        {
+          "name": "Son",
+          "expression": "determined",
+          "pose": "sit"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "Honestly? Sounds like she just had more guts than everyone else in the room.",
+      "word_count": 14
+    },
+    {
+      "id": "outro-4",
+      "speaker": "father",
+      "section": "Outro",
+      "start": 822,
+      "duration": 21,
+      "image": "images/outro-4.png",
+      "background": "livingroom",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Father",
+          "expression": "smug",
+          "pose": "sit"
+        },
+        {
+          "name": "Son",
+          "expression": "surprised",
+          "pose": "sit"
+        }
+      ],
+      "on_screen_text": "Next: Alexander the Great",
+      "narration": "Good answer. Next time, we're going way back, more than two thousand years. A twenty-five-year-old king named Alexander leads his army across the world, straight into the biggest empire on Earth. On a dusty plain called Gaugamela, he'll face an army that might be twice the size of his own.",
+      "word_count": 50
+    },
+    {
+      "id": "outro-5",
+      "speaker": "son",
+      "section": "Outro",
+      "start": 843,
+      "duration": 5,
+      "image": "images/outro-5.png",
+      "background": "livingroom",
+      "camera": "quick push in",
+      "characters": [
+        {
+          "name": "Father",
+          "expression": "gentle",
+          "pose": "sit"
+        },
+        {
+          "name": "Son",
+          "expression": "surprised",
+          "pose": "sit"
+        }
+      ],
+      "on_screen_text": null,
+      "narration": "Wait, Alexander the Great? I've heard of him! So what happened?",
+      "word_count": 11
+    },
+    {
+      "id": "outro-6",
+      "speaker": "father",
+      "section": "Outro",
+      "start": 848,
+      "duration": 8,
+      "image": "images/outro-6.png",
+      "background": "livingroom",
+      "camera": "slow zoom in",
+      "characters": [
+        {
+          "name": "Father",
+          "expression": "smug",
+          "pose": "sit"
+        },
+        {
+          "name": "Son",
+          "expression": "gentle",
+          "pose": "sit"
+        }
+      ],
+      "on_screen_text": "Like & Subscribe",
+      "narration": "Like and subscribe to StickDad History, and I'll tell you next time.",
+      "word_count": 12
+    }
+  ]
+}

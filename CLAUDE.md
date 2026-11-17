@@ -1,0 +1,119 @@
+# StickDad History: YouTube history channel (project "Lịch Sử Các Nước")
+
+English-language animated history videos for viewers in the US, UK, Canada and Australia.
+The owner writes in Vietnamese; reply in Vietnamese, but write all video scripts, titles and
+descriptions in English.
+
+Channel name: **StickDad History** (handle @StickDadHistory if available). Channel art in
+`channel/`: `stickdad-banner.png` (2560×1440), `stickdad-logo.png` / `stickdad-logo-800.png`.
+From episode 2 on, the father can mention the channel name in the outro.
+
+## Style
+- Stick-figure characters: big round white head with a lavender crescent shadow, thick black
+  ink outlines, stick arms and legs, black dot hands, white oval feet, detailed period costumes.
+- Characters and backgrounds are drawn by code in `index.html` (Xưởng Nhân Vật Sử). New scenes
+  go in its `SCENES` table; new parts in `HAIR`, `HATS`, `OUTFITS`, `PROPS`.
+- European episodes: keep the two sides visually distinct. England = white surcoat with the red
+  St George cross (`knight_en`, `archer` with a cross badge, `stgeorge` banner); France = royal blue
+  with gold fleurs-de-lis (`knight_fr`, `fleur` banner); Henry V = `knight_royal` + `royalhelm`.
+  English archers look ragged and muddy, French knights shiny. Henry V has `scar: true` (Shrewsbury
+  arrow, 1403). Scenes: `field`, `hall`, `siege`, `river`, `camp`, `parchment` (use it instead of
+  `paper` for infographics). Effects: `shot.fx` (`stakes`, `arrowstorm`, `groundarrows`, `campfire`,
+  `splash`, `rays` for Joan's voices, evidence visuals `route`/`pin` (on `map1429`, pass `dy: 16`),
+  `doc` (old document card: title, quote, seal, the clerk's sketch of Joan), `timeline`, `crowd` for army size, `label` for infographic captions) and per character `mud` (0..1), `shiver`, `rot` (-84 = fallen face down). Owner chose the original wide-shot style
+  (not the close-up test in `episodes/03-agincourt/style-test-closeup.png`).
+- Narration voice: calm documentary narrator, light dry humor, serious at sad moments.
+- Framing (since episode 1 revision): a modern-day father tells the story to his 16-year-old
+  son in their living room. Intro: son plays a samurai game on his phone, father asks if he
+  knows about real samurai, invites him to sit and listen. Outro: back on the sofa, father asks
+  if he wants the next story and tells viewers to like and subscribe. Dialogue shots have
+  `id` ("intro-1"…), `speaker` ("father" = Charon, also the narrator; "son" = Puck) and use
+  the `livingroom` scene, `tshirt`/`hoodie` outfits, `glasses`, `book`, `phone`, `sit` pose.
+- From episode 4 on (owner's request): at the big dramatic moments father and son also step into the
+  historical scene (ids `talk-<place>-1/2`, standing in the foreground) and discuss it: the son asks,
+  the father gives a concrete opinion or analysis. Back up key facts with evidence visuals (maps,
+  routes, documents, timelines), all drawn by our code.
+- YouTube safety: no graphic violence or crude words. Avoid "kill", "murder", "head" (as a
+  trophy), "blood", "suicide" described graphically. Use "fell", "struck down", "was gone".
+- Copyright: scripts are original; images are drawn by our code; music is synthesized by
+  `tools/make-music.py`. Never add downloaded music, images or clips.
+
+## Episodes
+Folder numbers are the order they were written; **upload order** is what viewers see.
+
+| Upload | Folder | Topic | Status |
+|---|---|---|---|
+| **1st** | `episodes/02-okehazama` | Battle of Okehazama (1560), "2,000 vs 25,000" | Channel opener. Intro written as the first meeting (son playing a samurai game). Script and frames done; render with ElevenLabs |
+| **2nd** | `episodes/01-47-ronin` | The 47 Ronin (1701–1703) | Final video done (Gemini voice, father/son intro and outro, 3 Shorts). Owner wants it kept as is; do not re-voice with ElevenLabs |
+| 3rd | `episodes/03-agincourt` | Battle of Agincourt (1415), first European episode | Video done (10:21, ElevenLabs voice, medieval music). Intro refers back to Okehazama; ends teasing Joan of Arc |
+| 4th | `episodes/04-joan-of-arc` | Joan of Arc (1429–1431), continues Agincourt | Script (owner's rewrite) and frames done. Intro picks up the "farm girl" question; outro teases Alexander the Great at Gaugamela. Music stops for the darkest day (2.5 s lead). Video done (12:11, ElevenLabs voice, one take per shot) |
+| 5th | `episodes/05-gaugamela` | Alexander the Great, Battle of Gaugamela (331 BC) | Owner's Vietnamese script adapted to English with father/son framing. Video done (10:06, ElevenLabs, one take per shot, `ancient` music palette). Evidence: campaign map, battle maps, Babylonian clay tablet, Pompeii mosaic. Outro teases the Honnō-ji Incident |
+| 6th (special) | `episodes/06-tyre` | Alexander and the Siege of Tyre (332 BC) | Owner's Vietnamese script adapted to English and extended at the owner's request to show Alexander's strategy, creativity and speed. Video done (9:43). First episode with real animation (tools/build-anim.js) and more evidence visuals (Arrian quote, wall height comparison, murex dye snail, siege timeline, causeway map then/now, PNAS 2007 drill-core section). ElevenLabs, `ancient` music. Outro teases the Empty Fort Strategy (Three Kingdoms legend) and promises Japan later |
+| 7th | (next) | Empty Fort Strategy (Zhuge Liang, legend from Romance of the Three Kingdoms) | Teased at the end of Tyre; treat as legend, say how much is true |
+| later | (ideas) | Honnō-ji Incident (1582) | Mentioned in the Okehazama ending; teased at the end of Gaugamela |
+
+## Pipeline (run from the repo root)
+1. Write `episodes/<NN-name>/shots.js` (narration, scene notes, characters, YouTube package,
+   `music_moods`). Copy the structure of episode 2.
+2. `node tools/build-episode.js episodes/<NN-name>/shots.js` → 1920×1080 frames + `episode.json` + `voiceover.txt`
+3. `node tools/build-prompts.js episodes/<NN-name>` → `prompts.jsonl` (one AI prompt per shot)
+4. `node tools/build-script.js episodes/<NN-name>` → `scripts/<NN-name>.md`
+5. `python3 tools/make-video.py episodes/<NN-name> --model gemini-3.1-flash-tts-preview`
+   → `<NN-name>.mp4` with Gemini voice (voice Charon). Dialogue shots use
+   `--dialogue-model` (default gemini-3.8-flash-tts) to spread the free quota. Voices one request per section and splits
+   at pauses, to fit the free tier; falls back to other TTS models on blocks or quota.
+6. `python3 tools/make-music.py episodes/<NN-name>` → `<NN-name>-music.mp4` (final video).
+   Music stays at one fixed level, 18 dB under the voice (owner asked for no ducking).
+   The voice is extracted with `aresample=async` so it cannot drift ahead of the picture (fixed Nov 2026;
+   episodes 2–4 were re-mixed).
+   Final loudness −14 LUFS. Palette from `music_palette` in shots.js: default Japanese (koto,
+   shakuhachi, taiko); `"medieval"` for European episodes, `"ancient"` (same instruments on the Hijaz scale) for the ancient Near East (lute, recorder, hurdy-gurdy, war drum,
+   tabor, choir, church bell, horn; D Dorian). `--music-only` writes `build/music-preview.mp3`
+   from the estimated timing, before any voice exists. Mood `"silence"` stops the music for a section
+   (the previous section fades out at the boundary); medieval mood `"triumph"` is a heroic return
+   ending on a D major chord. A shot's `lead: 2.5` adds seconds of silence before its narration.
+
+6b. Animation (from the Tyre episode on): a shot can define `anim: (t, sec) => ({ fx, characters, background, ... })`
+   for t = 0..1 over the shot. `node tools/build-anim.js episodes/<NN-name> --fps 15` renders frames to
+   `build/anim/<id>/` (needs `episode.timed.json`, so run make-video once first); make-video.py then uses
+   them instead of the still. Every shot also gets ambient motion: drifting waves, flickering flames,
+   bobbing ships, falling rain and sand, breathing characters. Drawing code reads the clock as `ANIM`/`ASEC()`.
+   Useful animated FX: `route`/`arrow` with `p` (draw themselves), `mole`/`causeway` growth, `volley`
+   (arrows in flight), `breach`, `craneship`, `ramship`, evidence cards `heightcompare`, `murex`, `coresection`,
+   `doc`, `timeline`, and engineering diagrams `blueprint` (white-on-blue; modes `piles`, `crane`, `chains`).
+6c. Sound effects (synthesized in make-music.py, never downloaded): a shot can list
+   `sfx: [{ type, at, every, until, gain }]` with types `hammer`, `boom`, `fire`, `thunder`, `whoosh`;
+   they are mixed about 10 dB under the voice.
+
+7. Shorts: `python3 tools/make-short.py episodes/<NN-name> --shots ... --title ... --out ...`
+   (vertical 1080×1920 cut from the finished video; see `episodes/01-47-ronin/shorts.md`).
+
+Rendered videos and `build/` are git-ignored; send finished videos to the owner as files.
+
+## Animation toolkit (optional, installed Nov 2026 at the owner's request)
+- Agent skills in `.claude/skills/`: official Remotion skills (`remotion-*`, from remotion-dev/skills) and
+  GSAP skills (`gsap-*`, from greensock/gsap-skills, MIT).
+- npm libraries in `tools/motion/` (own package.json; run `npm ci --prefix tools/motion` in a fresh container):
+  SVGO, Satori (SVG); GSAP, Anime.js, Motion, dotLottie (animation); Remotion, Motion Canvas (video);
+  Three.js, React Three Fiber, Drei, Rapier, Postprocessing (3D). The main pipeline (build-episode,
+  make-video, make-music) does not depend on them. Remotion is free for individuals and companies of up
+  to 3 people; larger teams need a company license.
+- Keep the channel style: characters and scenes still come from `index.html`; these tools only animate them.
+
+## Environment notes
+- Voice engines:
+  - **ElevenLabs connector (preferred from episode 2; owner has a paid plan).** Run in a session on
+    the `lichsu` environment, which allows `elevenlabsusercontent.com` so generated audio can be
+    downloaded. For every shot in episode.json: `creative_generate_speech` with model `eleven_v4`,
+    voice = narrator/father "Marcus K - Calm Documentary Narrator" (3H55HGnNE1XjYxigHSAS) or
+    son "Brayden - Conversational Older Teen" (3XOBzXhnDY98yeWQ3GdM); reuse one flow per episode;
+    poll `creative_get_flow_run_status`; download the first take's `content_url` with curl to
+    `episodes/<NN>/build/audio/<shot id>.mp3`. Then `python3 tools/make-video.py episodes/<NN> --engine files`.
+    Costs about 1 credit per character per take (the son's voice costs about 2.4×). To save credits
+    (owner's preference from episode 3 on) pass `generations_count: 1`: one take per shot halves the cost.
+    eleven_v4, flash and multilingual cost the same, so keep eleven_v4 for a consistent voice.
+  - Direct ElevenLabs API (`--engine elevenlabs`, env var `ELEVENLABS_API_KEY`) also works if a key is added.
+  - Gemini (free fallback, env var `KEY`): see step 5.
+- Free tier: 10 TTS requests per day per model; resets at midnight Pacific time.
+- Python needs `scipy` (`pip install scipy`); ffmpeg and Playwright are preinstalled.
+- Work branch: `add-47-ronin-script` on github.com/tdkhangg-arch/lichsu.
