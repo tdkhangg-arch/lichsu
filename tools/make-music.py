@@ -463,6 +463,69 @@ def lufs(path):
     return float(re.findall(r"I:\s+(-?[\d.]+) LUFS", log)[-1])
 
 
+# ---------- Sound effects (synthesized here, so free of third-party copyright) ----------
+# A shot can list sfx in shots.js: {type, at (0..1 of the shot, default 0), every (seconds, repeat), until (0..1)}.
+# Types: hammer (pile driving), boom (explosion), fire (crackle), thunder, whoosh (scene change).
+def _noise(n, rng): return rng.standard_normal(n)
+
+def _lp(x, hz, order=2):
+    return sosfilt(butter(order, hz, "low", fs=SR, output="sos"), x)
+
+def _bp(x, lo, hi):
+    return sosfilt(butter(2, [lo, hi], "band", fs=SR, output="sos"), x)
+
+def sfx_sound(kind, rng, dur=3.0):
+    if kind == "hammer":            # wooden pile struck by a heavy mallet: low thud + short knock
+        n = int(0.45 * SR); t = np.arange(n) / SR
+        thud = np.sin(2 * np.pi * (70 + 40 * np.exp(-t * 30)) * t) * np.exp(-t * 11)
+        knock = _bp(_noise(n, rng), 300, 1500) * np.exp(-t * 60) * 0.6
+        return thud + knock
+    if kind == "boom":              # explosion of the fire ship
+        n = int(3.0 * SR); t = np.arange(n) / SR
+        body = _lp(_noise(n, rng), 300) * np.exp(-t * 1.6) * 3
+        sub = np.sin(2 * np.pi * (48 + 30 * np.exp(-t * 4)) * t) * np.exp(-t * 1.3)
+        crack = _bp(_noise(n, rng), 1500, 6000) * np.exp(-t * 25) * 0.8
+        return body + sub + crack
+    if kind == "fire":              # roaring flames with crackles, as long as needed
+        n = int(dur * SR)
+        roar = _lp(_noise(n, rng), 500) * 1.2
+        cr = np.zeros(n)
+        for _ in range(int(dur * 14)):
+            i = rng.integers(0, max(n - 800, 1)); k = rng.integers(80, 600)
+            cr[i:i + k] += _bp(_noise(k, rng), 2000, 7000) * np.exp(-np.arange(k) / (k / 4)) * rng.uniform(.3, 1)
+        env = np.minimum(1, np.arange(n) / (0.8 * SR)) * np.minimum(1, (n - np.arange(n)) / (1.0 * SR))
+        return (roar + cr) * env
+    if kind == "thunder":           # crack then long rumble
+        n = int(4.5 * SR); t = np.arange(n) / SR
+        crack = _bp(_noise(n, rng), 800, 5000) * np.exp(-t * 18)
+        rumble = _lp(_noise(n, rng), 160) * (1 - np.exp(-t * 6)) * np.exp(-t * 0.9) * 4
+        return crack + rumble
+    if kind == "whoosh":            # deep whoosh + low epic hit for the map changing to today
+        n = int(1.8 * SR); t = np.arange(n) / SR
+        sweep = np.zeros(n); x = _noise(n, rng); step = int(0.05 * SR)
+        for i in range(0, n, step):
+            f = 200 + 2400 * (i / n)
+            sweep[i:i + step] = _bp(x[max(0, i - 2000):i + step], f, f * 1.6)[-len(sweep[i:i + step]):]
+        sweep *= np.sin(np.pi * t / t[-1]) ** 2 * 2
+        hit = np.sin(2 * np.pi * 55 * t) * np.exp(-np.maximum(t - 1.2, 0) * 3) * (t > 1.2) * 1.4
+        return sweep + hit
+    return np.zeros(1)
+
+def sfx_track(ep, total):
+    rng = np.random.default_rng(42)
+    out = np.zeros(int((total + 6) * SR))
+    for s in ep["shots"]:
+        for f in s.get("sfx") or []:
+            a = s["start"] + float(f.get("at", 0)) * s["duration"]
+            b = s["start"] + float(f.get("until", 1)) * s["duration"]
+            gain = float(f.get("gain", 1.0))
+            times = np.arange(a, b, float(f["every"])) if f.get("every") else [a]
+            for t0 in times:
+                sig = sfx_sound(f["type"], rng, dur=max(b - a, 1)) * gain
+                i = int(t0 * SR); out[i:i + len(sig)] += sig[: len(out) - i]
+    return out
+
+
 def main():
     ep_dir = Path(sys.argv[1]).resolve()
     music_only = "--music-only" in sys.argv
@@ -530,9 +593,21 @@ def main():
     # steady level whether or not someone is talking.
     music_gain = (lufs(voice_wav) - VOICE_TO_MUSIC_DB) - lufs(wav)
     mixed = build / "mixed.wav"
-    ff(["-i", str(voice_wav), "-i", str(wav), "-filter_complex",
-        f"[1:a]volume={music_gain:.2f}dB[m];[0:a][m]amix=inputs=2:normalize=0:duration=first[a]",
-        "-map", "[a]", str(mixed)])
+    fxs = sfx_track(ep, total)
+    if np.any(fxs):
+        # sound effects sit about 10 dB under the voice, a little above the music
+        fx_wav = build / "sfx.wav"
+        fxs = fxs / (np.max(np.abs(fxs)) + 1e-9) * 0.9
+        wavfile.write(fx_wav, SR, (np.stack([fxs, fxs]).T * 32767).astype(np.int16))
+        fx_gain = (lufs(voice_wav) - 10) - lufs(fx_wav)
+        ff(["-i", str(voice_wav), "-i", str(wav), "-i", str(fx_wav), "-filter_complex",
+            f"[1:a]volume={music_gain:.2f}dB[m];[2:a]volume={fx_gain:.2f}dB[x];[0:a][m][x]amix=inputs=3:normalize=0:duration=first[a]",
+            "-map", "[a]", str(mixed)])
+        print(f"sound effects mixed ({fx_gain:+.1f} dB)", flush=True)
+    else:
+        ff(["-i", str(voice_wav), "-i", str(wav), "-filter_complex",
+            f"[1:a]volume={music_gain:.2f}dB[m];[0:a][m]amix=inputs=2:normalize=0:duration=first[a]",
+            "-map", "[a]", str(mixed)])
     final_gain = TARGET_LUFS - lufs(mixed)
     ff(["-i", str(src), "-i", str(mixed), "-filter_complex",
         f"[1:a]volume={final_gain:.2f}dB,alimiter=limit=0.89:level=false,afade=t=out:st={total-2:.2f}:d=2[a]",

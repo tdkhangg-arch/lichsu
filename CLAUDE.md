@@ -79,7 +79,11 @@ Folder numbers are the order they were written; **upload order** is what viewers
    them instead of the still. Every shot also gets ambient motion: drifting waves, flickering flames,
    bobbing ships, falling rain and sand, breathing characters. Drawing code reads the clock as `ANIM`/`ASEC()`.
    Useful animated FX: `route`/`arrow` with `p` (draw themselves), `mole`/`causeway` growth, `volley`
-   (arrows in flight), `breach`, and evidence cards `heightcompare`, `murex`, `coresection`, `doc`, `timeline`.
+   (arrows in flight), `breach`, `craneship`, `ramship`, evidence cards `heightcompare`, `murex`, `coresection`,
+   `doc`, `timeline`, and engineering diagrams `blueprint` (white-on-blue; modes `piles`, `crane`, `chains`).
+6c. Sound effects (synthesized in make-music.py, never downloaded): a shot can list
+   `sfx: [{ type, at, every, until, gain }]` with types `hammer`, `boom`, `fire`, `thunder`, `whoosh`;
+   they are mixed about 10 dB under the voice.
 
 7. Shorts: `python3 tools/make-short.py episodes/<NN-name> --shots ... --title ... --out ...`
    (vertical 1080×1920 cut from the finished video; see `episodes/01-47-ronin/shorts.md`).

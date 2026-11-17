@@ -33,6 +33,7 @@ const WPM = 145;
       id,
       speaker: shot.speaker || null,
       ...(shot.lead ? { lead: shot.lead } : {}),
+      ...(shot.sfx ? { sfx: shot.sfx } : {}),
       section: shot.section,
       start: t,
       duration,

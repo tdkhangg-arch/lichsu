@@ -20,6 +20,17 @@ const animOnly = args.includes("--anim-only");   // skip shots without anim() (n
 const def = require(path.join(epDir, "shots.js"));
 const timedPath = fs.existsSync(path.join(epDir, "episode.timed.json")) ? "episode.timed.json" : "episode.json";
 const timed = Object.fromEntries(JSON.parse(fs.readFileSync(path.join(epDir, timedPath), "utf8")).shots.map(s => [s.id, s.duration]));
+// Prefer the real length of each voice file (same rule as make-video.py: lead + voice + 0.5 s tail,
+// plus the end hold on the last shot), so new shots don't need a make-video run first.
+const { execFileSync } = require("child_process");
+const END_HOLD = 3.0;   // keep in step with make-video.py
+const epShots = JSON.parse(fs.readFileSync(path.join(epDir, "episode.json"), "utf8")).shots;
+epShots.forEach((s, i) => {
+  const mp3 = path.join(epDir, "build", "audio", `${s.id}.mp3`);
+  if (!fs.existsSync(mp3)) return;
+  const d = parseFloat(execFileSync("ffprobe", ["-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", mp3]).toString());
+  timed[s.id] = Math.round(((s.lead || 0) + d + 0.5 + (i === epShots.length - 1 ? END_HOLD : 0)) * 100) / 100;
+});
 const ctx = loadCtx();
 
 let n = 0;
